@@ -952,7 +952,7 @@ form label
 
 .login-wrapper h1
 {
-    font-size: 35px;
+    font-size: 28px;
     margin-bottom: 0px;
 }
 
@@ -1037,5 +1037,13 @@ form label
 form label span
 {
     font-size: 80%;
+}
+
+@media (min-width:600px)
+{
+    .login-wrapper h1
+    {
+        font-size: 38px;
+    }
 }
 
