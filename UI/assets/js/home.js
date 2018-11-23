@@ -39,9 +39,23 @@ function register(){
     
 }
 
+function uploadProfile(){
+    $(".delete-file-chooser").click();
+}
+
 function init(){
     iteratePopularReports();
 }
+
+$(".dropdown>a").click(function(e){
+    $(this).next().slideToggle('fast').addClass("showing");
+    e.stopPropagation();
+});
+
+
+$(document).click(function(e) {   
+    $(".showing").slideUp(100).removeClass("showing");
+});
 
 
 init();

@@ -107,6 +107,11 @@ h1
     font-size: 15px;
     color: inherit;
     display: block;
+    -webkit-transition: all 300ms;
+    -moz-transition: all 300ms;
+    -ms-transition: all 300ms;
+    -o-transition: all 300ms;
+    transition: all 300ms;
 }
 
 a
@@ -197,6 +202,7 @@ body
     padding-right: 20px;
     max-width: 400px;
     margin: 10px auto;
+    text-align: center;
 }
 
 .top-space
@@ -293,7 +299,7 @@ body
     font-weight: bold;
     font-size: 23px;
     position: relative;
-    top: 0px;
+    top: 6px;
 }
 
 .header
@@ -729,8 +735,6 @@ button
 
 @media (min-width:600px)
 {
-@media (min-width:600px)
-{
     .nav-section
     {
         position: static;
@@ -743,8 +747,6 @@ button
         height: auto;
         overflow: visible;
     }
-}
-
 }
 
 .nav-section-mobile
@@ -945,7 +947,6 @@ form label
 
 .login-form button
 {
-    width: 100%;
     margin-top: 10px;
 }
 
@@ -1050,5 +1051,166 @@ form label span
     {
         font-size: 38px;
     }
+}
+
+.form-instructions
+{
+    display: inline-block;
+    margin-bottom: 30px;
+    font-style: italic;
+    color: #8b2626;
+    font-weight: bold;
+}
+
+.navigation .nav-profile
+{
+    padding-top: 0px;
+    padding-bottom: 0px;
+    position: relative;
+    top: 7px;
+    margin-top: -4px;
+}
+
+.nav-profile img
+{
+    border-radius: 100%;
+}
+
+.nav-profile span
+{
+    color: #1e2028;
+    display: inline-block;
+    position: relative;
+    bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+.dropdown
+{
+    position: relative;
+}
+
+.dropdown-inner
+{
+    list-style-type: none;
+    padding-left: 0px;
+    position: absolute;
+    right: 0px;
+    top: 50px;
+    box-shadow: 0px 5px 6px rgba(0,0,0,0.02);
+    border: 1px solid #efefef;
+    display: none;
+}
+
+.dropdown-inner li
+{
+    display: block;
+    min-width: 200px;
+    background-color: white;
+    right: 0px;
+    top: 49px;
+    border-bottom: 1px solid #efefef;
+}
+
+.dropdown li a
+{
+    display: block;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 14px;
+}
+
+.dropdown .dropdown-brand
+{
+    padding: 10px;
+}
+
+.dropdown-line
+{
+    border-bottom: 1px solid #efefef;
+}
+
+.navigation li a:hover
+{
+    color: #377dff;
+}
+
+.navigation li .btn-brand:hover
+{
+    color: white;
+}
+
+.heading
+{
+    background-color: #377dff;
+    color: white;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-top: 55px;
+}
+
+.bread
+{
+    display: inline-block;
+}
+
+.bread>a
+{
+    color: rgba(255, 255, 255, 0.83);
+    font-size: 18px;
+}
+
+.bread>.fa
+{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.bread .active
+{
+    color: white;
+    cursor: text;
+}
+
+
+.profile-wrapper
+{
+    position: relative;
+    overflow: auto;
+    text-align: center;
+}
+
+.profile-wrapper .profile-img
+{
+    position: relative;
+    display: inline-block;
+}
+
+.profile-wrapper button
+{
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    max-width: 270px;
+}
+
+.delete-file-chooser
+{
+    display: none;
+}
+
+.btn-full
+{
+    width: 100%;
+}
+
+.btn-250
+{
+    width: 100%;
+    max-width: 250px;
 }
 
