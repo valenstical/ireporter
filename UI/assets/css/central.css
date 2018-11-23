@@ -729,6 +729,8 @@ button
 
 @media (min-width:600px)
 {
+@media (min-width:600px)
+{
     .nav-section
     {
         position: static;
@@ -739,7 +741,10 @@ button
         box-shadow: none;
         display: inline-block;
         height: auto;
+        overflow: visible;
     }
+}
+
 }
 
 .nav-section-mobile
