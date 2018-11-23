@@ -49,31 +49,32 @@
       <div class="wrapper" data-pg-name="Wrapper"> 
         <form class="card login-form login-form-lg" onsubmit="return register()"> 
           <h1 class="text-brand">Welcome to iReporter</h1> 
-          <p data-pg-collapsed>Easily report cases of corruption and issues that need government attention to the appropriate authorities.<span><i class="fa fa-hand-o-right"></i> Fill out the form below to get started.</span></p> 
+          <p data-pg-collapsed>Easily report cases of corruption and issues that need government attention to the appropriate authorities.<span><i class="fa fa-hand-o-right"></i> Register by filling out the form below to get started.</span></p> 
           <div class="form-wrapper" data-pg-collapsed> 
-            <label>First Name</label>             
-            <input class="form-element" type="text" name="fname"> 
+            <label>First Name </label>             
+            <input class="form-element" type="text" name="fname" required> 
           </div>
           <div class="form-wrapper" data-pg-collapsed> 
-            <label>Last Name</label>             
-            <input class="form-element" type="text" name="lname"> 
+            <label>Last Name </label>             
+            <input class="form-element" type="text" name="lname" required> 
           </div>
           <div class="form-wrapper" data-pg-collapsed> 
-            <label>Email Address</label>             
-            <input class="form-element" type="email" name="email"> 
+            <label>Email Address </label>             
+            <input class="form-element" type="email" name="email" required> 
           </div>
           <div class="form-wrapper" data-pg-collapsed> 
             <label>Password</label>             
-            <input class="form-element" type="password" name="password"> 
+            <input class="form-element" type="password" name="password" required> 
           </div>           
           <div class="form-wrapper" data-pg-collapsed> 
             <label>Confirm Password</label>             
-            <input class="form-element" type="password" name="password2"> 
+            <input class="form-element" type="password" name="password2" required> 
           </div>
           <div class="checkbox">
-            <input type="checkbox">
             <label>
+              <input type="checkbox" required>
               I agree to the 
+
               <a href="terms.html" class="forgot-password">Terms and Conditions</a>
             </label>
           </div>           

@@ -1031,11 +1031,11 @@ form label
 .checkbox label
 {
     color: #959393;
+    cursor: pointer;
 }
 
-.checkbox input
+form label span
 {
-    cursor:pointer;
+    font-size: 80%;
 }
-
 
