@@ -27,6 +27,18 @@ function setMenuHidable(hidable){
     menuHidable=hidable;
 }
 
+function recoverPassword(){
+    
+}
+
+function login(){
+    
+}
+
+function register(){
+    
+}
+
 function init(){
     iteratePopularReports();
 }

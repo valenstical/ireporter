@@ -941,6 +941,7 @@ form label
 .login-form button
 {
     width: 100%;
+    margin-top: 10px;
 }
 
 .form-element:focus
@@ -952,7 +953,7 @@ form label
 .login-wrapper h1
 {
     font-size: 35px;
-    margin-bottom: -5px;
+    margin-bottom: 0px;
 }
 
 .login-wrapper p
@@ -1002,7 +1003,39 @@ form label
 .menu-bar:focus
 {
     border: none;
-  outline:none;
+    outline: none;
+}
+
+.login-wrapper .login-form-lg
+{
+    max-width: 700px;
+}
+
+.login-wrapper p span
+{
+    display: block;
+    margin-top: 10px;
+}
+
+.checkbox
+{
+    margin-bottom: 20px;
+}
+
+.checkbox a
+{
+    font-size: inherit;
+    float: none;
+}
+
+.checkbox label
+{
+    color: #959393;
+}
+
+.checkbox input
+{
+    cursor:pointer;
 }
 
 
