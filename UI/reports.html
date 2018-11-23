@@ -21,7 +21,7 @@
     <nav class="navigation" data-pg-name="Navigation Bar" data-pg-collapsed> 
       <div class="wrapper" data-pg-name="Wrapper"> 
         <div class="clear-float"> 
-          <a href="index.html" class="nav-brand text-brand float-left">iReporter</a> 
+          <a href="index.html" class="nav-brand text-brand float-left">iReporter</a>
           <ul class="nav-section float-right nav-shown nav-hidden transition" data-pg-name="Nav Section" data-pg-collapsed id="nav-section" onmouseenter="setMenuHidable(false)" onmouseleave="setMenuHidable(true)"> 
             <li data-pg-name="Nav Item"> 
               <a href="index.html">Home</a> 
@@ -52,7 +52,7 @@
                 </li>
               </ul>               
             </li>             
-          </ul>           
+          </ul>                      
           <button class="menu-bar" onclick="toggleMenu()" onblur="hideMenu()" data-pg-collapsed> 
             <i class="fa fa-align-justify"></i> 
           </button>           
@@ -65,43 +65,39 @@
           <div class="bread" data-pg-collapsed>
             <a href="">Home</a>
             <i class="fa fa-angle-right"></i>
-            <a href="" class="active">Edit Profile</a>
+            <a href="" class="active">View Reports</a>
           </div>           
         </div>
       </section>
       <section data-pg-collapsed>
         <div class="wrapper" data-pg-name="Wrapper">
-          <div class="card login-form login-form-lg profile-wrapper">
-            <div class="profile-img float-left" data-pg-collapsed> 
-              <img src="assets/images/profiles/photo-1467400492058-1aad44d4bcd6.jpg" width="200" height="200" />                
+          <div class="row" data-pg-name="Row">
+            <div class="column column-md-4" data-pg-name="Column">
+              <div class="card login-form login-form-lg profile-wrapper profile-box-sm">
+                <div class="profile-img"> 
+                  <img src="assets/images/profiles/photo-1467400492058-1aad44d4bcd6.jpg" width="100" height="100" /> 
+                </div>
+                <h4 class="profile-wrapper-name">Steven Nnanami</h4>
+                <ul class="nav-shown transition unstyled-list inline-list report-summary" data-pg-name="Report Summary" data-pg-collapsed onmouseenter="setMenuHidable(false)" onmouseleave="setMenuHidable(true)"> 
+                  <li data-pg-name="Nav Item"> 
+                    <span>23</span>
+                    <span>Rejected</span> 
+                  </li>                   
+                  <li data-pg-name="Nav Item"> 
+                    <a href="about.html">About</a> 
+                  </li>                   
+                  <li data-pg-name="Nav Item"> 
+                    <a href="reports.html">View reports</a> 
+                  </li>                                      
+                </ul>
+                <button class="btn-brand btn-secondary btn-250" onclick="uploadProfile()">View Reports</button>
+                <input type="file" class="delete-file-chooser"> 
+              </div>
             </div>
-            <button class="btn-brand btn-secondary float-left">Change Image</button>             
-          </div>
-          <form class="card login-form login-form-lg" onsubmit="return editProfile()"> 
-            <div class="form-wrapper" data-pg-collapsed> 
-              <label>First Name </label>               
-              <input class="form-element" type="text" name="fname" required value="Steven"> 
-            </div>             
-            <div class="form-wrapper" data-pg-collapsed> 
-              <label>Last Name </label>               
-              <input class="form-element" type="text" name="lname" required value="Nnamani"> 
-            </div>             
-            <div class="form-wrapper" data-pg-collapsed> 
-              <label>Email Address </label>               
-              <input class="form-element" type="email" name="email" required value="abc@gmail.com"> 
-            </div>             
-            <button class="btn-brand" type="submit">Update Profile</button>             
-          </form>
-          <form class="card login-form login-form-lg" onsubmit="return changePassword()"> 
-            <div class="form-wrapper" data-pg-collapsed> 
-              <label>Password</label>               
-              <input class="form-element" type="password" name="password" required placeholder="fdffdfdf"> 
-            </div>             
-            <button class="btn-brand" type="submit">Change password</button>             
-          </form>           
+          </div>           
         </div>
-      </section>              
-    </section>          
+      </section>       
+    </section>     
     <footer class="footer" data-pg-collapsed> 
       <div class="wrapper" data-pg-name="Wrapper"> 
         <p class="float-right" data-pg-collapsed><a href="terms.html">Terms &amp; Conditions</a><a href="privacy-policy.html">Privacy Policy</a><a href="sitemap.html">Sitemap</a></p> 
