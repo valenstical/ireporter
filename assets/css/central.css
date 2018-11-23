@@ -570,13 +570,14 @@ h1,h2,h3,h4,h5,h6
     background-color: #00c9a7;
     color: white;
     border-radius: 100%;
-    width: 17px;
-    height: 17px;
+    width: 18px;
+    height: 18px;
     text-align: center;
     font-size: 10px;
-    padding-top: 2px;
+    padding-top: 1px;
     right: -4px;
     bottom: 6px;
+    border: 2px solid white;
 }
 
 .profile-img
@@ -1174,7 +1175,6 @@ form label span
     cursor: text;
 }
 
-
 .profile-wrapper
 {
     position: relative;
@@ -1212,5 +1212,24 @@ form label span
 {
     width: 100%;
     max-width: 250px;
+}
+
+.profile-wrapper-name
+{
+    color: #82828d;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.profile-box-sm
+{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.report-summary
+{
+    margin-bottom: 50px;
+    margin-top: 10px;
 }
 
