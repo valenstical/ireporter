@@ -1,0 +1,297 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+  <head> 
+    <meta charset="utf-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <meta name="description" content="Easily report cases of corruption to the appropriate authorities. Users can also report on things that needs government intervention."> 
+    <meta name="author" content="Okosun Valentine Ejodamen <valenstical@gmail.com>"> 
+    <title>iReporter|Easily report cases of corruption and areas that needs government intervention|Andela Developer Challenge</title>     
+    <link href="assets/images/icons/icon.png" rel="icon" type="image/png">
+    <link href="assets/css/central.css" rel="stylesheet" type="text/css"> 
+    <link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css"> 
+    <meta name="theme-color" content="#377dff">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->     
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->     
+  </head>   
+  <body> 
+    <nav class="navigation" data-pg-name="Navigation Bar">
+      <div class="wrapper" data-pg-name="Wrapper">
+        <div class="clear-float">
+          <a href="index.html" class="nav-brand text-brand float-left">iReporter</a>
+          <ul class="nav-section float-right nav-shown nav-hidden transition" data-pg-name="Nav Section" data-pg-collapsed id="nav-section" onmouseenter="setMenuHidable(false)" onmouseleave="setMenuHidable(true)">
+            <li data-pg-name="Nav Item">
+              <a href="index.html">Home</a>
+            </li>
+            <li data-pg-name="Nav Item">
+              <a href="about.html">About</a>
+            </li>
+            <li data-pg-name="Nav Item">
+              <a href="explore.html">Explore</a>
+            </li>
+            <li data-pg-name="Nav Item" data-pg-collapsed>
+              <a href="sign-in.html">Sign in</a>
+            </li>
+            <li data-pg-name="Nav Item" class="btn-cta" data-pg-collapsed>
+              <a href="create-report.html" class="btn-brand transition">Report a case</a>
+            </li>
+          </ul>
+          <button class="menu-bar" onclick="toggleMenu()" onblur="hideMenu()" data-pg-collapsed>
+            <i class="fa fa-align-justify"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <section class="hero top-space" data-pg-collapsed data-pg-name="Hero">
+      <div class="wrapper" data-pg-name="Wrapper">
+        <div class="hero-inner" data-pg-collapsed>
+          <h1>Report <span>cases of corruption</span></h1>
+          <p>Easily report cases of corruption and issues that need government attention. We would help spread the word &amp; report it to the appropriate authorities.</p>
+          <div class="btn-wrapper">
+            <a href="create-report.html" class="btn-brand">Report a case</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="how" data-pg-collapsed data-pg-name="How it Works">
+      <div class="wrapper" data-pg-name="Wrapper">
+        <header class="header" data-pg-collapsed>
+          <small class="round-info">How it Works</small>
+          <h2><span class="text-upper">make your voice count</span></h2>
+          <p>Witnessed a case of corruption? Or you simply want to bring an issue to the attention of the government?</p>
+        </header>
+        <div class="row" data-pg-name="Row">
+          <div class="column column-md-4" data-pg-name="Column" data-pg-collapsed>
+            <div class="how-item transition card">
+              <i class="fa fa-bullhorn"></i>
+              <h3>Report it</h3>
+              <p>Simply fill out a report form by entering details about the incident. You may choose to stay anonymous.</p>
+            </div>
+          </div>
+          <div class="column column-md-4" data-pg-name="Column" data-pg-collapsed>
+            <div class="how-item transition card">
+              <i class="fa fa-thumbs-o-up"></i>
+              <h3>Get Feedback</h3>
+              <p>We would investigate &amp; submit your report to the appropriate authorities, giving you feedback each step of the way.</p>
+            </div>
+          </div>
+          <div class="column column-md-4" data-pg-name="Column" data-pg-collapsed>
+            <div class="how-item transition card">
+              <i class="fa fa-share-alt"></i>
+              <h3>Share Report</h3>
+              <p>You may share your report on social media to help spread the word and stop similar cases from occuring.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section data-pg-name="Latest Reports" class="reports-wrapper bg-grey" data-pg-collapsed>
+      <div class="wrapper" data-pg-name="Wrapper">
+        <header class="header" data-pg-collapsed>
+          <small class="round-info">Latest Reports</small>
+          <h2></h2>
+        </header>
+        <div class="row" data-pg-name="Row">
+          <div class="column column-md-6" data-pg-name="Column" data-pg-collapsed>
+            <div class="report-item card card-sm">
+              <div class="profile-img">
+                <img src="assets/images/profiles/photo-1467400492058-1aad44d4bcd6.jpg" width="50" height="50" />
+                <span class="report-item-verified" data-pg-collapsed><i class="fa fa-check"></i></span>
+              </div>
+              <div class="report-item-content">
+                <h5>Steven</h5>
+                <span class="report-item-date" data-pg-collapsed><i class="fa fa-calendar"></i> 12 min ago,</span>
+                <span class="report-item-date report-item-location" data-pg-collapsed><i class="fa fa-map-marker"></i> Lagos</span>
+                <span class="badge-citizen badge-status status-badge-draft" data-pg-collapsed><i class="fa fa-info-circle"></i>Under Investigation</span>
+                <h6>Power failure for over 3 weeks now</h6>
+                <p data-pg-collapsed>An electric pole fell along my street and no PHCN official has come to do anything since, this is getting out of hand... </p>
+                <a href="report-details.html" data-pg-collapsed class="report-item-link">Read more <i class="fa fa-angle-double-right"></i></a>
+                <span class="report-item-attachments" data-pg-collapsed>2 <i class="fa fa-paperclip fa-rotate-90 fa-flip-vertical"></i></span>
+              </div>
+            </div>
+          </div>
+          <div class="column column-md-6" data-pg-name="Column" data-pg-collapsed>
+            <div class="report-item card card-sm" data-pg-collapsed>
+              <div class="profile-img">
+                <img src="assets/images/profiles/photo-1522720962427-d53e89da4071.jpg" width="50" height="50" />
+              </div>
+              <div class="report-item-content">
+                <h5>Kate</h5>
+                <span class="report-item-date" data-pg-collapsed><i class="fa fa-calendar"></i> 20 min ago,</span>
+                <span class="report-item-date report-item-location" data-pg-collapsed><i class="fa fa-map-marker"></i> Edo</span>
+                <span class="badge-citizen badge-status" data-pg-collapsed><i class="fa fa-check"></i>Resolved</span>
+                <h6>Unconscious woman along ring road</h6>
+                <p data-pg-collapsed>There is an erderly woman along ring road, just before Bob Izua Park. Please call the relevant agency to take her to the hospital. </p>
+                <a href="report-details.html" data-pg-collapsed class="report-item-link">Read more <i class="fa fa-angle-double-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="column column-md-6" data-pg-name="Column" data-pg-collapsed>
+            <div class="report-item card card-sm" data-pg-collapsed>
+              <div class="profile-img">
+                <img src="assets/images/profiles/default.jpg" width="50" height="50" />
+              </div>
+              <div class="report-item-content">
+                <h5>Anonymous</h5>
+                <span class="report-item-date" data-pg-collapsed><i class="fa fa-calendar"></i> 2 hours ago,</span>
+                <span class="report-item-date report-item-location" data-pg-collapsed><i class="fa fa-map-marker"></i> Lagos</span>
+                <span class="badge-citizen badge-status status-badge-rejected" data-pg-collapsed><i class="fa fa-remove"></i>False Report</span>
+                <h6>Bags of Ghana must go with money in my neighbour's room</h6>
+                <p data-pg-collapsed>Please inform EFCC that one of my neighbour is hiding bags of dollars in his room. He normally does yahoo yahoo and... </p>
+                <a href="report-details.html" data-pg-collapsed class="report-item-link">Read more <i class="fa fa-angle-double-right"></i></a>
+                <span class="report-item-attachments" data-pg-collapsed>1 <i class="fa fa-paperclip fa-rotate-90 fa-flip-vertical"></i></span>
+              </div>
+            </div>
+          </div>
+          <div class="column column-md-6" data-pg-name="Column" data-pg-collapsed>
+            <div class="report-item card card-sm" data-pg-collapsed>
+              <div class="profile-img">
+                <img src="assets/images/profiles/photo-1526382925646-27b5eb86796e.jpg" width="50" height="50" />
+              </div>
+              <div class="report-item-content">
+                <h5>Uju</h5>
+                <span class="report-item-date" data-pg-collapsed><i class="fa fa-calendar"></i> 4 hours ago,</span>
+                <span class="report-item-date report-item-location" data-pg-collapsed><i class="fa fa-map-marker"></i> Abia</span>
+                <span class="badge-citizen badge-status status-badge-draft" data-pg-collapsed><i class="fa fa-info-circle"></i>Under Investigation</span>
+                <h6>Police extortion at Aba Market</h6>
+                <p data-pg-collapsed>Police men stationed at the entry of Aba market normally ask for bribe when driving along that road, they do this everyday especially when... </p>
+                <a href="report-details.html" data-pg-collapsed class="report-item-link">Read more <i class="fa fa-angle-double-right"></i></a>
+                <span class="report-item-attachments" data-pg-collapsed>7 <i class="fa fa-paperclip fa-rotate-90 fa-flip-vertical"></i></span>
+              </div>
+            </div>
+          </div>
+          <div class="column column-md-6" data-pg-name="Column" data-pg-collapsed>
+            <div class="report-item card card-sm" data-pg-collapsed>
+              <div class="profile-img">
+                <img src="assets/images/profiles/photo-1492633030546-6236e2bf198e.jpg" width="50" height="50" />
+                <span class="report-item-verified" data-pg-collapsed><i class="fa fa-check"></i></span>
+              </div>
+              <div class="report-item-content">
+                <h5>Mustapha</h5>
+                <span class="report-item-date" data-pg-collapsed><i class="fa fa-calendar"></i> 10 hours ago,</span>
+                <span class="report-item-date report-item-location" data-pg-collapsed><i class="fa fa-map-marker"></i> Kano</span>
+                <span class="badge-citizen badge-status status-badge-draft" data-pg-collapsed><i class="fa fa-info-circle"></i>Under Investigation</span>
+                <h6>State governor collecting bribe from contractors</h6>
+                <p data-pg-collapsed>We have video evidence that the state governor of Kano state collects bribe from contractors to execute projects and... </p>
+                <a href="report-details.html" data-pg-collapsed class="report-item-link">Read more <i class="fa fa-angle-double-right"></i></a>
+                <span class="report-item-attachments" data-pg-collapsed>5 <i class="fa fa-paperclip fa-rotate-90 fa-flip-vertical"></i></span>
+              </div>
+            </div>
+          </div>
+          <div class="column column-md-6" data-pg-name="Column" data-pg-collapsed>
+            <div class="report-item card card-sm" data-pg-collapsed>
+              <div class="profile-img">
+                <img src="assets/images/profiles/default.jpg" width="50" height="50" />
+              </div>
+              <div class="report-item-content">
+                <h5>Anonymous</h5>
+                <span class="report-item-date" data-pg-collapsed><i class="fa fa-calendar"></i> 12 hours ago,</span>
+                <span class="report-item-date report-item-location" data-pg-collapsed><i class="fa fa-map-marker"></i> Delta</span>
+                <span class="badge-citizen badge-status" data-pg-collapsed><i class="fa fa-check"></i>Resolved</span>
+                <h6>Students made to pay over 5000 for exam malpractise</h6>
+                <p data-pg-collapsed>My son just complained about his school Ugborikoko secondary school. They are asking them to pay extra 5000 naira for buying drinks for the external examiner so she can... </p>
+                <a href="report-details.html" data-pg-collapsed>Read more <i class="fa fa-angle-double-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="column column-md-6" data-pg-name="Column" data-pg-collapsed>
+            <div class="report-item card card-sm" data-pg-collapsed>
+              <div class="profile-img">
+                <img src="assets/images/profiles/photo-1533939141733-63078e139c4a.jpg" width="50" height="50" />
+              </div>
+              <div class="report-item-content">
+                <h5>Nnamdi</h5>
+                <span class="report-item-date" data-pg-collapsed><i class="fa fa-calendar"></i> Yesterday,</span>
+                <span class="report-item-date report-item-location" data-pg-collapsed><i class="fa fa-map-marker"></i> Lagos</span>
+                <span class="badge-citizen badge-status" data-pg-collapsed><i class="fa fa-check"></i>Resolved</span>
+                <h6>Fuel tanker blocking Anthony street</h6>
+                <p data-pg-collapsed>Oando fuel tanker fell off the road along anthony street. Please get the relevant agency to come help move it off the road and restore... </p>
+                <a href="report-details.html" data-pg-collapsed>Read more <i class="fa fa-angle-double-right"></i></a>
+                <span class="report-item-attachments" data-pg-collapsed>12 <i class="fa fa-paperclip fa-rotate-90 fa-flip-vertical"></i></span>
+              </div>
+            </div>
+          </div>
+          <div class="column column-md-6" data-pg-name="Column" data-pg-collapsed>
+            <div class="report-item card card-sm" data-pg-collapsed>
+              <div class="profile-img">
+                <img src="assets/images/profiles/photo-1524154217857-45f012d0f167.jpg" width="50" height="50" />
+              </div>
+              <div class="report-item-content">
+                <h5>Chinyere</h5>
+                <span class="report-item-date" data-pg-collapsed><i class="fa fa-calendar"></i> 3 weeks ago,</span>
+                <span class="report-item-date report-item-location" data-pg-collapsed><i class="fa fa-map-marker"></i> Anambra</span>
+                <span class="badge-citizen badge-status status-badge-rejected" data-pg-collapsed><i class="fa fa-remove"></i>False Report</span>
+                <h6>Lecturer extorting students for marks</h6>
+                <p data-pg-collapsed>Physics 101 lecturer Mr. Silvernus Mbaka has promised to give my friend's sister an F because she refused all his...  </p>
+                <a href="report-details.html" data-pg-collapsed>Read more <i class="fa fa-angle-double-right"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="column column-md-6" data-pg-name="Column" data-pg-collapsed>
+            <div class="report-item card card-sm" data-pg-collapsed>
+              <div class="profile-img">
+                <img src="assets/images/profiles/photo-1523111343671-c0872e1ac556.jpg" width="50" height="50" />
+              </div>
+              <div class="report-item-content">
+                <h5>Idibia</h5>
+                <span class="report-item-date" data-pg-collapsed><i class="fa fa-calendar"></i> 4 months,</span>
+                <span class="report-item-date report-item-location" data-pg-collapsed><i class="fa fa-map-marker"></i> Benue</span>
+                <span class="badge-citizen badge-status status-badge-draft" data-pg-collapsed><i class="fa fa-info-circle"></i>Under Investigation</span>
+                <h6>Music piracy at alaba market</h6>
+                <p data-pg-collapsed>Please let the government protect our music and intellectual work. The amount of music piracy going on at Alaba market is alarming. How am I to feed all my children when my music is... </p>
+                <a href="report-details.html" data-pg-collapsed>Read more <i class="fa fa-angle-double-right"></i></a>
+                <span class="report-item-attachments" data-pg-collapsed>3 <i class="fa fa-paperclip fa-rotate-90 fa-flip-vertical"></i></span>
+              </div>
+            </div>
+          </div>
+          <div class="column column-md-6" data-pg-name="Column" data-pg-collapsed>
+            <div class="report-item card card-sm" data-pg-collapsed>
+              <div class="profile-img">
+                <img src="assets/images/profiles/photo-1523309828291-0f3e2a853382.jpg" width="50" height="50" />
+              </div>
+              <div class="report-item-content">
+                <h5>Jega</h5>
+                <span class="report-item-date" data-pg-collapsed><i class="fa fa-calendar"></i> 2 years,</span>
+                <span class="report-item-date report-item-location" data-pg-collapsed><i class="fa fa-map-marker"></i> Rivers</span>
+                <span class="badge-citizen badge-status status-badge-rejected" data-pg-collapsed><i class="fa fa-remove"></i>False Report</span>
+                <h6>Election rigging at Adamawa east LGA unit 5</h6>
+                <p data-pg-collapsed>The presiding officer and the collation officer have teamed up to rig the election for the senate. They are bringing fake... </p>
+                <a href="report-details.html" data-pg-collapsed>Read more <i class="fa fa-angle-double-right"></i></a>
+                <span class="report-item-attachments" data-pg-collapsed>2 <i class="fa fa-paperclip fa-rotate-90 fa-flip-vertical"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="btn-wrapper text-center">
+          <a href="explore.html" class="btn-brand btn-lg">Explore more reports</a>
+        </div>
+      </div>
+    </section>
+    <section data-pg-name="Newsletter" class="reports-wrapper padding-lg" data-pg-collapsed>
+      <div class="wrapper" data-pg-name="Wrapper">
+        <div class="newsletter-box">
+          <h2 class="text-brand">Stay Connected</h2>
+          <p>Get latest complaints on corruption and other issues directly in your inbox. Stay connected, together we can make Nigeria corruption FREE.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Enter your email" value="valenstical@gmail.om">
+            <button class="text-brand" onclick="subscribe()">
+              <i class="fa fa-send"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer" data-pg-collapsed>
+      <div class="wrapper" data-pg-name="Wrapper">
+        <p class="float-right" data-pg-collapsed><a href="sign-in.html">Sign in</a><a href="sign-up.html">Create Account</a><a href="privacy-policy.html">Privacy Policy</a></p>
+        <p class="float-left">&copy; 2018 iReporter.</p>
+      </div>
+    </footer>     
+    <!-- Placed at the end of the document so the pages load faster -->     
+    <script src="assets/js/jquery.min.js" type="text/javascript"></script>     
+    <script src="assets/js/home.js" type="text/javascript"></script>     
+  </body>   
+</html>

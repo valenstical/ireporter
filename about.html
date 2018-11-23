@@ -1,0 +1,113 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+  <head> 
+    <meta charset="utf-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <meta name="description" content="Easily report cases of corruption to the appropriate authorities. Users can also report on things that needs government intervention."> 
+    <meta name="author" content="Okosun Valentine Ejodamen <valenstical@gmail.com>"> 
+    <title>About iReporter|Easily report cases of corruption and areas that needs government intervention|Andela Developer Challenge</title>     
+    <link href="assets/images/icons/icon.png" rel="icon" type="image/png">
+    <link href="assets/css/central.css" rel="stylesheet" type="text/css"> 
+    <link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css"> 
+    <meta name="theme-color" content="#377dff">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->     
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->     
+  </head>   
+  <body> 
+    <nav class="navigation" data-pg-name="Navigation Bar" data-pg-collapsed>
+      <div class="wrapper" data-pg-name="Wrapper">
+        <div class="clear-float">
+          <a href="index.html" class="nav-brand text-brand float-left">iReporter</a>
+          <ul class="nav-section float-right nav-shown nav-hidden transition" data-pg-name="Nav Section" data-pg-collapsed id="nav-section" onmouseenter="setMenuHidable(false)" onmouseleave="setMenuHidable(true)">
+            <li data-pg-name="Nav Item">
+              <a href="index.html">Home</a>
+            </li>
+            <li data-pg-name="Nav Item">
+              <a href="about.html">About</a>
+            </li>
+            <li data-pg-name="Nav Item">
+              <a href="explore.html">Explore</a>
+            </li>
+            <li data-pg-name="Nav Item" data-pg-collapsed>
+              <a href="sign-in.html">Sign in</a>
+            </li>
+            <li data-pg-name="Nav Item" class="btn-cta" data-pg-collapsed>
+              <a href="create-report.html" class="btn-brand transition">Report a case</a>
+            </li>
+          </ul>
+          <button class="menu-bar" onclick="toggleMenu()" onblur="hideMenu()" data-pg-collapsed>
+            <i class="fa fa-align-justify"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <section class="hero top-space hero-pages" data-pg-name="Hero">
+      <div class="wrapper" data-pg-name="Wrapper">
+        <h1 data-pg-collapsed>What is iReporter?</h1>
+      </div>
+    </section>
+    <section class="how bg-grey" data-pg-name="How it Works" data-pg-collapsed>
+      <div class="wrapper" data-pg-name="Wrapper">
+        <header class="header" data-pg-collapsed>
+          <small class="round-info">About</small>
+          <h2 data-pg-collapsed><span class="text-upper">make your voice count</span></h2>
+          <p class="p-lg">Corruption is a huge bane to Africa’s development. African countries must develop novel and localised solutions that will curb this menace, hence the birth of iReporter. iReporter enables any/every citizen to bring any form of corruption to the notice of appropriate authorities and the general public. Users can also report on things that needs government intervention?</p>
+        </header>
+        <div class="row" data-pg-name="Row" data-pg-collapsed>
+          <div class="column column-md-4" data-pg-name="Column" data-pg-collapsed>
+            <div class="how-item transition card">
+              <i class="fa fa-bullhorn"></i>
+              <h3>Report it</h3>
+              <p>Simply fill out a report form by entering details about the incident. You may choose to stay anonymous.</p>
+            </div>
+          </div>
+          <div class="column column-md-4" data-pg-name="Column" data-pg-collapsed>
+            <div class="how-item transition card">
+              <i class="fa fa-thumbs-o-up"></i>
+              <h3>Get Feedback</h3>
+              <p>We would investigate &amp; submit your report to the appropriate authorities, giving you feedback each step of the way.</p>
+            </div>
+          </div>
+          <div class="column column-md-4" data-pg-name="Column" data-pg-collapsed>
+            <div class="how-item transition card">
+              <i class="fa fa-share-alt"></i>
+              <h3>Share Report</h3>
+              <p>You may share your report on social media to help spread the word and stop similar cases from occuring.</p>
+            </div>
+          </div>
+        </div>
+        <div class="btn-wrapper text-center btn-group">
+          <a href="explore.html" class="btn-brand btn-secondary">Explore Reports</a>
+          <a href="create-report.html" class="btn-brand">Report a case</a>
+        </div>
+      </div>
+    </section>
+    <section data-pg-name="Newsletter" class="reports-wrapper padding-lg" data-pg-collapsed>
+      <div class="wrapper" data-pg-name="Wrapper">
+        <div class="newsletter-box">
+          <h2 class="text-brand">Stay Connected</h2>
+          <p>Get latest complaints on corruption and other issues directly in your inbox. Stay connected, together we can make Nigeria corruption FREE.</p>
+          <div class="newsletter-form">
+            <input type="email" placeholder="Enter your email" value="valenstical@gmail.om">
+            <button class="text-brand" onclick="subscribe()">
+              <i class="fa fa-send"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="footer" data-pg-collapsed>
+      <div class="wrapper" data-pg-name="Wrapper">
+        <p class="float-right" data-pg-collapsed><a href="sign-in.html">Sign in</a><a href="sign-up.html">Create Account</a><a href="privacy-policy.html">Privacy Policy</a></p>
+        <p class="float-left">&copy; 2018 iReporter.</p>
+      </div>
+    </footer>     
+    <!-- Placed at the end of the document so the pages load faster -->     
+    <script src="assets/js/jquery.min.js" type="text/javascript"></script>     
+    <script src="assets/js/home.js" type="text/javascript"></script>     
+  </body>   
+</html>
