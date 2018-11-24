@@ -35,7 +35,12 @@ function login(){
     
 }
 
+
 function register(){
+    
+}
+
+function adminLogin(){
     
 }
 
