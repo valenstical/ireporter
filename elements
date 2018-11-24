@@ -26,12 +26,18 @@ $(function() {
         comp_comp3.parent_selector = null;
         f.addComponentType(comp_comp3);
         
+        var comp_comp4 = new PgComponentType('comp4', 'column-md-8');
+        comp_comp4.code = '<div class="column column-md-8" data-pg-name="Column">\
+</div>';
+        comp_comp4.parent_selector = null;
+        f.addComponentType(comp_comp4);
+        
         //Tell Pinegrow about the framework
         pinegrow.addFramework(f);
             
         var section = new PgFrameworkLibSection("elements_lib", "Components");
         //Pass components in array
-        section.setComponentTypes([comp_comp1, comp_comp2, comp_comp3]);
+        section.setComponentTypes([comp_comp1, comp_comp2, comp_comp3, comp_comp4]);
 
         f.addLibSection(section);
    });
