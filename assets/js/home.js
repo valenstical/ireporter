@@ -32,16 +32,18 @@ function recoverPassword(){
 }
 
 function login(){
-    
+   location.assign("reports.html");
+   return false;   
 }
 
 
 function register(){
-    
+   return login();
 }
 
 function adminLogin(){
-    
+    location.assign("admin-reports.html");
+    return false;
 }
 
 function uploadProfile(){

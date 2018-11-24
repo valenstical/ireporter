@@ -1807,6 +1807,7 @@ form label span
     padding-bottom: 10px;
     position: relative;
     margin-left: 15px;
+    font-size: 11px;
 }
 
 .tab a.active
@@ -1887,5 +1888,18 @@ form label span
 {
     margin-top: 0px;
     margin-bottom: 0px;
+}
+
+.card-xs
+{
+    padding: 30px 10px;
+}
+
+@media (min-width:450px)
+{
+    .tab a, .tab button
+    {
+        font-size: inherit;
+    }
 }
 
