@@ -47,13 +47,13 @@ function init(){
     iteratePopularReports();
 }
 
-$(".dropdown>a").click(function(e){
+$(".dropdown>a").click(function(event){
     $(this).next().slideToggle('fast').addClass("showing");
-    e.stopPropagation();
+    event.stopPropagation();
 });
 
 
-$(document).click(function(e) {   
+$(document).click(function() {   
     $(".showing").slideUp(100).removeClass("showing");
 });
 
@@ -61,5 +61,10 @@ $("[data-share-page]").each(function(){
     let url=$(this).prop("href").replace("{url}",encodeURI(location.href));
     $(this).prop("href",url);
 });
+
+function getReports(element,status){
+    $(element).siblings(".active").removeClass("active");
+    $(element).addClass("active");
+}
 
 init();

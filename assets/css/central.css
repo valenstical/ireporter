@@ -617,20 +617,20 @@ h1,h2,h3,h4,h5,h6
 
 .status-badge-rejected
 {
-    border-color: #de4437;
+    border-color: #e14837;
 }
 
 .status-badge-rejected .fa
 {
-    color: #de4437;
+    color: #e14837;
 }
 
-.status-badge-draft
+.status-badge-investigating
 {
     border-color: #ffc107;
 }
 
-.status-badge-draft .fa
+.status-badge-investigating .fa
 {
     color: #ffc107;
     -webkit-animation: blink 300ms linear 0s infinite alternate;
@@ -1562,7 +1562,7 @@ form label span
 
 .bg-status-rejected
 {
-    color: #de4437;
+    color: #e14837;
     background-color: #f5e7e9;
 }
 
@@ -1599,14 +1599,15 @@ form label span
 .bg-status-draft
 {
     background-color: #e8e8e8;
+    color: #141313;
 }
 
-.report-item .badge-draft
+.status-badge-draft
 {
     border-color: #302c2c;
 }
 
-.badge-draft .fa
+.status-badge-draft .fa
 {
     color: #2c2b2b;
 }
@@ -1716,6 +1717,7 @@ form label span
     padding: 10px;
     font-weight: bold;
     color: #82828d;
+    position: relative;
 }
 
 .fa.no-blink
@@ -1762,5 +1764,122 @@ form label span
 .block
 {
     display: block;
+}
+
+.table-wrapper
+{
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.table-wrapper td, .table-wrapper th
+{
+    white-space: nowrap;
+}
+
+@media (min-width:890px)
+{
+    .table-wrapper td, .table-wrapper th
+    {
+        white-space: inherit;
+    }
+}
+
+.table-instructions
+{
+    padding: 10px;
+    border: 1px dashed #ddd;
+    margin-bottom: 10px;
+    color: #919191;
+}
+
+.tab
+{
+    margin-bottom: 20px;
+}
+
+.tab a, .tab button
+{
+    color: #82828d;
+    border-bottom: 2px solid transparent;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+    margin-left: 15px;
+}
+
+.tab a.active
+{
+    border-bottom: 2px solid #377dff;
+    color: #377dff;
+}
+
+.tab a:hover
+{
+    color: #377dff;
+}
+
+.tab a::before
+{
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 10px;
+    display: inline-block;
+    content: "";
+    left: -10px;
+    top: 17px;
+}
+
+.tab-pending::before
+{
+    background-color: #141313;
+}
+
+.tab-investigating::before
+{
+    background-color: #ffc107;
+}
+
+.tab-resolved::before
+{
+    background-color: #00c9a7;
+}
+
+.tab-rejected::before
+{
+    background-color: #e14837;
+}
+
+[onclick]
+{
+    cursor: pointer;
+}
+
+.pager
+{
+    margin-top: 20px;
+    padding-left: 10px;
+}
+
+.pager a
+{
+    font-size: 18px;
+    padding: 5px 7px;
+}
+
+.pager span
+{
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+@media (min-width:890px)
+{
+    .table-wrapper
+    {
+        padding-bottom: 0px;
+    }
 }
 
