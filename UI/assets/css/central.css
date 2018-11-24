@@ -1514,3 +1514,120 @@ form label span
     background-color: #38A1F3;
 }
 
+.bread .bread-full-width
+{
+    max-width: 100%;
+}
+
+.summary .fa
+{
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    padding-top: 10px;
+    font-size: 25px;
+    border-radius: 50px;
+    float: left;
+}
+
+.bg-status-resolved
+{
+    color: #00c9a7;
+    background-color: #e5f9f6;
+}
+
+.summary
+{
+    overflow: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.summary p
+{
+    margin-left: 80px;
+    color: #222020;
+    font-size: 30px;
+    position: relative;
+    bottom: 3px;
+}
+
+.summary p span
+{
+    color: rgba(88, 95, 102, 0.78);
+    font-size: 13px;
+    display: block;
+    margin-top: 0px;
+}
+
+.bg-status-rejected
+{
+    color: #de4437;
+    background-color: #f5e7e9;
+}
+
+.bg-status-pending
+{
+    color: #ffc107;
+    background-color: #f9f4e4;
+}
+
+.blink
+{
+    -webkit-animation: blink 300ms linear 0s infinite alternate;
+    -o-animation: blink 300ms linear 0s infinite alternate;
+    -moz-animation: blink 300ms linear 0s infinite alternate;
+    animation: blink 300ms linear 0s infinite alternate;
+}
+
+@media (min-width:600px)
+{
+    .column-xs-3
+    {
+        width: 50%;
+    }
+}
+
+@media (min-width:992px)
+{
+    .column-xs-3
+    {
+        width: 25%;
+    }
+}
+
+.bg-status-draft
+{
+    background-color: #e8e8e8;
+}
+
+.report-item .badge-draft
+{
+    border-color: #302c2c;
+}
+
+.badge-draft .fa
+{
+    color: #2c2b2b;
+}
+
+.lazy
+{
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 60px;
+}
+
+.btn-grp-edit
+{
+    margin-top: 30px;
+    text-align: left;
+}
+
+.btn-grp-edit button
+{
+    padding: 8px 15px;
+    margin-right: 5px;
+}
+
