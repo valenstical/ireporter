@@ -1231,8 +1231,8 @@ form label span
 
 .report-summary
 {
-    margin-bottom: 30px;
     margin-top: 20px;
+    margin-bottom: 0px;
 }
 
 .report-summary li span
@@ -1292,5 +1292,18 @@ form label span
 .profile-wrapper .report-item-verified
 {
     bottom: 18px;
+}
+
+.profile-wrapper a.btn-brand
+{
+    margin-top: 30px;
+}
+
+@media (min-width:768px)
+{
+    .column-md-8
+    {
+        width: 66.66666667%;
+    }
 }
 
