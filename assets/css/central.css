@@ -162,7 +162,10 @@ body
     overflow: hidden;
     padding-top: 0px;
     padding-bottom: 0px;
+    border: none;
+  box-shadow:none;
 }
+
 
 .float-right
 {
@@ -207,7 +210,7 @@ body
 
 .top-space
 {
-    margin-top: 50px;
+    margin-top: 46px;
 }
 
 .hero
@@ -299,7 +302,7 @@ body
     font-weight: bold;
     font-size: 23px;
     position: relative;
-    top: 6px;
+    top: 4px;
 }
 
 .header
@@ -1900,6 +1903,14 @@ form label span
     .tab a, .tab button
     {
         font-size: inherit;
+    }
+}
+
+@media (min-width:600px)
+{
+    .top-space
+    {
+        margin-top: 60px;
     }
 }
 
