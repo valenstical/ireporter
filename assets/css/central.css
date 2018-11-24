@@ -1688,6 +1688,7 @@ form label span
 .badge-red
 {
     background-color: #de4437;
+    color: white;
 }
 
 .navigation li .badge
