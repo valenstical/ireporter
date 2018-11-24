@@ -1631,7 +1631,6 @@ form label span
     margin-right: 5px;
 }
 
-
 .heading .btn-brand:hover
 {
     background-color: #ebf2ff;
@@ -1695,3 +1694,73 @@ form label span
 .navigation li .badge
 {
 }
+
+.table
+{
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+    border-collapse: collapse;
+}
+
+.table th
+{
+    text-transform: uppercase;
+    color: #1e1d1d;
+    font-weight: bold;
+    padding: 10px 10px 15px;
+}
+
+.table td
+{
+    padding: 10px;
+    font-weight: bold;
+    color: #82828d;
+}
+
+.fa.no-blink
+{
+    -webkit-animation: none;
+    -o-animation: none;
+    -moz-animation: none;
+    animation: none;
+}
+
+.table-clickable tbody tr
+{
+    cursor: pointer;
+}
+
+.table .profile-name
+{
+    display: inline-block;
+    margin-left: 47px;
+    position: relative;
+    top: 2px;
+}
+
+.table .profile-img
+{
+    margin-top: -6px;
+}
+
+.table-striped tbody tr:nth-of-type(odd)
+{
+    background-color: #f8fafd;
+}
+
+.table .badge-status
+{
+    font-weight: normal;
+}
+
+.table .report-item-location
+{
+    font-weight: normal;
+}
+
+.block
+{
+    display: block;
+}
+

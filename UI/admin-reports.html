@@ -53,7 +53,7 @@
             <div class="row" data-pg-name="Row" data-pg-collapsed> 
               <div class="column column-xs-3" data-pg-name="Column" data-pg-collapsed> 
                 <div class="card card-sm summary"> 
-                  <i class="fa fa-file-text-o bg-status-draft badge-red blink"></i> 
+                  <i class="fa fa-file-text-o bg-status-draft badge-red"></i> 
                   <p><span>Pending</span>164</p> 
                 </div>                 
               </div>               
@@ -77,11 +77,125 @@
               </div>               
             </div>             
           </header>
-          <div class="row" data-pg-name="Row">
-            <div class="pg-empty-placeholder column column-md-4" data-pg-name="Column"></div>
+          <div class="card card-sm"> 
+            <table class="table table-clickable table-striped">
+              <thead data-pg-collapsed>
+                <tr>
+                  <th>Date</th>
+                  <th>Report</th>
+                  <th>Location</th>
+                  <th>User</th>
+                  <th class="text-center">Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr onclick="showReport()" data-pg-collapsed>
+                  <td class="td-small" data-pg-collapsed>05 Sep 2018<br><small>12 mins</small></td>
+                  <td data-pg-collapsed>
+  Power failure for over 3 weeks now</td>
+                  <td class="td-small" data-pg-collapsed>Lagos</td>
+                  <td class="pg-empty-placeholder">
+                    <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                      <img src="assets/images/profiles/photo-1533939141733-63078e139c4a.jpg" width="35" height="35" /> 
+                    </div>
+                    <span class="profile-name">Musa</span>
+                  </td>
+                  <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-citizen badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Under Investigation</span></td>
+                </tr>
+                <tr onclick="showReport()" data-pg-collapsed>
+                  <td class="td-small" data-pg-collapsed>05 Sep 2018<br><small>20 mins</small></td>
+                  <td data-pg-collapsed>
+  Students made to pay over 5000 for exam malpractise</td>
+                  <td class="td-small" data-pg-collapsed>Edo</td>
+                  <td class="pg-empty-placeholder">
+                    <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                      <img src="assets/images/profiles/photo-1467400492058-1aad44d4bcd6.jpg" width="35" height="35" /> 
+                    </div>
+                    <span class="profile-name">Steven</span>
+                  </td>
+                  <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-citizen badge-status status-badge-rejected" data-pg-collapsed><i class="fa fa-remove"></i>False Report</span></td>
+                </tr>
+                <tr onclick="showReport()" data-pg-collapsed>
+                  <td class="td-small" data-pg-collapsed>05 Sep 2018<br><small>20 hours</small></td>
+                  <td data-pg-collapsed>
+ Fuel tanker blocking Anthony street</td>
+                  <td class="td-small" data-pg-collapsed>Anambra</td>
+                  <td class="pg-empty-placeholder">
+                    <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                      <img src="assets/images/profiles/photo-1524154217857-45f012d0f167.jpg" width="35" height="35" /> 
+                    </div>
+                    <span class="profile-name">Jane</span>
+                  </td>
+                  <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-citizen badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Under Investigation</span></td>
+                </tr>
+                <tr onclick="showReport()" data-pg-collapsed>
+                  <td class="td-small" data-pg-collapsed>04 Sep 2018<br><small>1 day</small></td>
+                  <td data-pg-collapsed>
+  State governor collecting bribe from contractors</td>
+                  <td class="td-small" data-pg-collapsed>Port Harcourt</td>
+                  <td class="pg-empty-placeholder">
+                    <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                      <img src="assets/images/profiles/photo-1521587765099-8835e7201186.jpg" width="35" height="35" /> 
+                    </div>
+                    <span class="profile-name">Harry</span>
+                  </td>
+                  <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-citizen badge-status status-badge-rejected" data-pg-collapsed><i class="fa fa-remove"></i>False Report</span></td>
+                </tr>
+                <tr onclick="showReport()" data-pg-collapsed>
+                  <td class="td-small" data-pg-collapsed>04 Sep 2018<br><small>1 day</small></td>
+                  <td data-pg-collapsed>
+  Unconscious woman along ring road</td>
+                  <td class="td-small" data-pg-collapsed>Abia </td>
+                  <td class="pg-empty-placeholder">
+                    <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                      <img src="assets/images/profiles/photo-1522720962427-d53e89da4071.jpg" width="35" height="35" /> 
+                    </div>
+                    <span class="profile-name">Nkem</span>
+                  </td>
+                  <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-citizen badge-status" data-pg-collapsed><i class="fa fa-check"></i>Resolved</span></td>
+                </tr>
+                <tr onclick="showReport()" data-pg-collapsed>
+                  <td class="td-small" data-pg-collapsed>02 Sep 2018<br><small>3 days</small></td>
+                  <td data-pg-collapsed>
+  Election rigging at Adamawa east LGA unit 5</td>
+                  <td class="td-small" data-pg-collapsed>Lagos</td>
+                  <td class="pg-empty-placeholder">
+                    <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                      <img src="assets/images/profiles/photo-1523309828291-0f3e2a853382.jpg" width="35" height="35" /> 
+                    </div>
+                    <span class="profile-name">Jega</span>
+                  </td>
+                  <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-citizen badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Under Investigation</span></td>
+                </tr>
+                <tr onclick="showReport()" data-pg-collapsed>
+                  <td class="td-small" data-pg-collapsed>15 Aug 2018<br><small>1 month</small></td>
+                  <td data-pg-collapsed>
+  Police extortion at Aba Market</td>
+                  <td class="td-small" data-pg-collapsed>Kano </td>
+                  <td class="pg-empty-placeholder">
+                    <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                      <img src="assets/images/profiles/photo-1526382925646-27b5eb86796e.jpg" width="35" height="35" /> 
+                    </div>
+                    <span class="profile-name">Angela</span>
+                  </td>
+                  <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-citizen badge-status" data-pg-collapsed><i class="fa fa-check"></i>Resolved</span></td>
+                </tr>
+                <tr onclick="showReport()" data-pg-collapsed>
+                  <td class="td-small" data-pg-collapsed>21 Feb 2017<br><small>1 year</small></td>
+                  <td data-pg-collapsed>
+  Lecturer extorting students for marks</td>
+                  <td class="td-small" data-pg-collapsed>Delta</td>
+                  <td class="pg-empty-placeholder">
+                    <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                      <img src="assets/images/profiles/default.jpg" width="35" height="35" /> 
+                    </div>
+                    <span class="profile-name">Olu</span>
+                  </td>
+                  <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-citizen badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Under Investigation</span></td>
+                </tr>
+              </tbody>
+            </table>
           </div>           
-          <div class="card card-sm">              
-</div>           
         </div>         
       </section>       
     </section>     
@@ -91,7 +205,6 @@
         <p class="float-left">&copy; 2018 iReporter.</p> 
       </div>       
     </footer>     
-    <td class="pg-empty-placeholder"></td> 
     <!-- Placed at the end of the document so the pages load faster -->     
     <script src="assets/js/jquery.min.js" type="text/javascript"></script>     
     <script src="assets/js/home.js" type="text/javascript"></script>     
