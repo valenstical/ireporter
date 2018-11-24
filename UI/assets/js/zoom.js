@@ -5,7 +5,7 @@ $(window).resize(function(){
     setSize();  
 });    
 
-$("a[rel='zoom']").click(function(e){
+$("[data-zoom]").click(function(e){
     e.preventDefault();
     let media=$(this).prop("href");
     

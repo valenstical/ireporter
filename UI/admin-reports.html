@@ -53,14 +53,14 @@
             <div class="row" data-pg-name="Row" data-pg-collapsed> 
               <div class="column column-xs-3" data-pg-name="Column" data-pg-collapsed> 
                 <div class="card card-sm summary"> 
-                  <i class="fa fa-file-text-o bg-status-draft badge-red"></i> 
+                  <i class="fa fa-file-text-o bg-status-draft"></i> 
                   <p><span>Pending</span>164</p> 
                 </div>                 
               </div>               
               <div class="column column-xs-3" data-pg-name="Column" data-pg-collapsed> 
                 <div class="card card-sm summary"> 
                   <i class="fa bg-status-pending fa-info"></i> 
-                  <p><span title="Under Investigation">Investigating</span>47</p> 
+                  <p><span title="Investigating">Investigating</span>47</p> 
                 </div>                 
               </div>               
               <div class="column column-xs-3" data-pg-name="Column" data-pg-collapsed> 
@@ -77,124 +77,137 @@
               </div>               
             </div>             
           </header>
-          <div class="card card-sm"> 
-            <table class="table table-clickable table-striped">
-              <thead data-pg-collapsed>
-                <tr>
-                  <th>Date</th>
-                  <th>Report</th>
-                  <th>Location</th>
-                  <th>User</th>
-                  <th class="text-center">Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr onclick="showReport()" data-pg-collapsed>
-                  <td class="td-small" data-pg-collapsed>05 Sep 2018<br><small>12 mins</small></td>
-                  <td data-pg-collapsed>
+          <div class="card card-sm">
+            <header class="tab" data-pg-collapsed>
+              <a onclick="getReports(this,0)" class="active tab-pending transition">Pending</a>
+              <a onclick="getReports(this,1)" class="tab-investigating transition">Investigating</a>
+              <a onclick="getReports(this,2)" lass="tab-resolved" class="transition tab-resolved">Resolved</a>
+              <a onclick="getReports(this,3)" class="tab-rejected transition">Rejected</a>
+            </header>
+            <div class="table-wrapper" data-pg-collapsed>
+              <table class="table table-clickable table-striped" data-pg-collapsed>
+                <thead data-pg-collapsed>
+                  <tr>
+                    <th>Date</th>
+                    <th>Report</th>
+                    <th>Location</th>
+                    <th>User</th>
+                    <th class="text-center">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr onclick="showReport()" data-pg-collapsed>
+                    <td class="td-small" data-pg-collapsed>05 Sep 2018<br><small>12 mins</small></td>
+                    <td data-pg-collapsed>
   Power failure for over 3 weeks now</td>
-                  <td class="td-small" data-pg-collapsed>Lagos</td>
-                  <td class="pg-empty-placeholder">
-                    <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
-                      <img src="assets/images/profiles/photo-1533939141733-63078e139c4a.jpg" width="35" height="35" /> 
-                    </div>
-                    <span class="profile-name">Musa</span>
-                  </td>
-                  <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-citizen badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Under Investigation</span></td>
-                </tr>
-                <tr onclick="showReport()" data-pg-collapsed>
-                  <td class="td-small" data-pg-collapsed>05 Sep 2018<br><small>20 mins</small></td>
-                  <td data-pg-collapsed>
+                    <td class="td-small" data-pg-collapsed>Lagos</td>
+                    <td class="pg-empty-placeholder">
+                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                        <img src="assets/images/profiles/photo-1533939141733-63078e139c4a.jpg" width="35" height="35" /> 
+                      </div>
+                      <span class="profile-name">Musa</span>
+                    </td>
+                    <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
+                  </tr>
+                  <tr onclick="showReport()" data-pg-collapsed>
+                    <td class="td-small" data-pg-collapsed>05 Sep 2018<br><small>20 mins</small></td>
+                    <td data-pg-collapsed>
   Students made to pay over 5000 for exam malpractise</td>
-                  <td class="td-small" data-pg-collapsed>Edo</td>
-                  <td class="pg-empty-placeholder">
-                    <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
-                      <img src="assets/images/profiles/photo-1467400492058-1aad44d4bcd6.jpg" width="35" height="35" /> 
-                    </div>
-                    <span class="profile-name">Steven</span>
-                  </td>
-                  <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-citizen badge-status status-badge-rejected" data-pg-collapsed><i class="fa fa-remove"></i>False Report</span></td>
-                </tr>
-                <tr onclick="showReport()" data-pg-collapsed>
-                  <td class="td-small" data-pg-collapsed>05 Sep 2018<br><small>20 hours</small></td>
-                  <td data-pg-collapsed>
+                    <td class="td-small" data-pg-collapsed>Edo</td>
+                    <td class="pg-empty-placeholder">
+                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                        <img src="assets/images/profiles/photo-1467400492058-1aad44d4bcd6.jpg" width="35" height="35" /> 
+                      </div>
+                      <span class="profile-name">Steven</span>
+                    </td>
+                    <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
+                  </tr>
+                  <tr onclick="showReport()" data-pg-collapsed>
+                    <td class="td-small" data-pg-collapsed>05 Sep 2018<br><small>20 hours</small></td>
+                    <td data-pg-collapsed>
  Fuel tanker blocking Anthony street</td>
-                  <td class="td-small" data-pg-collapsed>Anambra</td>
-                  <td class="pg-empty-placeholder">
-                    <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
-                      <img src="assets/images/profiles/photo-1524154217857-45f012d0f167.jpg" width="35" height="35" /> 
-                    </div>
-                    <span class="profile-name">Jane</span>
-                  </td>
-                  <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-citizen badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Under Investigation</span></td>
-                </tr>
-                <tr onclick="showReport()" data-pg-collapsed>
-                  <td class="td-small" data-pg-collapsed>04 Sep 2018<br><small>1 day</small></td>
-                  <td data-pg-collapsed>
+                    <td class="td-small" data-pg-collapsed>Anambra</td>
+                    <td class="pg-empty-placeholder">
+                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                        <img src="assets/images/profiles/photo-1524154217857-45f012d0f167.jpg" width="35" height="35" /> 
+                      </div>
+                      <span class="profile-name">Jane</span>
+                    </td>
+                    <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
+                  </tr>
+                  <tr onclick="showReport()" data-pg-collapsed>
+                    <td class="td-small" data-pg-collapsed>04 Sep 2018<br><small>1 day</small></td>
+                    <td data-pg-collapsed>
   State governor collecting bribe from contractors</td>
-                  <td class="td-small" data-pg-collapsed>Port Harcourt</td>
-                  <td class="pg-empty-placeholder">
-                    <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
-                      <img src="assets/images/profiles/photo-1521587765099-8835e7201186.jpg" width="35" height="35" /> 
-                    </div>
-                    <span class="profile-name">Harry</span>
-                  </td>
-                  <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-citizen badge-status status-badge-rejected" data-pg-collapsed><i class="fa fa-remove"></i>False Report</span></td>
-                </tr>
-                <tr onclick="showReport()" data-pg-collapsed>
-                  <td class="td-small" data-pg-collapsed>04 Sep 2018<br><small>1 day</small></td>
-                  <td data-pg-collapsed>
+                    <td class="td-small" data-pg-collapsed>Port Harcourt</td>
+                    <td class="pg-empty-placeholder">
+                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                        <img src="assets/images/profiles/photo-1521587765099-8835e7201186.jpg" width="35" height="35" /> 
+                      </div>
+                      <span class="profile-name">Harry</span>
+                    </td>
+                    <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
+                  </tr>
+                  <tr onclick="showReport()" data-pg-collapsed>
+                    <td class="td-small" data-pg-collapsed>04 Sep 2018<br><small>1 day</small></td>
+                    <td data-pg-collapsed>
   Unconscious woman along ring road</td>
-                  <td class="td-small" data-pg-collapsed>Abia </td>
-                  <td class="pg-empty-placeholder">
-                    <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
-                      <img src="assets/images/profiles/photo-1522720962427-d53e89da4071.jpg" width="35" height="35" /> 
-                    </div>
-                    <span class="profile-name">Nkem</span>
-                  </td>
-                  <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-citizen badge-status" data-pg-collapsed><i class="fa fa-check"></i>Resolved</span></td>
-                </tr>
-                <tr onclick="showReport()" data-pg-collapsed>
-                  <td class="td-small" data-pg-collapsed>02 Sep 2018<br><small>3 days</small></td>
-                  <td data-pg-collapsed>
+                    <td class="td-small" data-pg-collapsed>Abia </td>
+                    <td class="pg-empty-placeholder">
+                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                        <img src="assets/images/profiles/photo-1522720962427-d53e89da4071.jpg" width="35" height="35" /> 
+                      </div>
+                      <span class="profile-name">Nkem</span>
+                    </td>
+                    <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
+                  </tr>
+                  <tr onclick="showReport()" data-pg-collapsed>
+                    <td class="td-small" data-pg-collapsed>02 Sep 2018<br><small>3 days</small></td>
+                    <td data-pg-collapsed>
   Election rigging at Adamawa east LGA unit 5</td>
-                  <td class="td-small" data-pg-collapsed>Lagos</td>
-                  <td class="pg-empty-placeholder">
-                    <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
-                      <img src="assets/images/profiles/photo-1523309828291-0f3e2a853382.jpg" width="35" height="35" /> 
-                    </div>
-                    <span class="profile-name">Jega</span>
-                  </td>
-                  <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-citizen badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Under Investigation</span></td>
-                </tr>
-                <tr onclick="showReport()" data-pg-collapsed>
-                  <td class="td-small" data-pg-collapsed>15 Aug 2018<br><small>1 month</small></td>
-                  <td data-pg-collapsed>
+                    <td class="td-small" data-pg-collapsed>Lagos</td>
+                    <td class="pg-empty-placeholder">
+                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                        <img src="assets/images/profiles/photo-1523309828291-0f3e2a853382.jpg" width="35" height="35" /> 
+                      </div>
+                      <span class="profile-name">Jega</span>
+                    </td>
+                    <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
+                  </tr>
+                  <tr onclick="showReport()" data-pg-collapsed>
+                    <td class="td-small" data-pg-collapsed>15 Aug 2018<br><small>1 month</small></td>
+                    <td data-pg-collapsed>
   Police extortion at Aba Market</td>
-                  <td class="td-small" data-pg-collapsed>Kano </td>
-                  <td class="pg-empty-placeholder">
-                    <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
-                      <img src="assets/images/profiles/photo-1526382925646-27b5eb86796e.jpg" width="35" height="35" /> 
-                    </div>
-                    <span class="profile-name">Angela</span>
-                  </td>
-                  <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-citizen badge-status" data-pg-collapsed><i class="fa fa-check"></i>Resolved</span></td>
-                </tr>
-                <tr onclick="showReport()" data-pg-collapsed>
-                  <td class="td-small" data-pg-collapsed>21 Feb 2017<br><small>1 year</small></td>
-                  <td data-pg-collapsed>
+                    <td class="td-small" data-pg-collapsed>Kano </td>
+                    <td class="pg-empty-placeholder">
+                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                        <img src="assets/images/profiles/photo-1526382925646-27b5eb86796e.jpg" width="35" height="35" /> 
+                      </div>
+                      <span class="profile-name">Angela</span>
+                    </td>
+                    <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
+                  </tr>
+                  <tr onclick="showReport()" data-pg-collapsed>
+                    <td class="td-small" data-pg-collapsed>21 Feb 2017<br><small>1 year</small></td>
+                    <td data-pg-collapsed>
   Lecturer extorting students for marks</td>
-                  <td class="td-small" data-pg-collapsed>Delta</td>
-                  <td class="pg-empty-placeholder">
-                    <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
-                      <img src="assets/images/profiles/default.jpg" width="35" height="35" /> 
-                    </div>
-                    <span class="profile-name">Olu</span>
-                  </td>
-                  <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-citizen badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Under Investigation</span></td>
-                </tr>
-              </tbody>
-            </table>
+                    <td class="td-small" data-pg-collapsed>Delta</td>
+                    <td class="pg-empty-placeholder">
+                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                        <img src="assets/images/profiles/default.jpg" width="35" height="35" /> 
+                      </div>
+                      <span class="profile-name">Olu</span>
+                    </td>
+                    <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="pager text-right">
+              <span>1-50 of 280</span>
+              <a onclick="nextReport(false)"><i class="fa fa-chevron-left"></i></a>
+              <a onclick="nextReport(true)"><i class="fa fa-chevron-right"></i></a>
+            </div>             
           </div>           
         </div>         
       </section>       
