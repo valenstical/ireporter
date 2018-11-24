@@ -1,0 +1,38 @@
+$(function() {
+
+    //Wait for Pinegrow to wake-up
+    $("body").one("pinegrow-ready", function(e, pinegrow) {
+
+        //Create new Pinegrow framework object
+        var f = new PgFramework("elements", "elements");
+
+        //This will prevent activating multiple versions of this framework being loaded
+        f.type = "elements";
+        f.allow_single_type = true;
+        f.user_lib = true
+
+        var comp_comp1 = new PgComponentType('comp1', 'Wrapper');
+        comp_comp1.code = '<div class="pg-empty-placeholder wrapper" data-pg-name="Wrapper"></div>';
+        comp_comp1.parent_selector = null;
+        f.addComponentType(comp_comp1);
+        
+        var comp_comp2 = new PgComponentType('comp2', 'Row');
+        comp_comp2.code = '<div class="row" data-pg-name="Row"></div>';
+        comp_comp2.parent_selector = null;
+        f.addComponentType(comp_comp2);
+        
+        var comp_comp3 = new PgComponentType('comp3', 'column-md-4');
+        comp_comp3.code = '<div class="pg-empty-placeholder column column-md-4" data-pg-name="Column"></div>';
+        comp_comp3.parent_selector = null;
+        f.addComponentType(comp_comp3);
+        
+        //Tell Pinegrow about the framework
+        pinegrow.addFramework(f);
+            
+        var section = new PgFrameworkLibSection("elements_lib", "Components");
+        //Pass components in array
+        section.setComponentTypes([comp_comp1, comp_comp2, comp_comp3]);
+
+        f.addLibSection(section);
+   });
+});

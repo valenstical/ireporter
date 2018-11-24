@@ -57,5 +57,9 @@ $(document).click(function(e) {
     $(".showing").slideUp(100).removeClass("showing");
 });
 
+$("[data-share-page]").each(function(){
+    let url=$(this).prop("href").replace("{url}",encodeURI(location.href));
+    $(this).prop("href",url);
+});
 
 init();
