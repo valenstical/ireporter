@@ -1,6 +1,6 @@
 
 
-/*@import url('https://fonts.googleapis.com/css?family=Nunito:400,800');*/
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,800');
 
 @-webkit-keyframes blink{
     from{
@@ -786,10 +786,6 @@ button
         padding-right: 0px;
         margin-bottom: 0px;
     }
-    .nav-section li a
-    {
-        display: inline-block;
-    }
     .navigation li .btn-brand
     {
         margin-top: 0px;
@@ -1525,6 +1521,7 @@ form label span
     font-size: 20px;
     margin-top: 20px;
     margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 .twitter:hover
@@ -1920,6 +1917,26 @@ form label span
     display: none;
 }
 
+.toggle-menu
+{
+    position: absolute;
+    background-color: white;
+    border-radius: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 0px;
+    list-style-type: none;
+    min-width: 120px;
+    right: -10px;
+    top: 20px;
+    color: #77838f;
+    font-size: 14px;
+    box-shadow: 5px 5px 6px rgba(0,0,0,0.02);
+    border: 1px solid #efefef;
+    font-weight: normal;
+    display: none;
+}
+
 .visible
 {
     display: block;
@@ -1986,7 +2003,6 @@ form label span
 .dialog-footer
 {
     padding: 10px 20px;
-    text-align: right;
     border-top: 1px solid #efefef;
 }
 
@@ -2068,29 +2084,12 @@ form label span
     opacity: 1;
 }
 
-.toggle-menu
-{
-    position: absolute;
-    background-color: white;
-    border-radius: 5px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    padding-left: 0px;
-    list-style-type: none;
-    min-width: 120px;
-    right: -10px;
-    top: 20px;
-    color: #77838f;
-    font-size: 14px;
-    box-shadow: 5px 5px 6px rgba(0,0,0,0.02);
-    border: 1px solid #efefef;
-    font-weight: normal;
-    display: none;
-}
-
 .toggle-menu li
 {
     position: relative;
+    text-align: left;
+    padding: 0px;
+    display: block;
 }
 
 .toggle-menu li a
@@ -2099,6 +2098,7 @@ form label span
     display: block;
     padding: 7px 15px;
     white-space: nowrap;
+    text-align: left;
 }
 
 .toggle-line
@@ -2151,5 +2151,22 @@ form label span
 .hidden
 {
     display: none;
+}
+
+.toggle-menu-md
+{
+    padding: 5px;
+    text-align: left;
+}
+
+.nav-section .toggle-menu
+{
+    top: 40px;
+}
+
+.nav-section .toggle-menu::before
+{
+    right: 62px;
+    overflow: hidden;
 }
 
