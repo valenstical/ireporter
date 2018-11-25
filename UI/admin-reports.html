@@ -18,6 +18,49 @@
     <![endif]-->     
   </head>   
   <body class="bg-grey"> 
+    <aside class="dialog" data-pg-name="Dialog" id="dialogDetails">
+      <div class="dialog-content transition-fast" data-pg-name="Dialog Content">
+        <div class="dialog-header" data-pg-name="Dialog Header">
+          <h4 class="dialong-title" data-pg-name="Dialong Title" data-pg-collapsed><a onclick="hideDialog()" class="dispose" data-pg-collapsed><i class="fa fa-remove"></i></a><a class="dispose menu-options" data-pg-collapsed><i class="fa fa-ellipsis-h"></i></a>Report Details</h4>
+        </div>
+        <div class="dialog-body" data-pg-name="Dialog Body">
+          <div class="report-item max-width-800"> 
+            <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+              <img src="assets/images/profiles/photo-1467400492058-1aad44d4bcd6.jpg" width="50" height="50" /> 
+              <span class="report-item-verified" data-pg-collapsed><i class="fa fa-check"></i></span> 
+            </div>             
+            <div class="report-item-content"> 
+              <h5>Steven</h5>
+              <div>
+                <span class="report-item-date" data-pg-collapsed><i class="fa fa-calendar"></i> 05 Jul 2018,</span>
+                <span class="report-item-date report-item-location" data-pg-collapsed><i class="fa fa-map-marker"></i> Zamfara</span>
+                <span class="report-item-date report-item-location" data-pg-collapsed title="1 image, 1 video">2 <i class="fa fa-paperclip fa-rotate-90 fa-flip-vertical"></i></span>
+              </div>
+              <span class="badge-citizen badge-status status-badge-investigating" data-pg-collapsed><i class="fa fa-info-circle"></i>Investigating</span> 
+              <div data-pg-collapsed>
+                <h1 class="report-title">Power failure for over 3 weeks now</h1>
+                <p data-pg-collapsed>An electric pole fell along my street and no PHCN official has come to do anything since, this is getting out of hand and no one is doing anything about it.<br><br>We even contributed some money to help fix the problem, but nothing till now. </p>
+              </div>
+              <iframe class="map" allowfullscreen data-url="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d990.5376479398554!2d6.077698829155629!3d6.751481999694993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNDUnMDUuMyJOIDbCsDA0JzQxLjciRQ!5e0!3m2!1sen!2sng!4v1543046063460"></iframe>
+              <div class="row" data-pg-name="Row" data-pg-collapsed> 
+                <div class="column column-md-4" data-pg-name="Column" data-pg-collapsed> 
+                  <a href="assets/uploads/images/felled-electric-poles.jpg" class="media-item" data-zoom> 
+                    <img src="assets/uploads/images/felled-electric-poles.jpg" /> 
+                    <i class="fa fa-search-plus"></i> 
+                  </a>                   
+                </div>                 
+                <div class="column column-md-4" data-pg-name="Column" data-pg-collapsed> 
+                  <a href="https://www.youtube.com/embed/IXIxIkfz5dk?autoplay=1" class="media-item" data-zoom> 
+                    <img src="assets/uploads/images/felled-electric-poles.jpg" /> 
+                    <i class="fa fa-play"></i> 
+                  </a>                   
+                </div>                 
+              </div>               
+            </div>             
+          </div>           
+        </div>
+      </div>
+    </aside>
     <nav class="navigation" data-pg-name="Navigation Bar" data-pg-collapsed> 
       <div class="wrapper" data-pg-name="Wrapper"> 
         <div class="clear-float"> 
@@ -39,7 +82,7 @@
         </div>         
       </div>       
     </nav>     
-    <section class="login-wrapper top-space account-wrapper" data-pg-name="Dashboard"> 
+    <section class="login-wrapper top-space account-wrapper" data-pg-name="Dashboard" data-pg-collapsed> 
       <section class="heading" data-pg-collapsed> 
         <div class="wrapper" data-pg-name="Wrapper" data-pg-collapsed> 
           <div class="bread"> 
@@ -96,7 +139,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr onclick="showReport()" data-pg-collapsed>
+                  <tr onclick="showReportDetails(this)" data-pg-collapsed data-target="#dialogDetails">
                     <td class="td-small" data-pg-collapsed>05 Sep 2018<br><small>12 mins</small></td>
                     <td data-pg-collapsed>
   Power failure for over 3 weeks now</td>
@@ -221,5 +264,6 @@
     <!-- Placed at the end of the document so the pages load faster -->     
     <script src="assets/js/jquery.min.js" type="text/javascript"></script>     
     <script src="assets/js/home.js" type="text/javascript"></script>     
+    <script src="assets/js/zoom.js" type="text/javascript"></script>     
   </body>   
 </html>

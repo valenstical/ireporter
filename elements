@@ -27,17 +27,33 @@ $(function() {
         f.addComponentType(comp_comp3);
         
         var comp_comp4 = new PgComponentType('comp4', 'column-md-8');
-        comp_comp4.code = '<div class="column column-md-8" data-pg-name="Column">\
-</div>';
+        comp_comp4.code = '<div class="column column-md-8" data-pg-name="Column"></div>';
         comp_comp4.parent_selector = null;
         f.addComponentType(comp_comp4);
+        
+        var comp_comp5 = new PgComponentType('comp5', 'Dialog');
+        comp_comp5.code = '<aside class="dialog" data-pg-name="Dialog">\
+    <div class="dialog-content" data-pg-name="Dialog Content">\
+        <div class="dialog-header" data-pg-name="Dialog Header" data-pg-collapsed>\
+            <h4 class="dialong-title" data-pg-name="Dialong Title"><a href="" class="dispose" data-pg-collapsed><i class="fa fa-remove"></i></a>Report Details</h4>\
+        </div>\
+        <div class="dialog-body" data-pg-name="Dialog Body">\
+        </div>\
+        <div data-pg-name="Dialog Footer" class="dialog-footer">\
+            <button class="btn-brand btn-default">Close</button>\
+            <button class="btn-brand">Save Changes</button>\
+        </div>\
+    </div>\
+</aside>';
+        comp_comp5.parent_selector = null;
+        f.addComponentType(comp_comp5);
         
         //Tell Pinegrow about the framework
         pinegrow.addFramework(f);
             
         var section = new PgFrameworkLibSection("elements_lib", "Components");
         //Pass components in array
-        section.setComponentTypes([comp_comp1, comp_comp2, comp_comp3, comp_comp4]);
+        section.setComponentTypes([comp_comp1, comp_comp2, comp_comp3, comp_comp4, comp_comp5]);
 
         f.addLibSection(section);
    });
