@@ -935,7 +935,7 @@ button
 
 .form-wrapper
 {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .form-element
@@ -1641,7 +1641,7 @@ form label span
     text-align: left;
 }
 
-.btn-grp-edit button
+.btn-grp-edit button,.btn-grp-edit a
 {
     padding: 8px 15px;
     margin-right: 5px;
@@ -1998,6 +1998,7 @@ form label span
 .dialog-body
 {
     padding: 20px;
+    position: relative;
 }
 
 .dialog-footer
@@ -2044,6 +2045,7 @@ form label span
     margin-top: 10px;
     padding: 0px;
     overflow: hidden;
+    position: relative;
 }
 
 @media (min-width:480px)
@@ -2161,7 +2163,13 @@ form label span
 
 .nav-section .toggle-menu
 {
-    top: 40px;
+    top: 10px;
+    overflow: hidden;
+    max-width: 100%;
+    width: 100%;
+    position: relative;
+    left: 0px;
+    right: 0px;
 }
 
 .nav-section .toggle-menu::before
@@ -2169,4 +2177,197 @@ form label span
     right: 62px;
     overflow: hidden;
 }
+
+.bread h1
+{
+    font-size: 27px;
+}
+
+textarea.form-element
+{
+    min-height: 200px;
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.header-create
+{
+    margin-bottom: 40px;
+}
+
+.report-type>p
+{
+    margin-bottom: 30px;
+}
+
+.report-box h4
+{
+    margin-bottom: 5px;
+    text-transform: capitalize;
+    font-size: 16px;
+}
+
+.report-type .column
+{
+    width: 100%;
+}
+
+@media (min-width:500px)
+{
+    .report-type .column
+    {
+        width: 50%;
+    }
+}
+
+form .report-box p
+{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 13px;
+    margin-bottom: 0px;
+}
+
+.report-box input
+{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 2;
+}
+
+.report-box
+{
+    overflow: hidden;
+    padding-left: 60px;
+}
+
+.radio-mark
+{
+    position: absolute;
+    left: 15px;
+    top: 36px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #ddd;
+}
+
+.radio-mark::before
+{
+    position: absolute;
+    left: 4px;
+    top: 6px;
+    width: 50%;
+    height: 5px;
+    content: "";
+    border-left: 5px solid #377dff;
+    border-bottom: 5px solid #377dff;
+    -webkit-transition: 300ms;
+    -moz-transition: 300ms;
+    -o-transition: 300ms;
+    transition: 300ms;
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    opacity: 0;
+}
+
+.radio-fine:checked + div::before
+{
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    opacity: 1;
+}
+
+@media (min-width:480px)
+{
+    .column-xs-6
+    {
+        width: 50%;
+    }
+}
+
+.file-upload
+{
+    padding: 30px;
+    border: 2px dashed #ddd;
+    text-align: center;
+    position: relative;
+}
+
+.file-upload input
+{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.file-upload-text
+{
+    display: block;
+    margin-top: 10px;
+}
+
+.flag
+{
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    color: #de4437;
+}
+
+.flag-intervention
+{
+    color: #ffc107;
+}
+
+.table .flag
+{
+    position: static;
+    margin-right: 5px;
+}
+
+.relative
+{
+    position: relative;
+}
+
+@media (min-width:600px)
+{
+    .nav-section .toggle-menu
+    {
+        position: absolute;
+        right: 0px;
+        top: 40px;
+        width: auto;
+        min-width: 150px;
+        max-width: auto;
+        left: auto;
+    }
+}
+
+.how-item:hover .fa
+{
+  -webkit-transform:scale(1.2,1.2);
+   -o-transform:scale(1.2,1.2);
+   -moz-transform:scale(1.2,1.2);
+   transform:scale(1.2,1.2);
+}
+
 
