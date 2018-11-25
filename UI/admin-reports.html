@@ -1,0 +1,308 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+  <head> 
+    <meta charset="utf-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <meta name="description" content="Easily report cases of corruption to the appropriate authorities. Users can also report on things that needs government intervention."> 
+    <meta name="author" content="Okosun Valentine Ejodamen <valenstical@gmail.com>"> 
+    <title>Reports|iReporter - Easily report cases of corruption and areas that needs government intervention|Andela Developer Challenge</title>     
+    <link href="assets/images/icons/icon.png" rel="icon" type="image/png"> 
+    <link href="assets/css/central.css" rel="stylesheet" type="text/css"> 
+    <link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css"> 
+    <meta name="theme-color" content="#377dff"> 
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->     
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->     
+  </head>   
+  <body class="bg-grey"> 
+    <aside class="dialog dialog-xs" data-pg-name="Dialog" id="dialogStatus" data-pg-collapsed>
+      <div class="pg-empty-placeholder dialog-overlay" data-pg-name="Dialog Overlay"></div>
+      <form class="dialog-content transition-fast" data-pg-name="Dialog Content" onsubmit="return changeStatus()">
+        <div class="dialog-header" data-pg-name="Dialog Header" data-pg-collapsed>
+          <h4 class="dialong-title" data-pg-name="Dialong Title"><a class="dispose close" data-pg-collapsed><i class="fa fa-remove"></i></a>Change Status</h4>
+        </div>
+        <div class="dialog-body" data-pg-name="Dialog Body">
+          <div data-pg-collapsed>
+            <label>
+              <input type="radio" name="status" value="0"> Pending
+            </label>
+          </div>
+          <div data-pg-collapsed>
+            <label>
+              <input type="radio" name="status" value="0" checked="checked"> Under Investigation
+            </label>
+          </div>
+          <div data-pg-collapsed>
+            <label>
+              <input type="radio" name="status" value="0"> Resolved
+            </label>
+          </div>
+          <div data-pg-collapsed>
+            <label>
+              <input type="radio" name="status" value="0"> Rejected
+            </label>
+          </div>
+        </div>
+        <div class="dialog-footer" data-pg-name="Dialog Footer">
+          <button class="btn-brand" type="submit">Submit</button>
+        </div>
+      </form>
+    </aside>
+    <aside class="dialog" data-pg-name="Dialog" id="dialogDetails">
+      <div class="pg-empty-placeholder dialog-overlay" data-pg-name="Dialog Overlay"></div>
+      <div class="dialog-content transition-fast" data-pg-name="Dialog Content">
+        <div class="dialog-header" data-pg-name="Dialog Header">
+          <h4 class="dialong-title" data-pg-name="Dialong Title"><a class="dispose close" data-pg-collapsed><i class="fa fa-remove"></i></a><div class="dispose toggle toggle-pointer" data-pg-name="Toggle">
+              <a data-toggle data-pg-collapsed><i class="fa fa-ellipsis-h"></i></a>
+              <ul class="toggle-menu" data-pg-name="Toggle Menu">
+                <li data-pg-name="Menu Item">
+                  <a onclick="chooseStatus()">Change Status</a>
+                </li>
+                <li class="toggle-line" data-pg-name="Divider"></li>
+                <li data-pg-name="Menu Item">
+                  <a onclick="deleteReport()">Delete</a>
+                </li>
+              </ul>
+            </div>Report Details</h4>
+        </div>
+        <div class="dialog-body" data-pg-name="Dialog Body">
+          <div class="report-item max-width-800"> 
+            <div class="profile-img" title="Verified Citizen"> 
+              <img src="assets/images/profiles/photo-1467400492058-1aad44d4bcd6.jpg" width="50" height="50" /> 
+              <span class="report-item-verified" data-pg-collapsed><i class="fa fa-check"></i></span> 
+            </div>             
+            <div class="report-item-content"> 
+              <h5>Steven</h5>
+              <div data-pg-collapsed>
+                <span class="report-item-date" data-pg-collapsed><i class="fa fa-calendar"></i> 05 Jul 2018,</span>
+                <span class="report-item-date report-item-location" data-pg-collapsed><i class="fa fa-map-marker"></i> Zamfara</span>
+                <span class="report-item-date report-item-location" data-pg-collapsed title="1 image, 1 video">2 <i class="fa fa-paperclip fa-rotate-90 fa-flip-vertical"></i></span>
+              </div>
+              <span class="badge-citizen badge-status status-badge-investigating" data-pg-collapsed><i class="fa fa-info-circle"></i>Investigating</span> 
+              <div data-pg-collapsed>
+                <h1 class="report-title">Power failure for over 3 weeks now</h1>
+                <p data-pg-collapsed>An electric pole fell along my street and no PHCN official has come to do anything since, this is getting out of hand and no one is doing anything about it.<br><br>We even contributed some money to help fix the problem, but nothing till now. </p>
+              </div>
+              <iframe class="map" allowfullscree src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d990.5376479398554!2d6.077698829155629!3d6.751481999694993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNDUnMDUuMyJOIDbCsDA0JzQxLjciRQ!5e0!3m2!1sen!2sng!4v1543046063460"></iframe>
+              <div class="row" data-pg-name="Row" data-pg-collapsed> 
+                <div class="column column-md-4" data-pg-name="Column" data-pg-collapsed> 
+                  <a href="assets/uploads/images/felled-electric-poles.jpg" class="media-item" data-zoom> 
+                    <img src="assets/uploads/images/felled-electric-poles.jpg" /> 
+                    <i class="fa fa-search-plus"></i> 
+                  </a>                   
+                </div>                 
+                <div class="column column-md-4" data-pg-name="Column" data-pg-collapsed> 
+                  <a href="https://www.youtube.com/embed/IXIxIkfz5dk?autoplay=1" class="media-item" data-zoom> 
+                    <img src="assets/uploads/images/felled-electric-poles.jpg" /> 
+                    <i class="fa fa-play"></i> 
+                  </a>                   
+                </div>                 
+              </div>               
+            </div>             
+          </div>           
+        </div>
+      </div>
+    </aside>
+    <nav class="navigation" data-pg-name="Navigation Bar" data-pg-collapsed> 
+      <div class="wrapper" data-pg-name="Wrapper"> 
+        <div class="clear-float"> 
+          <a class="nav-brand text-brand float-left" href="index.html" target="_blank">iReporter</a> 
+          <ul class="nav-section float-right nav-shown nav-hidden transition" data-pg-name="Nav Section" data-pg-collapsed id="nav-section" onmouseenter="setMenuHidable(false)" onmouseleave="setMenuHidable(true)">                           
+            <li data-pg-name="Nav Item"> 
+              <a href="admin-login.html">Logout</a> 
+            </li>             
+          </ul>           
+          <button class="menu-bar" onclick="toggleMenu()" onblur="hideMenu()" data-pg-collapsed> 
+            <i class="fa fa-align-justify"></i> 
+          </button>           
+        </div>         
+      </div>       
+    </nav>     
+    <section class="login-wrapper top-space account-wrapper" data-pg-name="Dashboard" data-pg-collapsed> 
+      <section class="heading" data-pg-collapsed> 
+        <div class="wrapper" data-pg-name="Wrapper" data-pg-collapsed> 
+          <div class="bread"> 
+            <a class="active bread-full-width">Reports (280)</a> 
+          </div>           
+        </div>         
+      </section>       
+      <section> 
+        <div class="wrapper" data-pg-name="Wrapper"> 
+          <header class="page-title" data-pg-collapsed> 
+            <div class="row" data-pg-name="Row" data-pg-collapsed> 
+              <div class="column column-xs-3" data-pg-name="Column" data-pg-collapsed> 
+                <div class="card card-sm summary"> 
+                  <i class="fa fa-file-text-o bg-status-draft"></i> 
+                  <p><span>Pending</span>164</p> 
+                </div>                 
+              </div>               
+              <div class="column column-xs-3" data-pg-name="Column" data-pg-collapsed> 
+                <div class="card card-sm summary"> 
+                  <i class="fa bg-status-pending fa-info"></i> 
+                  <p><span title="Investigating">Investigating</span>47</p> 
+                </div>                 
+              </div>               
+              <div class="column column-xs-3" data-pg-name="Column" data-pg-collapsed> 
+                <div class="card card-sm summary"> 
+                  <i class="fa bg-status-resolved fa-check"></i> 
+                  <p><span>Resolved</span> 40</p> 
+                </div>                 
+              </div>               
+              <div class="column column-xs-3" data-pg-name="Column" data-pg-collapsed> 
+                <div class="card card-sm summary"> 
+                  <i class="fa bg-status-rejected fa-remove"></i> 
+                  <p><span>Rejected</span>29</p> 
+                </div>                 
+              </div>               
+            </div>             
+          </header>
+          <div class="card card-sm">
+            <header class="tab" data-pg-collapsed>
+              <a onclick="getReports(this,0)" class="active tab-pending transition">Pending</a>
+              <a onclick="getReports(this,1)" class="tab-investigating transition">Investigating</a>
+              <a onclick="getReports(this,2)" lass="tab-resolved" class="transition tab-resolved">Resolved</a>
+              <a onclick="getReports(this,3)" class="tab-rejected transition">Rejected</a>
+            </header>
+            <div class="table-wrapper" data-pg-collapsed>
+              <table class="table table-clickable table-striped" data-pg-collapsed>
+                <thead data-pg-collapsed>
+                  <tr>
+                    <th>Date</th>
+                    <th>Report</th>
+                    <th>Location</th>
+                    <th>User</th>
+                    <th class="text-center">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr onclick="showReportDetails(this,5)" data-pg-collapsed>
+                    <td class="td-small">05 Sep 2018<br><small>12 mins</small></td>
+                    <td>
+  Power failure for over 3 weeks now</td>
+                    <td class="td-small" data-pg-collapsed>Lagos</td>
+                    <td class="pg-empty-placeholder" data-pg-collapsed>
+                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                        <img src="assets/images/profiles/photo-1533939141733-63078e139c4a.jpg" width="35" height="35" /> 
+                      </div>
+                      <span class="profile-name">Musa</span>
+                    </td>
+                    <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
+                  </tr>
+                  <tr onclick="showReportDetails(this,5)" data-pg-collapsed>
+                    <td class="td-small" data-pg-collapsed>05 Sep 2018<br><small>20 mins</small></td>
+                    <td data-pg-collapsed>
+  Students made to pay over 5000 for exam malpractise</td>
+                    <td class="td-small" data-pg-collapsed>Edo</td>
+                    <td class="pg-empty-placeholder">
+                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                        <img src="assets/images/profiles/photo-1467400492058-1aad44d4bcd6.jpg" width="35" height="35" /> 
+                      </div>
+                      <span class="profile-name">Steven</span>
+                    </td>
+                    <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
+                  </tr>
+                  <tr onclick="showReportDetails(this,5)" data-pg-collapsed>
+                    <td class="td-small" data-pg-collapsed>05 Sep 2018<br><small>20 hours</small></td>
+                    <td data-pg-collapsed>
+ Fuel tanker blocking Anthony street</td>
+                    <td class="td-small" data-pg-collapsed>Anambra</td>
+                    <td class="pg-empty-placeholder">
+                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                        <img src="assets/images/profiles/photo-1524154217857-45f012d0f167.jpg" width="35" height="35" /> 
+                      </div>
+                      <span class="profile-name">Jane</span>
+                    </td>
+                    <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
+                  </tr>
+                  <tr onclick="showReportDetails(this,5)" data-pg-collapsed>
+                    <td class="td-small" data-pg-collapsed>04 Sep 2018<br><small>1 day</small></td>
+                    <td data-pg-collapsed>
+  State governor collecting bribe from contractors</td>
+                    <td class="td-small" data-pg-collapsed>Port Harcourt</td>
+                    <td class="pg-empty-placeholder">
+                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                        <img src="assets/images/profiles/photo-1521587765099-8835e7201186.jpg" width="35" height="35" /> 
+                      </div>
+                      <span class="profile-name">Harry</span>
+                    </td>
+                    <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
+                  </tr>
+                  <tr onclick="showReportDetails(this,5)" data-pg-collapsed>
+                    <td class="td-small" data-pg-collapsed>04 Sep 2018<br><small>1 day</small></td>
+                    <td data-pg-collapsed>
+  Unconscious woman along ring road</td>
+                    <td class="td-small" data-pg-collapsed>Abia </td>
+                    <td class="pg-empty-placeholder">
+                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                        <img src="assets/images/profiles/photo-1522720962427-d53e89da4071.jpg" width="35" height="35" /> 
+                      </div>
+                      <span class="profile-name">Nkem</span>
+                    </td>
+                    <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
+                  </tr>
+                  <tr onclick="showReportDetails(this,5)" data-pg-collapsed>
+                    <td class="td-small" data-pg-collapsed>02 Sep 2018<br><small>3 days</small></td>
+                    <td data-pg-collapsed>
+  Election rigging at Adamawa east LGA unit 5</td>
+                    <td class="td-small" data-pg-collapsed>Lagos</td>
+                    <td class="pg-empty-placeholder">
+                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                        <img src="assets/images/profiles/photo-1523309828291-0f3e2a853382.jpg" width="35" height="35" /> 
+                      </div>
+                      <span class="profile-name">Jega</span>
+                    </td>
+                    <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
+                  </tr>
+                  <tr onclick="showReportDetails(this,5)" data-pg-collapsed>
+                    <td class="td-small" data-pg-collapsed>15 Aug 2018<br><small>1 month</small></td>
+                    <td data-pg-collapsed>
+  Police extortion at Aba Market</td>
+                    <td class="td-small" data-pg-collapsed>Kano </td>
+                    <td class="pg-empty-placeholder">
+                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                        <img src="assets/images/profiles/photo-1526382925646-27b5eb86796e.jpg" width="35" height="35" /> 
+                      </div>
+                      <span class="profile-name">Angela</span>
+                    </td>
+                    <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
+                  </tr>
+                  <tr onclick="showReportDetails(this,5)" data-pg-collapsed>
+                    <td class="td-small" data-pg-collapsed>21 Feb 2017<br><small>1 year</small></td>
+                    <td data-pg-collapsed>
+  Lecturer extorting students for marks</td>
+                    <td class="td-small" data-pg-collapsed>Delta</td>
+                    <td class="pg-empty-placeholder">
+                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                        <img src="assets/images/profiles/default.jpg" width="35" height="35" /> 
+                      </div>
+                      <span class="profile-name">Olu</span>
+                    </td>
+                    <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="pager text-right">
+              <span>1-50 of 280</span>
+              <a onclick="nextReport(false)"><i class="fa fa-chevron-left"></i></a>
+              <a onclick="nextReport(true)"><i class="fa fa-chevron-right"></i></a>
+            </div>             
+          </div>           
+        </div>         
+      </section>       
+    </section>     
+    <footer class="footer" data-pg-collapsed> 
+      <div class="wrapper" data-pg-name="Wrapper"> 
+        <p class="float-right" data-pg-collapsed><a href="terms.html">Terms &amp; Conditions</a><a href="privacy-policy.html">Privacy Policy</a><a href="admin-login.html">Admin</a></p> 
+        <p class="float-left">&copy; 2018 iReporter.</p> 
+      </div>       
+    </footer>     
+    <!-- Placed at the end of the document so the pages load faster -->     
+    <script src="assets/js/jquery.min.js" type="text/javascript"></script>     
+    <script src="assets/js/home.js" type="text/javascript"></script>     
+    <script src="assets/js/zoom.js" type="text/javascript"></script>     
+  </body>   
+</html>

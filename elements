@@ -1,0 +1,83 @@
+$(function() {
+
+    //Wait for Pinegrow to wake-up
+    $("body").one("pinegrow-ready", function(e, pinegrow) {
+
+        //Create new Pinegrow framework object
+        var f = new PgFramework("elements", "elements");
+
+        //This will prevent activating multiple versions of this framework being loaded
+        f.type = "elements";
+        f.allow_single_type = true;
+        f.user_lib = true
+
+        var comp_comp1 = new PgComponentType('comp1', 'Wrapper');
+        comp_comp1.code = '<div class="pg-empty-placeholder wrapper" data-pg-name="Wrapper"></div>';
+        comp_comp1.parent_selector = null;
+        f.addComponentType(comp_comp1);
+        
+        var comp_comp2 = new PgComponentType('comp2', 'Row');
+        comp_comp2.code = '<div class="row" data-pg-name="Row"></div>';
+        comp_comp2.parent_selector = null;
+        f.addComponentType(comp_comp2);
+        
+        var comp_comp3 = new PgComponentType('comp3', 'column-md-4');
+        comp_comp3.code = '<div class="pg-empty-placeholder column column-md-4" data-pg-name="Column"></div>';
+        comp_comp3.parent_selector = null;
+        f.addComponentType(comp_comp3);
+        
+        var comp_comp4 = new PgComponentType('comp4', 'column-md-8');
+        comp_comp4.code = '<div class="column column-md-8" data-pg-name="Column"></div>';
+        comp_comp4.parent_selector = null;
+        f.addComponentType(comp_comp4);
+        
+        var comp_comp5 = new PgComponentType('comp5', 'Dialog');
+        comp_comp5.code = '<aside class="dialog" data-pg-name="Dialog">\
+    <div class="dialog-content" data-pg-name="Dialog Content">\
+        <div class="dialog-header" data-pg-name="Dialog Header" data-pg-collapsed>\
+            <h4 class="dialong-title" data-pg-name="Dialong Title"><a href="" class="dispose" data-pg-collapsed><i class="fa fa-remove"></i></a>Report Details</h4>\
+        </div>\
+        <div class="dialog-body" data-pg-name="Dialog Body">\
+        </div>\
+        <div data-pg-name="Dialog Footer" class="dialog-footer">\
+            <button class="btn-brand btn-default">Close</button>\
+            <button class="btn-brand">Save Changes</button>\
+        </div>\
+    </div>\
+</aside>';
+        comp_comp5.parent_selector = null;
+        f.addComponentType(comp_comp5);
+        
+        var comp_comp6 = new PgComponentType('comp6', 'Dialog Footer');
+        comp_comp6.code = '<div class="dialog-footer" data-pg-name="Dialog Footer">\
+    <button class="btn-brand">Change status</button>\
+</div>';
+        comp_comp6.parent_selector = null;
+        f.addComponentType(comp_comp6);
+        
+        var comp_comp7 = new PgComponentType('comp7', 'Toggle');
+        comp_comp7.code = '<div class="dispose toggle toggle-pointer" data-pg-name="Toggle">\
+    <a data-toggle data-pg-collapsed><i class="fa fa-ellipsis-h"></i></a>\
+    <ul class="toggle-menu" data-pg-name="Toggle Menu">\
+        <li data-pg-name="Menu Item">\
+            <a onclick="chooseStatus()">Change Status</a>\
+        </li>\
+        <li class="toggle-line" data-pg-name="Divider"></li>\
+        <li data-pg-name="Menu Item">\
+            <a onclick="deleteReport()">Delete</a>\
+        </li>\
+    </ul>\
+</div>';
+        comp_comp7.parent_selector = null;
+        f.addComponentType(comp_comp7);
+        
+        //Tell Pinegrow about the framework
+        pinegrow.addFramework(f);
+            
+        var section = new PgFrameworkLibSection("elements_lib", "Components");
+        //Pass components in array
+        section.setComponentTypes([comp_comp1, comp_comp2, comp_comp3, comp_comp4, comp_comp5, comp_comp6, comp_comp7]);
+
+        f.addLibSection(section);
+   });
+});
