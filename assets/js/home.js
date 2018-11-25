@@ -87,7 +87,7 @@ $(window).click(()=> {
     
 });
 
-$('[data-share-page]').each(()=>{
+$('[data-share-page]').each(function(){
     let url=$(this).prop('href').replace('{url}',encodeURI(location.href));
     $(this).prop('href',url);
 });

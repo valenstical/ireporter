@@ -32,24 +32,30 @@
             <li data-pg-name="Nav Item"> 
               <a href="reports.html">View reports</a> 
             </li>             
-            <li data-pg-name="Nav Item" class="btn-cta dropdown" data-pg-collapsed>
-              <a class="nav-profile" href="javascript:void(0)" data-pg-collapsed>
-                <img src="assets/images/profiles/photo-1467400492058-1aad44d4bcd6.jpg" width="30" />
-                <span><i class="fa fa-chevron-down"></i></span>
+            <li data-pg-name="Nav Item" class="toggle toggle-pointer" data-pg-collapsed> 
+              <a class="nav-profile" data-toggle data-pg-collapsed> 
+                <img src="assets/images/profiles/photo-1467400492058-1aad44d4bcd6.jpg" width="30" /> 
+                <span><i class="fa fa-chevron-down"></i></span> 
               </a>
-              <ul class="dropdown-inner" data-pg-collapsed>
-                <li class="dropdown-brand">
-                  <a class="btn-brand" href="create-report.html">Report a case</a>
+              <ul class="toggle-menu toggle-menu-md" data-pg-name="Toggle Menu"> 
+                <li data-pg-name="Menu Item"> 
+                  <a href="create-report.html">Report a case</a> 
+                </li>                 
+                <li data-pg-name="Divider" class="toggle-line"> 
+</li>
+                <li data-pg-name="Menu Item" data-pg-collapsed> 
+                  <a href="profile.html" class="transition">View my reports</a> 
                 </li>
-                <li>
-                  <a href="profile.html" class="transition">View my reports</a>
+                <li data-pg-name="Divider" class="toggle-line"> 
+</li>                 
+                <li data-pg-collapsed data-pg-name="Menu Item"> 
+                  <a href="edit-profile.html" class="transition">Edit Profile</a> 
                 </li>
-                <li>
-                  <a href="edit-profile.html" class="transition">Edit Profile</a>
-                </li>
-                <li>
-                  <a href="sign-in.html" class="transition">Logout</a>
-                </li>
+                <li data-pg-name="Divider" class="toggle-line"> 
+</li>                 
+                <li data-pg-collapsed data-pg-name="Menu Item"> 
+                  <a href="sign-in.html" class="transition">Logout</a> 
+                </li>                 
               </ul>               
             </li>             
           </ul>           
@@ -58,26 +64,26 @@
           </button>           
         </div>         
       </div>       
-    </nav>
-    <section class="login-wrapper top-space" data-pg-name="Dashboard">
-      <section class="heading" data-pg-collapsed>
-        <div class="wrapper" data-pg-name="Wrapper" data-pg-collapsed>
-          <div class="bread" data-pg-collapsed>
-            <a href="index.html">Home</a>
-            <i class="fa fa-angle-right"></i>
-            <a class="active">Edit Profile</a>
+    </nav>     
+    <section class="login-wrapper top-space" data-pg-name="Dashboard"> 
+      <section class="heading" data-pg-collapsed> 
+        <div class="wrapper" data-pg-name="Wrapper" data-pg-collapsed> 
+          <div class="bread" data-pg-collapsed> 
+            <a href="index.html">Home</a> 
+            <i class="fa fa-angle-right"></i> 
+            <a class="active">Edit Profile</a> 
           </div>           
-        </div>
-      </section>
-      <section data-pg-collapsed>
-        <div class="wrapper" data-pg-name="Wrapper">
-          <div class="card login-form login-form-lg profile-wrapper">
+        </div>         
+      </section>       
+      <section data-pg-collapsed> 
+        <div class="wrapper" data-pg-name="Wrapper"> 
+          <div class="card login-form login-form-lg profile-wrapper"> 
             <div class="profile-img" data-pg-collapsed> 
               <img src="assets/images/profiles/photo-1467400492058-1aad44d4bcd6.jpg" width="200" height="200" /> 
-            </div>
-            <button class="btn-brand btn-secondary btn-250" onclick="uploadProfile()">Change Image</button>
+            </div>             
+            <button class="btn-brand btn-secondary btn-250" onclick="uploadProfile()">Change Image</button>             
             <input type="file" class="delete-file-chooser"> 
-          </div>
+          </div>           
           <form class="card login-form login-form-lg" onsubmit="return editProfile()"> 
             <div class="form-wrapper" data-pg-collapsed> 
               <label>First Name </label>               
@@ -92,7 +98,7 @@
               <input class="form-element" type="email" name="email" required value="abc@gmail.com"> 
             </div>             
             <button class="btn-brand btn-250" type="submit">Update Profile</button>             
-          </form>
+          </form>           
           <form class="card login-form login-form-lg" onsubmit="return changePassword()"> 
             <div class="form-wrapper" data-pg-collapsed> 
               <label>Password</label>               
@@ -100,7 +106,7 @@
             </div>             
             <button class="btn-brand btn-250" type="submit">Change password</button>             
           </form>           
-        </div>
+        </div>         
       </section>       
     </section>     
     <footer class="footer" data-pg-collapsed> 
