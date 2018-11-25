@@ -48,12 +48,35 @@ $(function() {
         comp_comp5.parent_selector = null;
         f.addComponentType(comp_comp5);
         
+        var comp_comp6 = new PgComponentType('comp6', 'Dialog Footer');
+        comp_comp6.code = '<div class="dialog-footer" data-pg-name="Dialog Footer">\
+    <button class="btn-brand">Change status</button>\
+</div>';
+        comp_comp6.parent_selector = null;
+        f.addComponentType(comp_comp6);
+        
+        var comp_comp7 = new PgComponentType('comp7', 'Toggle');
+        comp_comp7.code = '<div class="dispose toggle toggle-pointer" data-pg-name="Toggle">\
+    <a data-toggle data-pg-collapsed><i class="fa fa-ellipsis-h"></i></a>\
+    <ul class="toggle-menu" data-pg-name="Toggle Menu">\
+        <li data-pg-name="Menu Item">\
+            <a onclick="chooseStatus()">Change Status</a>\
+        </li>\
+        <li class="toggle-line" data-pg-name="Divider"></li>\
+        <li data-pg-name="Menu Item">\
+            <a onclick="deleteReport()">Delete</a>\
+        </li>\
+    </ul>\
+</div>';
+        comp_comp7.parent_selector = null;
+        f.addComponentType(comp_comp7);
+        
         //Tell Pinegrow about the framework
         pinegrow.addFramework(f);
             
         var section = new PgFrameworkLibSection("elements_lib", "Components");
         //Pass components in array
-        section.setComponentTypes([comp_comp1, comp_comp2, comp_comp3, comp_comp4, comp_comp5]);
+        section.setComponentTypes([comp_comp1, comp_comp2, comp_comp3, comp_comp4, comp_comp5, comp_comp6, comp_comp7]);
 
         f.addLibSection(section);
    });
