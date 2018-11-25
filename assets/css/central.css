@@ -1043,9 +1043,9 @@ form label
     margin-top: 10px;
 }
 
-.checkbox
+.checkbox, .radio
 {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .checkbox a
@@ -1121,7 +1121,6 @@ form label span
     top: 50px;
     box-shadow: 0px 5px 6px rgba(0,0,0,0.02);
     border: 1px solid #efefef;
-    display: none;
 }
 
 .dropdown-inner li
@@ -1736,7 +1735,6 @@ form label span
     padding: 10px;
     font-weight: bold;
     color: #82828d;
-    position: relative;
 }
 
 .fa.no-blink
@@ -1828,8 +1826,8 @@ form label span
     padding-top: 10px;
     padding-bottom: 10px;
     position: relative;
-    margin-left: 12px;
     font-size: 13px;
+    margin-left: 5px;
 }
 
 .tab a.active
@@ -1843,36 +1841,9 @@ form label span
     color: #377dff;
 }
 
-.tab a::before
-{
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    border-radius: 10px;
-    display: inline-block;
-    content: "";
-    left: -10px;
-    top: 17px;
-}
-
 .tab-pending::before
 {
-    background-color: #141313;
-}
-
-.tab-investigating::before
-{
-    background-color: #ffc107;
-}
-
-.tab-resolved::before
-{
-    background-color: #00c9a7;
-}
-
-.tab-rejected::before
-{
-    background-color: #e14837;
+    color: #141313;
 }
 
 [onclick]
@@ -1923,6 +1894,7 @@ form label span
     .tab button
     {
         font-size: inherit;
+        margin-left: 10px;
     }
 }
 
@@ -1942,11 +1914,24 @@ form label span
     top: 0px;
     bottom: 0px;
     z-index: 110;
-    background-color: rgba(0, 0, 0, 0.34);
     overflow-y: auto;
     padding-left: 5px;
     padding-right: 5px;
     display: none;
+}
+
+.visible
+{
+    display: block;
+}
+
+.transition-fast
+{
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -ms-transition: all 200ms;
+    -o-transition: all 200ms;
+    transition: all 200ms;
 }
 
 .dialog-content
@@ -1958,9 +1943,14 @@ form label span
     margin: 30px auto;
     overflow: hidden;
     opacity: 0;
+    box-shadow: 5px 5px 6px rgba(0,0,0,0.02);
+    border: 1px solid #efefef;
+    -webkit-transform: scale(1.1,1.1);
+    -o-transform: scale(1.1,1.1);
+    -moz-transform: scale(1.1,1.1);
     transform: scale(1.1,1.1);
+    z-index: 10;
 }
-
 
 .dialog-header
 {
@@ -1984,6 +1974,8 @@ form label span
     float: right;
     position: relative;
     bottom: 7px;
+    cursor: pointer;
+    margin-left: 10px;
 }
 
 .dialog-body
@@ -2046,30 +2038,118 @@ form label span
     }
 }
 
-.menu-options
-{
-    margin-right: 20px;
-    margin-top: 1px;
-}
-
 .no-scroll
 {
     overflow: hidden;
     margin-right: 1.1rem;
 }
 
-.dialog-shown
+.dialog.shown .dialog-content
 {
+    -webkit-transform: none;
+    -moz-transform: none;
+    -o-transform: none;
     transform: none;
     opacity: 1;
 }
 
-.transition-fast
+.toggle
 {
-    -webkit-transition: all 200ms;
-    -moz-transition: all 200ms;
-    -ms-transition: all 200ms;
-    -o-transition: all 200ms;
-    transition: all 200ms;
+    display: inline-block;
+    position: relative;
+    z-index: 100;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.toggle.dispose
+{
+    margin-right: 10px;
+    opacity: 1;
+}
+
+.toggle-menu
+{
+    position: absolute;
+    background-color: white;
+    border-radius: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 0px;
+    list-style-type: none;
+    min-width: 120px;
+    right: -10px;
+    top: 20px;
+    color: #77838f;
+    font-size: 14px;
+    box-shadow: 5px 5px 6px rgba(0,0,0,0.02);
+    border: 1px solid #efefef;
+    font-weight: normal;
+    display: none;
+}
+
+.toggle-menu li
+{
+    position: relative;
+}
+
+.toggle-menu li a
+{
+    color: inherit;
+    display: block;
+    padding: 7px 15px;
+    white-space: nowrap;
+}
+
+.toggle-line
+{
+    height: 1px;
+    background-color: rgba(119, 131, 143, 0.1);
+}
+
+.toggle-pointer .toggle-menu::before
+{
+    display: inline-block;
+    position: absolute;
+    top: -7px;
+    content: "";
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid white;
+    right: 10px;
+}
+
+.toggle>a
+{
+    color: inherit;
+    padding-left: 5px;
+    padding-right: 5px;
+    cursor: pointer;
+}
+
+.toggle.shown .toggle-menu
+{
+    display: inline-block;
+}
+
+.dialog-overlay
+{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.34);
+    content: '';
+    right: 0px;
+}
+
+.dialog-xs .dialog-content
+{
+    max-width: 400px;
+}
+
+.hidden
+{
+    display: none;
 }
 
