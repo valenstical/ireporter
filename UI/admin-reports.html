@@ -61,20 +61,16 @@
                 <li data-pg-name="Menu Item">
                   <a onclick="chooseStatus()">Change Status</a>
                 </li>
-                <li class="toggle-line" data-pg-name="Divider"></li>
-                <li data-pg-name="Menu Item">
-                  <a onclick="deleteReport()">Delete</a>
-                </li>
               </ul>
             </div>Report Details</h4>
         </div>
         <div class="dialog-body" data-pg-name="Dialog Body">
           <div class="report-item max-width-800"> 
-            <div class="profile-img" title="Verified Citizen"> 
+            <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
               <img src="assets/images/profiles/photo-1467400492058-1aad44d4bcd6.jpg" width="50" height="50" /> 
               <span class="report-item-verified" data-pg-collapsed><i class="fa fa-check"></i></span> 
             </div>             
-            <div class="report-item-content"> 
+            <div class="report-item-content" data-pg-collapsed> 
               <h5>Steven</h5>
               <div data-pg-collapsed>
                 <span class="report-item-date" data-pg-collapsed><i class="fa fa-calendar"></i> 05 Jul 2018,</span>
@@ -102,7 +98,8 @@
                 </div>                 
               </div>               
             </div>             
-          </div>           
+          </div>
+          <i class="fa fa-flag flag" title="Red flag report involving corruption"></i> 
         </div>
       </div>
     </aside>
@@ -110,7 +107,7 @@
       <div class="wrapper" data-pg-name="Wrapper"> 
         <div class="clear-float"> 
           <a class="nav-brand text-brand float-left" href="index.html" target="_blank">iReporter</a> 
-          <ul class="nav-section float-right nav-shown nav-hidden transition" data-pg-name="Nav Section" data-pg-collapsed id="nav-section" onmouseenter="setMenuHidable(false)" onmouseleave="setMenuHidable(true)">                           
+          <ul class="nav-section float-right nav-shown nav-hidden transition" data-pg-name="Nav Section" data-pg-collapsed id="nav-section" onmouseenter="setMenuHidable(false)" onmouseleave="setMenuHidable(true)"> 
             <li data-pg-name="Nav Item"> 
               <a href="admin-login.html">Logout</a> 
             </li>             
@@ -180,105 +177,121 @@
                 <tbody>
                   <tr onclick="showReportDetails(this,5)" data-pg-collapsed>
                     <td class="td-small">05 Sep 2018<br><small>12 mins</small></td>
-                    <td>
+                    <td><i class="fa flag fa-bullhorn flag-intervention" title="Intervention report requiring government attention"></i>
   Power failure for over 3 weeks now</td>
                     <td class="td-small" data-pg-collapsed>Lagos</td>
-                    <td class="pg-empty-placeholder" data-pg-collapsed>
-                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
-                        <img src="assets/images/profiles/photo-1533939141733-63078e139c4a.jpg" width="35" height="35" /> 
+                    <td data-pg-collapsed>
+                      <div class="relative">
+                        <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                          <img src="assets/images/profiles/photo-1533939141733-63078e139c4a.jpg" width="35" height="35" /> 
+                        </div>
+                        <span class="profile-name">Musa</span>
                       </div>
-                      <span class="profile-name">Musa</span>
                     </td>
                     <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
                   </tr>
                   <tr onclick="showReportDetails(this,5)" data-pg-collapsed>
                     <td class="td-small" data-pg-collapsed>05 Sep 2018<br><small>20 mins</small></td>
-                    <td data-pg-collapsed>
+                    <td data-pg-collapsed><i class="fa fa-flag flag" title="Red flag report involving corruption"></i>
   Students made to pay over 5000 for exam malpractise</td>
                     <td class="td-small" data-pg-collapsed>Edo</td>
-                    <td class="pg-empty-placeholder">
-                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
-                        <img src="assets/images/profiles/photo-1467400492058-1aad44d4bcd6.jpg" width="35" height="35" /> 
+                    <td>
+                      <div class="relative">
+                        <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                          <img src="assets/images/profiles/photo-1467400492058-1aad44d4bcd6.jpg" width="35" height="35" /> 
+                        </div>
+                        <span class="profile-name">Steven</span>
                       </div>
-                      <span class="profile-name">Steven</span>
                     </td>
                     <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
                   </tr>
                   <tr onclick="showReportDetails(this,5)" data-pg-collapsed>
                     <td class="td-small" data-pg-collapsed>05 Sep 2018<br><small>20 hours</small></td>
-                    <td data-pg-collapsed>
+                    <td data-pg-collapsed><i class="fa flag fa-bullhorn flag-intervention" title="Intervention report requiring government attention"></i>
  Fuel tanker blocking Anthony street</td>
                     <td class="td-small" data-pg-collapsed>Anambra</td>
-                    <td class="pg-empty-placeholder">
-                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
-                        <img src="assets/images/profiles/photo-1524154217857-45f012d0f167.jpg" width="35" height="35" /> 
+                    <td>
+                      <div class="relative">
+                        <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                          <img src="assets/images/profiles/photo-1524154217857-45f012d0f167.jpg" width="35" height="35" /> 
+                        </div>
+                        <span class="profile-name">Jane</span>
                       </div>
-                      <span class="profile-name">Jane</span>
                     </td>
                     <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
                   </tr>
                   <tr onclick="showReportDetails(this,5)" data-pg-collapsed>
                     <td class="td-small" data-pg-collapsed>04 Sep 2018<br><small>1 day</small></td>
-                    <td data-pg-collapsed>
+                    <td data-pg-collapsed><i class="fa fa-flag flag" title="Red flag report involving corruption"></i>
   State governor collecting bribe from contractors</td>
                     <td class="td-small" data-pg-collapsed>Port Harcourt</td>
-                    <td class="pg-empty-placeholder">
-                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
-                        <img src="assets/images/profiles/photo-1521587765099-8835e7201186.jpg" width="35" height="35" /> 
+                    <td>
+                      <div class="relative">
+                        <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                          <img src="assets/images/profiles/photo-1521587765099-8835e7201186.jpg" width="35" height="35" /> 
+                        </div>
+                        <span class="profile-name">Harry</span>
                       </div>
-                      <span class="profile-name">Harry</span>
                     </td>
                     <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
                   </tr>
                   <tr onclick="showReportDetails(this,5)" data-pg-collapsed>
                     <td class="td-small" data-pg-collapsed>04 Sep 2018<br><small>1 day</small></td>
-                    <td data-pg-collapsed>
+                    <td data-pg-collapsed><i class="fa flag fa-bullhorn flag-intervention" title="Intervention report requiring government attention"></i>
   Unconscious woman along ring road</td>
                     <td class="td-small" data-pg-collapsed>Abia </td>
-                    <td class="pg-empty-placeholder">
-                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
-                        <img src="assets/images/profiles/photo-1522720962427-d53e89da4071.jpg" width="35" height="35" /> 
+                    <td>
+                      <div class="relative">
+                        <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                          <img src="assets/images/profiles/photo-1522720962427-d53e89da4071.jpg" width="35" height="35" /> 
+                        </div>
+                        <span class="profile-name">Nkem</span>
                       </div>
-                      <span class="profile-name">Nkem</span>
                     </td>
                     <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
                   </tr>
                   <tr onclick="showReportDetails(this,5)" data-pg-collapsed>
                     <td class="td-small" data-pg-collapsed>02 Sep 2018<br><small>3 days</small></td>
-                    <td data-pg-collapsed>
+                    <td data-pg-collapsed><i class="fa fa-flag flag" title="Red flag report involving corruption"></i>
   Election rigging at Adamawa east LGA unit 5</td>
                     <td class="td-small" data-pg-collapsed>Lagos</td>
-                    <td class="pg-empty-placeholder">
-                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
-                        <img src="assets/images/profiles/photo-1523309828291-0f3e2a853382.jpg" width="35" height="35" /> 
+                    <td>
+                      <div class="relative">
+                        <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                          <img src="assets/images/profiles/photo-1523309828291-0f3e2a853382.jpg" width="35" height="35" /> 
+                        </div>
+                        <span class="profile-name">Jega</span>
                       </div>
-                      <span class="profile-name">Jega</span>
                     </td>
                     <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
                   </tr>
                   <tr onclick="showReportDetails(this,5)" data-pg-collapsed>
                     <td class="td-small" data-pg-collapsed>15 Aug 2018<br><small>1 month</small></td>
-                    <td data-pg-collapsed>
+                    <td data-pg-collapsed><i class="fa fa-flag flag" title="Red flag report involving corruption"></i>
   Police extortion at Aba Market</td>
                     <td class="td-small" data-pg-collapsed>Kano </td>
-                    <td class="pg-empty-placeholder">
-                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
-                        <img src="assets/images/profiles/photo-1526382925646-27b5eb86796e.jpg" width="35" height="35" /> 
+                    <td>
+                      <div class="relative">
+                        <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                          <img src="assets/images/profiles/photo-1526382925646-27b5eb86796e.jpg" width="35" height="35" /> 
+                        </div>
+                        <span class="profile-name">Angela</span>
                       </div>
-                      <span class="profile-name">Angela</span>
                     </td>
                     <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
                   </tr>
                   <tr onclick="showReportDetails(this,5)" data-pg-collapsed>
                     <td class="td-small" data-pg-collapsed>21 Feb 2017<br><small>1 year</small></td>
-                    <td data-pg-collapsed>
+                    <td data-pg-collapsed><i class="fa fa-flag flag" title="Red flag report involving corruption"></i>
   Lecturer extorting students for marks</td>
                     <td class="td-small" data-pg-collapsed>Delta</td>
-                    <td class="pg-empty-placeholder">
-                      <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
-                        <img src="assets/images/profiles/default.jpg" width="35" height="35" /> 
+                    <td>
+                      <div class="relative">
+                        <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
+                          <img src="assets/images/profiles/default.jpg" width="35" height="35" /> 
+                        </div>
+                        <span class="profile-name">Olu</span>
                       </div>
-                      <span class="profile-name">Olu</span>
                     </td>
                     <td class="pg-empty-placeholder text-center" data-pg-collapsed><span class="badge-status status-badge-draft"><i class="fa fa-info-circle no-blink"></i>Pending</span></td>
                   </tr>

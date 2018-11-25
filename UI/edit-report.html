@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <meta name="description" content="Easily report cases of corruption to the appropriate authorities. Users can also report on things that needs government intervention."> 
     <meta name="author" content="Okosun Valentine Ejodamen <valenstical@gmail.com>"> 
-    <title>Power failure for over 3 weeks now|iReporter-Easily report cases of corruption and areas that needs government intervention|Andela Developer Challenge</title>     
+    <title>Edit Report|iReporter-Easily report cases of corruption and areas that needs government intervention|Andela Developer Challenge</title>     
     <link href="assets/images/icons/icon.png" rel="icon" type="image/png"> 
     <link href="assets/css/central.css" rel="stylesheet" type="text/css"> 
     <link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css"> 
@@ -66,67 +66,89 @@
       </div>       
     </nav>     
     <section class="login-wrapper top-space account-wrapper" data-pg-name="Dashboard"> 
-      <section class="heading" data-pg-collapsed> 
-        <div class="wrapper" data-pg-name="Wrapper" data-pg-collapsed> 
+      <section class="heading"> 
+        <div class="wrapper max-width-800" data-pg-name="Wrapper"> 
           <div class="bread" data-pg-collapsed> 
-            <a href="index.html">Home</a> 
-            <i class="fa fa-angle-right"></i> 
-            <a href="user-reports.html">Steven</a> 
-            <i class="fa fa-angle-right"></i> 
-            <a class="active">Power failure for over 3 weeks now</a> 
+            <h1>Edit Report</h1> 
           </div>           
-          <a href="" class="active">Steven</a> 
         </div>         
       </section>       
-      <section> 
+      <form data-pg-collapsed onsubmit="return submitReport()"> 
         <div class="wrapper" data-pg-name="Wrapper"> 
-          <header class="page-title"> 
-</header>           
-          <div class="report-item card card-sm max-width-800"> 
-            <div class="profile-img" title="Verified Citizen"> 
-              <img src="assets/images/profiles/photo-1467400492058-1aad44d4bcd6.jpg" width="50" height="50" /> 
-              <span class="report-item-verified" data-pg-collapsed><i class="fa fa-check"></i></span> 
+          <header class="page-title max-width-800 report-type">
+            <h2 class="report-box-title">Report Type</h2>
+            <p>Is this an incident linked to <ins>corruption</ins> or just something that needs government <ins>intervention</ins></p>
+            <div class="row" data-pg-name="Row">
+              <div class="column column-md-6" data-pg-name="Column">
+                <div class="report-item card card-sm max-width-800 report-box" title="Red Flag Report">
+                  <i class="fa fa-flag flag" title="Red flag report involving corruption"></i>
+                  <h4>Corruption case</h4>
+                  <p>e.g. bribery, extortion, money laundry, e.t.c</p>
+                  <input type="radio" name="type" value="0" data-pg-hidden class="radio-fine">
+                  <div class="pg-empty-placeholder radio-mark"></div>                   
+                </div>
+              </div>
+              <div class="column column-md-6" data-pg-name="Column">
+                <div class="report-item card card-sm max-width-800 report-box">
+                  <i class="fa flag fa-bullhorn flag-intervention" title="Intervention report requiring government attention"></i>
+                  <h4>Intervention Case</h4>
+                  <p>e.g. bad road, collapsed bridge, flooding, e.t.c</p>
+                  <input type="radio" checked name="type" value="1" class="radio-fine" data-pg-hidden>
+                  <div class="pg-empty-placeholder radio-mark"></div>                   
+                </div>
+              </div>
             </div>             
-            <div class="report-item-content"> 
-              <h5>Steven</h5> 
-              <span class="report-item-date" data-pg-collapsed><i class="fa fa-calendar"></i> 12 min ago,</span> 
-              <span class="report-item-date report-item-location" data-pg-collapsed><i class="fa fa-map-marker"></i> Edo</span>
-              <span class="report-item-date report-item-location" data-pg-collapsed title="1 image, 1 video">2 <i class="fa fa-paperclip fa-rotate-90 fa-flip-vertical"></i></span> 
-              <span class="badge-citizen badge-status status-badge-investigating" data-pg-collapsed><i class="fa fa-info-circle"></i>Investigating</span> 
-              <h1 class="report-title">Power failure for over 3 weeks now</h1> 
-              <p data-pg-collapsed>An electric pole fell along my street and no PHCN official has come to do anything since, this is getting out of hand and no one is doing anything about it.<br><br>We even contributed some money to help fix the problem, but nothing till now. </p> 
+          </header>           
+          <div class="report-item card card-sm max-width-800">
+            <div class="form-wrapper" data-pg-collapsed> 
+              <label>Give it a title </label>               
+              <input class="form-element" type="text" name="title" required placeholder="e.g Power outage for over 3 weeks around Aba market" value="Fuel tanker blocking Anthony street"> 
             </div>
-            <i class="fa flag fa-bullhorn flag-intervention" title="Intervention report requiring government attention"></i> 
-          </div>           
-          <div class="report-item card card-sm max-width-800" data-pg-collapsed> 
-            <h2 class="report-box-title">Location</h2> 
-            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d990.5376479398554!2d6.077698829155629!3d6.751481999694993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwNDUnMDUuMyJOIDbCsDA0JzQxLjciRQ!5e0!3m2!1sen!2sng!4v1543046063460" allowfullscreen></iframe>             
-          </div>           
-          <div class="report-item card card-sm max-width-800" data-pg-collapsed> 
-            <h2 class="report-box-title">Media</h2> 
-            <div class="row" data-pg-name="Row"> 
-              <div class="column column-md-4" data-pg-name="Column"> 
-                <a href="assets/uploads/images/felled-electric-poles.jpg" class="media-item" data-zoom> 
-                  <img src="assets/uploads/images/felled-electric-poles.jpg" /> 
-                  <i class="fa fa-search-plus"></i> 
-                </a>                 
-              </div>               
-              <div class="column column-md-4" data-pg-name="Column"> 
-                <a href="https://www.youtube.com/embed/IXIxIkfz5dk?autoplay=1" class="media-item" data-zoom> 
-                  <img src="assets/uploads/images/felled-electric-poles.jpg" /> 
-                  <i class="fa fa-play"></i> 
-                </a>                 
-              </div>               
+            <div class="form-wrapper" data-pg-collapsed> 
+              <label>Tell us 
+                <ins>all</ins> about it 
+              </label>               
+              <textarea class="form-element" name="details" required name="details">
+Oando fuel tanker fell off the road along anthony street. Please get the relevant agency to come help move it off the road and restore.
+</textarea>               
             </div>             
           </div>           
-          <div class="report-item card card-sm max-width-800" data-pg-collapsed> 
-            <h2 class="report-box-title">Share this report</h2> 
-            <p>Help spread the word and bring this issue to the appropriate authorities faster. Please <ins>don't</ins> share reports marked as 'False Claim'.</p> 
-            <a href="https://www.facebook.com/sharer?u={url}" class="social-icon btn-brand btn-secondary" data-share-page target="_blank"><i class="fa fa-facebook-f"></i></a> 
-            <a href="https://twitter.com/intent/tweet?text={url}" class="social-icon btn-brand btn-secondary twitter" data-share-page target="_blank"><i class="fa fa-twitter"></i></a> 
+          <div class="report-item card card-sm max-width-800">
+            <header class="header-create" data-pg-collapsed>
+              <h2 class="report-box-title">Location</h2>
+              <p>Where did this happen? Enter the latitude/longitude. You can use <a href="https://maps.google.com" target="_blank">Goole Map</a> for help.</p>
+              <p class="hidden">Where did this happen? Enter the latitude/longitude or simply use the marker to choose a location from the map</p>
+            </header>
+            <div class="row" data-pg-name="Row">
+              <div class="column-md-6 column column-xs-6" data-pg-name="column-md-6" data-pg-collapsed>
+                <div class="form-wrapper" data-pg-collapsed> 
+                  <label>Latitude</label>                   
+                  <input class="form-element" type="tel" name="lat" required value=" 6.495778"> 
+                </div>
+              </div>
+              <div class="column-md-6 column column-xs-6" data-pg-name="column-md-6" data-pg-collapsed>
+                <div class="form-wrapper" data-pg-collapsed> 
+                  <label>Longitude</label>                   
+                  <input class="form-element" type="tel" name="long" required value="3.146503 "> 
+                </div>
+              </div>
+            </div>             
+          </div>           
+          <div class="report-item card card-sm max-width-800"> 
+            <h2 class="report-box-title">Media </h2>
+            <p>(You already added 2 images, 1 video)</p>
+            <div class="file-upload" data-pg-collapsed>Click here to add more files
+              <br>
+              <small>(Images and Videos ONLY)</small>
+              <input type="file" onchange="displayFileName(this.value)" accept="image/*, video/*" multiple>
+            </div>
+            <small class="file-upload-text"> </small> 
+          </div>
+          <div class="btn-wrapper text-right max-width-800"> 
+            <button class="btn-brand btn-lg" type="submit">Save changes</button>             
           </div>           
         </div>         
-      </section>       
+      </form>       
     </section>     
     <footer class="footer" data-pg-collapsed> 
       <div class="wrapper" data-pg-name="Wrapper"> 

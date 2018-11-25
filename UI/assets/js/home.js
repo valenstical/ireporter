@@ -72,6 +72,11 @@ function changeStatus(){
 
 function deleteReport(){}
 
+function displayFileName(value){
+    $(".file-upload-text").text(value);
+}
+
+
 function init(){
     iteratePopularReports();
 }
