@@ -1,6 +1,6 @@
 
 
-/*@import url('https://fonts.googleapis.com/css?family=Nunito:400,800');*/
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,800');
 
 @-webkit-keyframes blink{
     from{
@@ -2142,7 +2142,7 @@ form label span
     bottom: 0px;
     background-color: rgba(0, 0, 0, 0.34);
     content: '';
-    right: 0px;
+    right: 1.1rem;
 }
 
 .dialog-xs .dialog-content
@@ -2364,10 +2364,9 @@ form .report-box p
 
 .how-item:hover .fa
 {
-  -webkit-transform:scale(1.2,1.2);
-   -o-transform:scale(1.2,1.2);
-   -moz-transform:scale(1.2,1.2);
-   transform:scale(1.2,1.2);
+    -webkit-transform: scale(1.2,1.2);
+    -o-transform: scale(1.2,1.2);
+    -moz-transform: scale(1.2,1.2);
+    transform: scale(1.2,1.2);
 }
-
 
