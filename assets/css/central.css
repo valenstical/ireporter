@@ -409,7 +409,7 @@ small
 .btn-brand:hover
 {
     background: #088373;
-    box-shadow: 0 4px 11px rgba(55, 125, 255, 0.35);
+    box-shadow: 0 4px 11px rgba(8, 131, 115, 0.09);
     -o-transform: translate(0px, -3px);
     -webkit-transform: translate(0px, -3px);
     -moz-transform: translate(0px, -3px);
@@ -992,7 +992,7 @@ form label
 
 .forgot-password:hover
 {
-    color: #377dff;
+    color: #088373;
 }
 
 .login-wrapper .login-register-link
@@ -1506,11 +1506,6 @@ form label span
     margin-top: 20px;
     margin-right: 10px;
     margin-bottom: 10px;
-}
-
-.twitter:hover
-{
-    background-color: #38A1F3;
 }
 
 .bread .bread-full-width
