@@ -117,7 +117,7 @@ function Dialog(id,zIndex){
     location.hash=this.id; 
     $(this.id).show(0,()=>{
         $(this.id).addClass('shown').scrollTop(0);
-        $(window).addClass('no-scroll');
+        $('body').addClass('no-scroll');
     });
     };
 
@@ -126,7 +126,7 @@ function Dialog(id,zIndex){
    
     $(this.id).find('.dialog-content').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend',()=> {
         $(this.id).hide();    
-        $(window).removeClass('no-scroll');
+        $('body').removeClass('no-scroll');
          history.replaceState(null, null, ' ');
     });
      };
