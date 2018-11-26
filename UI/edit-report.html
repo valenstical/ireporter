@@ -22,35 +22,27 @@
       <div class="wrapper" data-pg-name="Wrapper"> 
         <div class="clear-float"> 
           <a href="index.html" class="nav-brand text-brand float-left">iReporter</a> 
-          <ul class="nav-section float-right nav-shown nav-hidden transition" data-pg-name="Nav Section" data-pg-collapsed id="nav-section" onmouseenter="setMenuHidable(false)" onmouseleave="setMenuHidable(true)"> 
+          <ul class="nav-section float-right nav-shown nav-hidden transition" data-pg-name="Nav Section" id="nav-section" onmouseenter="setMenuHidable(false)" onmouseleave="setMenuHidable(true)"> 
             <li data-pg-name="Nav Item"> 
-              <a href="index.html">Home</a> 
+              <a href="reports.html">Discover reports</a> 
             </li>             
             <li data-pg-name="Nav Item"> 
-              <a href="about.html">About</a> 
+              <a href="create-report.html" class="btn-brand">Create report</a> 
             </li>             
-            <li data-pg-name="Nav Item"> 
-              <a href="reports.html">View reports</a> 
-            </li>             
-            <li data-pg-name="Nav Item" class="toggle toggle-pointer" data-pg-collapsed> 
+            <li data-pg-name="Nav Item" class="toggle toggle-pointer"> 
               <a class="nav-profile" data-toggle data-pg-collapsed> 
                 <img src="assets/images/profiles/photo-1467400492058-1aad44d4bcd6.jpg" width="30" /> 
                 <span><i class="fa fa-chevron-down"></i></span> 
-              </a>
+              </a>               
               <ul class="toggle-menu toggle-menu-md" data-pg-name="Toggle Menu"> 
-                <li data-pg-name="Menu Item"> 
-                  <a href="create-report.html">Report a case</a> 
-                </li>                 
-                <li data-pg-name="Divider" class="toggle-line"> 
-</li>
                 <li data-pg-name="Menu Item" data-pg-collapsed> 
-                  <a href="profile.html" class="transition">View my reports</a> 
-                </li>
+                  <a href="profile.html" class="transition">My reports</a> 
+                </li>                 
                 <li data-pg-name="Divider" class="toggle-line"> 
 </li>                 
                 <li data-pg-collapsed data-pg-name="Menu Item"> 
                   <a href="edit-profile.html" class="transition">Edit Profile</a> 
-                </li>
+                </li>                 
                 <li data-pg-name="Divider" class="toggle-line"> 
 </li>                 
                 <li data-pg-collapsed data-pg-name="Menu Item"> 
@@ -75,35 +67,35 @@
       </section>       
       <form data-pg-collapsed onsubmit="return submitReport()"> 
         <div class="wrapper" data-pg-name="Wrapper"> 
-          <header class="page-title max-width-800 report-type">
-            <h2 class="report-box-title">Report Type</h2>
-            <p>Is this an incident linked to <ins>corruption</ins> or just something that needs government <ins>intervention</ins></p>
-            <div class="row" data-pg-name="Row">
-              <div class="column column-md-6" data-pg-name="Column">
-                <div class="report-item card card-sm max-width-800 report-box" title="Red Flag Report">
-                  <i class="fa fa-flag flag" title="Red flag report involving corruption"></i>
-                  <h4>Corruption case</h4>
-                  <p>e.g. bribery, extortion, money laundry, e.t.c</p>
-                  <input type="radio" name="type" value="0" data-pg-hidden class="radio-fine">
+          <header class="page-title max-width-800 report-type"> 
+            <h2 class="report-box-title">Report Type</h2> 
+            <p>Is this an incident linked to <ins>corruption</ins> or just something that needs government <ins>intervention</ins></p> 
+            <div class="row" data-pg-name="Row"> 
+              <div class="column column-md-6" data-pg-name="Column"> 
+                <div class="report-item card card-sm max-width-800 report-box" title="Red Flag Report"> 
+                  <i class="fa fa-flag flag" title="Red flag report involving corruption"></i> 
+                  <h4>Corruption case</h4> 
+                  <p>e.g. bribery, extortion, money laundry, e.t.c</p> 
+                  <input type="radio" name="type" value="0" data-pg-hidden class="radio-fine"> 
                   <div class="pg-empty-placeholder radio-mark"></div>                   
-                </div>
-              </div>
-              <div class="column column-md-6" data-pg-name="Column">
-                <div class="report-item card card-sm max-width-800 report-box">
-                  <i class="fa flag fa-bullhorn flag-intervention" title="Intervention report requiring government attention"></i>
-                  <h4>Intervention Case</h4>
-                  <p>e.g. bad road, collapsed bridge, flooding, e.t.c</p>
-                  <input type="radio" checked name="type" value="1" class="radio-fine" data-pg-hidden>
+                </div>                 
+              </div>               
+              <div class="column column-md-6" data-pg-name="Column"> 
+                <div class="report-item card card-sm max-width-800 report-box"> 
+                  <i class="fa flag fa-bullhorn flag-intervention" title="Intervention report requiring government attention"></i> 
+                  <h4>Intervention Case</h4> 
+                  <p>e.g. bad road, collapsed bridge, flooding, e.t.c</p> 
+                  <input type="radio" checked name="type" value="1" class="radio-fine" data-pg-hidden> 
                   <div class="pg-empty-placeholder radio-mark"></div>                   
-                </div>
-              </div>
+                </div>                 
+              </div>               
             </div>             
           </header>           
-          <div class="report-item card card-sm max-width-800">
+          <div class="report-item card card-sm max-width-800"> 
             <div class="form-wrapper" data-pg-collapsed> 
               <label>Give it a title </label>               
               <input class="form-element" type="text" name="title" required placeholder="e.g Power outage for over 3 weeks around Aba market" value="Fuel tanker blocking Anthony street"> 
-            </div>
+            </div>             
             <div class="form-wrapper" data-pg-collapsed> 
               <label>Tell us 
                 <ins>all</ins> about it 
@@ -113,37 +105,37 @@ Oando fuel tanker fell off the road along anthony street. Please get the relevan
 </textarea>               
             </div>             
           </div>           
-          <div class="report-item card card-sm max-width-800">
-            <header class="header-create" data-pg-collapsed>
-              <h2 class="report-box-title">Location</h2>
-              <p>Where did this happen? Enter the latitude/longitude. You can use <a href="https://maps.google.com" target="_blank">Goole Map</a> for help.</p>
-              <p class="hidden">Where did this happen? Enter the latitude/longitude or simply use the marker to choose a location from the map</p>
-            </header>
-            <div class="row" data-pg-name="Row">
-              <div class="column-md-6 column column-xs-6" data-pg-name="column-md-6" data-pg-collapsed>
+          <div class="report-item card card-sm max-width-800"> 
+            <header class="header-create" data-pg-collapsed> 
+              <h2 class="report-box-title">Location</h2> 
+              <p>Where did this happen? Enter the latitude/longitude. You can use <a href="https://maps.google.com" target="_blank">Goole Map</a> for help.</p> 
+              <p class="hidden">Where did this happen? Enter the latitude/longitude or simply use the marker to choose a location from the map</p> 
+            </header>             
+            <div class="row" data-pg-name="Row"> 
+              <div class="column-md-6 column column-xs-6" data-pg-name="column-md-6" data-pg-collapsed> 
                 <div class="form-wrapper" data-pg-collapsed> 
                   <label>Latitude</label>                   
                   <input class="form-element" type="tel" name="lat" required value=" 6.495778"> 
-                </div>
-              </div>
-              <div class="column-md-6 column column-xs-6" data-pg-name="column-md-6" data-pg-collapsed>
+                </div>                 
+              </div>               
+              <div class="column-md-6 column column-xs-6" data-pg-name="column-md-6" data-pg-collapsed> 
                 <div class="form-wrapper" data-pg-collapsed> 
                   <label>Longitude</label>                   
                   <input class="form-element" type="tel" name="long" required value="3.146503 "> 
-                </div>
-              </div>
+                </div>                 
+              </div>               
             </div>             
           </div>           
           <div class="report-item card card-sm max-width-800"> 
-            <h2 class="report-box-title">Media </h2>
-            <p>(You already added 2 images, 1 video)</p>
+            <h2 class="report-box-title">Media </h2> 
+            <p>(You already added 2 images, 1 video)</p> 
             <div class="file-upload" data-pg-collapsed>Click here to add more files
-              <br>
-              <small>(Images and Videos ONLY)</small>
-              <input type="file" onchange="displayFileName(this.value)" accept="image/*, video/*" multiple>
-            </div>
+              <br> 
+              <small>(Images and Videos ONLY)</small> 
+              <input type="file" onchange="displayFileName(this.value)" accept="image/*, video/*" multiple> 
+            </div>             
             <small class="file-upload-text"> </small> 
-          </div>
+          </div>           
           <div class="btn-wrapper text-right max-width-800"> 
             <button class="btn-brand btn-lg" type="submit">Save changes</button>             
           </div>           
@@ -152,7 +144,7 @@ Oando fuel tanker fell off the road along anthony street. Please get the relevan
     </section>     
     <footer class="footer" data-pg-collapsed> 
       <div class="wrapper" data-pg-name="Wrapper"> 
-        <p class="float-right" data-pg-collapsed><a href="terms.html">Terms &amp; Conditions</a><a href="privacy-policy.html">Privacy Policy</a><a href="admin-login.html">Admin</a></p> 
+        <p class="float-right" data-pg-collapsed><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a><a href="admin-login.html">Admin</a></p> 
         <p class="float-left">&copy; 2018 iReporter.</p> 
       </div>       
     </footer>     
