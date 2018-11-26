@@ -18,7 +18,7 @@
     <![endif]-->     
   </head>   
   <body class="bg-grey"> 
-    <aside class="dialog dialog-xs" data-pg-name="Dialog" id="dialogStatus" data-pg-collapsed> 
+    <aside class="dialog dialog-xs" data-pg-name="Dialog" id="dialogStatus"> 
       <div class="pg-empty-placeholder dialog-overlay" data-pg-name="Dialog Overlay"></div>       
       <form class="dialog-content transition-fast" data-pg-name="Dialog Content" onsubmit="return changeStatus()"> 
         <div class="dialog-header" data-pg-name="Dialog Header" data-pg-collapsed> 
@@ -27,22 +27,17 @@
         <div class="dialog-body" data-pg-name="Dialog Body"> 
           <div data-pg-collapsed> 
             <label> 
-              <input type="radio" name="status" value="0"> Pending
-            </label>             
-          </div>           
-          <div data-pg-collapsed> 
-            <label> 
               <input type="radio" name="status" value="0" checked="checked"> Under Investigation
             </label>             
-          </div>           
+          </div>
           <div data-pg-collapsed> 
             <label> 
-              <input type="radio" name="status" value="0"> Resolved
+              <input type="radio" name="status" value="1"> Rejected
             </label>             
           </div>           
           <div data-pg-collapsed> 
             <label> 
-              <input type="radio" name="status" value="0"> Rejected
+              <input type="radio" name="status" value="2"> Resolved
             </label>             
           </div>           
         </div>         
@@ -51,7 +46,7 @@
         </div>         
       </form>       
     </aside>     
-    <aside class="dialog" data-pg-name="Dialog" id="dialogDetails"> 
+    <aside class="dialog" data-pg-name="Dialog" id="dialogDetails" data-pg-collapsed> 
       <div class="pg-empty-placeholder dialog-overlay" data-pg-name="Dialog Overlay"></div>       
       <div class="dialog-content transition-fast" data-pg-name="Dialog Content"> 
         <div class="dialog-header" data-pg-name="Dialog Header"> 
