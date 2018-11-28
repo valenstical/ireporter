@@ -1619,6 +1619,7 @@ form label span
 {
     padding: 8px 15px;
     margin-right: 5px;
+    font-size: 15px;
 }
 
 .heading .btn-brand:hover
@@ -2018,14 +2019,6 @@ form label span
     position: relative;
 }
 
-@media (min-width:480px)
-{
-    .dialog .report-item .badge-status
-    {
-        margin-top: -23px;
-    }
-}
-
 .no-scroll
 {
     overflow: hidden;
@@ -2362,5 +2355,17 @@ form .report-box p
 
 .profile-wrapper .report-item p
 {
+}
+
+.disabled
+{
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+
+.report-box input[disabled]
+{
+    cursor: not-allowed;
 }
 
