@@ -72,20 +72,20 @@
             <p>Is this an incident linked to <ins>corruption</ins> or just something that needs government <ins>intervention</ins></p> 
             <div class="row" data-pg-name="Row"> 
               <div class="column column-md-6" data-pg-name="Column"> 
-                <div class="report-item card card-sm max-width-800 report-box" title="Red Flag Report"> 
+                <div class="report-item card card-sm max-width-800 report-box disabled" title="Red Flag Report"> 
                   <i class="fa fa-flag flag" title="Red flag report involving corruption"></i> 
                   <h4>Corruption case</h4> 
                   <p>e.g. bribery, extortion, money laundry, e.t.c</p> 
-                  <input type="radio" name="type" value="0" data-pg-hidden class="radio-fine"> 
+                  <input type="radio" name="type" value="0" class="radio-fine" disabled> 
                   <div class="pg-empty-placeholder radio-mark"></div>                   
                 </div>                 
               </div>               
               <div class="column column-md-6" data-pg-name="Column"> 
-                <div class="report-item card card-sm max-width-800 report-box"> 
+                <div class="report-item card card-sm max-width-800 report-box disabled"> 
                   <i class="fa flag fa-bullhorn flag-intervention" title="Intervention report requiring government attention"></i> 
                   <h4>Intervention Case</h4> 
                   <p>e.g. bad road, collapsed bridge, flooding, e.t.c</p> 
-                  <input type="radio" checked name="type" value="1" class="radio-fine" data-pg-hidden> 
+                  <input type="radio" checked name="type" value="1" class="radio-fine" data-pg-hidden disabled> 
                   <div class="pg-empty-placeholder radio-mark"></div>                   
                 </div>                 
               </div>               
@@ -93,25 +93,25 @@
           </header>           
           <div class="report-item card card-sm max-width-800"> 
             <div class="form-wrapper" data-pg-collapsed> 
-              <label>Give it a title </label>               
+              <label>Title </label>               
               <input class="form-element" type="text" name="title" required placeholder="e.g Power outage for over 3 weeks around Aba market" value="Fuel tanker blocking Anthony street"> 
             </div>             
             <div class="form-wrapper" data-pg-collapsed> 
-              <label>Tell us 
-                <ins>all</ins> about it 
-              </label>               
+              <label>Details
+</label>               
               <textarea class="form-element" name="details" required name="details">
 Oando fuel tanker fell off the road along anthony street. Please get the relevant agency to come help move it off the road and restore.
 </textarea>               
-            </div>             
+            </div>
+            <button class="btn-brand btn-lg" type="submit">Save changes</button>             
           </div>           
           <div class="report-item card card-sm max-width-800"> 
             <header class="header-create" data-pg-collapsed> 
               <h2 class="report-box-title">Location</h2> 
-              <p>Where did this happen? Enter the latitude/longitude. You can use <a href="https://maps.google.com" target="_blank">Goole Map</a> for help.</p> 
+              <p>Where did this happen? Enter the latitude/longitude. You can use <a href="https://maps.google.com" target="_blank">Google Map</a> for help.</p> 
               <p class="hidden">Where did this happen? Enter the latitude/longitude or simply use the marker to choose a location from the map</p> 
             </header>             
-            <div class="row" data-pg-name="Row"> 
+            <div class="row" data-pg-name="Row" data-pg-collapsed> 
               <div class="column-md-6 column column-xs-6" data-pg-name="column-md-6" data-pg-collapsed> 
                 <div class="form-wrapper" data-pg-collapsed> 
                   <label>Latitude</label>                   
@@ -124,7 +124,8 @@ Oando fuel tanker fell off the road along anthony street. Please get the relevan
                   <input class="form-element" type="tel" name="long" required value="3.146503 "> 
                 </div>                 
               </div>               
-            </div>             
+            </div>
+            <button class="btn-brand btn-lg" type="submit">Save changes</button>             
           </div>           
           <div class="report-item card card-sm max-width-800"> 
             <h2 class="report-box-title">Media </h2> 
@@ -135,9 +136,6 @@ Oando fuel tanker fell off the road along anthony street. Please get the relevan
               <input type="file" onchange="displayFileName(this.value)" accept="image/*, video/*" multiple> 
             </div>             
             <small class="file-upload-text"> </small> 
-          </div>           
-          <div class="btn-wrapper text-right max-width-800"> 
-            <button class="btn-brand btn-lg" type="submit">Save changes</button>             
           </div>           
         </div>         
       </form>       
