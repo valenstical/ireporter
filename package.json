@@ -3,21 +3,21 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node app/server.js",
     "lint": "eslint .",
-    "fix": "eslint --fix ."        
+    "fix": "eslint --fix .",
+    "test": "mocha"
   },
   "dependencies": {
-    "cookie-parser": "^1.4.3",
-    "debug": "^4.1.0",
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
-    "http-errors": "^1.7.1",
-    "morgan": "^1.9.1",
     "salita": "^0.11.1"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "eslint": "^5.9.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.14.0"
+    "eslint-plugin-import": "^2.14.0",
+    "mocha": "^5.2.0"
   }
 }

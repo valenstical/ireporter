@@ -46,6 +46,7 @@ let menuHidable = true;
 const dialogDetails = new Dialog('#dialogDetails', 120);
 const dialogStatus = new Dialog('#dialogStatus', 121);
 
+
 function iteratePopularReports() {
   const len = POPULAR_REPORTS.length;
   let index = 1;
@@ -57,77 +58,63 @@ function iteratePopularReports() {
   }, 3000);
 }
 
-/* exported show */
 function toggleMenu() {
   $('#nav-section').toggleClass('nav-hidden');
 }
 
-/* exported */
 function hideMenu() {
   if (menuHidable) {
     $('#nav-section').addClass('nav-hidden');
   }
 }
 
-/* exported */
 function setMenuHidable(hidable) {
   menuHidable = hidable;
 }
 
-/* exported */
 function recoverPassword() {
 
 }
 
-/* exported */
 function login() {
   window.location.assign('reports.html');
   return false;
 }
 
-/* exported */
 function register() {
   return login();
 }
 
-/* exported */
 function adminLogin() {
   window.location.assign('admin-reports.html');
   return false;
 }
 
-/* exported */
 function uploadProfile() {
   $('.delete-file-chooser').click();
 }
 
-/* exported */
 function getReports(element, status) {
   $(element).siblings('.active').removeClass('active');
   $(element).addClass('active');
 }
 
-/* exported */
 function showReportDetails(element, id) {
   // Fetch records and populate dialog
   dialogDetails.showDialog();
 }
 
-/* exported */
 function chooseStatus() {
   dialogStatus.showDialog();
 }
 
-/* exported */
 function changeStatus() {
   dialogStatus.hideDialog();
   return false;
 }
 
-/* exported */
 function deleteReport() {}
 
-/* exported */
 function displayFileName(value) {
   $('.file-upload-text').text(value);
 }
