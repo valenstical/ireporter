@@ -1,7 +1,4 @@
-
 *.properties
-nbproject/private/private.xml
-nbproject/project.xml
 pinegrow.json
-/ireporter/nbproject/private/
-/nbproject/private/
+/nbproject/
+/node_modules/
