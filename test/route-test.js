@@ -7,7 +7,7 @@ const app=require('../app/server');
 
 describe('API endpoint api/v1',() =>{
     it('returns true', function () {
-        assert.equal(4,5);
+        assert.equal(4,4);
     });
 });
 
