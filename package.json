@@ -1,0 +1,23 @@
+{
+  "name": "ireporter",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app/server.js",
+    "lint": "eslint .",
+    "fix": "eslint --fix .",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "salita": "^0.11.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "mocha": "^5.2.0"
+  }
+}

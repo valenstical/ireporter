@@ -124,7 +124,7 @@ a
 {
     display: inline-block;
     text-decoration: none;
-    color: #377dff;
+    color: #088373;
 }
 
 body
@@ -179,7 +179,6 @@ body
 
 .btn-brand
 {
-    background-color: #377dff;
     color: white;
     -webkit-transition: all 300ms;
     -moz-transition: all 300ms;
@@ -192,6 +191,7 @@ body
     border-radius: 4px;
     font-weight: bold;
     border: 1px solid transparent;
+    background-color: #009f8b;
 }
 
 .transition
@@ -237,7 +237,7 @@ body
     right: 0px;
     top: 0px;
     bottom: 0px;
-    background: linear-gradient(to bottom,rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.52),transparent);
+    background: linear-gradient(to bottom,rgba(0, 0, 0, 0.59),rgba(0, 0, 0, 0.92),transparent);
     content: "";
 }
 
@@ -299,7 +299,7 @@ body
 
 .text-brand
 {
-    color: #377dff;
+    color: #088373;
 }
 
 .nav-brand
@@ -361,14 +361,14 @@ small
 
 .how-item .fa
 {
-    background-color: #ebf2ff;
+    background-color: rgba(8, 131, 115, 0.09);
     width: 70px;
     height: 70px;
     padding-top: 18px;
     font-size: 30px;
     overflow: inherit;
     border-radius: 100%;
-    color: #377dff;
+    color: #088373;
     margin-bottom: 40px;
     text-align: center;
 }
@@ -389,14 +389,6 @@ small
     margin-right: auto;
 }
 
-.how-item:hover
-{
-    background-color: #377dff;
-    color: white;
-    box-shadow: none;
-    border-color: #377dff;
-}
-
 .text-upper
 {
     text-transform: uppercase;
@@ -409,15 +401,15 @@ small
 
 .btn-secondary
 {
-    background-color: #ebf2ff;
-    color: #377dff;
+    background-color: rgba(8, 131, 115, 0.07);
+    color: #088373;
     font-weight: bold;
 }
 
 .btn-brand:hover
 {
-    background: #377dff;
-    box-shadow: 0 4px 11px rgba(55, 125, 255, 0.35);
+    background: #088373;
+    box-shadow: 0 4px 11px rgba(8, 131, 115, 0.09);
     -o-transform: translate(0px, -3px);
     -webkit-transform: translate(0px, -3px);
     -moz-transform: translate(0px, -3px);
@@ -514,8 +506,10 @@ h6
     font-size: 9px;
     border-radius: 30px;
     margin-top: 5px;
-    border: 1px solid #00c9a7;
     letter-spacing: 1px;
+    background-color: #00c9a7;
+    color: white;
+    font-weight: bold;
 }
 
 .report-item h6,
@@ -613,14 +607,17 @@ h6
 .report-item .badge-status
 {
     margin-top: 10px;
+    color: white;
+    display: block;
+    max-width: 100px;
     margin-left: 70px;
+    text-align: center;
 }
 
 .badge-status .fa
 {
     margin-right: 5px;
-    font-weight: bold;
-    color: #00c9a7;
+    color: inherit;
 }
 
 .report-item-link
@@ -631,22 +628,17 @@ h6
 
 .status-badge-rejected
 {
-    border-color: #e14837;
-}
-
-.status-badge-rejected .fa
-{
-    color: #e14837;
+    background-color: #e14837;
 }
 
 .status-badge-investigating
 {
     border-color: #ffc107;
+    background-color: #f0ad4e;
 }
 
 .status-badge-investigating .fa
 {
-    color: #ffc107;
     -webkit-animation: blink 300ms linear 0s infinite alternate;
     -o-animation: blink 300ms linear 0s infinite alternate;
     -moz-animation: blink 300ms linear 0s infinite alternate;
@@ -655,8 +647,8 @@ h6
 
 .round-info
 {
-    background-color: #ebf2ff;
-    color: #377dff;
+    background-color: rgba(8, 131, 115, 0.07);
+    color: #088373;
 }
 
 .round-danger
@@ -667,7 +659,7 @@ h6
 
 .footer
 {
-    background-color: #377dff;
+    background-color: #088373;
     color: rgba(255, 255, 255, 0.81);
     padding-top: 10px;
     overflow: auto;
@@ -740,7 +732,6 @@ h6
     padding-right: 0px;
     padding-left: 0px;
     font-size: 20px;
-    color: #377dff;
 }
 
 button
@@ -797,7 +788,7 @@ button
 {
     background-color: transparent;
     border: none;
-    color: #377dff;
+    color: #009f8b;
     font-size: 20px;
     float: right;
     position: relative;
@@ -850,14 +841,6 @@ button
 
 @media (min-width:480px)
 {
-    .report-item .badge-status
-    {
-        top: 0px;
-        right: 0px;
-        margin-left: 0px;
-        float: right;
-        margin-top: 0px;
-    }
     .report-item-content
     {
         margin-left: 70px;
@@ -978,8 +961,8 @@ form label
 
 .form-element:focus
 {
-    box-shadow: 0 0 25px rgba(55, 125, 255, 0.1);
-    border-color: rgba(55, 125, 255, 0.5);
+    box-shadow: 0 0 25px rgba(8, 131, 115, 0.1);
+    border-color: rgba(8, 131, 115, 0.6);
 }
 
 .login-wrapper form h1
@@ -1009,7 +992,7 @@ form label
 
 .forgot-password:hover
 {
-    color: #377dff;
+    color: #088373;
 }
 
 .login-wrapper .login-register-link
@@ -1149,7 +1132,7 @@ form label span
 
 .navigation li a:hover
 {
-    color: #377dff;
+    color: #088373;
 }
 
 .navigation li .btn-brand:hover
@@ -1164,6 +1147,7 @@ form label span
     padding-top: 50px;
     padding-bottom: 50px;
     margin-top: 55px;
+    background: #009f8b;
 }
 
 .bread
@@ -1524,11 +1508,6 @@ form label span
     margin-bottom: 10px;
 }
 
-.twitter:hover
-{
-    background-color: #38A1F3;
-}
-
 .bread .bread-full-width
 {
     max-width: 100%;
@@ -1619,12 +1598,7 @@ form label span
 
 .status-badge-draft
 {
-    border-color: #302c2c;
-}
-
-.status-badge-draft .fa
-{
-    color: #2c2b2b;
+    background-color: #302c2c;
 }
 
 .lazy
@@ -1645,12 +1619,13 @@ form label span
 {
     padding: 8px 15px;
     margin-right: 5px;
+    font-size: 15px;
 }
 
 .heading .btn-brand:hover
 {
-    background-color: #ebf2ff;
-    color: #377dff;
+    background-color: #eff2f9;
+    color: #009f8b;
 }
 
 .heading .btn-brand span
@@ -1676,6 +1651,7 @@ form label span
     width: 40px;
     padding: 10px 0px 0px;
     height: 40px;
+    background-color: #ebf2ff;
 }
 
 @media (min-width:480px)
@@ -1765,11 +1741,6 @@ form label span
     background-color: #f8fafd;
 }
 
-.table .badge-status
-{
-    font-weight: normal;
-}
-
 .table .report-item-location
 {
     font-weight: normal;
@@ -1829,13 +1800,13 @@ form label span
 
 .tab a.active
 {
-    border-bottom: 2px solid #377dff;
-    color: #377dff;
+    border-bottom: 2px solid #009f8b;
+    color: #009f8b;
 }
 
 .tab a:hover
 {
-    color: #377dff;
+    color: #009f8b;
 }
 
 .tab-pending::before
@@ -2048,14 +2019,6 @@ form label span
     position: relative;
 }
 
-@media (min-width:480px)
-{
-    .dialog .report-item .badge-status
-    {
-        margin-top: -23px;
-    }
-}
-
 .no-scroll
 {
     overflow: hidden;
@@ -2142,7 +2105,7 @@ form label span
     bottom: 0px;
     background-color: rgba(0, 0, 0, 0.34);
     content: '';
-    right: 1.1rem;
+    right: 0px;
 }
 
 .dialog-xs .dialog-content
@@ -2170,6 +2133,8 @@ form label span
     position: relative;
     left: 0px;
     right: 0px;
+    display: block;
+    margin-bottom: 10px;
 }
 
 .nav-section .toggle-menu::before
@@ -2267,8 +2232,8 @@ form .report-box p
     width: 50%;
     height: 5px;
     content: "";
-    border-left: 5px solid #377dff;
-    border-bottom: 5px solid #377dff;
+    border-left: 5px solid #088373;
+    border-bottom: 5px solid #088373;
     -webkit-transition: 300ms;
     -moz-transition: 300ms;
     -o-transition: 300ms;
@@ -2359,6 +2324,8 @@ form .report-box p
         min-width: 150px;
         max-width: auto;
         left: auto;
+        display: none;
+        margin-bottom: 0px;
     }
 }
 
@@ -2368,5 +2335,37 @@ form .report-box p
     -o-transform: scale(1.2,1.2);
     -moz-transform: scale(1.2,1.2);
     transform: scale(1.2,1.2);
+}
+
+@media (min-width:768px)
+{
+    .dialog-overlay
+    {
+        right: 1.1rem;
+    }
+}
+
+@media (min-width:480px)
+{
+    .report-item .badge-status
+    {
+        margin-left: 0px;
+    }
+}
+
+.profile-wrapper .report-item p
+{
+}
+
+.disabled
+{
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+
+.report-box input[disabled]
+{
+    cursor: not-allowed;
 }
 
