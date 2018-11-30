@@ -8,7 +8,7 @@ after_success:
 - npm run coverage
 addons:
     code_climate:
-        repo_token: fd3130be92f9be2ea93a77a660cb01cdea96c10c95c2971f790f7a0376604d30
+        repo_token: e6f648848c87ac2be5aad3ee6ebac26afa249b2e93eaa163fc45ae4e689366df
 script: istanbul cover node_modules/mocha/bin/_mocha -- -R spec
 before_script:
   - npm install codeclimate-test-reporter istanbul -g
