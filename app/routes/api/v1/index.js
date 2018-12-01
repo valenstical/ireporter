@@ -22,5 +22,15 @@ router.get('/red-flags/',(req,res) =>{
     echo(res,config.STATUS_OK,incidents.getIncidents());
 });
 
+router.get('/red-flags/:id',(req,res) =>{
+    const incident=incidents.getIncident(req.params.id);
+    if (incident===false) {
+        error(res,config.STATUS_NOT_FOUND,'No incident matching that id');
+    }
+    else{
+        echo(res,config.STATUS_OK,incident);
+    }
+});
+
 
 module.exports = router;
