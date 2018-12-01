@@ -25,6 +25,31 @@ describe('API endpoints for get requests', () =>{
                     expect(res.body.status).to.equal(config.STATUS_OK);
                     expect(res.body.data).to.be.an('array');
         });
-    });  
+    });
     
+    it('should get a specific incident with id 34567', function () {
+        chai.request(app)
+                .get('/api/v1/red-flags/34567')
+                .then((res) =>{
+                    expect(res).to.have.status(config.STATUS_OK);
+                    expect(res).to.be.json;
+                    expect(res.body).to.have.property('status');
+                    expect(res.body).to.have.property('data');
+                    expect(res.body.status).to.equal(config.STATUS_OK);
+                    expect(res.body.data).to.be.an('array');
+        });
+    });
+    
+    it('should return 404 not found error for invalid incident id', function () {
+        chai.request(app)
+                .get('/api/v1/red-flags/INVALID_ID')
+                .then((res) =>{
+                    expect(res).to.have.status(config.STATUS_NOT_FOUND);
+                    expect(res).to.be.json;
+                    expect(res.body).to.have.property('status');
+                    expect(res.body).to.have.property('error');
+                    expect(res.body.status).to.equal(config.STATUS_NOT_FOUND);
+                    expect(res.body.error).to.be.an('string');
+        });
+    });    
 });
