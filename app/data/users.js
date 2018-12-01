@@ -7,7 +7,7 @@ const users = [
     email: 'steven@gmail.com',
     phoneNumber: '08045983458',
     username: 'steven4life',
-    registered: new Date(2017-09-21),
+    registered: new Date('2017-09-21'),
     isAdmin: false
   },
   {
@@ -18,7 +18,7 @@ const users = [
     email: 'bernice@gmail.com',
     phoneNumber: '09056780923',
     username: 'bern45',
-    registered: new Date(2018-05-09),
+    registered: new Date('2018-05-09'),
     isAdmin: false
   },
   {
@@ -29,7 +29,7 @@ const users = [
     email: 'presidentbuhari@gmail.com',
     phoneNumber: '08094587340',
     username: 'bububu',
-    registered: new Date(2018-02-24),
+    registered: new Date('2018-02-24'),
     isAdmin: false
   },
   {
@@ -40,7 +40,7 @@ const users = [
     email: 'jona@gmail.com',
     phoneNumber: '08094678903',
     username: 'jona4president',
-    registered: new Date(2018-11-27),
+    registered: new Date('2018-11-27'),
     isAdmin: false
   },
   {
@@ -51,7 +51,7 @@ const users = [
     email: 'yaradua.musa@gmail.com',
     phoneNumber: '07034980923',
     username: 'musmus',
-    registered: new Date(2018-12-17),
+    registered: new Date('2018-12-17'),
     isAdmin: false
   },
   {
@@ -62,7 +62,7 @@ const users = [
     email: 'olusegun.obasanjo@gmail.com',
     phoneNumber: '08094678934',
     username: 'babashege',
-    registered: new Date(2018-07-12),
+    registered: new Date('2018-07-12'),
     isAdmin: false
   },
   {
@@ -73,7 +73,7 @@ const users = [
     email: 'abacha4love@gmail.com',
     phoneNumber: '09045898456',
     username: 'fellownigerians',
-    registered: new Date(2017-03-28),
+    registered: new Date('2017-03-28'),
     isAdmin: false
   },
   {
@@ -84,7 +84,7 @@ const users = [
     email: 'ibb@gmail.com',
     phoneNumber: '09083478945',
     username: 'evilgenius',
-    registered: new Date(2018-11-12),
+    registered: new Date('2018-11-12'),
     isAdmin: false
   },
   {
@@ -95,7 +95,7 @@ const users = [
     email: 'barackobama@gmail.com',
     phoneNumber: '08078984657',
     username: 'blackpresident',
-    registered: new Date(2018-07-04),
+    registered: new Date('2018-07-04'),
     isAdmin: false
   },
     {
@@ -106,7 +106,7 @@ const users = [
     email: 'valentino@gmail.com',
     phoneNumber: '09089348765',
     username: 'valentino',
-    registered: new Date(2017-01-01),
+    registered: new Date('2017-01-01'),
     isAdmin: true
   }
 ];
