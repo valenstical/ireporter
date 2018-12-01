@@ -9,3 +9,10 @@ function User(id,firstName,lastName,otherNames,email,phoneNumber,username,regist
     this.registered=registered;
     this.isAdmin=isAdmin;
 }
+
+
+
+
+
+
+
