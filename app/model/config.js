@@ -5,8 +5,12 @@ const STATUS_NO_CONTENT=204;
 
 const STATUS_NOT_FOUND=404;
 
-const echo=(status,data)=>{
-    return {status:status,data:data};
+const echo=(code,data)=>{
+    return {status:code,data:data};
 };
 
-module.exports={echo,STATUS_OK,STATUS_CREATED,STATUS_NO_CONTENT,STATUS_NOT_FOUND};
+const error=(code,message) =>{
+    return {status:code,error:message};
+};
+
+module.exports={echo,error,STATUS_OK,STATUS_CREATED,STATUS_NO_CONTENT,STATUS_NOT_FOUND};
