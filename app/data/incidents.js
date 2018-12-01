@@ -1,7 +1,7 @@
 const incidents = [
   {
     id: 45078,
-    createdOn: new Date(2018-04-12),
+    createdOn: new Date('2018-04-12'),
     createdBy: 56789,
     type: 'intervention',
     location: '6.2987309, 3.1096734',
@@ -13,7 +13,7 @@ const incidents = [
   },
   {
     id: 34567,
-    createdOn: new Date(2018-11-14),
+    createdOn: new Date('2018-11-14'),
     createdBy: 690345,
     type: 'intervention',
     location: '6.1267890, 3.5678903',
@@ -25,7 +25,7 @@ const incidents = [
   },
   {
     id: 90846,
-    createdOn: new Date(2018-04-19),
+    createdOn: new Date('2018-04-19'),
     createdBy: 690345,
     type: 'red-flag',
     location: '6.6789034, 3.1205679',
@@ -37,7 +37,7 @@ const incidents = [
   },
   {
     id: 12780,
-    createdOn: new Date(2018-09-21),
+    createdOn: new Date('2018-09-21'),
     createdBy: 56789,
     type: 'red-flag',
     location: '6.4567890, 3.1234567',
@@ -49,7 +49,7 @@ const incidents = [
   },
   {
     id: 89045,
-    createdOn: new Date(2018-11-06),
+    createdOn: new Date('2018-11-06'),
     createdBy: 30127,
     type: 'red-flag',
     location: '6.4567890, 3.1256789',
@@ -61,7 +61,7 @@ const incidents = [
   },
   {
     id: 12038,
-    createdOn: new Date(2018-03-17),
+    createdOn: new Date('2018-03-17'),
     createdBy: 57890,
     type: 'red-flag',
     location: '6.4589045, 3.1256783',
@@ -73,7 +73,7 @@ const incidents = [
   },
   {
     id: 76519,
-    createdOn: new Date(2018-07-22),
+    createdOn: new Date('2018-07-22'),
     createdBy: 30127,
     type: 'red-flag',
     location: '6.6754346, 3.3324569',
@@ -85,7 +85,7 @@ const incidents = [
   },
   {
     id: 98456,
-    createdOn: new Date(2018-07-27),
+    createdOn: new Date('2018-07-27'),
     createdBy: 49045,
     type: 'red-flag',
     location: '6.2890934, 3.4109845',
@@ -97,7 +97,7 @@ const incidents = [
   },
     {
     id: 30978,
-    createdOn: new Date(2018-08-29),
+    createdOn: new Date('2018-08-29'),
     createdBy: 49045,
     type: 'intervention',
     location: '6.2890934, 3.4109845',
@@ -114,11 +114,10 @@ const getIncidents=()=>{
 };
 
 const getIncident=(id)=>{
-    incidents.forEach((item)=>{
-        if (item.id===id) {
-            return item;
-        }
+    const result=incidents.filter((item) =>{
+        return item.id==id;
     });
+    return result.length===0?false:result;
 };
 
 

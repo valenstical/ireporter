@@ -7,7 +7,7 @@ chai.use(require('chai-http'));
 const app=require('../app/server').app;
 const stop=require('../app/server').stop;
 
-describe('Server handle incomming requests with proper status codes',function(){
+describe('Server',function(){
   after(() => {
     stop();
   });
@@ -19,6 +19,7 @@ describe('Server handle incomming requests with proper status codes',function(){
                     expect(res).to.have.status(config.STATUS_OK);
                     expect(res).to.be.json;
                     expect(res.body).to.be.an('object');
+                    expect(res.body).to.have.property('message');
                     expect(res.body.message).to.not.be.empty;
         });
     }); 
@@ -30,6 +31,7 @@ describe('Server handle incomming requests with proper status codes',function(){
                    expect(res).to.have.status(config.STATUS_OK);
                    expect(res).to.be.json;
                    expect(res.body).to.be.an('object');
+                   expect(res.body).to.have.property('message');                   
                    expect(res.body.message).to.not.be.empty;
         });
     });
@@ -41,11 +43,8 @@ describe('Server handle incomming requests with proper status codes',function(){
                     expect(res).to.have.status(config.STATUS_NOT_FOUND);
                     expect(res).to.be.json;
                     expect(res.body).to.be.an('object');
-                    expect(res.body).to.have.property('status');
-                    expect(res.body).to.have.property('status');
-                    expect(res.body).to.have.property('error');
-                    expect(res.body.status).to.equal(config.STATUS_NOT_FOUND);
-                    expect(res.body.error).to.be.a('string');
+                    expect(res.body).to.have.property('message');                    
+                    expect(res.body.message).to.not.be.empty;    
         });
     });
     
