@@ -25,6 +25,6 @@ describe('API endpoints for get requests', () =>{
                     expect(res.body.status).to.equal(config.STATUS_OK);
                     expect(res.body.data).to.be.an('array');
         });
-    });
-
+    });  
+    
 });
