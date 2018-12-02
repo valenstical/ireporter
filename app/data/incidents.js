@@ -139,17 +139,24 @@ function createIncident(id,body){
     });   
 }
 
-function updateIncidentLocation(id,longitude,latitude){
-    let index=-1;
+function updateIncident(id,longitude,latitude,comment){
+    let index=-1; let key='comment';
     const incident=incidents.find((item,pos) =>{
         index=pos;
         return item.id.toString()===id.toString();
     });
-    incident.longitude=longitude;
-    incident.latitude=latitude;
+    if (comment===null) {
+      incident.longitude=longitude;
+      incident.latitude=latitude;
+      key='location';
+    }
+    else{
+       incident.comment=comment;
+    }
     incident[index]=incident;
-    return `Updated ${incident.type}'s record location.`;
+    return `Updated ${incident.type}'s record ${key}.`;
 }
+
 
 function incidentExists(id){
     return incidents.find((item) =>{
@@ -203,15 +210,35 @@ const editLocation=(body,params) =>{
     
    else{  
     id=params.id;   
-    message=updateIncidentLocation(params.id,body.longitude,body.latitude);
+    message=updateIncident(params.id,body.longitude,body.latitude,null);
   }  
     return {id:parseInt(id),message:message,code:code};
 };
 
+const editComment=(body,params) =>{
+  let id=-1;  
+  let message='';
+  let code=config.STATUS_OK;
+  
+   if (validator.isEmpty(body.comment)) {
+        code=config.STATUS_BAD_REQUEST; 
+        message='You must enter a the title of the report you want to make.';
+    }  
+    else if (!incidentExists(params.id)) {
+        code=config.STATUS_NOT_FOUND;
+        message='There is no incident report with that id. Please check the id then try again';
+    }
+   else{  
+    id=params.id;   
+    message=updateIncident(params.id,null,null,body.comment);
+  }  
+    return {id:parseInt(id),message:message,code:code};
+};
 
 module.exports={
     getIncidents,
     getIncident,
     addIncident,
-    editLocation
+    editLocation,
+    editComment
 };
