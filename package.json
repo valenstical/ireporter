@@ -5,18 +5,19 @@
   "scripts": {
     "start": "node app/server.js",
     "lint": "eslint .",
-    "fix": "eslint --fix .",
+    "fix": "eslint --fix ./app/routes/",
     "test": "mocha"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "chai": "^4.2.0",
     "cookie-parser": "^1.4.3",
     "debug": "^4.1.0",
     "express": "^4.16.4",
     "http-errors": "^1.7.1",
     "less-middleware": "^3.0.1",
-    "body-parser": "^1.18.3",
-    "morgan": "^1.9.1"
+    "morgan": "^1.9.1",
+    "validator": "^10.9.0"
   },
   "devDependencies": {
     "chai-http": "^4.2.0",
@@ -27,6 +28,7 @@
     "eslint-plugin-import": "^2.14.0",
     "hoek": "^6.1.1",
     "istanbul": "^0.4.5",
+    "is-valid-coordinates": "^1.0.0",
     "mocha": "^5.2.0",
     "mocha-lcov-reporter": "^1.3.0"
   }
