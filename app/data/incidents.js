@@ -123,6 +123,22 @@ const getIncident=(id)=>{
     return result.length===0?false:result;
 };
 
+function createIncident(id,body){
+    incidents.push(
+      {
+        id:id,
+        createdOn:new Date(),
+        createdBy:body.user,
+        type:body.type,
+        location:`${body.longitude},${body.latitude}`,
+        status:config.INCIDENT_STATUS_DRAFT,
+        Images:body.images.split(','),
+        Videos:body.videos.split(','),
+        comment:body.comment,
+        description:body.description
+    });   
+}
+
 const addIncident=(body) =>{
   let id=-1;  
   let errorMessage='';
@@ -142,23 +158,12 @@ const addIncident=(body) =>{
     
    else{
     id=incidents.length+1;
-    code=config.STATUS_CREATED;
-    incidents.push(
-      {
-        id:id,
-        createdOn:new Date(),
-        createdBy:body.user,
-        type:body.type,
-        location:`${body.longitude},${body.latitude}`,
-        status:config.INCIDENT_STATUS_DRAFT,
-        Images:body.images.split(','),
-        Videos:body.videos.split(','),
-        comment:body.comment,
-        description:body.description
-    });
+    code=config.STATUS_CREATED;   
+    createIncident(id,body);
   }  
     return {id:id,errorMessage:errorMessage,code:code};
 };
+
 
 
 module.exports={getIncidents,getIncident,addIncident};
