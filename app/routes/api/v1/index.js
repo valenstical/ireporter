@@ -46,5 +46,15 @@ router.post('/red-flags', (req, res) => {
 
 });
 
+//update location
+router.patch('/red-flags/:id/location', (req, res) => {
+  const {message,id,code} = incidents.editLocation(req.body,req.params);
+  if (id === -1) {
+    error(res,code, message);
+  } else {
+    echo(res,code, [{ id: id, message: message }]);
+  }
+
+});
 
 module.exports = router;
