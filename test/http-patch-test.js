@@ -132,3 +132,68 @@ describe('API endpoints for patch request to edit location', () =>{
     });     
     
 });
+
+describe('API endpoints for patch request to edit comment', () =>{
+    after(()=>{
+        stop();
+    });
+    
+    it('should edit the comment for a particular incident with id =7', () =>{
+        chai.request(app)
+                .patch('/api/v1/red-flags/7/comment')
+                .send({
+                    comment:'Power failure in my area has now extended to over 6 months now.'
+                })
+                .then((res)=>{
+                    expect(res).to.have.status(config.STATUS_OK);
+                    expect(res.body).to.be.an('object');
+                    expect(res).to.be.json;
+                    expect(res.body).to.have.property('status');
+                    expect(res.body).to.have.property('data');
+                    expect(res.body.status).to.equal(config.STATUS_OK);
+                    expect(res.body.data).to.be.an('array');
+                    expect(res.body.data).to.have.lengthOf(1);
+                    expect(res.body.data[0]).to.be.an('object'); 
+                    expect(res.body.data[0]).to.have.property('id'); 
+                    expect(res.body.data[0]).to.have.property('message');
+                    expect(res.body.data[0].id).to.equal(7);                     
+        });
+    });
+    
+    it('should send error message for empty comment', () =>{
+        chai.request(app)
+                .patch('/api/v1/red-flags/7/comment')
+                .send({
+                    comment:''
+                })
+                .then((res)=>{
+                    expect(res).to.have.status(config.STATUS_BAD_REQUEST);
+                    expect(res.body).to.be.an('object');
+                    expect(res).to.be.json;
+                    expect(res.body).to.have.property('status');
+                    expect(res.body).to.have.property('error');
+                    expect(res.body.status).to.equal(config.STATUS_BAD_REQUEST);
+                    expect(res.body.error).to.be.a('string');
+                    expect(res.body.error).to.not.be.empty;
+        });
+    });       
+    
+    it('should send error message when no incidents has the specified id', () =>{
+        chai.request(app)
+                .patch('/api/v1/red-flags/-1/comment')
+                .send({
+                    comment:'Power failure in my area has now extended to over 6 months now.'
+                })
+                .then((res)=>{
+                    expect(res).to.have.status(config.STATUS_NOT_FOUND);
+                    expect(res.body).to.be.an('object');
+                    expect(res).to.be.json;
+                    expect(res.body).to.have.property('status');
+                    expect(res.body).to.have.property('error');
+                    expect(res.body.status).to.equal(config.STATUS_NOT_FOUND);
+                    expect(res.body.error).to.be.a('string');
+                    expect(res.body.error).to.not.be.empty;
+        });
+    });     
+    
+});
