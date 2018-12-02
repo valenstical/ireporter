@@ -1,9 +1,9 @@
 const validator = require('validator');
 
 const hasEmpty=(values) =>{
-   return values.find((item) =>{
+   return values.some((item) =>{
       return item.toString().trim()==='';
-   })!==undefined;
+   });
 };
 
 const isEmpty= (item) =>{
@@ -18,9 +18,6 @@ const isIncident=(type) =>{
     return type==='red-flag'||type==='intervention';
 };
 
-const keysExist=(values)=>{
-    
-}
 
 module.exports={
     hasEmpty,

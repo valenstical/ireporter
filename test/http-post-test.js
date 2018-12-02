@@ -33,6 +33,11 @@ describe('API endpoints for post request to add incident', () =>{
                     expect(res.body).to.have.property('data');
                     expect(res.body.status).to.equal(config.STATUS_CREATED);
                     expect(res.body.data).to.be.an('array');
+                    expect(res.body.data).to.have.lengthOf(1);
+                    expect(res.body.data[0]).to.be.an('object'); 
+                    expect(res.body.data[0]).to.have.property('id'); 
+                    expect(res.body.data[0]).to.have.property('message');
+                    expect(res.body.data[0].id).to.be.a('number'); 
         });
     });
     

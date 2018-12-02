@@ -139,6 +139,24 @@ function createIncident(id,body){
     });   
 }
 
+function updateIncidentLocation(id,longitude,latitude){
+    let index=-1;
+    const incident=incidents.find((item,pos) =>{
+        index=pos;
+        return item.id.toString()===id.toString();
+    });
+    incident.longitude=longitude;
+    incident.latitude=latitude;
+    incident[index]=incident;
+    return `Updated ${incident.type}'s record location.`;
+}
+
+function incidentExists(id){
+    return incidents.find((item) =>{
+        return item.id===parseInt(id);
+    })!==undefined;
+}
+
 const addIncident=(body) =>{
   let id=-1;  
   let errorMessage='';
@@ -149,7 +167,7 @@ const addIncident=(body) =>{
     }  
     else if (!validator.isValidLocation(body.longitude,body.latitude)) {
         code=config.STATUS_UNPROCESSED;
-        errorMessage='The location you entered is not invalid. Please check your longitude and latitude, then try again.';
+        errorMessage='The location you entered is invalid. Please check your longitude and latitude, then try again.';
     }
     else if (body.type===undefined||!validator.isIncident(body.type)) {
         errorMessage='Please choose the type of report you wish to make.';
@@ -161,9 +179,39 @@ const addIncident=(body) =>{
     code=config.STATUS_CREATED;   
     createIncident(id,body);
   }  
-    return {id:id,errorMessage:errorMessage,code:code};
+    return {id:parseInt(id),errorMessage:errorMessage,code:code};
+};
+
+const editLocation=(body,params) =>{
+  let id=-1;  
+  let message='';
+  let code=config.STATUS_OK;
+  
+   if (validator.hasEmpty([body.longitude,body.latitude])) {
+        code=config.STATUS_BAD_REQUEST; 
+        message='You must enter both longitude and latitude.';
+    }  
+    else if (!validator.isValidLocation(body.longitude,body.latitude)) {
+        code=config.STATUS_UNPROCESSED;
+        message='The location you entered is invalid. Please check your longitude and latitude, then try again.';
+    }  
+    
+    else if (!incidentExists(params.id)) {
+        code=config.STATUS_NOT_FOUND;
+        message='There is no incident report with that id. Please check the id then try again';
+    }
+    
+   else{  
+    id=params.id;   
+    message=updateIncidentLocation(params.id,body.longitude,body.latitude);
+  }  
+    return {id:parseInt(id),message:message,code:code};
 };
 
 
-
-module.exports={getIncidents,getIncident,addIncident};
+module.exports={
+    getIncidents,
+    getIncident,
+    addIncident,
+    editLocation
+};
