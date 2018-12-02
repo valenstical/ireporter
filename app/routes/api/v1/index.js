@@ -67,4 +67,14 @@ router.patch('/red-flags/:id/comment', (req, res) => {
   }
 });
 
+//delete incident report
+router.delete('/red-flags/:id/', (req, res) => {
+  const {message,id,code} = incidents.deleteIncident(req.params);
+  if (id === -1) {
+    error(res,code, message);
+  } else {
+    echo(res,code, [{ id: id, message: message }]);
+  }
+});
+
 module.exports = router;

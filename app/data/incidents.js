@@ -235,10 +235,32 @@ const editComment=(body,params) =>{
     return {id:parseInt(id),message:message,code:code};
 };
 
+const deleteIncident=(params) =>{
+  let id=-1;  
+  let message='';
+  let code=config.STATUS_OK;
+  
+   if (!incidentExists(params.id)) {
+        code=config.STATUS_NOT_FOUND;
+        message='There is no incident report with that id. Please check the id then try again';
+    }
+   else{  
+    id=params.id;  let index=-1;
+    const incident=incidents.find((item,pos) =>{
+        index=pos;
+        return item.id.toString()===id.toString();        
+    });
+    incidents.splice(index,1);
+    message=`${incident.type} record has been deleted.`;
+  }  
+    return {id:parseInt(id),message:message,code:code};
+};
+
 module.exports={
     getIncidents,
     getIncident,
     addIncident,
     editLocation,
-    editComment
+    editComment,
+    deleteIncident
 };
