@@ -2,16 +2,14 @@
 const POPULAR_REPORTS = ['corruption', 'election rigging', 'police extortion', 'power outage', 'Flooding', 'abandoned projects', 'pipeline leakage', 'bad roads'];
 
 function Dialog(id, zIndex) {
-  this.id = id;
-  this.zIndex = zIndex;
+  this.id = id; this.zIndex = zIndex;
 
   $(this.id).css({ 'z-index': zIndex });
 
   this.showDialog = () => {
     window.location.hash = this.id;
     $(this.id).show(0, () => {
-      $(this.id).addClass('shown').scrollTop(0);
-      $('body').addClass('no-scroll');
+      $(this.id).addClass('shown').scrollTop(0); $('body').addClass('no-scroll');
     });
   };
 
@@ -20,25 +18,17 @@ function Dialog(id, zIndex) {
 
     $(this.id).find('.dialog-content').one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', () => {
       $(this.id).hide();
-      $('body').removeClass('no-scroll');
-      window.history.replaceState(null, null, ' ');
+      $('body').removeClass('no-scroll'); window.history.replaceState(null, null, ' ');
     });
   };
 
   $(window).bind('hashchange', () => {
-    if (window.location.hash === '') {
-      this.hideDialog();
-    }
+    if (window.location.hash === '') { this.hideDialog();}
   });
 
-  // Hide dialogs when click on overlay
-  $(this.id).find('.dialog-overlay').click(() => {
-    this.hideDialog();
-  });
+  $(this.id).find('.dialog-overlay').click(() => { this.hideDialog();});
 
-  $(this.id).find('.close').click(() => {
-    this.hideDialog();
-  });
+  $(this.id).find('.close').click(() => {this.hideDialog();});
 }
 
 

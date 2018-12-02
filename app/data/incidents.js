@@ -1,6 +1,9 @@
+const config=require('../model/config');
+const validator =require('../model/validator');
+
 const incidents = [
   {
-    id: 45078,
+    id: 1,
     createdOn: new Date('2018-04-12'),
     createdBy: 56789,
     type: 'intervention',
@@ -12,7 +15,7 @@ const incidents = [
     description:'An electric pole fell along my street and no PHCN official has come to do anything since, this is getting out of hand and no one is doing anything about it.\nWe even contributed some money to help fix the problem, but nothing till now.'
   },
   {
-    id: 34567,
+    id: 2,
     createdOn: new Date('2018-11-14'),
     createdBy: 690345,
     type: 'intervention',
@@ -24,7 +27,7 @@ const incidents = [
     description: 'There is an erderly woman along ring road, just before Bob Izua Park. Please call the relevant agency to take her to the hospital. '
   },
   {
-    id: 90846,
+    id: 3,
     createdOn: new Date('2018-04-19'),
     createdBy: 690345,
     type: 'red-flag',
@@ -36,7 +39,7 @@ const incidents = [
     description: 'Please inform EFCC that one of my neighbour is hiding bags of dollars in his room. He normally does yahoo yahoo and I believe he his a cultist.'
   },
   {
-    id: 12780,
+    id: 4,
     createdOn: new Date('2018-09-21'),
     createdBy: 56789,
     type: 'red-flag',
@@ -48,7 +51,7 @@ const incidents = [
     description: 'Police men stationed at the entry of Aba market normally ask for bribe when driving along that road, they do this everyday especially on Sundays.'
   },
   {
-    id: 89045,
+    id: 5,
     createdOn: new Date('2018-11-06'),
     createdBy: 30127,
     type: 'red-flag',
@@ -60,7 +63,7 @@ const incidents = [
     description: 'We have video evidence that the state governor of Kano state collects bribe from contractors to execute projects. This has been going on for over 3 years now.'
   },
   {
-    id: 12038,
+    id: 6,
     createdOn: new Date('2018-03-17'),
     createdBy: 57890,
     type: 'red-flag',
@@ -72,7 +75,7 @@ const incidents = [
     description: 'My son just complained about his school Ugborikoko secondary school. They are asking them to pay extra 5000 naira for buying drinks for the external examiner so she can coperate.'
   },
   {
-    id: 76519,
+    id: 7,
     createdOn: new Date('2018-07-22'),
     createdBy: 30127,
     type: 'red-flag',
@@ -84,7 +87,7 @@ const incidents = [
     description: 'Oando fuel tanker fell off the road along anthony street. Please get the relevant agency to come help move it off the road and restore normal movement of cars.'
   },
   {
-    id: 98456,
+    id: 8,
     createdOn: new Date('2018-07-27'),
     createdBy: 49045,
     type: 'red-flag',
@@ -95,8 +98,8 @@ const incidents = [
     comment: 'Lecturer extorting students for marks',
     description: 'Physics 101 lecturer Mr. Silvernus Mbaka has promised to give my friend an F because she refused all his all his advances.'
   },
-    {
-    id: 30978,
+  {
+    id: 9,
     createdOn: new Date('2018-08-29'),
     createdBy: 49045,
     type: 'intervention',
@@ -115,10 +118,47 @@ const getIncidents=()=>{
 
 const getIncident=(id)=>{
     const result=incidents.filter((item) =>{
-        return item.id==id;
+        return item.id.toString()===id;
     });
     return result.length===0?false:result;
 };
 
+const addIncident=(body) =>{
+  let id=-1;  
+  let errorMessage='';
+  let code=config.STATUS_BAD_REQUEST;
+  
+   if (validator.hasEmpty([body.comment,body.longitude,body.latitude])) {
+        errorMessage='You must fill all required fields. Please check your inputs then try again';
+    }  
+    else if (!validator.isValidLocation(body.longitude,body.latitude)) {
+        code=config.STATUS_UNPROCESSED;
+        errorMessage='The location you entered is not invalid. Please check your longitude and latitude, then try again.';
+    }
+    else if (body.type===undefined||!validator.isIncident(body.type)) {
+        errorMessage='Please choose the type of report you wish to make.';
+    }
+    
+    
+   else{
+    id=incidents.length+1;
+    code=config.STATUS_CREATED;
+    incidents.push(
+      {
+        id:id,
+        createdOn:new Date(),
+        createdBy:body.user,
+        type:body.type,
+        location:`${body.longitude},${body.latitude}`,
+        status:config.INCIDENT_STATUS_DRAFT,
+        Images:body.images.split(','),
+        Videos:body.videos.split(','),
+        comment:body.comment,
+        description:body.description
+    });
+  }  
+    return {id:id,errorMessage:errorMessage,code:code};
+};
 
-module.exports={getIncidents,getIncident};
+
+module.exports={getIncidents,getIncident,addIncident};
