@@ -3,7 +3,7 @@ const bodyParser=require('body-parser');
 
 const app = express();
 const router = require('./routes/api/v1/index');
-const config=require('./model/config');
+const config=require('./utils/config');
 const PORT = process.env.PORT || '3000';
 
 app.use(bodyParser.json());
