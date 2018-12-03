@@ -1,10 +1,8 @@
 const chai=require('chai');
 const expect=require('chai').expect;
 
-const config=require('../app/model/config');
-
-const app=require('../app/server').app;
-const stop=require('../app/server').stop;
+const config=require('../app/utils/config');
+const {app, stop}=require('../app/server');
 
 chai.use(require('chai-http'));
 
@@ -138,9 +136,9 @@ describe('API endpoints for patch request to edit comment', () =>{
         stop();
     });
     
-    it('should edit the comment for a particular incident with id =7', () =>{
+    it('should edit the comment for a particular incident with id =8', () =>{
         chai.request(app)
-                .patch('/api/v1/red-flags/7/comment')
+                .patch('/api/v1/red-flags/8/comment')
                 .send({
                     comment:'Power failure in my area has now extended to over 6 months now.'
                 })
@@ -156,7 +154,7 @@ describe('API endpoints for patch request to edit comment', () =>{
                     expect(res.body.data[0]).to.be.an('object'); 
                     expect(res.body.data[0]).to.have.property('id'); 
                     expect(res.body.data[0]).to.have.property('message');
-                    expect(res.body.data[0].id).to.equal(7);                     
+                    expect(res.body.data[0].id).to.equal(8);                     
         });
     });
     

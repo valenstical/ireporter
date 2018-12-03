@@ -1,10 +1,8 @@
 const chai=require('chai');
 const expect=require('chai').expect;
 
-const config=require('../app/model/config');
-
-const app=require('../app/server').app;
-const stop=require('../app/server').stop;
+const config=require('../app/utils/config');
+const {app, stop}=require('../app/server');
 
 chai.use(require('chai-http'));
 

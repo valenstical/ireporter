@@ -2,12 +2,9 @@ const express = require('express');
 
 const router = express.Router();
 
-const config = require('../../../model/config');
-
-const { echo, error } = config;
-
-
-const incidents = require('../../../data/incidents');
+const config = require('../../../utils/config');
+const {echo, error } = config;
+const incidents = require('../../../controllers/incident-controller');
 
 
 // Handle requests to api/v1
