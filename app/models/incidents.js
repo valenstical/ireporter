@@ -30,7 +30,7 @@ const incidents = [
     type: 'red-flag',
     location: '6.6789034, 3.1205679',
     status: 'rejected',
-    Images: [],
+    Images: ['image1.jpg', 'image2.jpg'],
     Videos: [],
     comment: 'Bags of Ghana must go with money in the next room from mine.',
     description: 'Please inform EFCC that one of my neighbour is hiding bags of dollars in his room. He normally does yahoo yahoo and I believe he his a cultist.'
@@ -67,7 +67,7 @@ const incidents = [
     location: '6.4589045, 3.1256783',
     status: 'resolved',
     Images: [],
-    Videos: [],
+    Videos: ['video1.mp4', 'video2.mp4'],
     comment: 'Students made to pay over 5000 for exam malpractise',
     description: 'My son just complained about his school Ugborikoko secondary school. They are asking them to pay extra 5000 naira for buying drinks for the external examiner so she can coperate.'
   },
@@ -78,8 +78,8 @@ const incidents = [
     type: 'red-flag',
     location: '6.6754346, 3.3324569',
     status: 'resolved',
-    Images: [],
-    Videos: [],
+    Images: ['image1.jpg'],
+    Videos: ['video1.mp4', 'video2.mp4'],
     comment: 'Fuel tanker blocking Anthony street',
     description: 'Oando fuel tanker fell off the road along anthony street. Please get the relevant agency to come help move it off the road and restore normal movement of cars.'
   },
@@ -103,7 +103,7 @@ const incidents = [
     location: '6.2890934, 3.4109845',
     status: 'under investigation',
     Images: [],
-    Videos: [],
+    Videos: ['video2.mp4'],
     comment: 'Music piracy at alaba market',
     description: 'Please let the government protect our music and intellectual work. The amount of music piracy going on at Alaba market is alarming.'
   }

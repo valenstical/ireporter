@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 const config = require('../../../utils/config');
-const {echo, error } = config;
+const {success, error } = config;
 const incidents = require('../../../controllers/incident-controller');
 
 
@@ -20,7 +20,7 @@ router.all('/', (req, res) => {
 
 // Get all incidents
 router.get('/red-flags/', (req, res) => {
-  echo(res, config.STATUS_OK, incidents.getIncidents());
+  success(res, config.STATUS_OK, incidents.getIncidents());
 });
 
 // Get incident by id
@@ -29,7 +29,7 @@ router.get('/red-flags/:id', (req, res) => {
   if (incident === false) {
     error(res, config.STATUS_UNPROCESSED, 'No incident matching that id');
   } else {
-    echo(res, config.STATUS_OK, incident);
+    success(res, config.STATUS_OK, incident);
   }
 });
 
@@ -40,7 +40,7 @@ router.post('/red-flags', (req, res) => {
   if (id === -1) {
     error(res,code, errorMessage);
   } else {
-    echo(res, config.STATUS_CREATED, [{ id: id, message: `Created ${req.body.type} record.` }]);
+    success(res, config.STATUS_CREATED, [{ id: id, message: `Created ${req.body.type} record.` }]);
   }
 
 });
@@ -57,7 +57,7 @@ router.patch('/red-flags/:id/:path', (req, res) => {
   if (result.id === -1) {
     error(res,result.code, result.message);
   } else {
-    echo(res,result.code, [{ id: result.id, message: result.message }]);
+    success(res,result.code, [{ id: result.id, message: result.message }]);
   }   
 
 });
@@ -68,7 +68,7 @@ router.delete('/red-flags/:id/', (req, res) => {
   if (id === -1) {
     error(res,code, message);
   } else {
-    echo(res,code, [{ id: id, message: message }]);
+    success(res,code, [{ id: id, message: message }]);
   }
 });
 
