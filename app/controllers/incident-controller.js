@@ -47,12 +47,13 @@ function updateIncident(id,longitude,latitude,comment){
     return `Updated ${incident.type}'s record ${key}.`;
 }
 
-
 function incidentExists(id){
     return incidents.find((item) =>{
         return item.id===parseInt(id);
     })!==undefined;
 }
+
+
 
 const addIncident=(body) =>{
   let id=-1;  
