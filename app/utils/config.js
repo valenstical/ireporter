@@ -13,7 +13,7 @@ const INCIDENT_STATUS_UNDER_INVESTIGATION='under investigation';
 const INCIDENT_STATUS_RESOLVED='resolved';
 const INCIDENT_STATUS_REJECT='rejected';
 
-const echo=(res,code,data)=>{
+const success=(res,code,data)=>{
     res.status(code).json({status:code,data:data});
 };
 
@@ -23,7 +23,7 @@ const error=(res,code,message) =>{
 
 
 module.exports={
-    echo,
+    success,
     error,
     STATUS_OK,
     STATUS_CREATED,
