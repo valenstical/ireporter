@@ -8,13 +8,15 @@ const incidents = require('../../../controllers/incident-controller');
 
 
 // Handle requests to api/v1
-router.get('/', (req, res) => {
-  res.status(config.STATUS_OK).json({ message: 'Welcome Hacker! This is iReporter api v1.' });
+router.all('/', (req, res) => {
+    if (req.method==='GET') {
+      res.status(config.STATUS_OK).json({ message: 'Welcome Hacker! This is iReporter api v1.' });  
+    }   
+    else{
+      res.status(config.STATUS_NOT_FOUND).json({ message: 'Resource not found!' });
+    }
 });
 
-router.post('/', (req, res) => {
-  res.status(config.STATUS_NOT_FOUND).json({ message: 'Resource not found!' });
-});
 
 // Get all incidents
 router.get('/red-flags/', (req, res) => {
@@ -43,25 +45,21 @@ router.post('/red-flags', (req, res) => {
 
 });
 
-//update location
-router.patch('/red-flags/:id/location', (req, res) => {
-  const {message,id,code} = incidents.editLocation(req.body,req.params);
-  if (id === -1) {
-    error(res,code, message);
+//update location and comment
+router.patch('/red-flags/:id/:path', (req, res) => {
+    let result={id:-1,code:config.STATUS_OK,message:''}; 
+    if (req.params.path==='location') {
+        result =incidents.editLocation(req.body,req.params);      
+    }
+    else{
+      result =  incidents.editComment(req.body,req.params)
+    }
+  if (result.id === -1) {
+    error(res,result.code, result.message);
   } else {
-    echo(res,code, [{ id: id, message: message }]);
-  }
+    echo(res,result.code, [{ id: result.id, message: result.message }]);
+  }   
 
-});
-
-//update comment
-router.patch('/red-flags/:id/comment', (req, res) => {
-  const {message,id,code} = incidents.editComment(req.body,req.params);
-  if (id === -1) {
-    error(res,code, message);
-  } else {
-    echo(res,code, [{ id: id, message: message }]);
-  }
 });
 
 //delete incident report
