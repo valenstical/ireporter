@@ -1,5 +1,5 @@
 
-const POPULAR_REPORTS = ['corruption', 'election rigging', 'police extortion', 'power outage', 'Flooding', 'abandoned projects', 'pipeline leakage', 'bad roads'];
+const POPULAR_REPORTS = ['corruption', 'election rigging', 'police extortion', 'power outage', 'flooding', 'abandoned projects', 'pipeline leakage', 'bad roads'];
 
 function Dialog(id, zIndex) {
   this.id = id; this.zIndex = zIndex;
