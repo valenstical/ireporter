@@ -8,7 +8,7 @@ const users = [
     phoneNumber: '08045983458',
     username: 'steven4life',
     registered: new Date('2017-09-21'),
-    isAdmin: false
+    isAdmin: false,
   },
   {
     id: 12760,
@@ -19,7 +19,7 @@ const users = [
     phoneNumber: '09056780923',
     username: 'bern45',
     registered: new Date('2018-05-09'),
-    isAdmin: false
+    isAdmin: false,
   },
   {
     id: 30127,
@@ -30,7 +30,7 @@ const users = [
     phoneNumber: '08094587340',
     username: 'bububu',
     registered: new Date('2018-02-24'),
-    isAdmin: false
+    isAdmin: false,
   },
   {
     id: 49045,
@@ -41,7 +41,7 @@ const users = [
     phoneNumber: '08094678903',
     username: 'jona4president',
     registered: new Date('2018-11-27'),
-    isAdmin: false
+    isAdmin: false,
   },
   {
     id: 57890,
@@ -52,7 +52,7 @@ const users = [
     phoneNumber: '07034980923',
     username: 'musmus',
     registered: new Date('2018-12-17'),
-    isAdmin: false
+    isAdmin: false,
   },
   {
     id: 690345,
@@ -63,7 +63,7 @@ const users = [
     phoneNumber: '08094678934',
     username: 'babashege',
     registered: new Date('2018-07-12'),
-    isAdmin: false
+    isAdmin: false,
   },
   {
     id: 732167,
@@ -74,7 +74,7 @@ const users = [
     phoneNumber: '09045898456',
     username: 'fellownigerians',
     registered: new Date('2017-03-28'),
-    isAdmin: false
+    isAdmin: false,
   },
   {
     id: 30985,
@@ -85,7 +85,7 @@ const users = [
     phoneNumber: '09083478945',
     username: 'evilgenius',
     registered: new Date('2018-11-12'),
-    isAdmin: false
+    isAdmin: false,
   },
   {
     id: 87548,
@@ -96,9 +96,9 @@ const users = [
     phoneNumber: '08078984657',
     username: 'blackpresident',
     registered: new Date('2018-07-04'),
-    isAdmin: false
+    isAdmin: false,
   },
-    {
+  {
     id: 45078,
     firstname: 'Valetine',
     lastname: 'Okosun',
@@ -107,8 +107,8 @@ const users = [
     phoneNumber: '09089348765',
     username: 'valentino',
     registered: new Date('2017-01-01'),
-    isAdmin: true
-  }
+    isAdmin: true,
+  },
 ];
 
-module.exports=users;
+export default users;
