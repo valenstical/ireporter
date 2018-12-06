@@ -1,0 +1,76 @@
+
+
+.login-form
+{
+    max-width: 450px;
+    margin: 50px auto;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.login-form button
+{
+    margin-top: 10px;
+}
+
+.login-form button
+{
+    margin-top: 10px;
+}
+
+.login-wrapper form h1
+{
+    font-size: 28px;
+    margin-bottom: 0px;
+}
+
+@media (min-width:480px)
+{
+    .login-form
+    {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+
+.forgot-password
+{
+    font-weight: bold;
+    float: right;
+    border-bottom: 1px dashed;
+    color: #959393;
+    font-size: 12px;
+    padding-bottom: 2px;
+}
+
+.forgot-password:hover
+{
+    color: #088373;
+}
+
+.login-wrapper .login-register-link
+{
+    display: block;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -30px;
+    font-size: 14px;
+}
+
+.login-wrapper .login-form-lg
+{
+    max-width: 700px;
+}
+
+.login-wrapper p span
+{
+    display: block;
+    margin-top: 10px;
+}
+
+.login-wrapper
+{
+    padding-top: 1px;
+}
+

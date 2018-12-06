@@ -1,0 +1,241 @@
+
+
+.hero
+{
+    position: relative;
+    background-image: url('../images/covers/bg-lagos.jpg');
+    background-size: cover;
+    background-position: right;
+    color: #f1efef;
+    text-align: center;
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+.hero::before
+{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    background: linear-gradient(to bottom,rgba(0, 0, 0, 0.59),rgba(0, 0, 0, 0.92),transparent);
+    content: "";
+}
+
+.hero-inner
+{
+    position: relative;
+    height: 225px;
+}
+
+.hero h1
+{
+    font-size: 30px;
+    font-weight: bold;
+    position: relative;
+}
+
+.hero p
+{
+    opacity: 0.8;
+    font-size: 15px;
+    line-height: 1.3em;
+    margin-top: 10px;
+    max-width: 580px;
+}
+
+.header
+{
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.header h2
+{
+    font-size: 35px;
+    margin-top: 20px;
+}
+
+.header small
+{
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 40px;
+    font-size: 13px;
+}
+
+.how
+{
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.header p
+{
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(119, 131, 143, 0.68);
+    font-weight: bold;
+    margin-top: 10px;
+    line-height: 1.5em;
+}
+
+.how-item
+{
+    color: #4a4747;
+    text-align: center;
+    background-color: white;
+}
+
+.how-item .fa
+{
+    background-color: rgba(8, 131, 115, 0.09);
+    width: 70px;
+    height: 70px;
+    padding-top: 18px;
+    font-size: 30px;
+    overflow: inherit;
+    border-radius: 100%;
+    color: #088373;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.how-item h3
+{
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.how-item p
+{
+    font-size: 14px;
+    margin-top: 0px;
+    opacity: 0.9;
+    max-width: 330px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.newsletter-box
+{
+    text-align: center;
+    max-width: 570px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.newsletter-box h2
+{
+    font-size: 40px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.newsletter-form
+{
+    position: relative;
+    overflow: hidden;
+    border-radius: 60px;
+    box-shadow: 0px 0px 35px rgba(140, 152, 164, 0.125);
+    margin-top: 50px;
+}
+
+.newsletter-form input
+{
+    width: 100%;
+    border: none;
+    height: 60px;
+    padding-left: 30px;
+    padding-right: 90px;
+    font-size: 18px;
+    color: #5c5959;
+}
+
+.newsletter-form button
+{
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    width: 70px;
+    padding-right: 0px;
+    padding-left: 0px;
+    font-size: 20px;
+}
+
+.round-info
+{
+    background-color: rgba(8, 131, 115, 0.07);
+    color: #088373;
+}
+
+.round-danger
+{
+    background-color: #f5e7e9;
+    color: #e1553e;
+}
+
+@media (min-width:600px)
+{
+    .hero
+    {
+        padding-top: 130px;
+        padding-bottom: 130px;
+        text-align: left;
+    }
+}
+
+@media (min-width:450px)
+{
+    .hero p
+    {
+        font-size: 18px;
+        line-height: 1.4em;
+    }
+    .hero h1
+    {
+        font-size: 40px;
+    }
+}
+
+@media (min-width:380px)
+{
+    .newsletter-box h2
+    {
+        font-size: 50px;
+    }
+}
+
+@media (min-width:600px)
+{
+    .hero::before
+    {
+        background: linear-gradient(to right,rgba(0, 0, 0, 0.8),rgba(0, 0, 0, 0.52),transparent);
+    }
+}
+
+.hero-pages
+{
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.header .p-lg
+{
+    max-width: 760px;
+    margin-top: 20px;
+}
+
+.how-item:hover .fa
+{
+    -webkit-transform: scale(1.2,1.2);
+    -o-transform: scale(1.2,1.2);
+    -moz-transform: scale(1.2,1.2);
+    transform: scale(1.2,1.2);
+}
+

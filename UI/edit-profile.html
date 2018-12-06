@@ -10,6 +10,9 @@
     <link href="assets/images/icons/icon.png" rel="icon" type="image/png"> 
     <link href="assets/css/central.css" rel="stylesheet" type="text/css"> 
     <link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css"> 
+    <link href="assets/css/form.css" rel="stylesheet" type="text/css"> 
+    <link href="assets/css/reports-card.css" rel="stylesheet" type="text/css"> 
+    <link href="assets/css/user.css" rel="stylesheet" type="text/css"> 
     <meta name="theme-color" content="#009f8b"> 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->     
     <!--[if lt IE 9]>
@@ -67,16 +70,16 @@
           </div>           
         </div>         
       </section>       
-      <section data-pg-collapsed> 
+      <section data-pg-collapsed class="edit-profile-wrapper"> 
         <div class="wrapper" data-pg-name="Wrapper"> 
-          <div class="card login-form login-form-lg profile-wrapper"> 
+          <div class="card profile-wrapper"> 
             <div class="profile-img" data-pg-collapsed> 
               <img src="assets/images/profiles/photo-1467400492058-1aad44d4bcd6.jpg" width="200" height="200" /> 
             </div>             
             <button class="btn-brand btn-secondary btn-250" onclick="uploadProfile()">Change Image</button>             
             <input type="file" class="delete-file-chooser"> 
           </div>           
-          <form class="card login-form login-form-lg" onsubmit="return editProfile()"> 
+          <form class="card" onsubmit="return editProfile()"> 
             <div class="form-wrapper" data-pg-collapsed> 
               <label>First Name </label>               
               <input class="form-element" type="text" name="fname" required value="Steven"> 
@@ -91,7 +94,7 @@
             </div>             
             <button class="btn-brand btn-250" type="submit">Update Profile</button>             
           </form>           
-          <form class="card login-form login-form-lg" onsubmit="return changePassword()"> 
+          <form class="card" onsubmit="return changePassword()"> 
             <div class="form-wrapper" data-pg-collapsed> 
               <label>Password</label>               
               <input class="form-element" type="password" name="password" required placeholder="*********"> 
@@ -108,7 +111,7 @@
       </div>       
     </footer>     
     <!-- Placed at the end of the document so the pages load faster -->     
-    <script src="assets/js/jquery.min.js" type="text/javascript"></script>     
-    <script src="assets/js/home.js" type="text/javascript"></script>     
+    <script src="assets/js/domer.js" type="text/javascript"></script>     
+    <script src="assets/js/central.js" type="text/javascript"></script>     
   </body>   
 </html>
