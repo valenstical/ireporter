@@ -9,7 +9,7 @@ const incidents = [
     Images: ['image1.jpg', 'image2.jpg'],
     Videos: ['video1.mp4', 'video2.mp4'],
     comment: 'Power failure for over 3 weeks now',
-    description:'An electric pole fell along my street and no PHCN official has come to do anything since, this is getting out of hand and no one is doing anything about it.\nWe even contributed some money to help fix the problem, but nothing till now.'
+    description: 'An electric pole fell along my street and no PHCN official has come to do anything since, this is getting out of hand and no one is doing anything about it.\nWe even contributed some money to help fix the problem, but nothing till now.',
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const incidents = [
     Images: ['image1.jpg'],
     Videos: [],
     comment: 'Unconscious woman along ring road',
-    description: 'There is an erderly woman along ring road, just before Bob Izua Park. Please call the relevant agency to take her to the hospital. '
+    description: 'There is an erderly woman along ring road, just before Bob Izua Park. Please call the relevant agency to take her to the hospital. ',
   },
   {
     id: 3,
@@ -33,7 +33,7 @@ const incidents = [
     Images: ['image1.jpg', 'image2.jpg'],
     Videos: [],
     comment: 'Bags of Ghana must go with money in the next room from mine.',
-    description: 'Please inform EFCC that one of my neighbour is hiding bags of dollars in his room. He normally does yahoo yahoo and I believe he his a cultist.'
+    description: 'Please inform EFCC that one of my neighbour is hiding bags of dollars in his room. He normally does yahoo yahoo and I believe he his a cultist.',
   },
   {
     id: 4,
@@ -42,10 +42,10 @@ const incidents = [
     type: 'red-flag',
     location: '6.4567890, 3.1234567',
     status: 'under investigation',
-    Images: ['image1.jpg', 'image2.jpg','image3.jpg'],
+    Images: ['image1.jpg', 'image2.jpg', 'image3.jpg'],
     Videos: ['video1.mp4'],
     comment: 'Police extortion at Aba Market',
-    description: 'Police men stationed at the entry of Aba market normally ask for bribe when driving along that road, they do this everyday especially on Sundays.'
+    description: 'Police men stationed at the entry of Aba market normally ask for bribe when driving along that road, they do this everyday especially on Sundays.',
   },
   {
     id: 5,
@@ -55,9 +55,9 @@ const incidents = [
     location: '6.4567890, 3.1256789',
     status: 'under investigation',
     Images: ['image1.jpg'],
-    Videos: ['video1.mpg','video2.mp4','video3.mp4','video4.mp4'],
+    Videos: ['video1.mpg', 'video2.mp4', 'video3.mp4', 'video4.mp4'],
     comment: 'State governor collecting bribe from contractors',
-    description: 'We have video evidence that the state governor of Kano state collects bribe from contractors to execute projects. This has been going on for over 3 years now.'
+    description: 'We have video evidence that the state governor of Kano state collects bribe from contractors to execute projects. This has been going on for over 3 years now.',
   },
   {
     id: 6,
@@ -69,7 +69,7 @@ const incidents = [
     Images: [],
     Videos: ['video1.mp4', 'video2.mp4'],
     comment: 'Students made to pay over 5000 for exam malpractise',
-    description: 'My son just complained about his school Ugborikoko secondary school. They are asking them to pay extra 5000 naira for buying drinks for the external examiner so she can coperate.'
+    description: 'My son just complained about his school Ugborikoko secondary school. They are asking them to pay extra 5000 naira for buying drinks for the external examiner so she can coperate.',
   },
   {
     id: 7,
@@ -81,7 +81,7 @@ const incidents = [
     Images: ['image1.jpg'],
     Videos: ['video1.mp4', 'video2.mp4'],
     comment: 'Fuel tanker blocking Anthony street',
-    description: 'Oando fuel tanker fell off the road along anthony street. Please get the relevant agency to come help move it off the road and restore normal movement of cars.'
+    description: 'Oando fuel tanker fell off the road along anthony street. Please get the relevant agency to come help move it off the road and restore normal movement of cars.',
   },
   {
     id: 8,
@@ -93,7 +93,7 @@ const incidents = [
     Images: [],
     Videos: [],
     comment: 'Lecturer extorting students for marks',
-    description: 'Physics 101 lecturer Mr. Silvernus Mbaka has promised to give my friend an F because she refused all his all his advances.'
+    description: 'Physics 101 lecturer Mr. Silvernus Mbaka has promised to give my friend an F because she refused all his all his advances.',
   },
   {
     id: 9,
@@ -105,8 +105,8 @@ const incidents = [
     Images: [],
     Videos: ['video2.mp4'],
     comment: 'Music piracy at alaba market',
-    description: 'Please let the government protect our music and intellectual work. The amount of music piracy going on at Alaba market is alarming.'
-  }
+    description: 'Please let the government protect our music and intellectual work. The amount of music piracy going on at Alaba market is alarming.',
+  },
 ];
 
-module.exports=incidents;
+export default incidents;
