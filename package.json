@@ -5,12 +5,9 @@
   "scripts": {
     "lint": "eslint .",
     "fix": "eslint --fix .",
+    "start": "node app\/server.js --exec babel-node --presets babel-preset-env",
     "test": "nyc mocha --require babel-polyfill --require babel-register ./test/ --timeout 10000 --exit",
-    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
-    "clean": "rm -rf build && mkdir build",
-    "build-babel": "babel -d ./build ./app -s",
-    "build": "npm run clean && npm run build-babel",
-    "start": "npm run build && node ./build/server.js"
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
@@ -20,7 +17,12 @@
     "http-errors": "^1.7.1",
     "less-middleware": "^3.0.1",
     "morgan": "^1.9.1",
-    "validator": "^10.9.0"
+    "validator": "^10.9.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-istanbul": "^5.1.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0"    
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
