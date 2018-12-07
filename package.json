@@ -5,9 +5,12 @@
   "scripts": {
     "lint": "eslint .",
     "fix": "eslint --fix .",
-    "start": "nodemon app/server.js --exec babel-node --presets babel-preset-env",
     "test": "nyc mocha --require babel-polyfill --require babel-register ./test/ --timeout 10000 --exit",
-    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./app -s",
+    "build": "npm run clean && npm run build-babel",
+    "start": "npm run build && node ./build/server.js"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
