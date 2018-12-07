@@ -1,6 +1,6 @@
 import chai from 'chai';
 
-import Config from '../app/utils/config';
+import config from '../app/utils/config';
 
 import app from '../app/server';
 
@@ -14,11 +14,11 @@ describe('Server', () => {
     chai.request(app)
       .get('/')
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_OK);
+        expect(res).to.have.status(config.STATUS_OK);
         expect(res).to.be.json;
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('message');
-        expect(res.body.message).to.equal(Config.MESSAGE_WELCOME_HOME);
+        expect(res.body.message).to.equal(config.MESSAGE_WELCOME_HOME);
       });
   });
 
@@ -26,11 +26,11 @@ describe('Server', () => {
     chai.request(app)
       .get('/api/v1')
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_OK);
+        expect(res).to.have.status(config.STATUS_OK);
         expect(res).to.be.json;
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('message');
-        expect(res.body.message).to.equal(Config.MESSAGE_WELCOME_HACKER);
+        expect(res.body.message).to.equal(config.MESSAGE_WELCOME_HACKER);
       });
   });
 
@@ -38,11 +38,11 @@ describe('Server', () => {
     chai.request(app)
       .post('/api/v1')
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_NOT_FOUND);
+        expect(res).to.have.status(config.STATUS_NOT_FOUND);
         expect(res).to.be.json;
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('message');
-        expect(res.body.message).to.equal(Config.MESSAGE_NOT_FOUND);
+        expect(res.body.message).to.equal(config.MESSAGE_404);
       });
   });
 });
