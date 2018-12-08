@@ -5,6 +5,7 @@ import Config from '../utils/config';
 const { error } = Config;
 const incident = new Incident();
 
+
 class ValidatePatch {
   static updateIncident(req, res, next) {
     if (req.params.action === 'comment') {

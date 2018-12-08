@@ -6,6 +6,7 @@ const { expect } = chai;
 
 chai.use(require('chai-http'));
 
+
 describe('API endpoints for patch request to edit red-flag location', () => {
   it('should edit the latitude and longitude for a particular incident with id =4', () => {
     chai.request(app)
