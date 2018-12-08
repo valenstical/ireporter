@@ -16,7 +16,6 @@ class ValidatePatch {
     }
   }
 
-
   static updateComment(req, res, next) {
     incident.setType(req.params.type);
     incident.id = req.params.id;

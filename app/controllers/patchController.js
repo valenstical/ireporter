@@ -2,8 +2,8 @@ import Config from '../utils/config';
 import _data from '../database/incidents';
 
 const data = _data;
-
 const { success, error } = Config;
+
 class ControlPatch {
   static updateIncident(req, res) {
     const { incident } = req.body;

@@ -1,7 +1,5 @@
 import chai from 'chai';
-
 import Config from '../app/utils/config';
-
 import app from '../app/server';
 
 const { expect } = chai;
