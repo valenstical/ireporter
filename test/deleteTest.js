@@ -30,7 +30,6 @@ describe('API endpoints for delete request of specific red-flag record', () => {
       });
   });
 
-
   it('should send error message when no incident has the specified id', () => {
     chai.request(app)
       .delete('/api/v1/red-flags/-1')

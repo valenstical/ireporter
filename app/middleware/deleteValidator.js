@@ -5,6 +5,7 @@ import Config from '../utils/config';
 const { error } = Config;
 const incident = new Incident();
 
+
 class ValidatePost {
   static deleteIncident(req, res, next) {
     incident.setType(req.params.type);
