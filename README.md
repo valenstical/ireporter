@@ -10,3 +10,6 @@ You can view a hosted version of the template here https://valenstical.github.io
 
 # Pivotal Tracker
 View the pivotal tracker stories for this project here https://www.pivotaltracker.com/projects/2227161
+
+# Testing API Endpoints
+The api endpoints are hosted on heroku. Visit https://ireporter-nigeria.herokuapp.com/ to make requests to endpoints.
