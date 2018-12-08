@@ -25,6 +25,11 @@
     "babel-register": "^6.26.0"    
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-istanbul": "^5.1.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
     "chai-http": "^4.2.0",
     "coveralls": "^3.0.2",
     "cryptiles": "^4.1.3",
