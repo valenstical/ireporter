@@ -34,9 +34,21 @@ describe('Server', () => {
       });
   });
 
-  it('should return 404 and and error message for invalid routes ', () => {
+  it('should return 404 and and error message for invalid routes to api route ', () => {
     chai.request(app)
       .post('/api/v1')
+      .then((res) => {
+        expect(res).to.have.status(Config.STATUS_NOT_FOUND);
+        expect(res).to.be.json;
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('message');
+        expect(res.body.message).to.equal(Config.MESSAGE_NOT_FOUND);
+      });
+  });
+
+  it('should return 404 and and error message for all other invalid routes ', () => {
+    chai.request(app)
+      .post('/INVALID_ROUTE/')
       .then((res) => {
         expect(res).to.have.status(Config.STATUS_NOT_FOUND);
         expect(res).to.be.json;
