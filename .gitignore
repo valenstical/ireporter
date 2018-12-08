@@ -1,0 +1,8 @@
+
+*.properties
+nbproject/private/private.xml
+nbproject/project.xml
+pinegrow.json
+node_modules
+.nyc_output/
+.vscode
