@@ -48,7 +48,7 @@ describe('Server', () => {
 
   it('should return 404 and and error message for all other invalid routes ', () => {
     chai.request(app)
-      .post('/INVALID_ROUTE/')
+      .get('/INVALID_ROUTE/')
       .then((res) => {
         expect(res).to.have.status(Config.STATUS_NOT_FOUND);
         expect(res).to.be.json;
