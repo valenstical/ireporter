@@ -358,4 +358,78 @@ describe('API endpoints for patch request to edit intervention comment', () => {
         expect(res.body.error).to.equal(Config.MESSAGE_DATA_NOT_FOUND);
       });
   });
+
+  it('should send error message for invalid patch route to edit intervention', () => {
+    chai.request(app)
+      .patch('/api/v1/interventions/-1/INVALID_ROUTE')
+      .send({
+        latitude: '6.5678903',
+        longitude: '3.5784567',
+      })
+      .then((res) => {
+        expect(res).to.have.status(Config.STATUS_NOT_FOUND);
+        expect(res.body).to.be.an('object');
+        expect(res).to.be.json;
+        expect(res.body).to.have.property('status');
+        expect(res.body).to.have.property('error');
+        expect(res.body.status).to.equal(Config.STATUS_NOT_FOUND);
+        expect(res.body.error).to.equal(Config.MESSAGE_NOT_FOUND);
+      });
+  });
+
+  it('should send error message for invalid patch route to edit red-flag', () => {
+    chai.request(app)
+      .patch('/api/v1/red-flags/-1/INVALID_ROUTE')
+      .send({
+        latitude: '6.5678903',
+        longitude: '3.5784567',
+      })
+      .then((res) => {
+        expect(res).to.have.status(Config.STATUS_NOT_FOUND);
+        expect(res.body).to.be.an('object');
+        expect(res).to.be.json;
+        expect(res.body).to.have.property('status');
+        expect(res.body).to.have.property('error');
+        expect(res.body.status).to.equal(Config.STATUS_NOT_FOUND);
+        expect(res.body.error).to.equal(Config.MESSAGE_NOT_FOUND);
+      });
+  });
+});
+
+describe('API endpoints for patch request for invalid route to edit intervention or comment', () => {
+  it('should send error message for invalid patch route to edit intervention', () => {
+    chai.request(app)
+      .patch('/api/v1/interventions/-1/INVALID_ROUTE')
+      .send({
+        latitude: '6.5678903',
+        longitude: '3.5784567',
+      })
+      .then((res) => {
+        expect(res).to.have.status(Config.STATUS_NOT_FOUND);
+        expect(res.body).to.be.an('object');
+        expect(res).to.be.json;
+        expect(res.body).to.have.property('status');
+        expect(res.body).to.have.property('error');
+        expect(res.body.status).to.equal(Config.STATUS_NOT_FOUND);
+        expect(res.body.error).to.equal(Config.MESSAGE_NOT_FOUND);
+      });
+  });
+
+  it('should send error message for invalid patch route to edit red-flag', () => {
+    chai.request(app)
+      .patch('/api/v1/red-flags/-1/INVALID_ROUTE')
+      .send({
+        latitude: '6.5678903',
+        longitude: '3.5784567',
+      })
+      .then((res) => {
+        expect(res).to.have.status(Config.STATUS_NOT_FOUND);
+        expect(res.body).to.be.an('object');
+        expect(res).to.be.json;
+        expect(res.body).to.have.property('status');
+        expect(res.body).to.have.property('error');
+        expect(res.body.status).to.equal(Config.STATUS_NOT_FOUND);
+        expect(res.body.error).to.equal(Config.MESSAGE_NOT_FOUND);
+      });
+  });
 });

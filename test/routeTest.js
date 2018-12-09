@@ -34,9 +34,44 @@ describe('Server', () => {
       });
   });
 
-  it('should return 404 and and error message for invalid routes ', () => {
+  it('should return 404 status code with error message for invalid routes', () => {
     chai.request(app)
-      .post('/api/v1')
+      .get('api/v1/INVALID_ROUTE')
+      .then((res) => {
+        expect(res).to.have.status(Config.STATUS_NOT_FOUND);
+        expect(res).to.be.json;
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('message');
+        expect(res.body.message).to.equal(Config.MESSAGE_NOT_FOUND);
+      });
+  });
+
+  it('should return 404 status code with error message for invalid routes', () => {
+    chai.request(app)
+      .post('api/v1/INVALID_ROUTE')
+      .then((res) => {
+        expect(res).to.have.status(Config.STATUS_NOT_FOUND);
+        expect(res).to.be.json;
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('message');
+        expect(res.body.message).to.equal(Config.MESSAGE_NOT_FOUND);
+      });
+  });
+
+  it('should return 404 status code with error message for invalid routes', () => {
+    chai.request(app)
+      .patch('api/v1/INVALID_ROUTE')
+      .then((res) => {
+        expect(res).to.have.status(Config.STATUS_NOT_FOUND);
+        expect(res).to.be.json;
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('message');
+        expect(res.body.message).to.equal(Config.MESSAGE_NOT_FOUND);
+      });
+  });
+  it('should return 404 status code with error message for wrong http method', () => {
+    chai.request(app)
+      .delete('/INVALID_ROUTE')
       .then((res) => {
         expect(res).to.have.status(Config.STATUS_NOT_FOUND);
         expect(res).to.be.json;

@@ -13,12 +13,8 @@ import Config from '../utils/config';
 const router = express.Router();
 
 // Handle requests to api/v1
-router.all('/', (req, res) => {
-  if (req.method === 'GET') {
-    res.status(Config.STATUS_OK).json({ message: Config.MESSAGE_WELCOME_HACKER });
-  } else {
-    res.status(Config.STATUS_NOT_FOUND).json({ message: Config.MESSAGE_NOT_FOUND });
-  }
+router.get('/', (req, res) => {
+  res.status(Config.STATUS_OK).json({ message: Config.MESSAGE_WELCOME_HACKER });
 });
 
 // Get all incidents red-flag and interventions

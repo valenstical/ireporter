@@ -30,7 +30,7 @@ describe('API endpoints for delete request of specific red-flag record', () => {
       });
   });
 
-  it('should send error message when no incident has the specified id', () => {
+  it('should send error message when no red-flag has the specified id', () => {
     chai.request(app)
       .delete('/api/v1/red-flags/-1')
       .then((res) => {
@@ -44,7 +44,38 @@ describe('API endpoints for delete request of specific red-flag record', () => {
         expect(res.body.error).to.equal(Config.MESSAGE_DATA_NOT_FOUND);
       });
   });
+
+  it('should send error message when no for invalid red-flag record id', () => {
+    chai.request(app)
+      .delete('/api/v1/red-flags/INVALID_ID')
+      .then((res) => {
+        expect(res).to.have.status(Config.STATUS_UNPROCESSED);
+        expect(res.body).to.be.an('object');
+        expect(res).to.be.json;
+        expect(res.body).to.have.property('status');
+        expect(res.body).to.have.property('error');
+        expect(res.body.status).to.equal(Config.STATUS_UNPROCESSED);
+        expect(res.body.error).to.be.a('string');
+        expect(res.body.error).to.equal(Config.MESSAGE_NOT_FOUND);
+      });
+  });
+
+  it('should send error message when no for invalid red-flag record id', () => {
+    chai.request(app)
+      .delete('/api/v1/red-flags/INVALID_ID')
+      .then((res) => {
+        expect(res).to.have.status(Config.STATUS_UNPROCESSED);
+        expect(res.body).to.be.an('object');
+        expect(res).to.be.json;
+        expect(res.body).to.have.property('status');
+        expect(res.body).to.have.property('error');
+        expect(res.body.status).to.equal(Config.STATUS_UNPROCESSED);
+        expect(res.body.error).to.be.a('string');
+        expect(res.body.error).to.equal(Config.MESSAGE_NOT_FOUND);
+      });
+  });
 });
+
 
 describe('API endpoints for delete request of specific intervention record', () => {
   it('should delete intervention record with valid id', () => {
@@ -80,6 +111,36 @@ describe('API endpoints for delete request of specific intervention record', () 
         expect(res.body.status).to.equal(Config.STATUS_NOT_FOUND);
         expect(res.body.error).to.be.a('string');
         expect(res.body.error).to.equal(Config.MESSAGE_DATA_NOT_FOUND);
+      });
+  });
+
+  it('should send error message when no for invalid intervention record id', () => {
+    chai.request(app)
+      .delete('/api/v1/interventions/INVALID_ID')
+      .then((res) => {
+        expect(res).to.have.status(Config.STATUS_UNPROCESSED);
+        expect(res.body).to.be.an('object');
+        expect(res).to.be.json;
+        expect(res.body).to.have.property('status');
+        expect(res.body).to.have.property('error');
+        expect(res.body.status).to.equal(Config.STATUS_UNPROCESSED);
+        expect(res.body.error).to.be.a('string');
+        expect(res.body.error).to.equal(Config.MESSAGE_NOT_FOUND);
+      });
+  });
+
+  it('should send error message when no for invalid delete route', () => {
+    chai.request(app)
+      .delete('/api/v1/INVALID_ROUTE/4')
+      .then((res) => {
+        expect(res).to.have.status(Config.STATUS_BAD_REQUEST);
+        expect(res.body).to.be.an('object');
+        expect(res).to.be.json;
+        expect(res.body).to.have.property('status');
+        expect(res.body).to.have.property('error');
+        expect(res.body.status).to.equal(Config.STATUS_BAD_REQUEST);
+        expect(res.body.error).to.be.a('string');
+        expect(res.body.error).to.equal(Config.MESSAGE_INVALID_TYPE);
       });
   });
 });
