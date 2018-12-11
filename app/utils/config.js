@@ -8,12 +8,15 @@ const Config = {
   STATUS_NOT_FOUND: 404, // ENTRY OK BUT RECORD NOT FOUND
   STATUS_UNPROCESSED: 422, // INVALID ENTRY
   STATUS_BAD_REQUEST: 400, // EMPTY FIELD
+  STATUS_PARTIAL_CONTENT: 206, // MISSING FIELD
 
   // INCIDENT STATUS
-  INCIDENT_STATUS_DRAFT: 'draft',
-  INCIDENT_STATUS_UNDER_INVESTIGATION: 'under investigation',
-  INCIDENT_STATUS_RESOLVED: 'resolved',
-  INCIDENT_STATUS_REJECTED: 'rejected',
+  INCIDENT_STATUS_DRAFT: 0,
+  INCIDENT_STATUS_UNDER_INVESTIGATION: 1,
+  INCIDENT_STATUS_RESOLVED: 2,
+  INCIDENT_STATUS_REJECTED: 3,
+  INCIDENT_STATUS: ['draft', 'under investigation', 'resolved', 'rejected'],
+
   MESSAGE_WELCOME_HOME: 'Welcome to iReporter. Are you an Hacker? Use our endpoint /api/v1 to interact with our service. Are you a Normal person? You can visit the site and click around.',
   MESSAGE_NOT_FOUND: 'Resource not found!. Please check the url then try again.',
   MESSAGE_WELCOME_HACKER: 'Welcome Hacker! This is iReporter api v1.',

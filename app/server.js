@@ -12,7 +12,6 @@ const PORT = process.env.PORT || '3000';
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
 // Handle routes to home page
 app.get('/', (req, res) => {
   res.status(Config.STATUS_OK).json({ message: Config.MESSAGE_WELCOME_HOME });
