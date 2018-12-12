@@ -1,6 +1,6 @@
 import chai from 'chai';
 
-import Config from '../app/utils/config';
+import Constants from '../app/utils/constants';
 
 import app from '../app/server';
 
@@ -21,12 +21,12 @@ describe('API endpoints for post requests to red-flags/', () => {
         description: 'He his a yahoo yahoo boy',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_CREATED);
+        expect(res).to.have.status(Constants.STATUS_CREATED);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('data');
-        expect(res.body.status).to.equal(Config.STATUS_CREATED);
+        expect(res.body.status).to.equal(Constants.STATUS_CREATED);
         expect(res.body.data).to.be.an('array');
         expect(res.body.data).to.have.lengthOf(1);
         expect(res.body.data[0]).to.be.an('object');
@@ -49,14 +49,14 @@ describe('API endpoints for post requests to red-flags/', () => {
         description: 'He his a yahoo yahoo boy',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_BAD_REQUEST);
+        expect(res).to.have.status(Constants.STATUS_BAD_REQUEST);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_BAD_REQUEST);
+        expect(res.body.status).to.equal(Constants.STATUS_BAD_REQUEST);
         expect(res.body.error).to.be.a('string');
-        expect(res.body.error).to.equal(Config.MESSAGE_BAD_LOCATION);
+        expect(res.body.error).to.equal(Constants.MESSAGE_BAD_LOCATION);
       });
   });
 
@@ -72,14 +72,14 @@ describe('API endpoints for post requests to red-flags/', () => {
         description: 'He his a yahoo yahoo boy',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_UNPROCESSED);
+        expect(res).to.have.status(Constants.STATUS_UNPROCESSED);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_UNPROCESSED);
+        expect(res.body.status).to.equal(Constants.STATUS_UNPROCESSED);
         expect(res.body.error).to.be.a('string');
-        expect(res.body.error).to.equal(Config.MESSAGE_BAD_LOCATION);
+        expect(res.body.error).to.equal(Constants.MESSAGE_BAD_LOCATION);
       });
   });
 
@@ -95,14 +95,14 @@ describe('API endpoints for post requests to red-flags/', () => {
         description: 'He his a yahoo yahoo boy',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_BAD_REQUEST);
+        expect(res).to.have.status(Constants.STATUS_BAD_REQUEST);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_BAD_REQUEST);
+        expect(res.body.status).to.equal(Constants.STATUS_BAD_REQUEST);
         expect(res.body.error).to.be.a('string');
-        expect(res.body.error).to.equal(Config.MESSAGE_BAD_LOCATION);
+        expect(res.body.error).to.equal(Constants.MESSAGE_BAD_LOCATION);
       });
   });
 
@@ -118,14 +118,14 @@ describe('API endpoints for post requests to red-flags/', () => {
         description: 'He his a yahoo yahoo boy',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_UNPROCESSED);
+        expect(res).to.have.status(Constants.STATUS_UNPROCESSED);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_UNPROCESSED);
+        expect(res.body.status).to.equal(Constants.STATUS_UNPROCESSED);
         expect(res.body.error).to.be.a('string');
-        expect(res.body.error).to.equal(Config.MESSAGE_BAD_LOCATION);
+        expect(res.body.error).to.equal(Constants.MESSAGE_BAD_LOCATION);
       });
   });
 
@@ -141,14 +141,14 @@ describe('API endpoints for post requests to red-flags/', () => {
         description: 'He his a yahoo yahoo boy',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_BAD_REQUEST);
+        expect(res).to.have.status(Constants.STATUS_BAD_REQUEST);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_BAD_REQUEST);
+        expect(res.body.status).to.equal(Constants.STATUS_BAD_REQUEST);
         expect(res.body.error).to.be.a('string');
-        expect(res.body.error).to.equal(Config.MESSAGE_BAD_COMMENT);
+        expect(res.body.error).to.equal(Constants.MESSAGE_BAD_COMMENT);
       });
   });
 });
@@ -166,12 +166,12 @@ describe('API endpoints for post requests to interventions/', () => {
         description: 'He his a yahoo yahoo boy',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_CREATED);
+        expect(res).to.have.status(Constants.STATUS_CREATED);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('data');
-        expect(res.body.status).to.equal(Config.STATUS_CREATED);
+        expect(res.body.status).to.equal(Constants.STATUS_CREATED);
         expect(res.body.data).to.be.an('array');
         expect(res.body.data).to.have.lengthOf(1);
         expect(res.body.data[0]).to.be.an('object');
@@ -194,14 +194,14 @@ describe('API endpoints for post requests to interventions/', () => {
         description: 'He his a yahoo yahoo boy',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_BAD_REQUEST);
+        expect(res).to.have.status(Constants.STATUS_BAD_REQUEST);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_BAD_REQUEST);
+        expect(res.body.status).to.equal(Constants.STATUS_BAD_REQUEST);
         expect(res.body.error).to.be.a('string');
-        expect(res.body.error).to.equal(Config.MESSAGE_BAD_LOCATION);
+        expect(res.body.error).to.equal(Constants.MESSAGE_BAD_LOCATION);
       });
   });
 
@@ -217,14 +217,14 @@ describe('API endpoints for post requests to interventions/', () => {
         description: 'He his a yahoo yahoo boy',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_UNPROCESSED);
+        expect(res).to.have.status(Constants.STATUS_UNPROCESSED);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_UNPROCESSED);
+        expect(res.body.status).to.equal(Constants.STATUS_UNPROCESSED);
         expect(res.body.error).to.be.a('string');
-        expect(res.body.error).to.equal(Config.MESSAGE_BAD_LOCATION);
+        expect(res.body.error).to.equal(Constants.MESSAGE_BAD_LOCATION);
       });
   });
 
@@ -240,14 +240,14 @@ describe('API endpoints for post requests to interventions/', () => {
         description: 'He his a yahoo yahoo boy',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_BAD_REQUEST);
+        expect(res).to.have.status(Constants.STATUS_BAD_REQUEST);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_BAD_REQUEST);
+        expect(res.body.status).to.equal(Constants.STATUS_BAD_REQUEST);
         expect(res.body.error).to.be.a('string');
-        expect(res.body.error).to.equal(Config.MESSAGE_BAD_LOCATION);
+        expect(res.body.error).to.equal(Constants.MESSAGE_BAD_LOCATION);
       });
   });
 
@@ -263,14 +263,14 @@ describe('API endpoints for post requests to interventions/', () => {
         description: 'He his a yahoo yahoo boy',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_UNPROCESSED);
+        expect(res).to.have.status(Constants.STATUS_UNPROCESSED);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_UNPROCESSED);
+        expect(res.body.status).to.equal(Constants.STATUS_UNPROCESSED);
         expect(res.body.error).to.be.a('string');
-        expect(res.body.error).to.equal(Config.MESSAGE_BAD_LOCATION);
+        expect(res.body.error).to.equal(Constants.MESSAGE_BAD_LOCATION);
       });
   });
 
@@ -286,14 +286,14 @@ describe('API endpoints for post requests to interventions/', () => {
         description: 'He his a yahoo yahoo boy',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_BAD_REQUEST);
+        expect(res).to.have.status(Constants.STATUS_BAD_REQUEST);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_BAD_REQUEST);
+        expect(res.body.status).to.equal(Constants.STATUS_BAD_REQUEST);
         expect(res.body.error).to.be.a('string');
-        expect(res.body.error).to.equal(Config.MESSAGE_BAD_COMMENT);
+        expect(res.body.error).to.equal(Constants.MESSAGE_BAD_COMMENT);
       });
   });
 });

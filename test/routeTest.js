@@ -1,6 +1,6 @@
 import chai from 'chai';
 
-import Config from '../app/utils/config';
+import Constants from '../app/utils/constants';
 
 import app from '../app/server';
 
@@ -14,11 +14,11 @@ describe('Server', () => {
     chai.request(app)
       .get('/')
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_OK);
+        expect(res).to.have.status(Constants.STATUS_OK);
         expect(res).to.be.json;
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('message');
-        expect(res.body.message).to.equal(Config.MESSAGE_WELCOME_HOME);
+        expect(res.body.message).to.equal(Constants.MESSAGE_WELCOME_HOME);
       });
   });
 
@@ -26,11 +26,11 @@ describe('Server', () => {
     chai.request(app)
       .get('/api/v1')
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_OK);
+        expect(res).to.have.status(Constants.STATUS_OK);
         expect(res).to.be.json;
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('message');
-        expect(res.body.message).to.equal(Config.MESSAGE_WELCOME_HACKER);
+        expect(res.body.message).to.equal(Constants.MESSAGE_WELCOME_HACKER);
       });
   });
 
@@ -38,11 +38,11 @@ describe('Server', () => {
     chai.request(app)
       .get('api/v1/INVALID_ROUTE')
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_NOT_FOUND);
+        expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
         expect(res).to.be.json;
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('message');
-        expect(res.body.message).to.equal(Config.MESSAGE_NOT_FOUND);
+        expect(res.body.message).to.equal(Constants.MESSAGE_NOT_FOUND);
       });
   });
 
@@ -50,11 +50,11 @@ describe('Server', () => {
     chai.request(app)
       .post('api/v1/INVALID_ROUTE')
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_NOT_FOUND);
+        expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
         expect(res).to.be.json;
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('message');
-        expect(res.body.message).to.equal(Config.MESSAGE_NOT_FOUND);
+        expect(res.body.message).to.equal(Constants.MESSAGE_NOT_FOUND);
       });
   });
 
@@ -62,22 +62,22 @@ describe('Server', () => {
     chai.request(app)
       .patch('api/v1/INVALID_ROUTE')
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_NOT_FOUND);
+        expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
         expect(res).to.be.json;
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('message');
-        expect(res.body.message).to.equal(Config.MESSAGE_NOT_FOUND);
+        expect(res.body.message).to.equal(Constants.MESSAGE_NOT_FOUND);
       });
   });
   it('should return 404 status code with error message for wrong http method', () => {
     chai.request(app)
       .delete('/INVALID_ROUTE')
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_NOT_FOUND);
+        expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
         expect(res).to.be.json;
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('message');
-        expect(res.body.message).to.equal(Config.MESSAGE_NOT_FOUND);
+        expect(res.body.message).to.equal(Constants.MESSAGE_NOT_FOUND);
       });
   });
 });
