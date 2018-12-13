@@ -1,5 +1,4 @@
 import Constants from '../utils/constants';
-import User from './user';
 import Database from '../utils/connector';
 
 const { success, error } = Constants;
@@ -22,7 +21,6 @@ class Incident {
     this.comment = data.comment;
     this.title = data.title;
     this.risk = data.risk;
-    this.user = new User(data.created_by, data.user_fname, data.user_profile, data.user_verified);
   }
 
 

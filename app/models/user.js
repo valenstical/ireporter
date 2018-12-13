@@ -4,6 +4,11 @@ import Constants from '../utils/constants';
 const { success, error } = Constants;
 
 class User {
+  /**
+   * Populates the user with values from another object
+   * @constructor
+   * @param {object} data - The object data for initialization
+   */
   constructor(data) {
     this.id = data.id;
     this.firstname = data.firstname;
@@ -27,8 +32,8 @@ class User {
    */
   createUser(res) {
     Database.createUser(this, () => {
-      const tokens = Constants.createToken(this.email);
-      success(res, Constants.STATUS_CREATED, [{ token: tokens, user: this }]);
+      const authToken = Constants.createToken(this.id);
+      success(res, Constants.STATUS_CREATED, [{ token: authToken, user: this }]);
     }, (ex) => {
       let message = 'Phone numbe is already registered';
       if (ex.constraint === 'users_username_key') {
@@ -47,7 +52,7 @@ class User {
   login(res) {
     Database.login(this, (result) => {
       if (result) {
-        const authToken = Constants.getToken(result.email);
+        const authToken = Constants.createToken(result.id);
         success(res, Constants.STATUS_OK, [{ token: authToken, user: result }]);
       } else {
         error(res, Constants.STATUS_NOT_FOUND, Constants.MESSAGE_INVALID_LOGIN);

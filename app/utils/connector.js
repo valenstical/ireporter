@@ -23,6 +23,7 @@ class Database {
         connection.release();
       }
     })().catch((ex) => {
+      console.log(ex);
       failure(ex);
     });
   }
@@ -83,7 +84,7 @@ class Database {
    * @param {function} echo - Callback function to be executed after successful query
    */
   static getIncidents(sqlClause, params, echo) {
-    const selectCmd = `select incidents.${columns}, users.firstname, users.profile, users.verified from incidents left join users on "createdBy" = users.id`;
+    const selectCmd = `select incidents.${columns}, users.firstname, users.profile, "isVerified" from incidents left join users on "createdBy" = users.id`;
     const sql = `${selectCmd} where ${sqlClause}`;
     Database.execute(sql, params, (query) => {
       echo(query.rows);
@@ -143,9 +144,26 @@ class Database {
     const sql = `select ${columnsUser} from users where username = $1 or email = $2 or "phoneNumber" = $3`;
     const params = [user.username, user.username, user.username];
     Database.execute(sql, params, (result) => {
-      bcrypt.compare(user.password, result.rows[0].password, (errs, response) => {
-        echo(response ? result.rows[0] : false);
-      });
+      if (result.rowCount > 0) {
+        bcrypt.compare(user.password, result.rows[0].password, (errs, response) => {
+          echo(response ? result.rows[0] : false);
+        });
+      } else {
+        echo(false);
+      }
+    });
+  }
+
+  /**
+   * Get a user by id
+   * @param {number} id - The user object
+   * @param {function} echo - Callback function on success
+   */
+  static getUser(id, echo) {
+    const sql = `select ${columnsUser} from users where id = $1`;
+    const params = [id];
+    Database.execute(sql, params, (result) => {
+      echo(result.rowCount > 0 ? result.rows[0] : false);
     });
   }
 }

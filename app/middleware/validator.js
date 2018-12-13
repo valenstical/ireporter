@@ -180,6 +180,12 @@ class Validator {
     });
   }
 
+  /**
+   * Validates log in parameters
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @param {function} next - The next function used to pass control to another middleware
+   */
   static validateLogin(req, res, next) {
     const errors = [];
     const user = new User(req.body);

@@ -1,3 +1,4 @@
+import jwt from 'jwt-simple';
 
 const Constants = {
 
@@ -10,6 +11,7 @@ const Constants = {
   STATUS_BAD_REQUEST: 400, // EMPTY FIELD
   STATUS_PARTIAL_CONTENT: 206, // MISSING FIELD
   STATSUS_CONFLICT: 409,
+  STATUS_UNATHORIZED: 401,
 
   // INCIDENT STATUS
   INCIDENT_STATUS_DRAFT: 'draft',
@@ -32,6 +34,7 @@ const Constants = {
   MESSAGE_OUT_OF_RANGE: 'The id should be 9 digits long',
   MESSAGE_EMPTY_STATUS: 'You must provide a status in order to proceed',
   MESSAGE_INVALID_LOGIN: 'Username or password is incorrect',
+  MESSAGE_UNATHORIZED: 'You do not have permission to view this resource',
 
   // INCIDENT TYPES
   INCIDENT_TYPE_RED_FLAG: 'red-flag',
@@ -51,12 +54,12 @@ const Constants = {
   },
 
   createToken: (value) => {
-    // TODO
-    return value;
+    const token = jwt.encode(value, process.env.SECRET);
+    return token;
   },
 
-  getToken: (value) => {
-    // TO DO
+  getToken: (token) => {
+    const value = jwt.decode(token, process.env.SECRET);
     return value;
   },
 
