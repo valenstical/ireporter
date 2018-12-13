@@ -1,7 +1,8 @@
-import Database from '../utils/connector';
+import Database from '../utils/database';
 import Constants from '../utils/constants';
+import Common from '../utils/common';
 
-const { success, error } = Constants;
+const { success, error } = Common;
 
 class User {
   /**
@@ -32,8 +33,9 @@ class User {
    */
   createUser(res) {
     Database.createUser(this, () => {
-      const authToken = Constants.createToken(this.id);
-      success(res, Constants.STATUS_CREATED, [{ token: authToken, user: this }]);
+      Common.createToken(this.id, (authToken) => {
+        success(res, Constants.STATUS_CREATED, [{ token: authToken, user: this }]);
+      });
     }, (ex) => {
       let message = 'Phone numbe is already registered';
       if (ex.constraint === 'users_username_key') {
@@ -52,8 +54,9 @@ class User {
   login(res) {
     Database.login(this, (result) => {
       if (result) {
-        const authToken = Constants.createToken(result.id);
-        success(res, Constants.STATUS_OK, [{ token: authToken, user: result }]);
+        Common.createToken(result.id, (authToken) => {
+          success(res, Constants.STATUS_OK, [{ token: authToken, user: result }]);
+        });
       } else {
         error(res, Constants.STATUS_NOT_FOUND, Constants.MESSAGE_INVALID_LOGIN);
       }

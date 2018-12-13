@@ -4,9 +4,10 @@ import bcrypt from 'bcrypt';
 import Constants from '../utils/constants';
 import Helper from '../utils/validatorHelper';
 import User from '../models/user';
+import Common from '../utils/common';
 
 const { checkEmpty, checkLocation } = Helper;
-const { error } = Constants;
+const { error } = Common;
 
 class Validator {
   /**
@@ -87,10 +88,10 @@ class Validator {
   static validatePostData(req, res, next) {
     const errors = [];
     req.incident.location = `${req.body.latitude},${req.body.longitude}`;
-    checkEmpty(errors, req.body.latitude, 'The latitude field can not be empty');
-    checkEmpty(errors, req.body.longitude, 'The longitude field can not be empty');
-    checkEmpty(errors, req.body.comment, 'You must provide a comment for this incident.');
-    checkEmpty(errors, req.body.title, 'You must provide a title for this incident.');
+    checkEmpty(errors, req.body.latitude, 'The latitude is required');
+    checkEmpty(errors, req.body.longitude, 'The longitude is required');
+    checkEmpty(errors, req.body.comment, 'You must provide a comment for this incident');
+    checkEmpty(errors, req.body.title, 'You must provide a title for this incident');
     checkLocation(errors, req.incident.location);
 
     if (errors.length > 0) {
@@ -160,7 +161,7 @@ class Validator {
       errors.push('You need provide a valid phone number');
     }
     if (errors.length !== 0) {
-      error(res, Constants.STATUS_BAD_REQUEST, errors.join(' ** '));
+      error(res, Constants.STATUS_BAD_REQUEST, errors);
       return;
     }
     const user = new User(req.body);
@@ -189,11 +190,11 @@ class Validator {
   static validateLogin(req, res, next) {
     const errors = [];
     const user = new User(req.body);
-    checkEmpty(errors, user.password, 'You need to provide your password');
-    checkEmpty(errors, user.username, 'Please enter your username, email or phone number');
+    checkEmpty(errors, user.password, 'You need to provide a password');
+    checkEmpty(errors, user.username, 'Your username is required. You can also provide your phone number or email address.');
 
     if (errors.length !== 0) {
-      error(res, Constants.STATUS_BAD_REQUEST, errors.join(' ** '));
+      error(res, Constants.STATUS_BAD_REQUEST, errors);
       return;
     }
     req.user = user;

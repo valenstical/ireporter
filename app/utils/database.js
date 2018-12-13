@@ -23,7 +23,7 @@ class Database {
         connection.release();
       }
     })().catch((ex) => {
-      console.log(ex);
+      // console.log(ex);
       failure(ex);
     });
   }
