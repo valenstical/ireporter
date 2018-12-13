@@ -1,48 +1,99 @@
-import Config from '../utils/config';
+import Constants from '../utils/constants';
+import Database from '../utils/connector';
+
+const { success, error } = Constants;
 
 class Incident {
-  constructor() {
-    this.id = -1;
-    this.createdOn = new Date();
-    this.createdBy = -1;
-    this.type = '';
-    this.location = '';
-    this.status = Config.INCIDENT_STATUS_DRAFT;
-    this.Images = [];
-    this.Videos = [];
-    this.comment = '';
-    this.description = '';
+  /**
+   * Initializes an Incident which can be red-flag or intervention
+   * @constructor
+   * @param {object} data - An object containing all incident information.
+   */
+  constructor(data) {
+    this.id = data.id;
+    this.createdOn = data.createdOn;
+    this.createdBy = data.createdBy;
+    this.type = data.type;
+    this.location = data.location;
+    this.status = data.status;
+    this.Images = data.Images ? data.Images.split(',') : [];
+    this.Videos = data.Videos ? data.Videos.split(',') : [];
+    this.comment = data.comment;
+    this.title = data.title;
+    this.risk = data.risk;
   }
 
-  isIncident() {
-    return this.is(Config.TYPE_INTERVENTION) || this.is(Config.TYPE_RED_FLAG);
+
+  /**
+ * Delete an incident from the database
+ * @param {object} res - the response object.
+ */
+  deleteIncident(res) {
+    Database.deleteIncident(this, (deleted) => {
+      if (deleted) {
+        success(res, Constants.STATUS_OK, [{ id: this.id, message: `${this.type} record has been deleted` }]);
+      } else {
+        error(res, Constants.STATUS_NOT_FOUND, `The ${this.type} record could not be deleted. The status may have changed or the record no longer exists.`);
+      }
+    });
   }
 
-  is(type) {
-    return this.type === type;
+  /**
+ * This is an helper function to get all incidents
+ * @param {string} type - The type of incident (red-flag or intervention)
+ * @param {object} req - The request object
+ * @param {object} res - The repsonse object
+ * @param {integer} id - The id of the selected incident
+ */
+  getAllIncidents(res) {
+    const qry = !this.id ? '' : ' and incidents.id=$3';
+    const params = !this.id ? [this.type, this.createdBy] : [this.type, this.createdBy, this.id];
+    Database.getIncidents(`type = $1 and "createdBy" = $2${qry}`, params, (result) => {
+      if (result.length === 0 && this.id) {
+        error(res, Constants.STATUS_NOT_FOUND, `There is no ${this.type} record with that id`);
+      } else {
+        success(res, Constants.STATUS_OK, result);
+      }
+    });
   }
 
-  setType(type) {
-    this.type = type.substring(0, type.length - 1);
+  /**
+   * Add a new intervention or red-flag record to the database
+   * @param {object} res - The resource object
+   */
+  createIncident(res) {
+    Database.createIncident(this, () => {
+      success(res, Constants.STATUS_CREATED, [{ id: this.id, message: `Created ${this.type} record` }]);
+    });
   }
 
-  statusToString() {
-    switch (this.status) {
-      case 0:
-        this.status = Config.INCIDENT_STATUS_DRAFT;
-        break;
-      case 1:
-        this.status = Config.INCIDENT_STATUS_UNDER_INVESTIGATION;
-        break;
-      case 2:
-        this.status = Config.INCIDENT_STATUS_RESOLVED;
-        break;
-      case 3:
-        this.status = Config.INCIDENT_STATUS_REJECTED;
-        break;
-      default:
-        this.status = false;
-    }
+  /**
+   * Update the comment of an intervention of red-flag record
+   * @param {object} res - The response object
+   */
+  updateIncident(res) {
+    const action = this.location ? 'location' : 'comment';
+    Database.updateIncident(this, (updated) => {
+      if (updated) {
+        success(res, Constants.STATUS_OK, [{ id: this.id, message: `Updated ${this.type}'s ${action}` }]);
+      } else {
+        error(res, Constants.STATUS_NOT_FOUND, `The ${this.type} record could not be updated. The status may have changed or the record no longer exists.`);
+      }
+    });
+  }
+
+  /**
+   * Update the status of an intervention of red-flag record
+   * @param {object} res - The response object
+   */
+  updateStatus(res) {
+    Database.updateIncident(this, (updated) => {
+      if (updated) {
+        success(res, Constants.STATUS_OK, [{ id: this.id, message: `Updated ${this.type}'s record status` }]);
+      } else {
+        error(res, Constants.STATUS_NOT_FOUND, `The ${this.type} record could not be updated. The record may no longer exists.`);
+      }
+    });
   }
 }
 

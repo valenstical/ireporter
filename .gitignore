@@ -6,3 +6,5 @@ pinegrow.json
 node_modules
 .nyc_output/
 .vscode
+/nbproject/private/
+.env

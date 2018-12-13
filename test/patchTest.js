@@ -1,5 +1,5 @@
 import chai from 'chai';
-import Config from '../app/utils/config';
+import Constants from '../app/utils/constants';
 import app from '../app/server';
 
 const { expect } = chai;
@@ -15,12 +15,12 @@ describe('API endpoints for patch request to edit red-flag location', () => {
         longitude: '3.4590945',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_OK);
+        expect(res).to.have.status(Constants.STATUS_OK);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('data');
-        expect(res.body.status).to.equal(Config.STATUS_OK);
+        expect(res.body.status).to.equal(Constants.STATUS_OK);
         expect(res.body.data).to.be.an('array');
         expect(res.body.data).to.have.lengthOf(1);
         expect(res.body.data[0]).to.be.an('object');
@@ -39,13 +39,13 @@ describe('API endpoints for patch request to edit red-flag location', () => {
         longitude: '3.4590945',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_BAD_REQUEST);
+        expect(res).to.have.status(Constants.STATUS_BAD_REQUEST);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_BAD_REQUEST);
-        expect(res.body.error).to.equal(Config.MESSAGE_BAD_LOCATION);
+        expect(res.body.status).to.equal(Constants.STATUS_BAD_REQUEST);
+        expect(res.body.error).to.equal(Constants.MESSAGE_BAD_LOCATION);
       });
   });
 
@@ -57,13 +57,13 @@ describe('API endpoints for patch request to edit red-flag location', () => {
         longitude: '3.4590945',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_UNPROCESSED);
+        expect(res).to.have.status(Constants.STATUS_UNPROCESSED);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_UNPROCESSED);
-        expect(res.body.error).to.equal(Config.MESSAGE_BAD_LOCATION);
+        expect(res.body.status).to.equal(Constants.STATUS_UNPROCESSED);
+        expect(res.body.error).to.equal(Constants.MESSAGE_BAD_LOCATION);
       });
   });
 
@@ -75,13 +75,13 @@ describe('API endpoints for patch request to edit red-flag location', () => {
         longitude: '',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_BAD_REQUEST);
+        expect(res).to.have.status(Constants.STATUS_BAD_REQUEST);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_BAD_REQUEST);
-        expect(res.body.error).to.equal(Config.MESSAGE_BAD_LOCATION);
+        expect(res.body.status).to.equal(Constants.STATUS_BAD_REQUEST);
+        expect(res.body.error).to.equal(Constants.MESSAGE_BAD_LOCATION);
       });
   });
 
@@ -93,13 +93,13 @@ describe('API endpoints for patch request to edit red-flag location', () => {
         longitude: 'INVALID_LATITUDE',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_UNPROCESSED);
+        expect(res).to.have.status(Constants.STATUS_UNPROCESSED);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_UNPROCESSED);
-        expect(res.body.error).to.equal(Config.MESSAGE_BAD_LOCATION);
+        expect(res.body.status).to.equal(Constants.STATUS_UNPROCESSED);
+        expect(res.body.error).to.equal(Constants.MESSAGE_BAD_LOCATION);
       });
   });
 
@@ -111,13 +111,13 @@ describe('API endpoints for patch request to edit red-flag location', () => {
         longitude: '3.5784567',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_NOT_FOUND);
+        expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_NOT_FOUND);
-        expect(res.body.error).to.equal(Config.MESSAGE_DATA_NOT_FOUND);
+        expect(res.body.status).to.equal(Constants.STATUS_NOT_FOUND);
+        expect(res.body.error).to.equal(Constants.MESSAGE_DATA_NOT_FOUND);
       });
   });
 });
@@ -130,12 +130,12 @@ describe('API endpoints for patch request to edit red-flag comment', () => {
         comment: 'Power failure in my area has now extended to over 6 months now.',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_OK);
+        expect(res).to.have.status(Constants.STATUS_OK);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('data');
-        expect(res.body.status).to.equal(Config.STATUS_OK);
+        expect(res.body.status).to.equal(Constants.STATUS_OK);
         expect(res.body.data).to.be.an('array');
         expect(res.body.data).to.have.lengthOf(1);
         expect(res.body.data[0]).to.be.an('object');
@@ -153,14 +153,14 @@ describe('API endpoints for patch request to edit red-flag comment', () => {
         comment: '',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_BAD_REQUEST);
+        expect(res).to.have.status(Constants.STATUS_BAD_REQUEST);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_BAD_REQUEST);
+        expect(res.body.status).to.equal(Constants.STATUS_BAD_REQUEST);
         expect(res.body.error).to.be.a('string');
-        expect(res.body.error).to.equal(Config.MESSAGE_BAD_COMMENT);
+        expect(res.body.error).to.equal(Constants.MESSAGE_BAD_COMMENT);
       });
   });
 
@@ -171,14 +171,14 @@ describe('API endpoints for patch request to edit red-flag comment', () => {
         comment: 'Power failure in my area has now extended to over 6 months now.',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_NOT_FOUND);
+        expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_NOT_FOUND);
+        expect(res.body.status).to.equal(Constants.STATUS_NOT_FOUND);
         expect(res.body.error).to.be.a('string');
-        expect(res.body.error).to.equal(Config.MESSAGE_DATA_NOT_FOUND);
+        expect(res.body.error).to.equal(Constants.MESSAGE_DATA_NOT_FOUND);
       });
   });
 });
@@ -192,12 +192,12 @@ describe('API endpoints for patch request to edit intervention location', () => 
         longitude: '3.4590945',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_OK);
+        expect(res).to.have.status(Constants.STATUS_OK);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('data');
-        expect(res.body.status).to.equal(Config.STATUS_OK);
+        expect(res.body.status).to.equal(Constants.STATUS_OK);
         expect(res.body.data).to.be.an('array');
         expect(res.body.data).to.have.lengthOf(1);
         expect(res.body.data[0]).to.be.an('object');
@@ -216,13 +216,13 @@ describe('API endpoints for patch request to edit intervention location', () => 
         longitude: '3.4590945',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_BAD_REQUEST);
+        expect(res).to.have.status(Constants.STATUS_BAD_REQUEST);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_BAD_REQUEST);
-        expect(res.body.error).to.equal(Config.MESSAGE_BAD_LOCATION);
+        expect(res.body.status).to.equal(Constants.STATUS_BAD_REQUEST);
+        expect(res.body.error).to.equal(Constants.MESSAGE_BAD_LOCATION);
       });
   });
 
@@ -234,13 +234,13 @@ describe('API endpoints for patch request to edit intervention location', () => 
         longitude: '3.4590945',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_UNPROCESSED);
+        expect(res).to.have.status(Constants.STATUS_UNPROCESSED);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_UNPROCESSED);
-        expect(res.body.error).to.equal(Config.MESSAGE_BAD_LOCATION);
+        expect(res.body.status).to.equal(Constants.STATUS_UNPROCESSED);
+        expect(res.body.error).to.equal(Constants.MESSAGE_BAD_LOCATION);
       });
   });
 
@@ -252,13 +252,13 @@ describe('API endpoints for patch request to edit intervention location', () => 
         longitude: '',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_BAD_REQUEST);
+        expect(res).to.have.status(Constants.STATUS_BAD_REQUEST);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_BAD_REQUEST);
-        expect(res.body.error).to.equal(Config.MESSAGE_BAD_LOCATION);
+        expect(res.body.status).to.equal(Constants.STATUS_BAD_REQUEST);
+        expect(res.body.error).to.equal(Constants.MESSAGE_BAD_LOCATION);
       });
   });
 
@@ -270,13 +270,13 @@ describe('API endpoints for patch request to edit intervention location', () => 
         longitude: 'INVALID_LATITUDE',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_UNPROCESSED);
+        expect(res).to.have.status(Constants.STATUS_UNPROCESSED);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_UNPROCESSED);
-        expect(res.body.error).to.equal(Config.MESSAGE_BAD_LOCATION);
+        expect(res.body.status).to.equal(Constants.STATUS_UNPROCESSED);
+        expect(res.body.error).to.equal(Constants.MESSAGE_BAD_LOCATION);
       });
   });
 
@@ -288,13 +288,13 @@ describe('API endpoints for patch request to edit intervention location', () => 
         longitude: '3.5784567',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_NOT_FOUND);
+        expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_NOT_FOUND);
-        expect(res.body.error).to.equal(Config.MESSAGE_DATA_NOT_FOUND);
+        expect(res.body.status).to.equal(Constants.STATUS_NOT_FOUND);
+        expect(res.body.error).to.equal(Constants.MESSAGE_DATA_NOT_FOUND);
       });
   });
 });
@@ -307,12 +307,12 @@ describe('API endpoints for patch request to edit intervention comment', () => {
         comment: 'Power failure in my area has now extended to over 6 months now.',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_OK);
+        expect(res).to.have.status(Constants.STATUS_OK);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('data');
-        expect(res.body.status).to.equal(Config.STATUS_OK);
+        expect(res.body.status).to.equal(Constants.STATUS_OK);
         expect(res.body.data).to.be.an('array');
         expect(res.body.data).to.have.lengthOf(1);
         expect(res.body.data[0]).to.be.an('object');
@@ -330,14 +330,14 @@ describe('API endpoints for patch request to edit intervention comment', () => {
         comment: '',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_BAD_REQUEST);
+        expect(res).to.have.status(Constants.STATUS_BAD_REQUEST);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_BAD_REQUEST);
+        expect(res.body.status).to.equal(Constants.STATUS_BAD_REQUEST);
         expect(res.body.error).to.be.a('string');
-        expect(res.body.error).to.equal(Config.MESSAGE_BAD_COMMENT);
+        expect(res.body.error).to.equal(Constants.MESSAGE_BAD_COMMENT);
       });
   });
 
@@ -348,14 +348,88 @@ describe('API endpoints for patch request to edit intervention comment', () => {
         comment: 'Power failure in my area has now extended to over 6 months now.',
       })
       .then((res) => {
-        expect(res).to.have.status(Config.STATUS_NOT_FOUND);
+        expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
         expect(res.body).to.be.an('object');
         expect(res).to.be.json;
         expect(res.body).to.have.property('status');
         expect(res.body).to.have.property('error');
-        expect(res.body.status).to.equal(Config.STATUS_NOT_FOUND);
+        expect(res.body.status).to.equal(Constants.STATUS_NOT_FOUND);
         expect(res.body.error).to.be.a('string');
-        expect(res.body.error).to.equal(Config.MESSAGE_DATA_NOT_FOUND);
+        expect(res.body.error).to.equal(Constants.MESSAGE_DATA_NOT_FOUND);
+      });
+  });
+
+  it('should send error message for invalid patch route to edit intervention', () => {
+    chai.request(app)
+      .patch('/api/v1/interventions/-1/INVALID_ROUTE')
+      .send({
+        latitude: '6.5678903',
+        longitude: '3.5784567',
+      })
+      .then((res) => {
+        expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
+        expect(res.body).to.be.an('object');
+        expect(res).to.be.json;
+        expect(res.body).to.have.property('status');
+        expect(res.body).to.have.property('error');
+        expect(res.body.status).to.equal(Constants.STATUS_NOT_FOUND);
+        expect(res.body.error).to.equal(Constants.MESSAGE_NOT_FOUND);
+      });
+  });
+
+  it('should send error message for invalid patch route to edit red-flag', () => {
+    chai.request(app)
+      .patch('/api/v1/red-flags/-1/INVALID_ROUTE')
+      .send({
+        latitude: '6.5678903',
+        longitude: '3.5784567',
+      })
+      .then((res) => {
+        expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
+        expect(res.body).to.be.an('object');
+        expect(res).to.be.json;
+        expect(res.body).to.have.property('status');
+        expect(res.body).to.have.property('error');
+        expect(res.body.status).to.equal(Constants.STATUS_NOT_FOUND);
+        expect(res.body.error).to.equal(Constants.MESSAGE_NOT_FOUND);
+      });
+  });
+});
+
+describe('API endpoints for patch request for invalid route to edit intervention or comment', () => {
+  it('should send error message for invalid patch route to edit intervention', () => {
+    chai.request(app)
+      .patch('/api/v1/interventions/-1/INVALID_ROUTE')
+      .send({
+        latitude: '6.5678903',
+        longitude: '3.5784567',
+      })
+      .then((res) => {
+        expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
+        expect(res.body).to.be.an('object');
+        expect(res).to.be.json;
+        expect(res.body).to.have.property('status');
+        expect(res.body).to.have.property('error');
+        expect(res.body.status).to.equal(Constants.STATUS_NOT_FOUND);
+        expect(res.body.error).to.equal(Constants.MESSAGE_NOT_FOUND);
+      });
+  });
+
+  it('should send error message for invalid patch route to edit red-flag', () => {
+    chai.request(app)
+      .patch('/api/v1/red-flags/-1/INVALID_ROUTE')
+      .send({
+        latitude: '6.5678903',
+        longitude: '3.5784567',
+      })
+      .then((res) => {
+        expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
+        expect(res.body).to.be.an('object');
+        expect(res).to.be.json;
+        expect(res.body).to.have.property('status');
+        expect(res.body).to.have.property('error');
+        expect(res.body.status).to.equal(Constants.STATUS_NOT_FOUND);
+        expect(res.body.error).to.equal(Constants.MESSAGE_NOT_FOUND);
       });
   });
 });
