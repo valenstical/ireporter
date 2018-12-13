@@ -1,7 +1,10 @@
 import Constants from '../utils/constants';
-import Database from '../utils/connector';
+import Database from '../utils/database';
+import Mailer from '../utils/sendMail';
+import SMS from '../utils/sendSms';
+import Common from '../utils/common';
 
-const { success, error } = Constants;
+const { success, error } = Common;
 
 class Incident {
   /**
@@ -93,6 +96,10 @@ class Incident {
       } else {
         error(res, Constants.STATUS_NOT_FOUND, `The ${this.type} record could not be updated. The record may no longer exists.`);
       }
+      const mail = new Mailer('valenstical@gmail.com', 'Hello', 'Hello main', '<h1>Nice</h1>');
+      mail.send();
+      const sms = new SMS('+2349058587111', 'Hello');
+      sms.send();
     });
   }
 }

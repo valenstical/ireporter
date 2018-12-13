@@ -1,21 +1,34 @@
-import jwt from 'jwt-simple';
-import Database from '../utils/connector';
-import Constants from '../utils/constants';
 
-const { error } = Constants;
+import Database from '../utils/database';
+import Constants from '../utils/constants';
+import Common from '../utils/common';
+
+const { error } = Common;
 
 class Authenticator {
+  /**
+   * This function verifies the jwt authorization token, get the user details and
+     passes control to the next middleware
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @param {function} next - The next() function for routing requests to the next middleware
+   */
   static authenticateUser(req, res, next) {
-
     if (req.headers.authorization) {
-      const userId = jwt.decode(req.headers.authorization, process.env.SECRET);
-      Database.getUser(userId, (user) => {
-        if (user) {
-          req.incident.createdBy = user.id;
-          req.incident.id = req.params.id;
-          next();
-        } else {
+      const authToken = req.headers.authorization.split(' ')[1];
+      Common.verifyToken(authToken, (err, data) => {
+        if (err) {
           error(res, Constants.STATUS_UNATHORIZED, Constants.MESSAGE_UNATHORIZED);
+        } else {
+          Database.getUser(data.userId, (user) => {
+            if (user) {
+              req.incident.createdBy = user.id;
+              req.incident.id = req.params.id;
+              next();
+            } else {
+              error(res, Constants.STATUS_UNATHORIZED, Constants.MESSAGE_UNATHORIZED);
+            }
+          });
         }
       });
     } else {
@@ -23,17 +36,28 @@ class Authenticator {
     }
   }
 
+  /**
+   * This function verifies the jwt authorization token, and checks that the user is an admin
+     then passes control to the next middleware
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @param {function} next - The next() function for routing requests to the next middleware
+   */
   static authenticateAdmin(req, res, next) {
     if (req.headers.authorization) {
-      const userId = jwt.decode(req.headers.authorization, process.env.SECRET);
-      
-      Database.getUser(userId, (user) => {
-        console.log(user);
-        if (user && user.isAdmin) {
-          req.incident.id = req.params.id;
-          next();
-        } else {
+      const authToken = req.headers.authorization.split(' ')[1];
+      Common.verifyToken(authToken, (err, data) => {
+        if (err) {
           error(res, Constants.STATUS_UNATHORIZED, Constants.MESSAGE_UNATHORIZED);
+        } else {
+          Database.getUser(data.userId, (user) => {
+            if (user && user.isAdmin) {
+              req.incident.id = req.params.id;
+              next();
+            } else {
+              error(res, Constants.STATUS_FORBIDDEN, Constants.MESSAGE_FORBIDDEN);
+            }
+          });
         }
       });
     } else {
