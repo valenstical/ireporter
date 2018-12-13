@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "eslint .",
     "fix": "eslint --fix .",
-    "start": "nodemon app/server.js --exec babel-node --presets babel-preset-env env TZ='Africa/Lagos'",
+    "start": "node app/server.js --exec babel-node --presets babel-preset-env env TZ='Africa/Lagos'",
     "test": "nyc mocha --require babel-polyfill --require babel-register ./test/ --timeout 10000 --exit",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls"
   },
