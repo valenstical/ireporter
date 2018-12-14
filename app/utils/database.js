@@ -68,8 +68,8 @@ class Database {
       params = [incident.location, incident.type, Constants.INCIDENT_STATUS_DRAFT,
         incident.id, incident.createdBy];
     } else if (incident.status) {
-      sql = 'update incidents set status = ($1) where type = ($2) and id = ($3)';
-      params = [incident.status, incident.type, incident.id];
+      sql = 'update incidents set status = ($1) where id = ($2)';
+      params = [incident.status, incident.id];
     }
 
     Database.execute(sql, params, (query) => {
