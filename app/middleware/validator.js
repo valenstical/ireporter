@@ -218,7 +218,8 @@ class Validator {
         error(res, Constants.STATUS_NOT_FOUND, `There is no ${req.incident.type} record with that id`);
         return;
       }
-      req.incident = new Incident(rows[0]);
+      const { createdBy } = rows[0];
+      req.incident.createdBy = createdBy;
       next();
     });
   }

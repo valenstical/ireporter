@@ -24,6 +24,7 @@ class Authenticator {
             if (user) {
               req.incident.createdBy = user.id;
               req.incident.id = req.params.id;
+              req.isAdmin = false;
               next();
             } else {
               error(res, Constants.STATUS_UNATHORIZED, Constants.MESSAGE_UNATHORIZED);
@@ -53,6 +54,7 @@ class Authenticator {
           Database.getUser(data.userId, (user) => {
             if (user && user.isAdmin) {
               req.incident.id = req.params.id;
+              req.isAdmin = true;
               next();
             } else {
               error(res, Constants.STATUS_FORBIDDEN, Constants.MESSAGE_FORBIDDEN);
