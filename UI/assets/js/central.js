@@ -67,7 +67,7 @@ function recoverPassword() {
 }
 
 function login() {
-  window.location.assign('reports.html');
+  window.location.assign('profile.html');
   return false;
 }
 
