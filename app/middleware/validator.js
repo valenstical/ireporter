@@ -5,6 +5,8 @@ import Constants from '../utils/constants';
 import Helper from '../utils/validatorHelper';
 import User from '../models/user';
 import Common from '../utils/common';
+import Database from '../utils/database';
+import Incident from '../models/incident';
 
 const { checkEmpty, checkLocation } = Helper;
 const { error } = Common;
@@ -102,6 +104,8 @@ class Validator {
     req.incident.location = `${req.body.latitude},${req.body.longitude}`;
     req.incident.status = Constants.INCIDENT_STATUS_DRAFT;
     req.incident.id = Random(100000000, 999999999);
+    req.incident.Images = req.incident.Images ? req.incident.Images.split(',') : [];
+    req.incident.Videos = req.incident.Videos ? req.incident.Videos.split(',') : [];
     next();
   }
 
@@ -170,6 +174,7 @@ class Validator {
     user.allowSms = true;
     user.isAdmin = false;
     user.isBlocked = false;
+    user.risk = 0;
     user.isVerified = false;
     user.profile = 'profile.jpg';
     user.registered = new Date();
@@ -199,6 +204,23 @@ class Validator {
     }
     req.user = user;
     next();
+  }
+
+  /**
+   * Checks that the incident exists
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @param {function} next - The next function used to pass control to another middleware
+   */
+  static validateIncident(req, res, next) {
+    Database.getIncidents('incidents.id = $1 and incidents.type = $2', [req.incident.id, req.incident.type], (rows) => {
+      if (rows.length === 0) {
+        error(res, Constants.STATUS_NOT_FOUND, `There is no ${req.incident.type} record with that id`);
+        return;
+      }
+      req.incident = new Incident(rows[0]);
+      next();
+    });
   }
 }
 
