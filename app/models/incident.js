@@ -1,7 +1,10 @@
 import Constants from '../utils/constants';
-import Database from '../utils/connector';
+import Database from '../utils/database';
+import Mailer from '../utils/sendMail';
+import SMS from '../utils/sendSms';
+import Common from '../utils/common';
 
-const { success, error } = Constants;
+const { success, error } = Common;
 
 class Incident {
   /**
@@ -16,8 +19,8 @@ class Incident {
     this.type = data.type;
     this.location = data.location;
     this.status = data.status;
-    this.Images = data.Images ? data.Images.split(',') : [];
-    this.Videos = data.Videos ? data.Videos.split(',') : [];
+    this.Images = data.Images;
+    this.Videos = data.Videos;
     this.comment = data.comment;
     this.title = data.title;
     this.risk = data.risk;
@@ -93,6 +96,12 @@ class Incident {
       } else {
         error(res, Constants.STATUS_NOT_FOUND, `The ${this.type} record could not be updated. The record may no longer exists.`);
       }
+      Database.getUser(this.createdBy, (user) => {
+        const mail = new Mailer(user, this);
+        mail.send();
+        const sms = new SMS(user, this);
+        sms.send();
+      });
     });
   }
 }

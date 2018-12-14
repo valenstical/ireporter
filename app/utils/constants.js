@@ -1,5 +1,3 @@
-import jwt from 'jwt-simple';
-
 const Constants = {
 
   // HTTP STATUS
@@ -12,6 +10,7 @@ const Constants = {
   STATUS_PARTIAL_CONTENT: 206, // MISSING FIELD
   STATSUS_CONFLICT: 409,
   STATUS_UNATHORIZED: 401,
+  STATUS_FORBIDDEN: 403,
 
   // INCIDENT STATUS
   INCIDENT_STATUS_DRAFT: 'draft',
@@ -25,7 +24,7 @@ const Constants = {
 
   // GENERAL MESSAGES
   MESSAGE_BAD_LOCATION: 'The location you entered is invalid. Please check your longitude and latitude, then try again.',
-  MESSAGE_BAD_COMMENT: 'Please enter a title for this report',
+  MESSAGE_BAD_COMMENT: 'The title field is required',
   MESSAGE_BAD_TYPE: 'Please choose the type of report you wish to make',
   MESSAGE_INVALID_TYPE: 'You have entered  invalid report type',
   MESSAGE_INVALID_ID: 'The id must be a number',
@@ -34,7 +33,8 @@ const Constants = {
   MESSAGE_OUT_OF_RANGE: 'The id should be 9 digits long',
   MESSAGE_EMPTY_STATUS: 'You must provide a status in order to proceed',
   MESSAGE_INVALID_LOGIN: 'Username or password is incorrect',
-  MESSAGE_UNATHORIZED: 'You do not have permission to view this resource',
+  MESSAGE_UNATHORIZED: 'You do not have permission to access this resource',
+  MESSAGE_FORBIDDEN: 'You need admin privileges to change the status of a report',
 
   // INCIDENT TYPES
   INCIDENT_TYPE_RED_FLAG: 'red-flag',
@@ -44,25 +44,6 @@ const Constants = {
 
   // SQL RESULT SET LIMIT
   SQL_LIMIT: 50,
-
-  success: (res, code, data) => {
-    res.status(code).json({ status: code, data });
-  },
-
-  error: (res, code, message) => {
-    res.status(code).json({ status: code, error: message });
-  },
-
-  createToken: (value) => {
-    const token = jwt.encode(value, process.env.SECRET);
-    return token;
-  },
-
-  getToken: (token) => {
-    const value = jwt.decode(token, process.env.SECRET);
-    return value;
-  },
-
 };
 
 export default Constants;

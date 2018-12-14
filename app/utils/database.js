@@ -24,7 +24,7 @@ class Database {
       }
     })().catch((ex) => {
       console.log(ex);
-      failure(ex);
+      // failure(ex);
     });
   }
 
@@ -68,8 +68,8 @@ class Database {
       params = [incident.location, incident.type, Constants.INCIDENT_STATUS_DRAFT,
         incident.id, incident.createdBy];
     } else if (incident.status) {
-      sql = 'update incidents set status = ($1) where type = ($2) and id = ($3)';
-      params = [incident.status, incident.type, incident.id];
+      sql = 'update incidents set status = ($1) where id = ($2)';
+      params = [incident.status, incident.id];
     }
 
     Database.execute(sql, params, (query) => {
@@ -155,8 +155,8 @@ class Database {
   }
 
   /**
-   * Get a user by id
-   * @param {number} id - The user object
+   * Get a user by their ID
+   * @param {number} id - The unique ID of the user
    * @param {function} echo - Callback function on success
    */
   static getUser(id, echo) {

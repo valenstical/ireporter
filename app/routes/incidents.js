@@ -53,6 +53,7 @@ router.patch('/:id/status',
   Validator.validateRange,
   Validator.checkStatus,
   Validator.validateStatus,
+  Validator.validateIncident,
   Controller.updateIncidentStatus);
 
 export default router;

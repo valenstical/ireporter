@@ -4,9 +4,12 @@ import bcrypt from 'bcrypt';
 import Constants from '../utils/constants';
 import Helper from '../utils/validatorHelper';
 import User from '../models/user';
+import Common from '../utils/common';
+import Database from '../utils/database';
+import Incident from '../models/incident';
 
 const { checkEmpty, checkLocation } = Helper;
-const { error } = Constants;
+const { error } = Common;
 
 class Validator {
   /**
@@ -87,10 +90,10 @@ class Validator {
   static validatePostData(req, res, next) {
     const errors = [];
     req.incident.location = `${req.body.latitude},${req.body.longitude}`;
-    checkEmpty(errors, req.body.latitude, 'The latitude field can not be empty');
-    checkEmpty(errors, req.body.longitude, 'The longitude field can not be empty');
-    checkEmpty(errors, req.body.comment, 'You must provide a comment for this incident.');
-    checkEmpty(errors, req.body.title, 'You must provide a title for this incident.');
+    checkEmpty(errors, req.body.latitude, 'The latitude is required');
+    checkEmpty(errors, req.body.longitude, 'The longitude is required');
+    checkEmpty(errors, req.body.comment, 'You must provide a comment for this incident');
+    checkEmpty(errors, req.body.title, 'You must provide a title for this incident');
     checkLocation(errors, req.incident.location);
 
     if (errors.length > 0) {
@@ -101,6 +104,8 @@ class Validator {
     req.incident.location = `${req.body.latitude},${req.body.longitude}`;
     req.incident.status = Constants.INCIDENT_STATUS_DRAFT;
     req.incident.id = Random(100000000, 999999999);
+    req.incident.Images = req.incident.Images ? req.incident.Images.split(',') : [];
+    req.incident.Videos = req.incident.Videos ? req.incident.Videos.split(',') : [];
     next();
   }
 
@@ -160,7 +165,7 @@ class Validator {
       errors.push('You need provide a valid phone number');
     }
     if (errors.length !== 0) {
-      error(res, Constants.STATUS_BAD_REQUEST, errors.join(' ** '));
+      error(res, Constants.STATUS_BAD_REQUEST, errors);
       return;
     }
     const user = new User(req.body);
@@ -169,6 +174,7 @@ class Validator {
     user.allowSms = true;
     user.isAdmin = false;
     user.isBlocked = false;
+    user.risk = 0;
     user.isVerified = false;
     user.profile = 'profile.jpg';
     user.registered = new Date();
@@ -189,15 +195,33 @@ class Validator {
   static validateLogin(req, res, next) {
     const errors = [];
     const user = new User(req.body);
-    checkEmpty(errors, user.password, 'You need to provide your password');
-    checkEmpty(errors, user.username, 'Please enter your username, email or phone number');
+    checkEmpty(errors, user.password, 'You need to provide a password');
+    checkEmpty(errors, user.username, 'Your username is required. You can also provide your phone number or email address.');
 
     if (errors.length !== 0) {
-      error(res, Constants.STATUS_BAD_REQUEST, errors.join(' ** '));
+      error(res, Constants.STATUS_BAD_REQUEST, errors);
       return;
     }
     req.user = user;
     next();
+  }
+
+  /**
+   * Checks that the incident exists
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @param {function} next - The next function used to pass control to another middleware
+   */
+  static validateIncident(req, res, next) {
+    Database.getIncidents('incidents.id = $1 and incidents.type = $2', [req.incident.id, req.incident.type], (rows) => {
+      if (rows.length === 0) {
+        error(res, Constants.STATUS_NOT_FOUND, `There is no ${req.incident.type} record with that id`);
+        return;
+      }
+      const { createdBy } = rows[0];
+      req.incident.createdBy = createdBy;
+      next();
+    });
   }
 }
 
