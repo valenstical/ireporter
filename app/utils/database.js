@@ -23,8 +23,8 @@ class Database {
         connection.release();
       }
     })().catch((ex) => {
-      // console.log(ex);
-      failure(ex);
+      console.log(ex);
+      // failure(ex);
     });
   }
 
@@ -155,8 +155,8 @@ class Database {
   }
 
   /**
-   * Get a user by id
-   * @param {number} id - The user object
+   * Get a user by their ID
+   * @param {number} id - The unique ID of the user
    * @param {function} echo - Callback function on success
    */
   static getUser(id, echo) {

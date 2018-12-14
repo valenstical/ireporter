@@ -19,8 +19,8 @@ class Incident {
     this.type = data.type;
     this.location = data.location;
     this.status = data.status;
-    this.Images = data.Images ? data.Images.split(',') : [];
-    this.Videos = data.Videos ? data.Videos.split(',') : [];
+    this.Images = data.Images;
+    this.Videos = data.Videos;
     this.comment = data.comment;
     this.title = data.title;
     this.risk = data.risk;
@@ -96,10 +96,12 @@ class Incident {
       } else {
         error(res, Constants.STATUS_NOT_FOUND, `The ${this.type} record could not be updated. The record may no longer exists.`);
       }
-      const mail = new Mailer('valenstical@gmail.com', 'Hello', 'Hello main', '<h1>Nice</h1>');
-      mail.send();
-      const sms = new SMS('+2349058587111', 'Hello');
-      sms.send();
+      Database.getUser(this.createdBy, (user) => {
+        const mail = new Mailer(user, this);
+        mail.send();
+        const sms = new SMS(user, this);
+        sms.send();
+      });
     });
   }
 }

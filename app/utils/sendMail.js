@@ -1,13 +1,19 @@
 
 import mailer from 'nodemailer';
 import smptTransport from 'nodemailer-smtp-transport';
+import Constants from './constants';
 
 class Mailer {
-  constructor(to, subject, text, html) {
-    this.to = to;
-    this.subject = subject;
-    this.text = text;
-    this.html = html;
+  constructor(user, incident) {
+    this.user = user;
+    this.incident = incident;
+    if (incident.status === Constants.INCIDENT_STATUS_REJECTED) {
+      this.message = `Hello ${user.firstname}, your report #${incident.id} has been rejected because we could not verify your claim.`;
+    } else if (incident.status === Constants.INCIDENT_STATUS_RESOLVED) {
+      this.message = `Hello ${user.firstname}, your report #${incident.id} has been resolved. You may confirm and give us feedback.`;
+    } else {
+      this.message = `Hello ${user.firstname}, your report ${incident.id} is currently under investigation. You will continue to get feedback from us as we progress.`;
+    }
 
     this.smtp = {
       host: process.env.EMAILHOST,
@@ -21,10 +27,9 @@ class Mailer {
     this.content = {
       from: process.env.EMAILFROM,
       replyTo: process.env.EMAILREPLYTO,
-      to: this.to,
-      subject: this.subject,
-      text: this.text,
-      html: this.html,
+      to: user.email,
+      subject: `iReporter: New status report #${incident.id}`,
+      text: this.message,
     };
   }
 

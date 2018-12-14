@@ -58,7 +58,7 @@ class User {
           success(res, Constants.STATUS_OK, [{ token: authToken, user: result }]);
         });
       } else {
-        error(res, Constants.STATUS_NOT_FOUND, Constants.MESSAGE_INVALID_LOGIN);
+        error(res, Constants.STATUS_FORBIDDEN, Constants.MESSAGE_INVALID_LOGIN);
       }
     });
   }
