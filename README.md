@@ -73,9 +73,9 @@ All API endpoint must use the api/v1 prefix.
 | PATCH /red-flags/\<red-flag-id>/status                   | Change the status of a red-flag report |
 
 ## API Documentation
-https://documenter.getpostman.com/view/6032802/RzfmF72t
+https://app.swaggerhub.com/apis/andela51/1-i_reporter/1.0
 
-Okosun Valentine Ejodamen
+
 
 ## Author
 
