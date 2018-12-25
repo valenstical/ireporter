@@ -1,6 +1,6 @@
 import validator from 'validator';
 import Random from 'random-int';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import Constants from '../utils/constants';
 import Helper from '../utils/validatorHelper';
 import User from '../models/user';

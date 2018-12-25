@@ -1,5 +1,5 @@
 import { Pool } from 'pg';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import Constants from './constants';
 
 const pool = new Pool();
@@ -24,7 +24,7 @@ class Database {
       }
     })().catch((ex) => {
       console.log(ex);
-      // failure(ex);
+      failure(ex);
     });
   }
 
