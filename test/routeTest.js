@@ -1,83 +1,63 @@
+/* eslint-disable no-unused-expressions */
 import chai from 'chai';
-
+import chaiHttp from 'chai-http';
 import Constants from '../app/utils/constants';
-
 import app from '../app/server';
 
 const { expect } = chai;
 
-chai.use(require('chai-http'));
+chai.use(chaiHttp);
 
 
 describe('Server', () => {
-  it('should send 200 status code with the right type of message for / routes', () => {
+  it('should return status code of 200 for requests to main entry point /', (done) => {
     chai.request(app)
       .get('/')
-      .then((res) => {
+      .end((err, res) => {
         expect(res).to.have.status(Constants.STATUS_OK);
-        expect(res).to.be.json;
         expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('message');
-        expect(res.body.message).to.equal(Constants.MESSAGE_WELCOME_HOME);
+        expect(res.body).to.have.property('message').to.equal(Constants.MESSAGE_WELCOME_HOME);
+        done(err);
       });
   });
-
-  it('should return 200 status code with a message for api/v1 route', () => {
+  it('should return status code of 200 for requests to api endpoints api/v1', (done) => {
     chai.request(app)
       .get('/api/v1')
-      .then((res) => {
-        expect(res).to.have.status(Constants.STATUS_OK);
-        expect(res).to.be.json;
+      .end((err, res) => {
+        expect(res).have.status(Constants.STATUS_OK);
         expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('message');
-        expect(res.body.message).to.equal(Constants.MESSAGE_WELCOME_HACKER);
+        expect(res.body).to.have.property('message').to.equal(Constants.MESSAGE_WELCOME_HACKER);
+        done(err);
       });
   });
-
-  it('should return 404 status code with error message for invalid routes', () => {
+  it('should return 404 status code for requests to invalid routes through main entry point /', (done) => {
     chai.request(app)
-      .get('api/v1/INVALID_ROUTE')
-      .then((res) => {
+      .get('/INVALID_ROUTE')
+      .end((err, res) => {
         expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
-        expect(res).to.be.json;
         expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('message');
-        expect(res.body.message).to.equal(Constants.MESSAGE_NOT_FOUND);
+        expect(res.body).to.have.property('message').to.equal(Constants.MESSAGE_NOT_FOUND);
+        done(err);
       });
   });
-
-  it('should return 404 status code with error message for invalid routes', () => {
+  it('should return 404 status code for requests to invalid routes through api endpoint api/v1', (done) => {
     chai.request(app)
-      .post('api/v1/INVALID_ROUTE')
-      .then((res) => {
+      .get('/api/v1/INVALID_ROUTE')
+      .end((err, res) => {
         expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
-        expect(res).to.be.json;
         expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('message');
-        expect(res.body.message).to.equal(Constants.MESSAGE_NOT_FOUND);
+        expect(res.body).to.have.property('message').to.equal(Constants.MESSAGE_NOT_FOUND);
+        done(err);
       });
   });
-
-  it('should return 404 status code with error message for invalid routes', () => {
+  it('should return 404 status code for requests to all other invalid routes ', (done) => {
     chai.request(app)
-      .patch('api/v1/INVALID_ROUTE')
-      .then((res) => {
+      .post('/api/v1/INVALID_ROUTE')
+      .end((err, res) => {
         expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
-        expect(res).to.be.json;
         expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('message');
-        expect(res.body.message).to.equal(Constants.MESSAGE_NOT_FOUND);
-      });
-  });
-  it('should return 404 status code with error message for wrong http method', () => {
-    chai.request(app)
-      .delete('/INVALID_ROUTE')
-      .then((res) => {
-        expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
-        expect(res).to.be.json;
-        expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('message');
-        expect(res.body.message).to.equal(Constants.MESSAGE_NOT_FOUND);
+        expect(res.body).to.have.property('message').to.equal(Constants.MESSAGE_NOT_FOUND);
+        done(err);
       });
   });
 });
