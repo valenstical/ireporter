@@ -15,6 +15,7 @@ describe('Server', () => {
       .get('/')
       .end((err, res) => {
         expect(res).to.have.status(Constants.STATUS_OK);
+        expect(res.body).to.not.be.empty;
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('message').to.equal(Constants.MESSAGE_WELCOME_HOME);
         done(err);
@@ -25,6 +26,7 @@ describe('Server', () => {
       .get('/api/v1')
       .end((err, res) => {
         expect(res).have.status(Constants.STATUS_OK);
+        expect(res.body).to.not.be.empty;
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('message').to.equal(Constants.MESSAGE_WELCOME_HACKER);
         done(err);
@@ -35,6 +37,7 @@ describe('Server', () => {
       .get('/INVALID_ROUTE')
       .end((err, res) => {
         expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
+        expect(res.body).to.not.be.empty;
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('message').to.equal(Constants.MESSAGE_NOT_FOUND);
         done(err);
@@ -45,6 +48,7 @@ describe('Server', () => {
       .get('/api/v1/INVALID_ROUTE')
       .end((err, res) => {
         expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
+        expect(res.body).to.not.be.empty;
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('message').to.equal(Constants.MESSAGE_NOT_FOUND);
         done(err);
@@ -55,6 +59,7 @@ describe('Server', () => {
       .post('/api/v1/INVALID_ROUTE')
       .end((err, res) => {
         expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
+        expect(res.body).to.not.be.empty;
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('message').to.equal(Constants.MESSAGE_NOT_FOUND);
         done(err);

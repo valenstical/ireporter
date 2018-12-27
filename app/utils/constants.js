@@ -35,6 +35,8 @@ const Constants = {
   MESSAGE_INVALID_LOGIN: 'Username or password is incorrect',
   MESSAGE_UNATHORIZED: 'You do not have permission to access this resource',
   MESSAGE_FORBIDDEN: 'You need admin privileges to change the status of a report',
+  MESSAGE_NO_PASSWORD: 'You need to provide a password',
+  MESSAGE_NO_USERNAME: 'Your username is required. You can also provide your phone number or email address.',
 
   // INCIDENT TYPES
   INCIDENT_TYPE_RED_FLAG: 'red-flag',

@@ -48,7 +48,7 @@ class User {
   }
 
   /**
-   * Authenticates a and logs in user
+   * Authenticates and logs in user
    * @param {object} res - The response object
    */
   login(res) {
@@ -58,7 +58,7 @@ class User {
           success(res, Constants.STATUS_OK, [{ token: authToken, user: result }]);
         });
       } else {
-        error(res, Constants.STATUS_FORBIDDEN, Constants.MESSAGE_INVALID_LOGIN);
+        error(res, Constants.STATUS_FORBIDDEN, [Constants.MESSAGE_INVALID_LOGIN]);
       }
     });
   }

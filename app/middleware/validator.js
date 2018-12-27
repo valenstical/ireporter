@@ -6,7 +6,6 @@ import Helper from '../utils/validatorHelper';
 import User from '../models/user';
 import Common from '../utils/common';
 import Database from '../utils/database';
-import Incident from '../models/incident';
 
 const { checkEmpty, checkLocation } = Helper;
 const { error } = Common;
@@ -195,8 +194,8 @@ class Validator {
   static validateLogin(req, res, next) {
     const errors = [];
     const user = new User(req.body);
-    checkEmpty(errors, user.password, 'You need to provide a password');
-    checkEmpty(errors, user.username, 'Your username is required. You can also provide your phone number or email address.');
+    checkEmpty(errors, user.password, Constants.MESSAGE_NO_PASSWORD);
+    checkEmpty(errors, user.username, Constants.MESSAGE_NO_USERNAME);
 
     if (errors.length !== 0) {
       error(res, Constants.STATUS_BAD_REQUEST, errors);
