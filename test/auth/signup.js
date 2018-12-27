@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-expressions */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import Constants from '../app/utils/constants';
-import app from '../app/server';
-import Database from '../app/utils/database';
+import Constants from '../../app/utils/constants';
+import app from '../../app/server';
+import Database from '../../app/utils/database';
 
 const { expect } = chai;
 

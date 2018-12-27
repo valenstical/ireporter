@@ -1,4 +1,5 @@
 import validator from 'validator';
+import Constants from './constants';
 
 const Helper = {
   /**
@@ -20,7 +21,7 @@ const Helper = {
    */
   checkLocation: (errors, value) => {
     if (errors.length === 0 && !validator.isLatLong(value)) {
-      errors.push('Please check that you have provided valid longitude and latitude');
+      errors.push(Constants.MESSAGE_BAD_LOCATION);
     }
   },
 };

@@ -2,6 +2,7 @@ import { Pool } from 'pg';
 import bcrypt from 'bcryptjs';
 import validator from 'validator';
 import Constants from './constants';
+import Common from './common';
 
 const pool = new Pool();
 const columns = 'id, "createdOn", type, location, status, "Images", "Videos", title, comment, "createdBy", risk';
@@ -133,7 +134,9 @@ class Database {
         password, user.email, user.phoneNumber, user.registered, user.isAdmin, user.profile,
         user.isVerified, user.isBlocked, user.allowSms, user.allowEmail];
       Database.execute(sql, params, () => {
-        echo();
+        Common.createToken(user.id, (authToken) => {
+          echo(authToken);
+        });
       }, (errors) => {
         failure(errors);
       });
@@ -151,7 +154,9 @@ class Database {
     Database.execute(sql, params, (result) => {
       if (result.rowCount > 0) {
         bcrypt.compare(user.password, result.rows[0].password, (errs, response) => {
-          echo(response ? result.rows[0] : false);
+          Common.createToken(result.id, (authToken) => {
+            echo(response ? result.rows[0] : false, authToken);
+          });
         });
       } else {
         echo(false);

@@ -18,7 +18,7 @@ class Authenticator {
       const authToken = req.headers.authorization.split(' ')[1];
       Common.verifyToken(authToken, (err, data) => {
         if (err) {
-          error(res, Constants.STATUS_UNATHORIZED, Constants.MESSAGE_UNATHORIZED);
+          error(res, Constants.STATUS_UNATHORIZED, [Constants.MESSAGE_UNATHORIZED]);
         } else {
           Database.getUser(data.userId, (user) => {
             if (user) {
@@ -27,13 +27,13 @@ class Authenticator {
               req.isAdmin = false;
               next();
             } else {
-              error(res, Constants.STATUS_UNATHORIZED, Constants.MESSAGE_UNATHORIZED);
+              error(res, Constants.STATUS_UNATHORIZED, [Constants.MESSAGE_UNATHORIZED]);
             }
           });
         }
       });
     } else {
-      error(res, Constants.STATUS_UNATHORIZED, Constants.MESSAGE_UNATHORIZED);
+      error(res, Constants.STATUS_UNATHORIZED, [Constants.MESSAGE_UNATHORIZED]);
     }
   }
 

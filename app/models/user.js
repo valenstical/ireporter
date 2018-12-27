@@ -32,10 +32,8 @@ class User {
    * @param {object} res - The resource object
    */
   createUser(res) {
-    Database.createUser(this, () => {
-      Common.createToken(this.id, (authToken) => {
-        success(res, Constants.STATUS_CREATED, [{ token: authToken, user: this }]);
-      });
+    Database.createUser(this, (authToken) => {
+      success(res, Constants.STATUS_CREATED, [{ token: authToken, user: this }]);
     }, (ex) => {
       let message = Constants.MESSAGE_DUPLICATE_PHONE_NUMBER;
       if (ex.constraint === 'users_username_key') {
@@ -52,11 +50,9 @@ class User {
    * @param {object} res - The response object
    */
   login(res) {
-    Database.login(this, (result) => {
+    Database.login(this, (result, authToken) => {
       if (result) {
-        Common.createToken(result.id, (authToken) => {
-          success(res, Constants.STATUS_OK, [{ token: authToken, user: result }]);
-        });
+        success(res, Constants.STATUS_OK, [{ token: authToken, user: result }]);
       } else {
         error(res, Constants.STATUS_FORBIDDEN, [Constants.MESSAGE_INVALID_LOGIN]);
       }

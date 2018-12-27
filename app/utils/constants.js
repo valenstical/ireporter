@@ -73,6 +73,19 @@ const Constants = {
     allowEmail: true,
     id: 123456789,
   },
+  TEST_DUMMY_INCIDENT: {
+    id: 123456789,
+    createdOn: new Date(),
+    createdBy: 123456789,
+    type: 'red-flag',
+    location: '6.2345678,3.2340785',
+    status: 'draft',
+    Images: [],
+    Videos: [],
+    comment: 'This is the comment',
+    title: 'This is the title',
+    risk: 0,
+  },
 };
 
 export default Constants;

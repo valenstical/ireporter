@@ -18,7 +18,7 @@ class Validator {
      */
   static valideteID(req, res, next) {
     if (!validator.isInt(req.incident.id)) {
-      error(res, Constants.STATUS_UNPROCESSED, Constants.MESSAGE_INVALID_ID);
+      error(res, Constants.STATUS_UNPROCESSED, [Constants.MESSAGE_INVALID_ID]);
       return;
     }
     next();
@@ -32,7 +32,7 @@ class Validator {
      */
   static validateRange(req, res, next) {
     if (req.incident.id.toString().length !== 9) {
-      error(res, Constants.STATUS_UNPROCESSED, Constants.MESSAGE_OUT_OF_RANGE);
+      error(res, Constants.STATUS_UNPROCESSED, [Constants.MESSAGE_OUT_OF_RANGE]);
       return;
     }
     next();
@@ -49,7 +49,7 @@ class Validator {
     checkEmpty(errors, req.body.comment, 'You must provide a comment for this incident.');
     checkEmpty(errors, req.body.title, 'You must provide a title for this incident.');
     if (errors.length > 0) {
-      error(res, Constants.STATUS_BAD_REQUEST, errors.join(' ** '));
+      error(res, Constants.STATUS_BAD_REQUEST, errors);
       return;
     }
     req.incident.title = req.body.title;
@@ -72,7 +72,7 @@ class Validator {
     checkLocation(errors, req.incident.location);
 
     if (errors.length > 0) {
-      error(res, Constants.STATUS_BAD_REQUEST, errors.join(' ** '));
+      error(res, Constants.STATUS_BAD_REQUEST, errors);
       return;
     }
     req.incident.comment = undefined;
@@ -95,7 +95,7 @@ class Validator {
     checkLocation(errors, req.incident.location);
 
     if (errors.length > 0) {
-      error(res, Constants.STATUS_BAD_REQUEST, errors.join(' ** '));
+      error(res, Constants.STATUS_BAD_REQUEST, errors);
       return;
     }
     req.incident.createdOn = new Date();
@@ -119,7 +119,7 @@ class Validator {
       || status === Constants.INCIDENT_STATUS_REJECTED
       || status === Constants.INCIDENT_STATUS_RESOLVED
       || status === Constants.INCIDENT_STATUS_REJECTED)) {
-      error(res, Constants.STATUS_BAD_REQUEST, Constants.MESSAGE_BAD_DATA_STATUS);
+      error(res, Constants.STATUS_BAD_REQUEST, [Constants.MESSAGE_BAD_DATA_STATUS]);
       return;
     }
     req.incident.location = undefined; req.incident.comment = undefined;
@@ -136,7 +136,7 @@ class Validator {
   static checkStatus(req, res, next) {
     const { status } = req.body;
     if (!status || validator.isEmpty(status)) {
-      error(res, Constants.STATUS_BAD_REQUEST, Constants.MESSAGE_EMPTY_STATUS);
+      error(res, Constants.STATUS_BAD_REQUEST, [Constants.MESSAGE_EMPTY_STATUS]);
       return;
     }
     next();

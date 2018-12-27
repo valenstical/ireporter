@@ -53,7 +53,7 @@ class Incident {
     const params = !this.id ? [this.type, this.createdBy] : [this.type, this.createdBy, this.id];
     Database.getIncidents(`type = $1 and "createdBy" = $2${qry}`, params, (result) => {
       if (result.length === 0 && this.id) {
-        error(res, Constants.STATUS_NOT_FOUND, `There is no ${this.type} record with that id`);
+        error(res, Constants.STATUS_NOT_FOUND, [`There is no ${this.type} record with that id`]);
       } else {
         success(res, Constants.STATUS_OK, result);
       }
@@ -80,7 +80,7 @@ class Incident {
       if (updated) {
         success(res, Constants.STATUS_OK, [{ id: this.id, message: `Updated ${this.type}'s ${action}` }]);
       } else {
-        error(res, Constants.STATUS_NOT_FOUND, `The ${this.type} record could not be updated. The status may have changed or the record no longer exists.`);
+        error(res, Constants.STATUS_NOT_FOUND, [`The ${this.type} record could not be updated. The status may have changed or the record no longer exists.`]);
       }
     });
   }
@@ -94,7 +94,7 @@ class Incident {
       if (updated) {
         success(res, Constants.STATUS_OK, [{ id: this.id, message: `Updated ${this.type}'s record status` }]);
       } else {
-        error(res, Constants.STATUS_NOT_FOUND, `The ${this.type} record could not be updated. The record may no longer exists.`);
+        error(res, Constants.STATUS_NOT_FOUND, [`The ${this.type} record could not be updated. The record may no longer exists.`]);
       }
       Database.getUser(this.createdBy, (user) => {
         const mail = new Mailer(user, this);
