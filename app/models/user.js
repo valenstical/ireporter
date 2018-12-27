@@ -37,13 +37,13 @@ class User {
         success(res, Constants.STATUS_CREATED, [{ token: authToken, user: this }]);
       });
     }, (ex) => {
-      let message = 'Phone numbe is already registered';
+      let message = Constants.MESSAGE_DUPLICATE_PHONE_NUMBER;
       if (ex.constraint === 'users_username_key') {
-        message = 'Username is already taken';
+        message = Constants.MESSAGE_DUPLICATE_USERNAME;
       } else if (ex.constraint === 'users_email_key') {
-        message = 'Email is already registered';
+        message = Constants.MESSAGE_DUPLICATE_EMAIL;
       }
-      error(res, Constants.STATUS_BAD_REQUEST, message);
+      error(res, Constants.STATUS_BAD_REQUEST, [message]);
     });
   }
 

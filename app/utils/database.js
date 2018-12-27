@@ -1,5 +1,6 @@
 import { Pool } from 'pg';
 import bcrypt from 'bcryptjs';
+import validator from 'validator';
 import Constants from './constants';
 
 const pool = new Pool();
@@ -23,7 +24,7 @@ class Database {
         connection.release();
       }
     })().catch((ex) => {
-      console.log(ex);
+      // console.log(ex);
       failure(ex);
     });
   }
@@ -124,14 +125,18 @@ class Database {
    * @param {function} failure - Callback function on failure
    */
   static createUser(user, echo, failure) {
-    const sql = `insert into users (${columnsUser}) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)`;
-    const params = [user.id, user.firstname, user.lastname, user.othernames, user.username,
-      user.password, user.email, user.phoneNumber, user.registered, user.isAdmin, user.profile,
-      user.isVerified, user.isBlocked, user.allowSms, user.allowEmail];
-    Database.execute(sql, params, () => {
-      echo();
-    }, (errors) => {
-      failure(errors);
+    let password;
+    bcrypt.hash(user.password, 10, (errs, hash) => {
+      password = hash;
+      const sql = `insert into users (${columnsUser}) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)`;
+      const params = [user.id, user.firstname, user.lastname, user.othernames, user.username,
+        password, user.email, user.phoneNumber, user.registered, user.isAdmin, user.profile,
+        user.isVerified, user.isBlocked, user.allowSms, user.allowEmail];
+      Database.execute(sql, params, () => {
+        echo();
+      }, (errors) => {
+        failure(errors);
+      });
     });
   }
 
@@ -164,6 +169,18 @@ class Database {
     const params = [id];
     Database.execute(sql, params, (result) => {
       echo(result.rowCount > 0 ? result.rows[0] : false);
+    });
+  }
+
+  /**
+   * Deletes a user from the database
+   * @param {string} identifier - The user unique id or email address
+   * @param {function} echo - callback function to execute
+   */
+  static deleteUser(identifier, echo) {
+    const column = validator.isInt(identifier) ? 'id' : 'email';
+    Database.execute(`delete from users where ${column} = $1`, [identifier], (result) => {
+      echo(result.rowCount > 0);
     });
   }
 }

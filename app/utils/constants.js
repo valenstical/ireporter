@@ -37,6 +37,15 @@ const Constants = {
   MESSAGE_FORBIDDEN: 'You need admin privileges to change the status of a report',
   MESSAGE_NO_PASSWORD: 'You need to provide a password',
   MESSAGE_NO_USERNAME: 'Your username is required. You can also provide your phone number or email address.',
+  MESSAGE_NO_FIRST_NAME: 'You need to provide your first name',
+  MESSAGE_NO_LAST_NAME: 'You need to provide your last name (surname)',
+  MESSAGE_NO_EMAIL_ADDRESS: 'You need to provide a valid email address',
+  MESSAGE_NO_SIGNUP_USERNAME: 'You need choose a username',
+  MESSAGE_NO_PHONE_NUMBER: 'You need to provide a valid phone number',
+  MESSAGE_DUPLICATE_PHONE_NUMBER: 'A user with that phone number already exists',
+  MESSAGE_DUPLICATE_EMAIL: 'The email address you entered is already registered',
+  MESSAGE_DUPLICATE_USERNAME: 'Oops! It appears like the username you chose is already taken.',
+
 
   // INCIDENT TYPES
   INCIDENT_TYPE_RED_FLAG: 'red-flag',
@@ -46,6 +55,24 @@ const Constants = {
 
   // SQL RESULT SET LIMIT
   SQL_LIMIT: 50,
+
+  TEST_DUMMY_USER: {
+    firstname: 'John',
+    lastname: 'Doe',
+    email: 'demo@ireporter.com',
+    phoneNumber: '08000000000',
+    othernames: 'Mark',
+    username: 'demo',
+    password: '123',
+    registered: new Date(),
+    isAdmin: false,
+    profile: 'default.jpg',
+    isVerified: true,
+    isBlocked: false,
+    allowSms: true,
+    allowEmail: true,
+    id: 123456789,
+  },
 };
 
 export default Constants;

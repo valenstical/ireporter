@@ -3,16 +3,29 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import Constants from '../app/utils/constants';
 import app from '../app/server';
+import Database from '../app/utils/database';
 
 const { expect } = chai;
 
 chai.use(chaiHttp);
 
 
-const credentials = { username: 'demo@ireporter.com', password: '123' };
+const credentials = Object.assign({}, Constants.TEST_DUMMY_USER);
 const route = '/api/v1/auth/login';
 
 describe('Login authentication API', () => {
+  before((done) => {
+    Database.createUser(credentials, () => {
+      done();
+    });
+  });
+
+  after((done) => {
+    Database.deleteUser(credentials.email, () => {
+      done();
+    });
+  });
+
   it('should successfully login user with correct credentials', (done) => {
     chai.request(app)
       .post(route)

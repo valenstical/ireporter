@@ -1,6 +1,5 @@
 import validator from 'validator';
 import Random from 'random-int';
-import bcrypt from 'bcryptjs';
 import Constants from '../utils/constants';
 import Helper from '../utils/validatorHelper';
 import User from '../models/user';
@@ -151,17 +150,17 @@ class Validator {
    */
   static validateSignup(req, res, next) {
     const errors = [];
-    checkEmpty(errors, req.body.firstname, 'You need to provide your first name');
-    checkEmpty(errors, req.body.lastname, 'You need to provide your last name');
-    checkEmpty(errors, req.body.username, 'You need to choose a username');
-    checkEmpty(errors, req.body.password, 'You need to provide a password');
-    checkEmpty(errors, req.body.phoneNumber, 'You need to provide your phone number');
-    checkEmpty(errors, req.body.email, 'You need to provide an email address');
+    checkEmpty(errors, req.body.firstname, Constants.MESSAGE_NO_FIRST_NAME);
+    checkEmpty(errors, req.body.lastname, Constants.MESSAGE_NO_LAST_NAME);
+    checkEmpty(errors, req.body.username, Constants.MESSAGE_NO_SIGNUP_USERNAME);
+    checkEmpty(errors, req.body.password, Constants.MESSAGE_NO_PASSWORD);
+    checkEmpty(errors, req.body.phoneNumber, Constants.MESSAGE_NO_PHONE_NUMBER);
+    checkEmpty(errors, req.body.email, Constants.MESSAGE_NO_EMAIL_ADDRESS);
     if (req.body.email && !validator.isEmail(req.body.email)) {
-      errors.push('You need to provide a valid email address');
+      errors.push(Constants.MESSAGE_NO_EMAIL_ADDRESS);
     }
     if (req.body.phoneNumber && !validator.isMobilePhone(req.body.phoneNumber, ['en-NG'])) {
-      errors.push('You need provide a valid phone number');
+      errors.push(Constants.MESSAGE_NO_PHONE_NUMBER);
     }
     if (errors.length !== 0) {
       error(res, Constants.STATUS_BAD_REQUEST, errors);
@@ -173,16 +172,11 @@ class Validator {
     user.allowSms = true;
     user.isAdmin = false;
     user.isBlocked = false;
-    user.risk = 0;
     user.isVerified = false;
     user.profile = 'profile.jpg';
     user.registered = new Date();
-
-    bcrypt.hash(user.password, 10, (errs, hash) => {
-      user.password = hash;
-      req.user = user;
-      next();
-    });
+    req.user = user;
+    next();
   }
 
   /**
