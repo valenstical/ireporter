@@ -16,15 +16,11 @@ let token;
 
 describe('Get all intervention records API', () => {
   before((done) => {
-    Database.createUser(credentials, (authToken) => {
-      token = authToken;
-      done();
-    });
-  });
-
-  after((done) => {
-    Database.deleteUser(credentials.email, () => {
-      done();
+    Database.refreshDatabase(() =>{
+      Database.createUser(credentials, (authToken) => {
+        token = authToken;
+        done();
+      });
     });
   });
   it('should get all intervention records if available', (done) => {

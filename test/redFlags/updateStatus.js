@@ -20,17 +20,12 @@ describe('Patch red-flag record status', () => {
   before((done) => {
     route = `${baseRoute}/${incident.id}/status`;
     credentials.isAdmin = true;
-    Database.createUser(credentials, (authToken) => {
-      token = authToken;
-      Database.createIncident(incident, () => {
-        done();
-      });
-    });
-  });
-  after((done) => {
-    Database.deleteUser(credentials.email, () => {
-      Database.deleteIncident(incident, () => {
-        done();
+    Database.refreshDatabase(() => {
+      Database.createUser(credentials, (authToken) => {
+        token = authToken;
+        Database.createIncident(incident, () => {
+          done();
+        });
       });
     });
   });

@@ -2,6 +2,7 @@ import { Pool } from 'pg';
 import bcrypt from 'bcryptjs';
 import validator from 'validator';
 import Common from './common';
+import Constants from './constants';
 
 const pool = new Pool();
 const columns = 'id, "createdOn", type, location, status, "Images", "Videos", title, comment, "createdBy", risk';
@@ -163,15 +164,27 @@ class Database {
     });
   }
 
+
   /**
    * Deletes a user from the database
    * @param {string} identifier - The user unique id or email address
    * @param {function} echo - callback function to execute
    */
+  /*
   static deleteUser(identifier, echo) {
     const column = validator.isInt(identifier) ? 'id' : 'email';
     Database.execute(`delete from users where ${column} = $1`, [identifier], (result) => {
       echo(result.rowCount > 0);
+    });
+  }
+*/
+  /**
+   * Clears the database. Used for testing only
+   * @param {function} echo - callback function to execute
+   */
+  static refreshDatabase(echo) {
+    Database.execute(`${Constants.SQL_CREATE_TABLES}delete from users;delete from incidents;`, [], () => {
+      echo();
     });
   }
 }

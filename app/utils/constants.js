@@ -100,6 +100,48 @@ const Constants = {
     comment: 'This is a comment',
     title: 'This is the title',
   },
+  SQL_CREATE_TABLES: `CREATE TABLE IF NOT EXISTS public.incidents
+  (
+    id integer NOT NULL,
+    "createdOn" timestamp without time zone,
+    type character varying(15) NOT NULL,
+    location character varying(100) NOT NULL,
+    title character varying(100) NOT NULL,
+    comment character varying(1000),
+    "createdBy" integer,
+    status character varying(20),
+    risk smallint,
+    "Images" character varying(255)[],
+    "Videos" character varying(255)[],
+    CONSTRAINT incidents_pkey PRIMARY KEY (id)
+  )
+  WITH (
+    OIDS=FALSE
+  );CREATE TABLE IF NOT EXISTS public.users
+    (
+      id integer NOT NULL,
+      firstname character varying(100),
+      lastname character varying(100),
+      othernames character varying(100),
+      username character varying(100) NOT NULL,
+      password character varying(255) NOT NULL,
+      email character varying(100),
+      "phoneNumber" character varying(20),
+      registered timestamp without time zone,
+      "isAdmin" boolean DEFAULT false,
+      profile character varying(100),
+      "isVerified" boolean DEFAULT false,
+      "isBlocked" boolean DEFAULT false,
+      "allowSms" boolean DEFAULT true,
+      "allowEmail" boolean DEFAULT true,
+      CONSTRAINT users_pkey PRIMARY KEY (id),
+      CONSTRAINT users_email_key UNIQUE (email),
+      CONSTRAINT users_phone_key UNIQUE ("phoneNumber"),
+      CONSTRAINT users_username_key UNIQUE (username)
+    )
+    WITH (
+      OIDS=FALSE
+    );`,
 };
 
 export default Constants;

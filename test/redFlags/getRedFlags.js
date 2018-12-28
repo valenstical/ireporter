@@ -16,15 +16,11 @@ let token;
 
 describe('Get all red-flag records API', () => {
   before((done) => {
-    Database.createUser(credentials, (authToken) => {
-      token = authToken;
-      done();
-    });
-  });
-
-  after((done) => {
-    Database.deleteUser(credentials.email, () => {
-      done();
+    Database.refreshDatabase(() => {
+      Database.createUser(credentials, (authToken) => {
+        token = authToken;
+        done();
+      });
     });
   });
   it('should get all red-flag records if available', (done) => {

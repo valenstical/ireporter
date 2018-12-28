@@ -19,17 +19,12 @@ let token;
 describe('Delete red-flag record API', () => {
   before((done) => {
     route = `${baseRoute}/${incident.id}`;
-    Database.createUser(credentials, (authToken) => {
-      token = authToken;
-      Database.createIncident(incident, () => {
-        done();
-      });
-    });
-  });
-  after((done) => {
-    Database.deleteUser(credentials.email, () => {
-      Database.deleteIncident(incident, () => {
-        done();
+    Database.refreshDatabase(() => {
+      Database.createUser(credentials, (authToken) => {
+        token = authToken;
+        Database.createIncident(incident, () => {
+          done();
+        });
       });
     });
   });
@@ -128,17 +123,12 @@ describe('Delete red-flag record API', () => {
   before((done) => {
     incident.status = 'resolved';
     route = `${baseRoute}/${incident.id}`;
-    Database.createUser(credentials, (authToken) => {
-      token = authToken;
-      Database.createIncident(incident, () => {
-        done();
-      });
-    });
-  });
-  after((done) => {
-    Database.deleteUser(credentials.email, () => {
-      Database.deleteIncident(incident, () => {
-        done();
+    Database.refreshDatabase(() => {
+      Database.createUser(credentials, (authToken) => {
+        token = authToken;
+        Database.createIncident(incident, () => {
+          done();
+        });
       });
     });
   });

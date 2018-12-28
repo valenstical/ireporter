@@ -31,14 +31,9 @@ describe('Create red-flag record API', () => {
     done();
   });
   before((done) => {
-    Database.createUser(credentials, (authToken) => {
-      token = authToken;
-      done();
-    });
-  });
-  after((done) => {
-    Database.deleteUser(credentials.email, () => {
-      Database.deleteIncident(incident, () => {
+    Database.refreshDatabase(() => {
+      Database.createUser(credentials, (authToken) => {
+        token = authToken;
         done();
       });
     });

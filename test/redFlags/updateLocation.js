@@ -24,17 +24,12 @@ describe('Patch red-flag record location', () => {
   });
   before((done) => {
     route = `${baseRoute}/${incident.id}/location`;
-    Database.createUser(credentials, (authToken) => {
-      token = authToken;
-      Database.createIncident(incident, () => {
-        done();
-      });
-    });
-  });
-  after((done) => {
-    Database.deleteUser(credentials.email, () => {
-      Database.deleteIncident(incident, () => {
-        done();
+    Database.refreshDatabase(() => {
+      Database.createUser(credentials, (authToken) => {
+        token = authToken;
+        Database.createIncident(incident, () => {
+          done();
+        });
       });
     });
   });
@@ -204,17 +199,12 @@ describe('Patch red-flag record location', () => {
   before((done) => {
     incident.status = 'resolved';
     route = `${baseRoute}/${incident.id}/location`;
-    Database.createUser(credentials, (authToken) => {
-      token = authToken;
-      Database.createIncident(incident, () => {
-        done();
-      });
-    });
-  });
-  after((done) => {
-    Database.deleteUser(credentials.email, () => {
-      Database.deleteIncident(incident, () => {
-        done();
+    Database.refreshDatabase(() => {
+      Database.createUser(credentials, (authToken) => {
+        token = authToken;
+        Database.createIncident(incident, () => {
+          done();
+        });
       });
     });
   });

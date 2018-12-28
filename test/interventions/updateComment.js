@@ -25,17 +25,12 @@ describe('Patch intervention record comment', () => {
   before((done) => {
     route = `${baseRoute}/${incident.id}/comment`;
     incident.type = Constants.INCIDENT_TYPE_INTERVENTION;
-    Database.createUser(credentials, (authToken) => {
-      token = authToken;
-      Database.createIncident(incident, () => {
-        done();
-      });
-    });
-  });
-  after((done) => {
-    Database.deleteUser(credentials.email, () => {
-      Database.deleteIncident(incident, () => {
-        done();
+    Database.refreshDatabase(() => {
+      Database.createUser(credentials, (authToken) => {
+        token = authToken;
+        Database.createIncident(incident, () => {
+          done();
+        });
       });
     });
   });
@@ -206,17 +201,12 @@ describe('Patch intervention record comment', () => {
     incident.status = 'resolved';
     incident.type = Constants.INCIDENT_TYPE_INTERVENTION;
     route = `${baseRoute}/${incident.id}/comment`;
-    Database.createUser(credentials, (authToken) => {
-      token = authToken;
-      Database.createIncident(incident, () => {
-        done();
-      });
-    });
-  });
-  after((done) => {
-    Database.deleteUser(credentials.email, () => {
-      Database.deleteIncident(incident, () => {
-        done();
+    Database.refreshDatabase(() => {
+      Database.createUser(credentials, (authToken) => {
+        token = authToken;
+        Database.createIncident(incident, () => {
+          done();
+        });
       });
     });
   });

@@ -15,14 +15,10 @@ const route = '/api/v1/auth/login';
 
 describe('Login authentication API', () => {
   before((done) => {
-    Database.createUser(credentials, () => {
-      done();
-    });
-  });
-
-  after((done) => {
-    Database.deleteUser(credentials.email, () => {
-      done();
+    Database.refreshDatabase(() => {
+      Database.createUser(credentials, () => {
+        done();
+      });
     });
   });
 

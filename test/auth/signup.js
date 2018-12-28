@@ -16,9 +16,8 @@ describe('Signup API', () => {
     credentials = Object.assign({}, Constants.TEST_DUMMY_USER);
     done();
   });
-  after((done) => {
-    credentials.email = Constants.TEST_DUMMY_USER.email;
-    Database.deleteUser(credentials.email, () => {
+  before((done) => {
+    Database.refreshDatabase(() => {
       done();
     });
   });

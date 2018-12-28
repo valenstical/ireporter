@@ -21,17 +21,12 @@ describe('Patch intervention record status', () => {
     route = `${baseRoute}/${incident.id}/status`;
     incident.type = Constants.INCIDENT_TYPE_INTERVENTION;
     credentials.isAdmin = true;
-    Database.createUser(credentials, (authToken) => {
-      token = authToken;
-      Database.createIncident(incident, () => {
-        done();
-      });
-    });
-  });
-  after((done) => {
-    Database.deleteUser(credentials.email, () => {
-      Database.deleteIncident(incident, () => {
-        done();
+    Database.refreshDatabase(() => {
+      Database.createUser(credentials, (authToken) => {
+        token = authToken;
+        Database.createIncident(incident, () => {
+          done();
+        });
       });
     });
   });
