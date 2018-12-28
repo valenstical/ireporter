@@ -21,7 +21,7 @@
     "less-middleware": "^3.0.1",
     "moment": "^2.22.2",
     "morgan": "^1.9.1",
-    "nodemailer": "^4.7.0",
+    "nodemailer": "^5.0.0",
     "nodemailer-smtp-transport": "^2.7.4",
     "pg": "^7.7.1",
     "random-int": "^1.0.0",
