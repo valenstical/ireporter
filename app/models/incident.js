@@ -4,7 +4,7 @@ import Mailer from '../utils/sendMail';
 import SMS from '../utils/sendSms';
 import Common from '../utils/common';
 
-const { success, error } = Common;
+const { success } = Common;
 
 class Incident {
   /**
@@ -32,12 +32,8 @@ class Incident {
  * @param {object} res - the response object.
  */
   deleteIncident(res) {
-    Database.deleteIncident(this, (deleted) => {
-      if (deleted) {
-        success(res, Constants.STATUS_OK, [{ id: this.id, message: `${this.type} record has been deleted` }]);
-      } else {
-        error(res, Constants.STATUS_NOT_FOUND, `The ${this.type} record could not be deleted. The status may have changed or the record no longer exists.`);
-      }
+    Database.deleteIncident(this, () => {
+      success(res, Constants.STATUS_OK, [{ id: this.id, message: `${this.type} record has been deleted` }]);
     });
   }
 
@@ -52,11 +48,7 @@ class Incident {
     const qry = !this.id ? '' : ' and incidents.id=$3';
     const params = !this.id ? [this.type, this.createdBy] : [this.type, this.createdBy, this.id];
     Database.getIncidents(`type = $1 and "createdBy" = $2${qry}`, params, (result) => {
-      if (result.length === 0 && this.id) {
-        error(res, Constants.STATUS_NOT_FOUND, [`There is no ${this.type} record with that id`]);
-      } else {
-        success(res, Constants.STATUS_OK, result);
-      }
+      success(res, Constants.STATUS_OK, result);
     });
   }
 
@@ -76,12 +68,8 @@ class Incident {
    */
   updateIncident(res) {
     const action = this.location ? 'location' : 'comment';
-    Database.updateIncident(this, (updated) => {
-      if (updated) {
-        success(res, Constants.STATUS_OK, [{ id: this.id, message: `Updated ${this.type}'s ${action}` }]);
-      } else {
-        error(res, Constants.STATUS_NOT_FOUND, [`The ${this.type} record could not be updated. The status may have changed or the record no longer exists.`]);
-      }
+    Database.updateIncident(this, () => {
+      success(res, Constants.STATUS_OK, [{ id: this.id, message: `Updated ${this.type}'s ${action}` }]);
     });
   }
 
@@ -90,12 +78,8 @@ class Incident {
    * @param {object} res - The response object
    */
   updateStatus(res) {
-    Database.updateIncident(this, (updated) => {
-      if (updated) {
-        success(res, Constants.STATUS_OK, [{ id: this.id, message: `Updated ${this.type}'s record status` }]);
-      } else {
-        error(res, Constants.STATUS_NOT_FOUND, [`The ${this.type} record could not be updated. The record may no longer exists.`]);
-      }
+    Database.updateIncident(this, () => {
+      success(res, Constants.STATUS_OK, [{ id: this.id, message: `Updated ${this.type}'s record status` }]);
       Database.getUser(this.createdBy, (user) => {
         const mail = new Mailer(user, this);
         mail.send();

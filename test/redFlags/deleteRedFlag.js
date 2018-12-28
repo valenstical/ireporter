@@ -16,7 +16,7 @@ let route;
 const baseRoute = '/api/v1/red-flags';
 let token;
 
-describe('Get specific red-flag record API', () => {
+describe('Delete red-flag record API', () => {
   before((done) => {
     route = `${baseRoute}/${incident.id}`;
     Database.createUser(credentials, (authToken) => {
@@ -33,9 +33,9 @@ describe('Get specific red-flag record API', () => {
       });
     });
   });
-  it('should get red-flag record with the specified id', (done) => {
+  it('should delete red-flag record with the specified id', (done) => {
     chai.request(app)
-      .get(route)
+      .delete(route)
       .set('authorization', `Bearer ${token}`)
       .end((err, res) => {
         expect(res).to.have.status(Constants.STATUS_OK);
@@ -47,7 +47,7 @@ describe('Get specific red-flag record API', () => {
   });
   it('should return error if no authorization token is provided', (done) => {
     chai.request(app)
-      .get(route)
+      .delete(route)
       .end((err, res) => {
         expect(res).to.have.status(Constants.STATUS_UNATHORIZED);
         expect(res.body).to.be.an('object');
@@ -59,7 +59,7 @@ describe('Get specific red-flag record API', () => {
   });
   it('should return error if authorization token is invalid', (done) => {
     chai.request(app)
-      .get(route)
+      .delete(route)
       .set('authorization', 'Bearer INVALID_TOKEN')
       .end((err, res) => {
         expect(res).to.have.status(Constants.STATUS_UNATHORIZED);
@@ -72,7 +72,7 @@ describe('Get specific red-flag record API', () => {
   });
   it('should return error if authorization token is valid but user does not exists', (done) => {
     chai.request(app)
-      .get(route)
+      .delete(route)
       .set('authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NDU5MDgzOTEsImV4cCI6MTU0NjUxMzE5MX0.SsdCpQAuIUzucULGyxmkHCtwE5XHHoB0mD8GUiBlhkM')
       .end((err, res) => {
         expect(res).to.have.status(Constants.STATUS_UNATHORIZED);
@@ -85,7 +85,7 @@ describe('Get specific red-flag record API', () => {
   });
   it('should return error if red-flag id is not a number', (done) => {
     chai.request(app)
-      .get(`${baseRoute}/NOT_A_NUMBER`)
+      .delete(`${baseRoute}/NOT_A_NUMBER`)
       .set('authorization', `Bearer ${token}`)
       .end((err, res) => {
         expect(res).to.have.status(Constants.STATUS_UNPROCESSED);
@@ -98,7 +98,7 @@ describe('Get specific red-flag record API', () => {
   });
   it('should return error if red-flag id is not 9 digts', (done) => {
     chai.request(app)
-      .get(`${baseRoute}/1234567899`)
+      .delete(`${baseRoute}/1234567899`)
       .set('authorization', `Bearer ${token}`)
       .end((err, res) => {
         expect(res).to.have.status(Constants.STATUS_UNPROCESSED);
@@ -111,7 +111,7 @@ describe('Get specific red-flag record API', () => {
   });
   it('should return error if there is no red-flag record with the specified id', (done) => {
     chai.request(app)
-      .get(`${baseRoute}/000000000`)
+      .delete(`${baseRoute}/000000000`)
       .set('authorization', `Bearer ${token}`)
       .end((err, res) => {
         expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
@@ -119,6 +119,39 @@ describe('Get specific red-flag record API', () => {
         expect(res.body).to.have.property('status').to.equal(Constants.STATUS_NOT_FOUND);
         expect(res.body).to.have.property('error').to.be.an('array').to.have.length(1);
         expect(res.body.error[0]).to.equal('You do not have any red-flag record with that id');
+        done(err);
+      });
+  });
+});
+
+describe('Delete red-flag record API', () => {
+  before((done) => {
+    incident.status = 'resolved';
+    route = `${baseRoute}/${incident.id}`;
+    Database.createUser(credentials, (authToken) => {
+      token = authToken;
+      Database.createIncident(incident, () => {
+        done();
+      });
+    });
+  });
+  after((done) => {
+    Database.deleteUser(credentials.email, () => {
+      Database.deleteIncident(incident, () => {
+        done();
+      });
+    });
+  });
+  it('should return error if red-flag status is not in draft mode', (done) => {
+    chai.request(app)
+      .delete(route)
+      .set('authorization', `Bearer ${token}`)
+      .end((err, res) => {
+        expect(res).to.have.status(Constants.STATUS_FORBIDDEN);
+        expect(res.body).to.be.an('object');
+        expect(res.body).to.have.property('status').to.equal(Constants.STATUS_FORBIDDEN);
+        expect(res.body).to.have.property('error').to.be.an('array').to.have.length(1);
+        expect(res.body.error[0]).to.equal('You can no longer alter this red-flag record because it is no longer in draft mode.');
         done(err);
       });
   });

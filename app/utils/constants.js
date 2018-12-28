@@ -24,7 +24,8 @@ const Constants = {
 
   // GENERAL MESSAGES
   MESSAGE_BAD_LOCATION: 'The location you entered is invalid. Please check your longitude and latitude, then try again.',
-  MESSAGE_BAD_COMMENT: 'The title field is required',
+  MESSAGE_BAD_COMMENT: 'The comment field is required',
+  MESSAGE_BAD_TITLE: 'The title field is required',
   MESSAGE_BAD_TYPE: 'Please choose the type of report you wish to make',
   MESSAGE_INVALID_TYPE: 'You have entered  invalid report type',
   MESSAGE_INVALID_ID: 'The id must be a number',
@@ -45,7 +46,12 @@ const Constants = {
   MESSAGE_DUPLICATE_PHONE_NUMBER: 'A user with that phone number already exists',
   MESSAGE_DUPLICATE_EMAIL: 'The email address you entered is already registered',
   MESSAGE_DUPLICATE_USERNAME: 'Oops! It appears like the username you chose is already taken.',
+  MESSAGE_LONG_COMMENT: 'The comment is too long. Please limit your comment to 1000 characters.',
+  MESSAGE_LONG_TITLE: 'The title is too long. Please limit the title to 100 characters.',
+  MESSAGE_BAD_LONGITUDE: 'The longitude is required',
+  MESSAGE_BAD_LATITUDE: 'The latitude is required',
 
+  TEXT_LONG: 'This is a very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very long sentence with plenty characters.',
 
   // INCIDENT TYPES
   INCIDENT_TYPE_RED_FLAG: 'red-flag',
@@ -85,6 +91,14 @@ const Constants = {
     comment: 'This is the comment',
     title: 'This is the title',
     risk: 0,
+  },
+  TEST_DUMMY_LOCATION: {
+    longitude: '6.0987345',
+    latitude: '3.2954875',
+  },
+  TEST_DUMMY_COMMENT: {
+    comment: 'This is a comment',
+    title: 'This is the title',
   },
 };
 

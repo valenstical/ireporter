@@ -46,14 +46,20 @@ class Validator {
      */
   static validateComment(req, res, next) {
     const errors = [];
-    checkEmpty(errors, req.body.comment, 'You must provide a comment for this incident.');
-    checkEmpty(errors, req.body.title, 'You must provide a title for this incident.');
+    checkEmpty(errors, req.body.comment, Constants.MESSAGE_BAD_COMMENT);
+    checkEmpty(errors, req.body.title, Constants.MESSAGE_BAD_TITLE);
+    if (req.body.comment && req.body.comment.trim().length > 1000) {
+      errors.push(Constants.MESSAGE_LONG_COMMENT);
+    }
+    if (req.body.title && req.body.title.trim().length > 100) {
+      errors.push(Constants.MESSAGE_LONG_TITLE);
+    }
     if (errors.length > 0) {
       error(res, Constants.STATUS_BAD_REQUEST, errors);
       return;
     }
-    req.incident.title = req.body.title;
-    req.incident.comment = req.body.comment;
+    req.incident.title = req.body.title.trim();
+    req.incident.comment = req.body.comment.trim();
     req.incident.location = undefined;
     next();
   }
@@ -67,8 +73,8 @@ class Validator {
   static validateLocation(req, res, next) {
     const errors = [];
     req.incident.location = `${req.body.latitude},${req.body.longitude}`;
-    checkEmpty(errors, req.body.latitude, 'The latitude field can not be empty');
-    checkEmpty(errors, req.body.longitude, 'The longitude field can not be empty');
+    checkEmpty(errors, req.body.latitude, Constants.MESSAGE_BAD_LATITUDE);
+    checkEmpty(errors, req.body.longitude, Constants.MESSAGE_BAD_LONGITUDE);
     checkLocation(errors, req.incident.location);
 
     if (errors.length > 0) {
@@ -88,12 +94,17 @@ class Validator {
   static validatePostData(req, res, next) {
     const errors = [];
     req.incident.location = `${req.body.latitude},${req.body.longitude}`;
-    checkEmpty(errors, req.body.latitude, 'The latitude is required');
-    checkEmpty(errors, req.body.longitude, 'The longitude is required');
-    checkEmpty(errors, req.body.comment, 'You must provide a comment for this incident');
-    checkEmpty(errors, req.body.title, 'You must provide a title for this incident');
+    checkEmpty(errors, req.body.latitude, Constants.MESSAGE_BAD_LATITUDE);
+    checkEmpty(errors, req.body.longitude, Constants.MESSAGE_BAD_LONGITUDE);
+    checkEmpty(errors, req.body.comment, Constants.MESSAGE_BAD_COMMENT);
+    checkEmpty(errors, req.body.title, Constants.MESSAGE_BAD_TITLE);
     checkLocation(errors, req.incident.location);
-
+    if (req.body.comment && req.body.comment.trim().length > 1000) {
+      errors.push(Constants.MESSAGE_LONG_COMMENT);
+    }
+    if (req.body.title && req.body.title.trim().length > 100) {
+      errors.push(Constants.MESSAGE_LONG_TITLE);
+    }
     if (errors.length > 0) {
       error(res, Constants.STATUS_BAD_REQUEST, errors);
       return;
@@ -206,13 +217,25 @@ class Validator {
    * @param {function} next - The next function used to pass control to another middleware
    */
   static validateIncident(req, res, next) {
-    Database.getIncidents('incidents.id = $1 and incidents.type = $2', [req.incident.id, req.incident.type], (rows) => {
+    const suffix = req.isAdmin ? 'is not null' : ' = $3';
+    const param = [req.incident.id, req.incident.type].concat(req.isAdmin ? []
+      : [req.incident.createdBy]);
+    Database.getIncidents(`incidents.id = $1 and incidents.type = $2 and "createdBy" ${suffix}`, param, (rows) => {
       if (rows.length === 0) {
-        error(res, Constants.STATUS_NOT_FOUND, `There is no ${req.incident.type} record with that id`);
+        error(res, Constants.STATUS_NOT_FOUND, [req.isAdmin ? `There is no ${req.incident.type} record with that id`
+          : `You do not have any ${req.incident.type} record with that id`]);
         return;
       }
-      const { createdBy } = rows[0];
-      req.incident.createdBy = createdBy;
+      next();
+    });
+  }
+
+  static verifyStatus(req, res, next) {
+    Database.getIncidentStatus(req.incident, (result) => {
+      if (result.status !== Constants.INCIDENT_STATUS_DRAFT) {
+        error(res, Constants.STATUS_FORBIDDEN, [`You can no longer alter this ${req.incident.type} record because it is no longer in draft mode.`]);
+        return;
+      }
       next();
     });
   }

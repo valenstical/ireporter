@@ -35,7 +35,9 @@ class Mailer {
 
   send() {
     const transport = mailer.createTransport(smptTransport(this.smtp));
-    transport.sendMail(this.content);
+    transport.sendMail(this.content, () => {
+      // TODO
+    });
   }
 }
 

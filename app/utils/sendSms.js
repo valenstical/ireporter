@@ -1,4 +1,4 @@
-import request from 'request';
+import request from 'request-promise';
 import urlencode from 'urlencode';
 import Constants from './constants';
 
@@ -25,8 +25,12 @@ class SMS {
    * Sends the message using beta sms api endpoint
    */
   send() {
-    const url = `http://login.betasms.com/api/?sender=${process.env.BETAID}&username=${process.env.BETAUSERNAME}&password=${process.env.BETAPASSWORD}&message=${urlencode(this.message)}&mobiles=${this.user.phoneNumber}`;
-    request.get(url);
+    const url = `http://login.betasms.com/api/?sender=${urlencode(process.env.BETAID)}&username=${process.env.BETAUSERNAME}&password=${process.env.BETAPASSWORD}&message=${urlencode(this.message)}&mobiles=${this.user.phoneNumber}`;
+    request(url).then(() => {
+      // check with sms gateway response codes for success message
+    }).catch(() => {
+      // Connect to the internet and turn off your anti virus if you are using localhost.
+    });
   }
 }
 

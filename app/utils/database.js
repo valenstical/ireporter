@@ -1,7 +1,6 @@
 import { Pool } from 'pg';
 import bcrypt from 'bcryptjs';
 import validator from 'validator';
-import Constants from './constants';
 import Common from './common';
 
 const pool = new Pool();
@@ -36,20 +35,9 @@ class Database {
    * @param {function} echo - Callback function to be executed after successful query
    */
   static deleteIncident(incident, echo) {
-    const sql = 'delete from incidents where type = $1 and id =$2 and status = $3';
-    const params = [incident.type, incident.id, Constants.INCIDENT_STATUS_DRAFT];
+    const sql = 'delete from incidents where type = $1 and id =$2 and "createdBy" = $3';
+    const params = [incident.type, incident.id, incident.createdBy];
     Database.execute(sql, params, (query) => {
-      echo(query.rowCount > 0);
-    });
-  }
-
-  /**
-   * Delete all records from the incidents table
-   * @param {function} echo - Callback function to be executed after successful query
-   */
-  static clearIncidents(echo) {
-    const sql = 'delete from incidents';
-    Database.execute(sql, [], (query) => {
       echo(query.rowCount > 0);
     });
   }
@@ -62,13 +50,11 @@ class Database {
   static updateIncident(incident, echo) {
     let sql = ''; let params = [];
     if (incident.comment) {
-      sql = 'update incidents set comment = ($1), title = ($2) where type = ($3) and status = ($4) and id = ($5) and "createdBy" = ($6)';
-      params = [incident.comment, incident.title, incident.type,
-        Constants.INCIDENT_STATUS_DRAFT, incident.id, incident.createdBy];
+      sql = 'update incidents set comment = ($1), title = ($2) where type = ($3) and id = ($4) and "createdBy" = ($5)';
+      params = [incident.comment, incident.title, incident.type, incident.id, incident.createdBy];
     } else if (incident.location) {
-      sql = 'update incidents set location = ($1) where type = ($2) and status = ($3) and id = ($4) and "createdBy" = ($5)';
-      params = [incident.location, incident.type, Constants.INCIDENT_STATUS_DRAFT,
-        incident.id, incident.createdBy];
+      sql = 'update incidents set location = ($1) where type = ($2) and id = ($3) and "createdBy" = ($4)';
+      params = [incident.location, incident.type, incident.id, incident.createdBy];
     } else if (incident.status) {
       sql = 'update incidents set status = ($1) where id = ($2)';
       params = [incident.status, incident.id];

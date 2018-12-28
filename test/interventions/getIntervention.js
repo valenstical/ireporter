@@ -13,12 +13,13 @@ chai.use(chaiHttp);
 const credentials = Object.assign({}, Constants.TEST_DUMMY_USER);
 const incident = Object.assign({}, Constants.TEST_DUMMY_INCIDENT);
 let route;
-const baseRoute = '/api/v1/red-flags';
+const baseRoute = '/api/v1/interventions';
 let token;
 
-describe('Get specific red-flag record API', () => {
+describe('Get specific intervention record API', () => {
   before((done) => {
     route = `${baseRoute}/${incident.id}`;
+    incident.type = Constants.INCIDENT_TYPE_INTERVENTION;
     Database.createUser(credentials, (authToken) => {
       token = authToken;
       Database.createIncident(incident, () => {
@@ -33,7 +34,7 @@ describe('Get specific red-flag record API', () => {
       });
     });
   });
-  it('should get red-flag record with the specified id', (done) => {
+  it('should get intervention record with the specified id', (done) => {
     chai.request(app)
       .get(route)
       .set('authorization', `Bearer ${token}`)
@@ -83,7 +84,7 @@ describe('Get specific red-flag record API', () => {
         done(err);
       });
   });
-  it('should return error if red-flag id is not a number', (done) => {
+  it('should return error if intervention id is not a number', (done) => {
     chai.request(app)
       .get(`${baseRoute}/NOT_A_NUMBER`)
       .set('authorization', `Bearer ${token}`)
@@ -96,7 +97,7 @@ describe('Get specific red-flag record API', () => {
         done(err);
       });
   });
-  it('should return error if red-flag id is not 9 digts', (done) => {
+  it('should return error if intervention id is not 9 digts', (done) => {
     chai.request(app)
       .get(`${baseRoute}/1234567899`)
       .set('authorization', `Bearer ${token}`)
@@ -109,7 +110,7 @@ describe('Get specific red-flag record API', () => {
         done(err);
       });
   });
-  it('should return error if there is no red-flag record with the specified id', (done) => {
+  it('should return error if there is no intervention record with the specified id', (done) => {
     chai.request(app)
       .get(`${baseRoute}/000000000`)
       .set('authorization', `Bearer ${token}`)
@@ -118,7 +119,7 @@ describe('Get specific red-flag record API', () => {
         expect(res.body).to.be.an('object');
         expect(res.body).to.have.property('status').to.equal(Constants.STATUS_NOT_FOUND);
         expect(res.body).to.have.property('error').to.be.an('array').to.have.length(1);
-        expect(res.body.error[0]).to.equal('You do not have any red-flag record with that id');
+        expect(res.body.error[0]).to.equal('You do not have any intervention record with that id');
         done(err);
       });
   });
