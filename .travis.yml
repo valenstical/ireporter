@@ -2,13 +2,18 @@ language: node_js
 node_js:
   - "stable"
 services:
-  - postgres
+  - postgresql
 addons:
   postgresql: "10"
   apt:
     packages:
     - postgresql-10
     - postgresql-client-10
+postgres: 
+  adapter: postgresql
+  database: dbireporter
+  username: postgres
+  password:
 env:
   global:
   - PGPORT=5433
