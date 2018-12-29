@@ -2,21 +2,20 @@ language: node_js
 node_js:
   - "stable"
 services:
-  - postgresql
+  - postgres
 addons:
   postgresql: "10"
   apt:
     packages:
     - postgresql-10
     - postgresql-client-10
-postgres: 
-  adapter: postgresql
-  database: dbireporter
-  username: postgres
-  password:
 env:
   global:
   - PGPORT=5433
+  - PGUSER=postgres
+  - PGHOST=localhost
+  - PGDATABASE=dbireporter
+  - PGPASSWORD=
 env:
   global: CC_TEST_REPORTER_ID=e6f648848c87ac2be5aad3ee6ebac26afa249b2e93eaa163fc45ae4e689366df
 before_script:
