@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/valenstical/ireporter.svg?branch=develop)](https://travis-ci.org/valenstical/ireporter)
-[![Coverage Status](https://coveralls.io/repos/github/valenstical/ireporter/badge.svg?branch=develop)](https://coveralls.io/github/valenstical/ireporter?branch=develop)
+[![Coverage Status](https://coveralls.io/repos/github/valenstical/ireporter/badge.svg)](https://coveralls.io/github/valenstical/ireporter)
 [![Maintainability](https://api.codeclimate.com/v1/badges/cc83bc74765efd66a6cc/maintainability)](https://codeclimate.com/github/valenstical/ireporter/maintainability)
 [![Greenkeeper badge](https://badges.greenkeeper.io/valenstical/ireporter.svg)](https://greenkeeper.io/)
 # ireporter
