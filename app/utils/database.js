@@ -1,5 +1,7 @@
 import { Pool } from 'pg';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
+import validator from 'validator';
+import Common from './common';
 import Constants from './constants';
 
 const pool = new Pool();
@@ -23,8 +25,8 @@ class Database {
         connection.release();
       }
     })().catch((ex) => {
-      console.log(ex);
-      // failure(ex);
+      // console.log(ex);
+      failure(ex);
     });
   }
 
@@ -34,20 +36,9 @@ class Database {
    * @param {function} echo - Callback function to be executed after successful query
    */
   static deleteIncident(incident, echo) {
-    const sql = 'delete from incidents where type = $1 and id =$2 and status = $3';
-    const params = [incident.type, incident.id, Constants.INCIDENT_STATUS_DRAFT];
+    const sql = 'delete from incidents where type = $1 and id =$2 and "createdBy" = $3';
+    const params = [incident.type, incident.id, incident.createdBy];
     Database.execute(sql, params, (query) => {
-      echo(query.rowCount > 0);
-    });
-  }
-
-  /**
-   * Delete all records from the incidents table
-   * @param {function} echo - Callback function to be executed after successful query
-   */
-  static clearIncidents(echo) {
-    const sql = 'delete from incidents';
-    Database.execute(sql, [], (query) => {
       echo(query.rowCount > 0);
     });
   }
@@ -60,13 +51,11 @@ class Database {
   static updateIncident(incident, echo) {
     let sql = ''; let params = [];
     if (incident.comment) {
-      sql = 'update incidents set comment = ($1), title = ($2) where type = ($3) and status = ($4) and id = ($5) and "createdBy" = ($6)';
-      params = [incident.comment, incident.title, incident.type,
-        Constants.INCIDENT_STATUS_DRAFT, incident.id, incident.createdBy];
+      sql = 'update incidents set comment = ($1), title = ($2) where type = ($3) and id = ($4) and "createdBy" = ($5)';
+      params = [incident.comment, incident.title, incident.type, incident.id, incident.createdBy];
     } else if (incident.location) {
-      sql = 'update incidents set location = ($1) where type = ($2) and status = ($3) and id = ($4) and "createdBy" = ($5)';
-      params = [incident.location, incident.type, Constants.INCIDENT_STATUS_DRAFT,
-        incident.id, incident.createdBy];
+      sql = 'update incidents set location = ($1) where type = ($2) and id = ($3) and "createdBy" = ($4)';
+      params = [incident.location, incident.type, incident.id, incident.createdBy];
     } else if (incident.status) {
       sql = 'update incidents set status = ($1) where id = ($2)';
       params = [incident.status, incident.id];
@@ -124,14 +113,20 @@ class Database {
    * @param {function} failure - Callback function on failure
    */
   static createUser(user, echo, failure) {
-    const sql = `insert into users (${columnsUser}) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)`;
-    const params = [user.id, user.firstname, user.lastname, user.othernames, user.username,
-      user.password, user.email, user.phoneNumber, user.registered, user.isAdmin, user.profile,
-      user.isVerified, user.isBlocked, user.allowSms, user.allowEmail];
-    Database.execute(sql, params, () => {
-      echo();
-    }, (errors) => {
-      failure(errors);
+    let password;
+    bcrypt.hash(user.password, 10, (errs, hash) => {
+      password = hash;
+      const sql = `insert into users (${columnsUser}) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)`;
+      const params = [user.id, user.firstname, user.lastname, user.othernames, user.username,
+        password, user.email, user.phoneNumber, user.registered, user.isAdmin, user.profile,
+        user.isVerified, user.isBlocked, user.allowSms, user.allowEmail];
+      Database.execute(sql, params, () => {
+        Common.createToken(user.id, (authToken) => {
+          echo(authToken);
+        });
+      }, (errors) => {
+        failure(errors);
+      });
     });
   }
 
@@ -146,7 +141,9 @@ class Database {
     Database.execute(sql, params, (result) => {
       if (result.rowCount > 0) {
         bcrypt.compare(user.password, result.rows[0].password, (errs, response) => {
-          echo(response ? result.rows[0] : false);
+          Common.createToken(result.id, (authToken) => {
+            echo(response ? result.rows[0] : false, authToken);
+          });
         });
       } else {
         echo(false);
@@ -164,6 +161,30 @@ class Database {
     const params = [id];
     Database.execute(sql, params, (result) => {
       echo(result.rowCount > 0 ? result.rows[0] : false);
+    });
+  }
+
+
+  /**
+   * Deletes a user from the database
+   * @param {string} identifier - The user unique id or email address
+   * @param {function} echo - callback function to execute
+   */
+  /*
+  static deleteUser(identifier, echo) {
+    const column = validator.isInt(identifier) ? 'id' : 'email';
+    Database.execute(`delete from users where ${column} = $1`, [identifier], (result) => {
+      echo(result.rowCount > 0);
+    });
+  }
+*/
+  /**
+   * Clears the database. Used for testing only
+   * @param {function} echo - callback function to execute
+   */
+  static refreshDatabase(echo) {
+    Database.execute(`${Constants.SQL_CREATE_TABLES}delete from users;delete from incidents;`, [], () => {
+      echo();
     });
   }
 }

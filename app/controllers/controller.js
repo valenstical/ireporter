@@ -41,16 +41,6 @@ class Controller {
   }
 
   /**
-   * This returns the list of all incidents to the admin irrespective of the user
-   * @param {object} req - The request object
-   * @param {object} res - The response object
-   */
-  static getAllIncidentsAsAdmin(req, res) {
-    const { incident } = req;
-    incident.getAllIncidentsAsAdmin(res);
-  }
-
-  /**
    * This updates the status of an intervention or red-flag record. Available to only the admin
    * @param {object} req - The request object
    * @param {object} res - The response object

@@ -32,33 +32,29 @@ class User {
    * @param {object} res - The resource object
    */
   createUser(res) {
-    Database.createUser(this, () => {
-      Common.createToken(this.id, (authToken) => {
-        success(res, Constants.STATUS_CREATED, [{ token: authToken, user: this }]);
-      });
+    Database.createUser(this, (authToken) => {
+      success(res, Constants.STATUS_CREATED, [{ token: authToken, user: this }]);
     }, (ex) => {
-      let message = 'Phone numbe is already registered';
+      let message = Constants.MESSAGE_DUPLICATE_PHONE_NUMBER;
       if (ex.constraint === 'users_username_key') {
-        message = 'Username is already taken';
+        message = Constants.MESSAGE_DUPLICATE_USERNAME;
       } else if (ex.constraint === 'users_email_key') {
-        message = 'Email is already registered';
+        message = Constants.MESSAGE_DUPLICATE_EMAIL;
       }
-      error(res, Constants.STATUS_BAD_REQUEST, message);
+      error(res, Constants.STATUS_BAD_REQUEST, [message]);
     });
   }
 
   /**
-   * Authenticates a and logs in user
+   * Authenticates and logs in user
    * @param {object} res - The response object
    */
   login(res) {
-    Database.login(this, (result) => {
+    Database.login(this, (result, authToken) => {
       if (result) {
-        Common.createToken(result.id, (authToken) => {
-          success(res, Constants.STATUS_OK, [{ token: authToken, user: result }]);
-        });
+        success(res, Constants.STATUS_OK, [{ token: authToken, user: result }]);
       } else {
-        error(res, Constants.STATUS_FORBIDDEN, Constants.MESSAGE_INVALID_LOGIN);
+        error(res, Constants.STATUS_FORBIDDEN, [Constants.MESSAGE_INVALID_LOGIN]);
       }
     });
   }

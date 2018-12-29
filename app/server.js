@@ -38,5 +38,4 @@ app.all('*', (req, res) => {
 });
 
 app.listen(PORT);
-
 export default app;

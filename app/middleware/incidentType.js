@@ -14,6 +14,7 @@ class IncidentType {
     req.incident = incident;
     next();
   }
+
   /**
    * Sets the current inciden type to red-flag
    * @param {object} req - The request object
