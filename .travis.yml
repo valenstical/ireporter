@@ -2,9 +2,13 @@ language: node_js
 node_js:
   - "stable"
 services:
-  - postgresql
+  - postgres
 addons:
-  postgresql: "11.1"
+  postgresql: "10"
+  apt:
+    packages:
+    - postgresql-10
+    - postgresql-client-10
 env:
   global:
   - PGPORT=5433
