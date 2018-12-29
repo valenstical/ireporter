@@ -3,6 +3,8 @@ node_js:
   - "stable"
 services:
   - postgresql
+addons:
+  postgresql: "11.1"
 env:
   global:
   - PGPORT=5433
