@@ -11,11 +11,11 @@ addons:
     - postgresql-client-10
 env:
   global:
-  - PGPORT=5433
+  - PGPORT=5432
   - PGUSER=postgres
   - PGHOST=localhost
   - PGDATABASE=dbireporter
-  - PGPASSWORD=
+  - PGPASSWORD=123
 env:
   global: CC_TEST_REPORTER_ID=e6f648848c87ac2be5aad3ee6ebac26afa249b2e93eaa163fc45ae4e689366df
 before_script:
