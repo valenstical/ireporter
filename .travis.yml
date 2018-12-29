@@ -5,10 +5,6 @@ services:
   - postgresql
 addons:
   postgresql: "11.1"
-  apt:
-    packages:
-    - postgresql-11
-    - postgresql-client-11
 env:
   global: CC_TEST_REPORTER_ID=e6f648848c87ac2be5aad3ee6ebac26afa249b2e93eaa163fc45ae4e689366df
     - PGPORT=5432
