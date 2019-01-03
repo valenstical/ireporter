@@ -1,7 +1,3 @@
-/* eslint-disable no-param-reassign */
-// const ROOT = 'https://ireporter-nigeria.herokuapp.com/api/v1';
-
-const ROOT = 'http://localhost:3000/api/v1';
 
 function Wigi(selector) {
   this.elements = typeof selector === 'string' ? document.querySelectorAll(selector) : [selector];
@@ -143,15 +139,15 @@ function Wigi(selector) {
     });
   };
   /**
-   * Returns the immediate parent node of the selected element
+   * Returns the immediate parent node of the first matched element
    */
   this.parent = () => {
-    const parent = this.elements[this.elements.length - 1].parentNode;
+    const parent = this.elements[0].parentNode;
     return Wigi(parent);
   };
 
   /**
-   * Serialize the values of all elements in a form
+   * Serialize the values of all elements in the first matched form element
    */
   this.serialize = () => {
     const result = [];
@@ -160,63 +156,36 @@ function Wigi(selector) {
     });
     return result.join('&');
   };
-
+  /**
+   * Scroll the page into the view of the first matched element
+   */
   this.scroll = () => {
     this.elements[0].scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
   };
+  /**
+ * Adds or triggers the click event to the selected elements
+ * @param {function} callback - The function to execute
+ */
+  this.click = (callback) => {
+    this.loop((element) => {
+      if (callback) {
+        element.addEventListener('click', (e) => {
+          callback(e);
+        }, false);
+      } else {
+        element.dispatchEvent(new Event('click'));
+      }
+    });
+    return this.instance;
+  };
+  /**
+   * Returns the next element of the first matched element
+   */
+  this.next = () => Wigi(this.elements[0].nextElementSibling);
 
+  /**
+   * Returns the previous element of the first matched element
+   */
+  this.prev = () => Wigi(this.elements[0].previousElementSibling);
   return this;
 }
-
-function goto(page) {
-  window.location.assign(page);
-}
-class User {
-  static setUser(user) {
-    localStorage.setItem('user', user);
-  }
-
-  static getUser() {
-    return localStorage.getItem('user');
-  }
-
-  static setToken(token) {
-    localStorage.setItem('token', token);
-  }
-
-  static getToken() {
-    return localStorage.getToken('token');
-  }
-
-  static login(data) {
-    User.setToken(data.token);
-    User.setUser(data.user);
-  }
-}
-
-const CONSTANTS = {
-  URL: {
-    LOGIN: `${ROOT}/auth/login`,
-    SIGNUP: `${ROOT}/auth/signup`,
-    RED_FLAGS: `${ROOT}/red-flags`,
-    INTERVENTIONS: `${ROOT}/interventions`,
-  },
-  STATUS: {
-    OK: 200,
-    CREATED: 201,
-    NOT_FOUND: 404,
-    FORBIDDEN: 403,
-    UNAUTHORIZED: 402,
-    BAD_REQUEST: 400,
-  },
-  PAGE: {
-    HOME: './index.html',
-    ADMIN_LOGIN: './admin-login.html',
-    ADMIN_DASHBOARD: './admin-dashboard.html',
-    CREATE_REPORT: './create-report.html',
-    EDIT_REPORT: './edit-report.html',
-    PROFILE: './profile.html',
-    REPORT_DETAILS: './report-details.html',
-    USER_DASHBOARD: './user-dashboard.html',
-  },
-};
