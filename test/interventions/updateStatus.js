@@ -72,17 +72,17 @@ describe('Patch intervention record status', () => {
         done(err);
       });
   });
-  it('should return error if authorization token is valid but user does not exists', (done) => {
+  it('should return error if authorization token is valid but user does not exists or user is not admin', (done) => {
     chai.request(app)
       .patch(route)
       .set('authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI3MDc1NDI5MywiaWF0IjoxNTQ2NTM0Njg0LCJleHAiOjE1NDcxMzk0ODR9.WiWQw1_OC0niM-NxSvFv5gaIP73nbJ3Cqco1fZTYOHY')
       .send({ status: Constants.INCIDENT_STATUS_RESOLVED })
       .end((err, res) => {
-        expect(res).to.have.status(Constants.STATUS_UNATHORIZED);
+        expect(res).to.have.status(Constants.STATUS_FORBIDDEN);
         expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('status').to.equal(Constants.STATUS_UNATHORIZED);
+        expect(res.body).to.have.property('status').to.equal(Constants.STATUS_FORBIDDEN);
         expect(res.body).to.have.property('error').to.be.an('array').to.have.length(1);
-        expect(res.body.error[0]).to.equal(Constants.UNATHORIZED);
+        expect(res.body.error[0]).to.equal(Constants.MESSAGE_FORBIDDEN);
         done(err);
       });
   });
