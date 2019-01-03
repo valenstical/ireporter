@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <meta name="description" content="Easily report cases of corruption to the appropriate authorities. Users can also report on things that needs government intervention."> 
-    <meta name="author" content="Okosun Valentine Ejodamen <valenstical@gmail.com>"> 
+    <meta name="author" content="Okosun Valentine Ejodamen (valenstical@gmail.com)"> 
     <title>Sign in into your account|iReporter - Easily report cases of corruption and areas that needs government intervention|Andela Developer Challenge</title>     
     <link href="assets/images/icons/icon.png" rel="icon" type="image/png"> 
     <link href="assets/css/central.css" rel="stylesheet" type="text/css"> 
@@ -46,19 +46,25 @@
     </nav>     
     <section class="how login-wrapper bg-grey top-space" data-pg-name="How it Works"> 
       <div class="wrapper" data-pg-name="Wrapper"> 
-        <form class="card login-form" onsubmit="return login()"> 
-          <h1 class="text-brand">Welcome Back</h1> 
-          <p>Sign in to start reporting...</p> 
+        <form class="card login-form" onsubmit="return login(this)" novalidate>
+          <header class="form-header" data-pg-collapsed>
+            <h1 class="text-brand">Welcome Back</h1>
+            <p>Sign in to start reporting...</p>
+          </header>
+          <div id="resultPane"></div>           
           <div class="form-wrapper" data-pg-collapsed> 
             <label>Username, Email or Phone number</label>             
-            <input class="form-element" type="text" name="username"> 
+            <input class="form-element" type="text" name="username" required> 
           </div>           
           <div class="form-wrapper" data-pg-collapsed> 
             <label>Password</label>             
             <a href="recover-password.html" class="forgot-password transition">Forgot Password?</a> 
-            <input class="form-element" type="password" name="password"> 
+            <input class="form-element" type="password" name="password" required> 
           </div>           
-          <button class="btn-brand" type="submit">Sign In</button>           
+          <button class="btn-brand btn-submit" type="submit" data-pg-collapsed>
+            <span>Sign In</span>
+            <img src="assets/images/resources/loader-light.gif" width="12" class="hidden">
+          </button>           
         </form>         
         <p class="login-register-link" data-pg-collapsed>New to iReporter? <a href="sign-up.html">Register here</a></p> 
       </div>       
@@ -70,7 +76,7 @@
       </div>       
     </footer>     
     <!-- Placed at the end of the document so the pages load faster -->     
-    <script src="assets/js/domer.js" type="text/javascript"></script>     
-    <script src="assets/js/central.js" type="text/javascript"></script>     
+    <script src="assets/js/wigi.js" type="text/javascript"></script>     
+    <script src="assets/js/login.js" type="text/javascript"></script>     
   </body>   
 </html>

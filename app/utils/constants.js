@@ -11,6 +11,7 @@ const Constants = {
   STATSUS_CONFLICT: 409,
   STATUS_UNATHORIZED: 401,
   STATUS_FORBIDDEN: 403,
+  STATUS_SERVER_ERROR: 500,
 
   // INCIDENT STATUS
   INCIDENT_STATUS_DRAFT: 'draft',
@@ -50,6 +51,7 @@ const Constants = {
   MESSAGE_LONG_TITLE: 'The title is too long. Please limit the title to 100 characters.',
   MESSAGE_BAD_LONGITUDE: 'The longitude is required',
   MESSAGE_BAD_LATITUDE: 'The latitude is required',
+  MESSAGE_SERVER_ERROR: 'Server error. This is not your fault. We are working to fix it. Pleae try again later',
 
   TEXT_LONG: 'This is a very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very long sentence with plenty characters.',
 
