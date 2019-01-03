@@ -197,6 +197,7 @@ class Validator {
    * @param {function} next - The next function used to pass control to another middleware
    */
   static validateLogin(req, res, next) {
+    Common.sleep(1);
     const errors = [];
     const user = new User(req.body);
     checkEmpty(errors, user.password, Constants.MESSAGE_NO_PASSWORD);
@@ -230,6 +231,12 @@ class Validator {
     });
   }
 
+  /**
+   * Checks that the status of the incident is in draft mode
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @param {function} next - The next function used to pass control to another middleware
+   */
   static verifyStatus(req, res, next) {
     Database.getIncidentStatus(req.incident, (result) => {
       if (result.status !== Constants.INCIDENT_STATUS_DRAFT) {

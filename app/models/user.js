@@ -56,6 +56,8 @@ class User {
       } else {
         error(res, Constants.STATUS_FORBIDDEN, [Constants.MESSAGE_INVALID_LOGIN]);
       }
+    }, () => {
+      error(res, Constants.STATUS_SERVER_ERROR, [Constants.MESSAGE_SERVER_ERROR]);
     });
   }
 }

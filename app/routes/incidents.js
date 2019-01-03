@@ -34,7 +34,7 @@ router.patch('/:id/comment',
   Validator.validateRange,
   Validator.validateComment,
   Validator.validateIncident,
-  Validator.verifyStatus,  
+  Validator.verifyStatus,
   Controller.updateIncident);
 
 // PATCH: Update intervention or red-flag location
@@ -44,7 +44,7 @@ router.patch('/:id/location',
   Validator.validateRange,
   Validator.validateLocation,
   Validator.validateIncident,
-  Validator.verifyStatus,  
+  Validator.verifyStatus,
   Controller.updateIncident);
 
 // POST: Create new intervention or red-flag record

@@ -27,8 +27,8 @@
           <a href="index.html" class="nav-brand text-brand float-left">iReporter</a> 
           <ul class="nav-section float-right nav-shown nav-hidden transition" data-pg-name="Nav Section" id="nav-section" onmouseenter="setMenuHidable(false)" onmouseleave="setMenuHidable(true)"> 
             <li data-pg-name="Nav Item"> 
-              <a href="profile.html">My reports</a> 
-            </li>
+              <a href="user-dashboard.html">My reports</a> 
+            </li>             
             <li data-pg-name="Nav Item"> 
               <a href="edit-profile.html">Edit Profile</a> 
             </li>             
@@ -42,7 +42,7 @@
               </a>               
               <ul class="toggle-menu toggle-menu-md" data-pg-name="Toggle Menu"> 
                 <li data-pg-collapsed data-pg-name="Menu Item"> 
-                  <a href="sign-in.html" class="transition">Logout</a> 
+                  <a onclick="logout()" class="transition">Logout</a> 
                 </li>                 
               </ul>               
             </li>             
@@ -76,7 +76,7 @@
             <div class="form-wrapper" data-pg-collapsed> 
               <label>First Name </label>               
               <input class="form-element" type="text" name="fname" required value="Steven"> 
-            </div>
+            </div>             
             <div class="form-wrapper" data-pg-collapsed> 
               <label>Last Name </label>               
               <input class="form-element" type="text" name="lname" required value="Nnamani"> 
@@ -84,19 +84,19 @@
             <div class="form-wrapper" data-pg-collapsed> 
               <label>Other Name</label>               
               <input class="form-element" type="text" name="othername" required value=""> 
-            </div>
+            </div>             
             <div class="form-wrapper" data-pg-collapsed> 
               <label>Email </label>               
               <input class="form-element" type="email" name="email" required value="example@email.com"> 
-            </div>
+            </div>             
             <div class="form-wrapper" data-pg-collapsed> 
               <label>Phone Number </label>               
               <input class="form-element" type="tel" name="phone" required value="08060212069"> 
-            </div>
+            </div>             
             <div class="form-wrapper" data-pg-collapsed> 
               <label>Username </label>               
               <input class="form-element" type="tel" name="phone" required value="valenstical"> 
-            </div>                          
+            </div>             
             <button class="btn-brand btn-250" type="submit">Update Profile</button>             
           </form>           
           <form class="card" onsubmit="return changePassword()"> 

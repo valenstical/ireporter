@@ -1,5 +1,7 @@
 
+
 const POPULAR_REPORTS = ['corruption', 'election rigging', 'police extortion', 'power outage', 'flooding', 'abandoned projects', 'pipeline leakage', 'bad roads'];
+
 
 function Dialog(id, zIndex) {
   this.id = id; this.zIndex = zIndex;
@@ -23,12 +25,12 @@ function Dialog(id, zIndex) {
   };
 
   $(window).bind('hashchange', () => {
-    if (window.location.hash === '') { this.hideDialog();}
+    if (window.location.hash === '') { this.hideDialog(); }
   });
 
-  $(this.id).find('.dialog-overlay').click(() => { this.hideDialog();});
+  $(this.id).find('.dialog-overlay').click(() => { this.hideDialog(); });
 
-  $(this.id).find('.close').click(() => {this.hideDialog();});
+  $(this.id).find('.close').click(() => { this.hideDialog(); });
 }
 
 
@@ -64,11 +66,6 @@ function setMenuHidable(hidable) {
 
 function recoverPassword() {
 
-}
-
-function login() {
-  window.location.assign('profile.html');
-  return false;
 }
 
 function register() {

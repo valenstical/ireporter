@@ -134,8 +134,9 @@ class Database {
    * Authenticates and logs a user into the user dashboard
    * @param {object} user - The user object
    * @param {function} echo - Callback function on success
+   * @param {funcion} error - Callback function on database error
    */
-  static login(user, echo) {
+  static login(user, echo, error) {
     const sql = `select ${columnsUser} from users where username = $1 or email = $2 or "phoneNumber" = $3`;
     const params = [user.username, user.username, user.username];
     Database.execute(sql, params, (result) => {
@@ -148,7 +149,7 @@ class Database {
       } else {
         echo(false);
       }
-    });
+    }, error);
   }
 
   /**
