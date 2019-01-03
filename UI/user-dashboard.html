@@ -53,8 +53,8 @@
         </div>         
       </div>       
     </nav>     
-    <section class="login-wrapper top-space account-wrapper" data-pg-name="Dashboard"> 
-      <section class="tab-pane heading"> 
+    <section class="login-wrapper top-space account-wrapper relative" data-pg-name="Dashboard"> 
+      <section class="tab-pane heading" data-pg-collapsed> 
         <div class="wrapper" data-pg-name="Wrapper"> 
           <div class="tab"> 
             <a onclick="getIncident(this, 'incidents')" class="transition active">All</a> 
@@ -92,8 +92,8 @@
                 </div>                 
               </div>               
             </div>             
-          </header>           
-          <div data-pg-collapsed> 
+          </header>
+          <div> 
             <div class="report-item card card-sm"> 
               <div class="profile-img" title="Verified Citizen" data-pg-collapsed> 
                 <img src="assets/images/profiles/photo-1467400492058-1aad44d4bcd6.jpg" width="50" height="50" /> 
@@ -265,10 +265,12 @@
               </div>               
               <i class="fa fa-flag flag" title="Red flag report involving corruption"></i> 
             </div>             
-          </div>           
-          <small class="lazy" data-pg-collapsed></small> 
+          </div>                                 
         </div>         
-      </section>       
+      </section>
+      <div class="overlay-fetching hidden">
+        <img src="assets/images/resources/loader-double.gif" width="80" />
+      </div>       
     </section>     
     <footer class="footer" data-pg-collapsed> 
       <div class="wrapper" data-pg-name="Wrapper"> 
