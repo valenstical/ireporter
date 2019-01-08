@@ -1,11 +1,10 @@
 import { Pool } from 'pg';
 import bcrypt from 'bcryptjs';
-import validator from 'validator';
 import Common from './common';
 import Constants from './constants';
 
 const pool = new Pool();
-const columns = 'id, "createdOn", type, location, status, "Images", "Videos", title, comment, "createdBy", risk';
+const columns = 'id, "createdOn", type, location, status, "Images", "Videos", title, comment, "createdBy", risk, state';
 const columnsUser = 'id, firstname, lastname, othernames, username, password, email, "phoneNumber", registered, "isAdmin", profile, "isVerified", "isBlocked", "allowSms", "allowEmail"';
 class Database {
   /**
@@ -74,7 +73,7 @@ class Database {
    */
   static getIncidents(sqlClause, params, echo) {
     const selectCmd = `select incidents.${columns}, users.firstname, users.profile, "isVerified" from incidents left join users on "createdBy" = users.id`;
-    const sql = `${selectCmd} where ${sqlClause}`;
+    const sql = `${selectCmd} where ${sqlClause} order by "createdOn" desc`;
     Database.execute(sql, params, (query) => {
       echo(query.rows);
     });
@@ -97,10 +96,10 @@ class Database {
    * @param {function} echo - Callback function to be executed after successful query
    */
   static createIncident(incident, echo) {
-    const sql = `insert into incidents (${columns}) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)`;
+    const sql = `insert into incidents (${columns}) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)`;
     const values = [incident.id, incident.createdOn, incident.type, incident.location,
       incident.status, incident.Images, incident.Videos, incident.title, incident.comment,
-      incident.createdBy, incident.risk];
+      incident.createdBy, incident.risk, incident.state];
     Database.execute(sql, values, (result) => {
       echo(result);
     });
@@ -142,7 +141,7 @@ class Database {
     Database.execute(sql, params, (result) => {
       if (result.rowCount > 0) {
         bcrypt.compare(user.password, result.rows[0].password, (errs, response) => {
-          Common.createToken(result.id, (authToken) => {
+          Common.createToken(result.rows[0].id, (authToken) => {
             echo(response ? result.rows[0] : false, authToken);
           });
         });
@@ -184,7 +183,7 @@ class Database {
    * @param {function} echo - callback function to execute
    */
   static refreshDatabase(echo) {
-    Database.execute(`${Constants.SQL_CREATE_TABLES}delete from users;delete from incidents;`, [], () => {
+    Database.execute(`${Constants.SQL_CREATE_TABLES}delete from incidents;delete from users;`, [], () => {
       echo();
     });
   }

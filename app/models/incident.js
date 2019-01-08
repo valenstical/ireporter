@@ -24,6 +24,7 @@ class Incident {
     this.comment = data.comment;
     this.title = data.title;
     this.risk = data.risk;
+    this.state = data.state;
   }
 
 
@@ -46,8 +47,9 @@ class Incident {
  */
   getAllIncidents(res) {
     const qry = !this.id ? '' : ' and incidents.id=$3';
+    const extra = this.type === Constants.INCIDENT_TYPE_ALL ? ' or type is not null' : '';
     const params = !this.id ? [this.type, this.createdBy] : [this.type, this.createdBy, this.id];
-    Database.getIncidents(`type = $1 and "createdBy" = $2${qry}`, params, (result) => {
+    Database.getIncidents(`type = $1${extra} and "createdBy" = $2${qry}`, params, (result) => {
       success(res, Constants.STATUS_OK, result);
     });
   }

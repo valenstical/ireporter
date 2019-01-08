@@ -10,3 +10,5 @@ node_modules
 .env
 .env-dev
 .env.dev
+UI/pinegrow.json
+UI/pinegrow.json
