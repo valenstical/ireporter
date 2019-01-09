@@ -115,7 +115,7 @@ class Validator {
     req.incident.id = Random(100000000, 999999999);
     req.incident.Images = req.body.Images ? req.incident.Images.split(',') : [];
     req.incident.Videos = req.body.Videos ? req.incident.Videos.split(',') : [];
-    req.incident.state = req.body.state;
+    req.incident.state = req.body.state || null;
     next();
   }
 
