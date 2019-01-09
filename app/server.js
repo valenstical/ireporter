@@ -1,5 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import path from 'path';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import routerIncidents from './routes/incidents';
@@ -14,6 +15,8 @@ const PORT = process.env.PORT || '3000';
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(express.static(path.join(__dirname, 'uploads')));
 
 // Handle routes to home page
 app.get('/', (req, res) => {
@@ -33,6 +36,10 @@ app.use('/api/v1/red-flags', IncidentType.setRedFlag, routerIncidents);
 
 // Handle routes to login
 app.use('/api/v1/auth/', routerAuth);
+
+
+// Handle routes to all reports
+app.use('/api/v1/incidents', IncidentType.setAll, routerIncidents);
 
 // catch 404
 app.all('*', (req, res) => {

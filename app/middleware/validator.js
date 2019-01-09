@@ -113,8 +113,9 @@ class Validator {
     req.incident.location = `${req.body.latitude},${req.body.longitude}`;
     req.incident.status = Constants.INCIDENT_STATUS_DRAFT;
     req.incident.id = Random(100000000, 999999999);
-    req.incident.Images = req.incident.Images ? req.incident.Images.split(',') : [];
-    req.incident.Videos = req.incident.Videos ? req.incident.Videos.split(',') : [];
+    req.incident.Images = req.body.Images ? req.incident.Images.split(',') : [];
+    req.incident.Videos = req.body.Videos ? req.incident.Videos.split(',') : [];
+    req.incident.state = req.body.state || null;
     next();
   }
 
@@ -197,7 +198,7 @@ class Validator {
    * @param {function} next - The next function used to pass control to another middleware
    */
   static validateLogin(req, res, next) {
-    Common.sleep(1);
+    Common.sleep();
     const errors = [];
     const user = new User(req.body);
     checkEmpty(errors, user.password, Constants.MESSAGE_NO_PASSWORD);

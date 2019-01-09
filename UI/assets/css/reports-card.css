@@ -40,6 +40,9 @@
     font-size: 16px;
     margin-top: 20px;
     margin-bottom: 10px;
+    position: relative;
+    padding-right: 29px;
+    display: inline-block;
 }
 
 .report-item p
@@ -116,7 +119,7 @@
     font-size: 15px;
 }
 
-.reports-wrapper .column
+.reports-column
 {
     width: 100%;
     max-width: 700px;
@@ -381,5 +384,12 @@ form .report-box p
     padding-top: 50px;
     padding-bottom: 50px;
     margin-top: 55px;
+}
+
+video
+{
+    width: 100%;
+    margin-top: 20px;
+    background-color: #0c0c0c;
 }
 

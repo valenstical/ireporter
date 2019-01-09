@@ -14,6 +14,7 @@ class Authenticator {
    * @param {function} next - The next() function for routing requests to the next middleware
    */
   static authenticateUser(req, res, next) {
+    Common.sleep();
     if (req.headers.authorization) {
       const authToken = req.headers.authorization.split(' ')[1];
       Common.verifyToken(authToken, (err, data) => {

@@ -2,8 +2,8 @@ import jwt from 'jsonwebtoken';
 
 const Common = {
 
-  success: (res, code, data) => {
-    res.status(code).json({ status: code, data });
+  success: (res, code, datas) => {
+    res.status(code).json({ status: code, data: datas, timestamp: new Date().getTime() });
   },
 
   error: (res, code, message) => {
@@ -20,8 +20,8 @@ const Common = {
     jwt.verify(token, process.env.SECRET, done);
   },
 
-  sleep: (seconds) => {
-    const time = new Date(new Date().getTime() + (seconds * 1000));
+  sleep: () => {
+    const time = new Date(new Date().getTime() + (1000));
     while (time > new Date()) { /* TODO */ }
   },
 };

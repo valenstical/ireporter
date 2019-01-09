@@ -58,8 +58,10 @@ const Constants = {
   // INCIDENT TYPES
   INCIDENT_TYPE_RED_FLAG: 'red-flag',
   INCIDENT_TYPE_INTERVENTION: 'intervention',
+  INCIDENT_TYPE_ALL: 'incident',
   INCIDENT_ROUTE_RED_FLAG: 'red-flags',
   INCIDENT_ROUTE_INTERVENTION: 'interventions',
+  INCIDENT_ROUTE_ALL: 'incidents',
 
   // SQL RESULT SET LIMIT
   SQL_LIMIT: 50,
@@ -115,35 +117,39 @@ const Constants = {
     risk smallint,
     "Images" character varying(255)[],
     "Videos" character varying(255)[],
-    CONSTRAINT incidents_pkey PRIMARY KEY (id)
+    state character varying(50),
+    CONSTRAINT incidents_pkey PRIMARY KEY (id),
+    CONSTRAINT "incidents.fkey" FOREIGN KEY ("createdBy")
+        REFERENCES public.users (id) MATCH SIMPLE
+        ON UPDATE NO ACTION ON DELETE NO ACTION
   )
   WITH (
     OIDS=FALSE
   );CREATE TABLE IF NOT EXISTS public.users
-    (
-      id integer NOT NULL,
-      firstname character varying(100),
-      lastname character varying(100),
-      othernames character varying(100),
-      username character varying(100) NOT NULL,
-      password character varying(255) NOT NULL,
-      email character varying(100),
-      "phoneNumber" character varying(20),
-      registered timestamp without time zone,
-      "isAdmin" boolean DEFAULT false,
-      profile character varying(100),
-      "isVerified" boolean DEFAULT false,
-      "isBlocked" boolean DEFAULT false,
-      "allowSms" boolean DEFAULT true,
-      "allowEmail" boolean DEFAULT true,
-      CONSTRAINT users_pkey PRIMARY KEY (id),
-      CONSTRAINT users_email_key UNIQUE (email),
-      CONSTRAINT users_phone_key UNIQUE ("phoneNumber"),
-      CONSTRAINT users_username_key UNIQUE (username)
-    )
-    WITH (
-      OIDS=FALSE
-    );`,
+  (
+    id integer NOT NULL,
+    firstname character varying(100),
+    lastname character varying(100),
+    othernames character varying(100),
+    username character varying(100) NOT NULL,
+    password character varying(255) NOT NULL,
+    email character varying(100),
+    "phoneNumber" character varying(20),
+    registered timestamp without time zone,
+    "isAdmin" boolean DEFAULT false,
+    profile character varying(100),
+    "isVerified" boolean DEFAULT false,
+    "isBlocked" boolean DEFAULT false,
+    "allowSms" boolean DEFAULT true,
+    "allowEmail" boolean DEFAULT true,
+    CONSTRAINT users_pkey PRIMARY KEY (id),
+    CONSTRAINT users_email_key UNIQUE (email),
+    CONSTRAINT users_phone_key UNIQUE ("phoneNumber"),
+    CONSTRAINT users_username_key UNIQUE (username)
+  )
+  WITH (
+    OIDS=FALSE
+  );`,
 };
 
 export default Constants;

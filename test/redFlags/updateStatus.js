@@ -74,7 +74,7 @@ describe('Patch red-flag record status', () => {
   it('should return error if authorization token is valid but user does not exists', (done) => {
     chai.request(app)
       .patch(route)
-      .set('authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NDU5MDgzOTEsImV4cCI6MTU0NjUxMzE5MX0.SsdCpQAuIUzucULGyxmkHCtwE5XHHoB0mD8GUiBlhkM')
+      .set('authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjI3MDc1NDI5MywiaWF0IjoxNTQ2NTM0Njg0LCJleHAiOjE1NDcxMzk0ODR9.WiWQw1_OC0niM-NxSvFv5gaIP73nbJ3Cqco1fZTYOHY')
       .send({ status: Constants.INCIDENT_STATUS_RESOLVED })
       .end((err, res) => {
         expect(res).to.have.status(Constants.STATUS_FORBIDDEN);
