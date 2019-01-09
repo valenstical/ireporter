@@ -37,7 +37,7 @@ function getFlag(type) {
   return type === CONSTANTS.INCIDENT.RED_FLAG ? redFlag : intervention;
 }
 function getState(state) {
-  return state ? `<span class="report-item-date report-item-location"><i class="fa fa-map-marker"></i> ${state}</span>` : '';
+  return state && state.toString().trim() !== '' ? `<span class="report-item-date report-item-location"><i class="fa fa-map-marker"></i> ${state}</span>` : '';
 }
 
 function getUpdate(status, id) {
@@ -84,9 +84,9 @@ function showDetails(event, index) {
     });
 
     Videos.forEach((video) => {
-      const src = `${ROOT}/videos/${video}`;
+    // const src = `${ROOT}/videos/${video}`;
       mediaVideos += `
-      <video src = "${src}" controls preload="metadata"></video>
+      <video src = "${video}" controls preload="metadata"></video>
        `;
     });
 
