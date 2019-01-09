@@ -3,7 +3,7 @@
 .login-wrapper p
 {
     font-weight: bold;
-    font-size: 16px;
+    font-size: 14px;
     color: rgba(119, 131, 143, 0.53);
     margin-left: auto;
     margin-right: auto;
@@ -35,6 +35,7 @@
     -ms-transition: all 300ms;
     -o-transition: all 300ms;
     transition: all 300ms;
+    font-family: inherit;
 }
 
 form label
@@ -95,5 +96,10 @@ textarea.form-element
     min-height: 200px;
     min-width: 100%;
     max-width: 100%;
+}
+
+.form-header
+{
+    margin-bottom: 30px;
 }
 

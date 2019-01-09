@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <meta name="description" content="Easily report cases of corruption to the appropriate authorities. Users can also report on things that needs government intervention."> 
     <meta name="author" content="Okosun Valentine Ejodamen <valenstical@gmail.com>"> 
-    <title>Edit Profile|iReporter - Easily report cases of corruption and areas that needs government intervention|Andela Developer Challenge</title>     
+    <title>My Reports|iReporter - Easily report cases of corruption and areas that needs government intervention|Andela Developer Challenge</title>     
     <link href="assets/images/icons/icon.png" rel="icon" type="image/png"> 
-    <link href="assets/css/central.css" rel="stylesheet" type="text/css"> 
     <link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css"> 
-    <link href="assets/css/form.css" rel="stylesheet" type="text/css"> 
+    <link href="assets/css/central.css" rel="stylesheet" type="text/css"> 
+    <link href="assets/css/home.css" rel="stylesheet" type="text/css"> 
     <link href="assets/css/reports-card.css" rel="stylesheet" type="text/css"> 
     <link href="assets/css/user.css" rel="stylesheet" type="text/css"> 
     <meta name="theme-color" content="#009f8b"> 
@@ -71,61 +71,67 @@
         </div>         
       </div>       
     </nav>     
-    <section class="login-wrapper top-space" data-pg-name="Dashboard"> 
-      <section class="heading" data-pg-collapsed> 
-        <div class="wrapper" data-pg-name="Wrapper" data-pg-collapsed> 
-          <div class="bread" data-pg-collapsed> 
-            <a href="index.html">Home</a> 
-            <i class="fa fa-angle-right"></i> 
-            <a class="active">Edit Profile</a> 
-          </div>           
-        </div>         
-      </section>       
-      <section data-pg-collapsed class="edit-profile-wrapper"> 
+    <section class="login-wrapper top-space account-wrapper relative" data-pg-name="Dashboard"> 
+      <section class="tab-pane heading" data-pg-collapsed> 
         <div class="wrapper" data-pg-name="Wrapper"> 
-          <div class="card profile-wrapper"> 
-            <div class="profile-img" data-pg-collapsed> 
-              <img src="assets/images/profiles/photo-1467400492058-1aad44d4bcd6.jpg" width="200" height="200" /> 
-            </div>             
-            <button class="btn-brand btn-secondary btn-250" onclick="uploadProfile()">Change Image</button>             
-            <input type="file" class="delete-file-chooser"> 
+          <div class="tab"> 
+            <a onclick="getIncident(this, 0)" class="transition active">All</a> 
+            <a onclick="getIncident(this, 1)" class="transition">Red Flags</a> 
+            <a class="transition" onclick="getIncident(this, 2)">Interventions</a> 
           </div>           
-          <form class="card" onsubmit="return editProfile()"> 
-            <div class="form-wrapper" data-pg-collapsed> 
-              <label>First Name </label>               
-              <input class="form-element" type="text" name="fname" required value="Steven"> 
-            </div>             
-            <div class="form-wrapper" data-pg-collapsed> 
-              <label>Last Name </label>               
-              <input class="form-element" type="text" name="lname" required value="Nnamani"> 
-            </div>             
-            <div class="form-wrapper" data-pg-collapsed> 
-              <label>Other Name</label>               
-              <input class="form-element" type="text" name="othername" required value=""> 
-            </div>             
-            <div class="form-wrapper" data-pg-collapsed> 
-              <label>Email </label>               
-              <input class="form-element" type="email" name="email" required value="example@email.com"> 
-            </div>             
-            <div class="form-wrapper" data-pg-collapsed> 
-              <label>Phone Number </label>               
-              <input class="form-element" type="tel" name="phone" required value="08060212069"> 
-            </div>             
-            <div class="form-wrapper" data-pg-collapsed> 
-              <label>Username </label>               
-              <input class="form-element" type="tel" name="phone" required value="valenstical"> 
-            </div>             
-            <button class="btn-brand btn-250" type="submit">Update Profile</button>             
-          </form>           
-          <form class="card" onsubmit="return changePassword()"> 
-            <div class="form-wrapper" data-pg-collapsed> 
-              <label>Password</label>               
-              <input class="form-element" type="password" name="password" required placeholder="*********"> 
-            </div>             
-            <button class="btn-brand btn-250" type="submit">Change password</button>             
-          </form>           
         </div>         
       </section>       
+      <section class="profile-page fill-viewport"> 
+        <div class="wrapper" data-pg-name="Wrapper"> 
+          <div class="empty-result text-center" data-pg-collapsed data-pg-name="Empty Report" style="display:none">
+            <img src="assets/images/resources/52f02bf40d62ae910f00014b_Tools-01.png" width="350" />
+            <h4> You don't have any <strong>intervention</strong> reports yet.</h4>
+            <a class="btn-brand" href="create-report.html">
+  Get Started Now <i class="fa fa-chevron-right fa-pull-right"></i></a> 
+          </div>
+          <div data-pg-name="Full Report" class="full-result" data-pg-collapsed style="display:none">
+            <header class="page-title" data-pg-collapsed> 
+              <div class="row" data-pg-name="Row"> 
+                <div class="column column-xs-3" data-pg-name="Column"> 
+                  <div class="card card-sm summary"> 
+                    <i class="fa fa-file-text-o bg-status-draft"></i> 
+                    <p><small id="pending">-</small><span>Pending</span></p> 
+                  </div>                   
+                </div>
+                <div class="column column-xs-3" data-pg-name="Column"> 
+                  <div class="card card-sm summary"> 
+                    <i class="fa bg-status-resolved fa-check"></i> 
+                    <p><small id="resolved">-</small><span>Resolved</span></p> 
+                  </div>                   
+                </div>                 
+                <div class="column column-xs-3" data-pg-name="Column"> 
+                  <div class="card card-sm summary"> 
+                    <i class="fa bg-status-rejected fa-remove"></i> 
+                    <p><small id="rejected">-</small><span>Rejected</span></p> 
+                  </div>                   
+                </div>                 
+                <div class="column column-xs-3" data-pg-name="Column"> 
+                  <div class="card card-sm summary"> 
+                    <i class="fa bg-status-pending fa-info"></i> 
+                    <p><small id="investigating">-</small><span title="Investigating">Investigating</span></p> 
+                  </div>                   
+                </div>                 
+              </div>               
+            </header>
+            <section data-pg-name="Latest Reports" class="reports-wrapper bg-grey"> 
+              <header class="header" data-pg-collapsed> 
+                <small class="round-info">Showing all (*) reports</small> 
+                <h2></h2> 
+              </header>               
+              <div data-pg-name="Row" id="results">                  
+</div>               
+            </section>
+          </div>           
+        </div>         
+      </section>
+      <div class="overlay-fetching">
+        <img src="assets/images/resources/loader2.svg" width="200" />
+      </div>       
     </section>     
     <footer class="footer" data-pg-collapsed> 
       <div class="wrapper" data-pg-name="Wrapper"> 
@@ -135,6 +141,7 @@
     </footer>     
     <!-- Placed at the end of the document so the pages load faster -->     
     <script src="assets/js/wigi.js" type="text/javascript"></script>     
-    <script src="assets/js/common.js" type="text/javascript"></script>    
+    <script src="assets/js/common.js" type="text/javascript"></script>     
+    <script src="assets/js/user-dashboard.js" type="text/javascript"></script>     
   </body>   
 </html>
