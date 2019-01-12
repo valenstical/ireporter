@@ -67,7 +67,7 @@ class Controller {
    */
   static signup(req, res) {
     const { user } = req;
-    user.createUser(res);
+    user.createUser(res, req);
   }
 }
 

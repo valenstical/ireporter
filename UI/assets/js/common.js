@@ -80,6 +80,7 @@ const CONSTANTS = {
     RED_FLAGS: `${ROOT}/api/v1/red-flags`,
     INTERVENTIONS: `${ROOT}/api/v1/interventions`,
     INCIDENTS: `${ROOT}/api/v1/incidents`,
+    USERS: `${ROOT}/api/v1/users`,
   },
   STATUS: {
     OK: 200,
@@ -217,7 +218,7 @@ function queryAPI(url, method, param, success, error, lastly) {
       if (error) {
         error(err);
       } else {
-        alert(CONSTANTS.MESSAGE.ERROR.toString());
+        Dialog.showMessageDialog('Connection Problem!', CONSTANTS.MESSAGE.ERROR.toString());
       }
     })
     .finally(() => {
@@ -236,10 +237,13 @@ function showIcon() {
   profileImage[1].src = `assets/images/profiles/${user.profile}`;
   document.getElementById('userName').innerHTML = `${user.firstname} ${user.othernames} ${user.lastname}`;
   document.getElementById('userEmail').innerHTML = user.email;
+}
+
+function appendOverlay() {
   Select('main').append(`
-    <div class="overlay-fetching"> 
-      <img src="assets/images/resources/loader2.svg" width="200" /> 
-    </div>`);
+  <div class="overlay-fetching"> 
+    <img src="assets/images/resources/loader2.svg" width="200" /> 
+  </div>`);
 }
 
 function ago(time, now) {
@@ -268,6 +272,7 @@ function ago(time, now) {
  */
 function init() {
   showIcon();
+  appendOverlay();
 }
 
 Select('[data-collapse]').click((event) => {

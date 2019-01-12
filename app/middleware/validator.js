@@ -165,7 +165,6 @@ class Validator {
     checkEmpty(errors, req.body.firstname, Constants.MESSAGE_NO_FIRST_NAME);
     checkEmpty(errors, req.body.lastname, Constants.MESSAGE_NO_LAST_NAME);
     checkEmpty(errors, req.body.username, Constants.MESSAGE_NO_SIGNUP_USERNAME);
-    checkEmpty(errors, req.body.password, Constants.MESSAGE_NO_PASSWORD);
     checkEmpty(errors, req.body.phoneNumber, Constants.MESSAGE_NO_PHONE_NUMBER);
     checkEmpty(errors, req.body.email, Constants.MESSAGE_NO_EMAIL_ADDRESS);
     if (req.body.email && !validator.isEmail(req.body.email)) {
@@ -174,20 +173,25 @@ class Validator {
     if (req.body.phoneNumber && !validator.isMobilePhone(req.body.phoneNumber, ['en-NG'])) {
       errors.push(Constants.MESSAGE_NO_PHONE_NUMBER);
     }
+    const user = new User(req.body);
+    if (req.incident) {
+      user.id = req.incident.id;
+    } else {
+      checkEmpty(errors, req.body.password, Constants.MESSAGE_NO_PASSWORD);
+      user.id = Random(100000000, 999999999);
+      user.allowEmail = true;
+      user.allowSms = true;
+      user.isAdmin = false;
+      user.isBlocked = false;
+      user.isVerified = false;
+      user.profile = 'profile.jpg';
+      user.registered = new Date();
+    }
+    req.user = user;
     if (errors.length !== 0) {
       error(res, Constants.STATUS_BAD_REQUEST, errors);
       return;
     }
-    const user = new User(req.body);
-    user.id = Random(100000000, 999999999);
-    user.allowEmail = true;
-    user.allowSms = true;
-    user.isAdmin = false;
-    user.isBlocked = false;
-    user.isVerified = false;
-    user.profile = 'profile.jpg';
-    user.registered = new Date();
-    req.user = user;
     next();
   }
 
@@ -242,6 +246,22 @@ class Validator {
     Database.getIncidentStatus(req.incident, (result) => {
       if (result.status !== Constants.INCIDENT_STATUS_DRAFT) {
         error(res, Constants.STATUS_FORBIDDEN, [`You can no longer alter this ${req.incident.type} record because it is no longer in draft mode.`]);
+        return;
+      }
+      next();
+    });
+  }
+
+  /**
+   * Checks that the user with the specified id exists
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @param {function} next - The next function used to pass control to another middleware
+   */
+  static verifyUser(req, res, next) {
+    Database.getUser(req.user.id, (result) => {
+      if (!result) {
+        error(res, Constants.STATUS_UNPROCESSED, ['There is no user with the id you provided.']);
         return;
       }
       next();

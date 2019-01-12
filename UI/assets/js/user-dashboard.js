@@ -110,7 +110,7 @@ function getIncident(element, type) {
     url = CONSTANTS.URL.INTERVENTIONS;
     report = 'intervention';
   }
-  queryAPI(url, 'get', null, (json) => {
+  queryAPI(url, 'GET', null, (json) => {
     Select('body').removeClass('busy');
     let results = ''; let index = -1;
     resolved = 0; rejected = 0; investigating = 0; draft = 0; total = 0;
@@ -166,7 +166,7 @@ function deleteIncident(element, id, type) {
     let url = deleteType === CONSTANTS.INCIDENT.RED_FLAG ? CONSTANTS.URL.RED_FLAGS
       : CONSTANTS.URL.INTERVENTIONS;
     url += `/${deleteID}`;
-    queryAPI(url, 'delete', null, (json) => {
+    queryAPI(url, 'DELETE', null, (json) => {
       if (json.status === CONSTANTS.STATUS.OK) {
         Select('.tab a.active').click();
         Dialog.showNotification(json.data[0].message);

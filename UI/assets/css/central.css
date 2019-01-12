@@ -90,7 +90,7 @@ h1
     border-top: 1px solid #ddd;
     padding: 10px 0px;
     box-shadow: 0px 5px 6px rgba(0,0,0,0.02);
-    border: 1px solid #efefef;
+    border-bottom: 1px solid #efefef;
 }
 
 .nav-section li
@@ -210,7 +210,7 @@ body
 
 .top-space
 {
-    margin-top: 55px;
+    margin-top: 50px;
 }
 
 .row
@@ -865,23 +865,25 @@ body .hidden
     margin-bottom: 30px;
     background-color: #e44c52;
     color: rgba(253, 253, 253, 0.9);
-    padding: 15px 20px 1px;
+    padding: 20px;
     border-radius: 5px;
 }
 
 .alert h4
 {
     font-size: 15px;
+    margin-bottom: 0px;
 }
 
 .alert li
 {
     color: inherit;
     font-weight: normal;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     font-size: 13px;
     list-style-type: square;
     margin-left: 15px;
+    margin-top: 3px;
 }
 
 section.tab-pane
@@ -983,6 +985,7 @@ section.tab-pane
     color: #1c1b1b;
     font-size: 15px;
     margin-bottom: 1px;
+    text-transform: capitalize;
 }
 
 .toggle-profile p
@@ -1057,5 +1060,22 @@ section.tab-pane
 .btn-brand:focus
 {
     outline: none;
+}
+
+.alert ol, .alert ul
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.alert p
+{
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.text-capitalize
+{
+    text-transform: capitalize;
 }
 

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <meta name="description" content="Easily report cases of corruption to the appropriate authorities. Users can also report on things that needs government intervention."> 
-    <meta name="author" content="Okosun Valentine Ejodamen <valenstical@gmail.com>"> 
+    <meta name="author" content="Okosun Valentine Ejodamen (valenstical@gmail.com)"> 
     <title>Edit Profile|iReporter - Easily report cases of corruption and areas that needs government intervention|Andela Developer Challenge</title>     
     <link href="assets/images/icons/icon.png" rel="icon" type="image/png"> 
     <link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css"> 
@@ -23,12 +23,12 @@
     <![endif]-->     
   </head>   
   <body class="bg-grey"> 
-    <nav class="navigation" data-pg-name="Navigation Bar" data-pg-collapsed> 
+    <nav class="navigation" data-pg-name="Navigation Bar"> 
       <div class="wrapper" data-pg-name="Wrapper"> 
-        <div class="clear-float" data-pg-collapsed> 
+        <div class="clear-float"> 
           <a href="index.html" class="nav-brand text-brand float-left">iReporter</a> 
-          <ul class="nav-section float-right nav-shown nav-hidden transition" data-pg-name="Nav Section" id="nav-section" onmouseenter="setMenuHidable(false)" onmouseleave="setMenuHidable(true)"> 
-            <li data-pg-name="Nav Item" class="toggle toggle-pointer"> 
+          <ul class="nav-section float-right nav-shown nav-hidden transition" data-pg-name="Nav Section" id="nav-section" onmouseenter="setMenuHidable(false)" onmouseleave="setMenuHidable(true)" data-pg-collapsed> 
+            <li data-pg-name="Nav Item" class="toggle toggle-pointer" data-pg-collapsed> 
               <a class="nav-profile" data-toggle data-pg-collapsed> 
                 <img src="assets/images/profiles/default.jpg" width="30" class="user-image" /> 
                 <span><i class="fa fa-chevron-down"></i></span> 
@@ -36,7 +36,7 @@
               <ul class="toggle-menu toggle-menu-md" data-pg-name="Toggle Menu"> 
                 <li data-pg-name="Menu Item"> 
                   <a href="edit-profile.html"> 
-                    <div class="toggle-profile" data-pg-collapsed> 
+                    <div class="toggle-profile"> 
                       <img src="assets/images/profiles/default.jpg" class="user-image" /> 
                       <h4 id="userName">-</h4> 
                       <p id="userEmail">-</p> 
@@ -72,42 +72,42 @@
         </div>         
       </div>       
     </nav>     
-    <main class="login-wrapper top-space" data-pg-name="Dashboard"> 
-      <section class="heading" data-pg-collapsed> 
-        <div class="wrapper" data-pg-name="Wrapper" data-pg-collapsed> 
-          <div class="bread" data-pg-collapsed> 
-            <a href="index.html">Home</a> 
+    <main class="login-wrapper top-space" data-pg-name="Dashboard" data-pg-collapsed> 
+      <section class="heading"> 
+        <div class="wrapper" data-pg-name="Wrapper"> 
+          <div class="bread"> 
+            <a href="user-dashboard.html">Home</a> 
             <i class="fa fa-angle-right"></i> 
             <a class="active">Edit Profile</a> 
           </div>           
         </div>         
       </section>       
-      <section class="edit-profile-wrapper"> 
+      <section class="edit-profile-wrapper" data-pg-collapsed> 
         <div class="wrapper" data-pg-name="Wrapper">
           <div class="row">
             <div class="column column-md-4">
               <div class="card profile-wrapper" data-pg-collapsed> 
                 <div class="profile-img" data-pg-collapsed> 
-                  <img width="180" height="180" /> 
+                  <img width="150" height="150" /> 
                 </div>                 
                 <button class="btn-brand btn-secondary btn-250" onclick="uploadProfile()">Change Image</button>                 
                 <input type="file" class="delete-file-chooser"> 
               </div>
             </div>
             <div class="column column-md-8">
-              <form class="card" onsubmit="return editProfile(this)">
+              <form class="card" onsubmit="return editProfile(this)" novalidate>
                 <div class="pg-empty-placeholder" id="resultPane"></div>                 
                 <div class="form-wrapper" data-pg-collapsed> 
                   <label>First Name </label>                   
-                  <input class="form-element" type="text" name="firstname" required> 
+                  <input class="form-element text-capitalize" type="text" name="firstname" required> 
                 </div>                 
                 <div class="form-wrapper" data-pg-collapsed> 
                   <label>Last Name </label>                   
-                  <input class="form-element" type="text" name="lastname" required> 
+                  <input class="form-element text-capitalize" type="text" name="lastname" required> 
                 </div>                 
                 <div class="form-wrapper" data-pg-collapsed> 
                   <label>Other Name</label>                   
-                  <input class="form-element" type="text" name="othernames" required value=""> 
+                  <input class="form-element text-capitalize" type="text" name="othernames" value=""> 
                 </div>                 
                 <div class="form-wrapper" data-pg-collapsed> 
                   <label>Email </label>                   

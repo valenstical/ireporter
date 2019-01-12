@@ -6,7 +6,7 @@ function login(form) {
   Select('#resultPane').empty();
 
 
-  queryAPI(CONSTANTS.URL.LOGIN, 'post', param, (json) => {
+  queryAPI(CONSTANTS.URL.LOGIN, 'POST', param, (json) => {
     if (json.status === CONSTANTS.STATUS.OK) {
       User.login(json.data[0]);
       goto(CONSTANTS.PAGE.USER_DASHBOARD);

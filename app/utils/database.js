@@ -117,13 +117,15 @@ class Database {
     let password;
     bcrypt.hash(user.password, 10, (errs, hash) => {
       password = hash;
-      const sql = `insert into users (${columnsUser}) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)`;
+      const sql = `insert into users (${columnsUser}) values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) 
+      on conflict (id) do update set firstname = EXCLUDED.firstname, lastname=EXCLUDED.lastname, othernames=EXCLUDED.othernames, username=EXCLUDED.username,
+      "phoneNumber"=EXCLUDED."phoneNumber", email=EXCLUDED.email RETURNING *`;
       const params = [user.id, user.firstname, user.lastname, user.othernames, user.username,
         password, user.email, user.phoneNumber, user.registered, user.isAdmin, user.profile,
         user.isVerified, user.isBlocked, user.allowSms, user.allowEmail];
-      Database.execute(sql, params, () => {
+      Database.execute(sql, params, (result) => {
         Common.createToken(user.id, (authToken) => {
-          echo(authToken);
+          echo(authToken, result);
         });
       }, (errors) => {
         failure(errors);

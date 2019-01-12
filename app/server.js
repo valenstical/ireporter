@@ -7,6 +7,7 @@ import routerIncidents from './routes/incidents';
 import Constants from './utils/constants';
 import IncidentType from './middleware/incidentType';
 import routerAuth from './routes/auth';
+import routerUser from './routes/users';
 
 dotenv.config();
 const app = express();
@@ -41,8 +42,8 @@ app.use('/api/v1/auth/', routerAuth);
 // Handle routes to all reports
 app.use('/api/v1/incidents', IncidentType.setAll, routerIncidents);
 
-// Handle routes to edit users
-app.use('/api/v1/users', routerAuth);
+// Handle routes to edit users. IncidentType router seperates creating and updating user profile
+app.use('/api/v1/users', IncidentType.setAll, routerUser);
 
 // catch 404
 app.all('*', (req, res) => {

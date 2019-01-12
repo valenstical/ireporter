@@ -1,7 +1,7 @@
 
+const user = User.getUser();
 
 function populateUser() {
-  const user = User.getUser();
   Select('[name = "firstname"]').val(user.firstname);
   Select('[name = "lastname"]').val(user.lastname);
   Select('[name = "email"]').val(user.email);
@@ -13,17 +13,19 @@ function populateUser() {
 
 function editProfile(form) {
   const param = Select(form).serialize();
+  const url = `${CONSTANTS.URL.USERS}/${user.id}/profile`;
   toggleLoader();
   Select('#resultPane').empty();
 
-  queryAPI(CONSTANTS.URL.SIGNUP, 'patch', param, (json) => {
+  queryAPI(url, 'PATCH', param, (json) => {
     if (json.status === CONSTANTS.STATUS.OK) {
-      // TODO SUCCESS
+      User.login(json.data[0]);
+      showIcon();
+      Dialog.showMessageDialog('Profile updated!', 'Your profile has been updated successfully.', 'success');
     } else {
       const { error } = json;
-      Dialog.showMessageDialog('Sign in Failed!', error, 'error');
+      Dialog.showMessageDialog('Update Failed!', error, 'error');
       echo('', error);
-      Select('#resultPane').scroll();
     }
   }, () => {
     Dialog.showMessageDialog('Oops!!', CONSTANTS.MESSAGE.ERROR, 'error');

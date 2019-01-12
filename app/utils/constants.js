@@ -46,7 +46,7 @@ const Constants = {
   MESSAGE_NO_PHONE_NUMBER: 'You need to provide a valid phone number',
   MESSAGE_DUPLICATE_PHONE_NUMBER: 'A user with that phone number already exists',
   MESSAGE_DUPLICATE_EMAIL: 'The email address you entered is already registered',
-  MESSAGE_DUPLICATE_USERNAME: 'Oops! It appears like the username you chose is already taken.',
+  MESSAGE_DUPLICATE_USERNAME: 'It appears like the username you chose is already taken.',
   MESSAGE_LONG_COMMENT: 'The comment is too long. Please limit your comment to 1000 characters.',
   MESSAGE_LONG_TITLE: 'The title is too long. Please limit the title to 100 characters.',
   MESSAGE_BAD_LONGITUDE: 'The longitude is required',
