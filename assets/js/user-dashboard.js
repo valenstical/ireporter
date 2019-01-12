@@ -40,23 +40,23 @@ function getState(state) {
   return state && state.toString().trim() !== '' ? `<span class="report-item-date report-item-location"><i class="fa fa-map-marker"></i> ${state}</span>` : '';
 }
 
-function getUpdate(status, id) {
-  return status === CONSTANTS.INCIDENT.DRAFT ? `<div class="dispose toggle toggle-pointer"> 
+function getUpdate(incident) {
+  return incident.status === CONSTANTS.INCIDENT.DRAFT ? `<div class="dispose toggle toggle-pointer"> 
   <a data-toggle onclick="showToggleMenu(event)"><i class="fa fa-ellipsis-h"></i></a> 
   <ul class="toggle-menu"> 
     <li data-pg-name="Menu Item"> 
-      <a onclick="editReport(this, ${id})"><i class="fa fa-edit"></i>Edit</a> 
+      <a onclick="editIncident(this, ${incident.id}, '${incident.type}')"><i class="fa fa-edit"></i>Edit</a> 
     </li>
     <li data-pg-name="Menu Item" class="toggle-line">        
 </li>
     <li data-pg-name="Menu Item"> 
-      <a onclick="deleteReport(this, ${id})"><i class="fa fa-trash-o"></i>Delete</a> 
+      <a onclick="deleteIncident(this, ${incident.id}, '${incident.type}')"><i class="fa fa-trash-o"></i>Delete</a> 
     </li>     
   </ul>   
 </div>` : '';
 }
 
-function showDetails(event, index) {
+function getDetails(event, index) {
   const {
     Images, Videos, location, title,
   } = incidents[index];
@@ -84,9 +84,9 @@ function showDetails(event, index) {
     });
 
     Videos.forEach((video) => {
-    // const src = `${ROOT}/videos/${video}`;
+      const src = `${ROOT}/videos/${video}`;
       mediaVideos += `
-      <video src = "${video}" controls preload="metadata"></video>
+      <video src = "${src}" controls preload="metadata"></video>
        `;
     });
 
@@ -121,7 +121,7 @@ function getIncident(element, type) {
       results += `
      <div class = "reports-column">  
       <div class="report-item card card-sm"> 
-      ${getUpdate(incident.status, incident.id)}
+      ${getUpdate(incident)}
       <div class="profile-img"> 
         <img src="assets/images/profiles/${incident.profile}" width="50" height="50" /> 
       </div>   
@@ -133,7 +133,7 @@ function getIncident(element, type) {
         <h6>${incident.title}${getFlag(incident.type)}</h6> 
         <p>${incident.comment}</p> 
         <div id="v${incident.id}" class="collapse"></div>
-        <a onclick ="showDetails(event,${index})" class="report-item-link" href="#v${incident.id}" data-text-less='Hide details' data-text-more="Show details">Show details <i class="fa fa-angle-double-right"></i></a>
+        <a onclick ="getDetails(event,${index})" class="report-item-link" href="#v${incident.id}" data-text-less='Hide details' data-text-more="Show details">Show details <i class="fa fa-angle-double-right"></i></a>
       </div>   
     </div>
     </div>
@@ -155,6 +155,26 @@ function getIncident(element, type) {
       Select('.empty-result').prop('style', 'display:none');
       Select('.full-result').prop('style', 'display:block');
     }
+  });
+}
+
+let deleteID; let deleteType;
+function deleteIncident(element, id, type) {
+  deleteID = id; deleteType = type;
+  Dialog.showConfirmDialog('Confirmation Required!', 'Are you sure you want to permanently delete this report?', () => {
+    Select('body').addClass('busy');
+    let url = deleteType === CONSTANTS.INCIDENT.RED_FLAG ? CONSTANTS.URL.RED_FLAGS
+      : CONSTANTS.URL.INTERVENTIONS;
+    url += `/${deleteID}`;
+    queryAPI(url, 'delete', null, (json) => {
+      if (json.status === CONSTANTS.STATUS.OK) {
+        Select('.tab a.active').click();
+        Dialog.showNotification(json.data[0].message);
+      } else {
+        Select('body').removeClass('busy');
+        Dialog.showNotification(json.error);
+      }
+    });
   });
 }
 

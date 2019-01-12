@@ -256,6 +256,52 @@ function Wigi(selector) {
     });
     return result || this.instance;
   };
+
+  /**
+   * Adds a new element to the end of each matched elements
+   * @param {string} value - The html element to add
+   */
+  this.append = (value) => {
+    this.loop((element) => {
+      element.innerHTML = `${element.innerHTML}${value}`;
+    });
+    return this.instance;
+  };
+  /**
+   * Adds a new element to the start of each matched elements
+   * @param {string} value - The html element to add
+   */
+  this.prepend = (value) => {
+    this.loop((element) => {
+      element.innerHTML = `${value}${element.innerHTML}`;
+    });
+  };
+  /**
+     * Returns the last child of the first matched element
+     */
+  this.lastChild = () => new Wigi(this.elements[0].lastElementChild);
+  /**
+     * Returns the first child of the first matched element
+     */
+  this.firstChild = () => new Wigi(this.elements[0].firstElementChild);
+  /**
+     * Returns the number of elements in the first matched element
+     */
+  this.childCount = () => this.elements[0].childElementCount;
+  /**
+     * Returns the number of matched elements
+     */
+  this.count = () => this.elements.length;
+/**
+ * Creates a new Wigi element from the given string
+ * @param {string} html - The html formated string
+ */
+  this.from = (html) => {
+    const node = document.createElement('div');
+    node.innerHTML = html;
+    return new Wigi(node.firstElementChild);
+  };
+
   return this;
 }
 

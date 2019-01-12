@@ -12,10 +12,12 @@ function login(form) {
       goto(CONSTANTS.PAGE.USER_DASHBOARD);
     } else {
       const { error } = json;
-      echo('Sign in Failed!!', error);
+      echo('', error);
+      Dialog.showMessageDialog('Sign in Failed!', error, 'error');
     }
   }, () => {
-    echo('Sign in Failed!!', CONSTANTS.MESSAGE.ERROR);
+    // echo('Sign in Failed!!', CONSTANTS.MESSAGE.ERROR);
+    Dialog.showMessageDialog('Sign in Failed!', CONSTANTS.MESSAGE.ERROR, 'error');
   }, () => {
     toggleLoader();
     Select('#resultPane').scroll();

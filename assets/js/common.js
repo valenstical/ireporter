@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
-const ROOT = 'https://ireporter-nigeria.herokuapp.com';
+// const ROOT = 'https://ireporter-nigeria.herokuapp.com';
 
-// const ROOT = 'http://localhost:3000';
+const ROOT = 'http://localhost:3000';
 let menuHidable = true;
 
 class User {
@@ -109,7 +109,7 @@ const CONSTANTS = {
     LOGIN: './sign-in.html',
   },
   MESSAGE: {
-    ERROR: ['Please check your internet connection. If the problem continues, try again at a later time or contact us for further assistance.'],
+    ERROR: 'Please check your internet connection. If the problem continues, try again at a later time or contact us for further assistance.',
   },
 };
 
@@ -159,18 +159,6 @@ function scaleHeight(selector) {
   const element = Select(selector);
   element.height(Math.round((9 / 16) * element.width()));
 }
-
-Select('[data-collapse]').click((event) => {
-  toggleCollapse(event);
-});
-
-Select('[data-toggle]').click((event) => {
-  showToggleMenu(event);
-});
-
-Select(window).click(() => {
-  Select('.toggle.shown').removeClass('shown');
-});
 
 function toggleMenu() {
   Select('#nav-section').toggleClass('nav-hidden');
@@ -277,3 +265,15 @@ function ago(time, now) {
 function init() {
   showIcon();
 }
+
+Select('[data-collapse]').click((event) => {
+  toggleCollapse(event);
+});
+
+Select('[data-toggle]').click((event) => {
+  showToggleMenu(event);
+});
+
+Select(window).click(() => {
+  Select('.toggle.shown').removeClass('shown');
+});
