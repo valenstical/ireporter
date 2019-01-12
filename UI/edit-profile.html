@@ -126,12 +126,15 @@
                   <img src="assets/images/resources/loader-light.gif" width="12" class="hidden">
                 </button>                 
               </form>
-              <form class="card" onsubmit="return changePassword()" data-pg-collapsed> 
+              <form class="card" onsubmit="return changePassword(this)" novalidate data-pg-collapsed> 
                 <div class="form-wrapper" data-pg-collapsed> 
                   <label>Password</label>                   
                   <input class="form-element" type="password" name="password" required placeholder="*********"> 
                 </div>                 
-                <button class="btn-brand btn-250" type="submit">Change password</button>                 
+                <button class="btn-brand btn-250 btn-submit" type="submit">
+                  <span>Change Password</span>
+                  <img src="assets/images/resources/loader-light.gif" width="12" class="hidden">
+                </button>                 
               </form>
             </div>
           </div>           
