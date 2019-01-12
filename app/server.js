@@ -41,6 +41,9 @@ app.use('/api/v1/auth/', routerAuth);
 // Handle routes to all reports
 app.use('/api/v1/incidents', IncidentType.setAll, routerIncidents);
 
+// Handle routes to edit users
+app.use('/api/v1/users', routerAuth);
+
 // catch 404
 app.all('*', (req, res) => {
   res.status(Constants.STATUS_NOT_FOUND).json({ error: Constants.MESSAGE_NOT_FOUND });
