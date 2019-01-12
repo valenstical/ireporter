@@ -217,6 +217,25 @@ class Validator {
   }
 
   /**
+   * Validates log in parameters
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @param {function} next - The next function used to pass control to another middleware
+   */
+  static validatePassword(req, res, next) {
+    const errors = [];
+    const user = new User(req.body);
+    user.id = req.incident.id;
+    checkEmpty(errors, user.password, Constants.MESSAGE_NO_PASSWORD);
+    if (errors.length !== 0) {
+      error(res, Constants.STATUS_BAD_REQUEST, errors);
+      return;
+    }
+    req.user = user;
+    next();
+  }
+
+  /**
    * Checks that the incident exists
    * @param {object} req - The request object
    * @param {object} res - The response object

@@ -14,4 +14,12 @@ router.patch('/:id/profile',
   Validator.verifyUser,
   Controller.signup);
 
+// PATCH: User Password
+router.patch('/:id/password',
+  Authenticator.authenticateUser,
+  Validator.valideteID,
+  Validator.validateRange,
+  Validator.validatePassword,
+  Validator.verifyUser,
+  Controller.updatePassword);
 export default router;
