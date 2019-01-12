@@ -84,9 +84,9 @@ function getDetails(event, index) {
     });
 
     Videos.forEach((video) => {
-      const src = `${ROOT}/videos/${video}`;
+    //  const src = `${ROOT}/videos/${video}`;
       mediaVideos += `
-      <video src = "${src}" controls preload="metadata"></video>
+      <video src = "${video}" controls preload="metadata"></video>
        `;
     });
 
