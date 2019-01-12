@@ -69,6 +69,16 @@ class Controller {
     const { user } = req;
     user.createUser(res, req);
   }
+
+  /**
+   * Changes the user password
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   */
+  static updatePassword(req, res) {
+    const { user } = req;
+    user.changePassword(res, req);
+  }
 }
 
 export default Controller;
