@@ -17,6 +17,7 @@
 
 .profile-img img
 {
+    background-color: #f7f7f7;
     border-radius: inherit;
 }
 
@@ -381,8 +382,8 @@ form .report-box p
 {
     background-color: #009f8b;
     color: white;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 20px;
+    padding-bottom: 30px;
     margin-top: 55px;
 }
 

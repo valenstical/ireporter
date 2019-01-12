@@ -10,12 +10,12 @@
     <link href="assets/images/icons/icon.png" rel="icon" type="image/png"> 
     <link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css"> 
     <link href="assets/css/central.css" rel="stylesheet" type="text/css"> 
-    <link href="assets/css/dialog.css" rel="stylesheet" type="text/css">     
+    <link href="assets/css/dialog.css" rel="stylesheet" type="text/css"> 
     <link href="assets/css/home.css" rel="stylesheet" type="text/css"> 
     <link href="assets/css/reports-card.css" rel="stylesheet" type="text/css"> 
     <link href="assets/css/user.css" rel="stylesheet" type="text/css"> 
     <meta name="theme-color" content="#009f8b"> 
-    <script src="assets/js/authenticate.js" data-pg-hidden></script>
+    <script src="assets/js/authenticate.js" data-pg-hidden></script>     
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->     
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -33,33 +33,33 @@
                 <img src="assets/images/profiles/default.jpg" width="30" class="user-image" /> 
                 <span><i class="fa fa-chevron-down"></i></span> 
               </a>               
-              <ul class="toggle-menu toggle-menu-md" data-pg-name="Toggle Menu">
-                <li data-pg-name="Menu Item">
-                  <a href="edit-profile.html">
-                    <div class="toggle-profile" data-pg-collapsed>
-                      <img src="assets/images/profiles/default.jpg" class="user-image" />
-                      <h4 id="userName">-</h4>
-                      <p id="userEmail">-</p>
-                    </div>
+              <ul class="toggle-menu toggle-menu-md" data-pg-name="Toggle Menu"> 
+                <li data-pg-name="Menu Item"> 
+                  <a href="edit-profile.html"> 
+                    <div class="toggle-profile" data-pg-collapsed> 
+                      <img src="assets/images/profiles/default.jpg" class="user-image" /> 
+                      <h4 id="userName">-</h4> 
+                      <p id="userEmail">-</p> 
+                    </div>                     
                   </a>                   
-                </li>
+                </li>                 
                 <li data-pg-name="Menu Item" class="toggle-line"> 
-</li>
+</li>                 
                 <li data-pg-name="Menu Item" data-pg-collapsed> 
                   <a href="user-dashboard.html"><i class="fa fa-file-text-o"></i>My reports</a> 
-                </li>
+                </li>                 
                 <li data-pg-name="Menu Item" class="toggle-line"> 
-</li>
+</li>                 
                 <li data-pg-name="Menu Item" data-pg-collapsed> 
                   <a href="create-report.html"><i class="fa fa-edit"></i>Create report</a> 
-                </li>
+                </li>                 
                 <li data-pg-name="Menu Item" class="toggle-line"> 
-</li>
+</li>                 
                 <li data-pg-collapsed data-pg-name="Menu Item"> 
                   <a href="edit-profile.html" class="transition"><i class="fa fa-user"></i>Edit profile</a> 
-                </li>
+                </li>                 
                 <li data-pg-name="Menu Item" class="toggle-line"> 
-</li>
+</li>                 
                 <li data-pg-collapsed data-pg-name="Menu Item"> 
                   <a onclick="logout()" class="transition"><i class="fa fa-power-off"></i>Logout</a> 
                 </li>                 
@@ -72,7 +72,7 @@
         </div>         
       </div>       
     </nav>     
-    <section class="login-wrapper top-space account-wrapper relative" data-pg-name="Dashboard"> 
+    <main class="login-wrapper top-space account-wrapper relative" data-pg-name="Dashboard"> 
       <section class="tab-pane heading" data-pg-collapsed> 
         <div class="wrapper" data-pg-name="Wrapper"> 
           <div class="tab"> 
@@ -82,15 +82,15 @@
           </div>           
         </div>         
       </section>       
-      <section class="profile-page fill-viewport"> 
+      <section class="profile-page fill-viewport" data-pg-collapsed> 
         <div class="wrapper" data-pg-name="Wrapper"> 
-          <div class="empty-result text-center" data-pg-collapsed data-pg-name="Empty Report" style="display:none">
-            <img src="assets/images/resources/52f02bf40d62ae910f00014b_Tools-01.png" width="350" />
-            <h4> You don't have any <strong>intervention</strong> reports yet.</h4>
-            <a class="btn-brand" href="create-report.html">
+          <div class="empty-result text-center" data-pg-collapsed data-pg-name="Empty Report" style="display:none"> 
+            <img src="assets/images/resources/52f02bf40d62ae910f00014b_Tools-01.png" width="350" /> 
+            <h4> You don't have any <strong>intervention</strong> reports yet.</h4> 
+            <a class="btn-brand" href="create-report.html"> 
   Get Started Now <i class="fa fa-chevron-right fa-pull-right"></i></a> 
-          </div>
-          <div data-pg-name="Full Report" class="full-result" data-pg-collapsed style="display:none">
+          </div>           
+          <div data-pg-name="Full Report" class="full-result" data-pg-collapsed style="display:none"> 
             <header class="page-title" data-pg-collapsed> 
               <div class="row" data-pg-name="Row"> 
                 <div class="column column-xs-3" data-pg-name="Column"> 
@@ -98,7 +98,7 @@
                     <i class="fa fa-file-text-o bg-status-draft"></i> 
                     <p><small id="pending">-</small><span>Pending</span></p> 
                   </div>                   
-                </div>
+                </div>                 
                 <div class="column column-xs-3" data-pg-name="Column"> 
                   <div class="card card-sm summary"> 
                     <i class="fa bg-status-resolved fa-check"></i> 
@@ -118,22 +118,19 @@
                   </div>                   
                 </div>                 
               </div>               
-            </header>
+            </header>             
             <section data-pg-name="Latest Reports" class="reports-wrapper bg-grey"> 
               <header class="header" data-pg-collapsed> 
                 <small class="round-info">Showing all (*) reports</small> 
                 <h2></h2> 
               </header>               
-              <div data-pg-name="Row" id="results">                  
+              <div data-pg-name="Row" id="results"> 
 </div>               
-            </section>
+            </section>             
           </div>           
         </div>         
-      </section>
-      <div class="overlay-fetching">
-        <img src="assets/images/resources/loader2.svg" width="200" />
-      </div>       
-    </section>     
+      </section>              
+    </main>     
     <footer class="footer" data-pg-collapsed> 
       <div class="wrapper" data-pg-name="Wrapper"> 
         <p class="float-right" data-pg-collapsed><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a><a href="admin-login.html">Admin</a></p> 
@@ -141,8 +138,8 @@
       </div>       
     </footer>     
     <!-- Placed at the end of the document so the pages load faster -->     
-    <script src="assets/js/wigi.js" type="text/javascript"></script>   
-    <script src="assets/js/dialog.js" type="text/javascript"></script>        
+    <script src="assets/js/wigi.js" type="text/javascript"></script>     
+    <script src="assets/js/dialog.js" type="text/javascript"></script>     
     <script src="assets/js/common.js" type="text/javascript"></script>     
     <script src="assets/js/user-dashboard.js" type="text/javascript"></script>     
   </body>   

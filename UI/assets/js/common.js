@@ -236,6 +236,10 @@ function showIcon() {
   profileImage[1].src = `assets/images/profiles/${user.profile}`;
   document.getElementById('userName').innerHTML = `${user.firstname} ${user.othernames} ${user.lastname}`;
   document.getElementById('userEmail').innerHTML = user.email;
+  Select('main').append(`
+    <div class="overlay-fetching"> 
+      <img src="assets/images/resources/loader2.svg" width="200" /> 
+    </div>`);
 }
 
 function ago(time, now) {
