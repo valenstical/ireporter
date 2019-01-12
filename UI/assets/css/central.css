@@ -145,7 +145,7 @@ body
     color: #605a5a;
     background-color: white;
     box-shadow: 0px 5px 6px rgba(0,0,0,0.02);
-    border: 1px solid #efefef;
+    border-bottom: 3px solid #009f8b;
 }
 
 .wrapper

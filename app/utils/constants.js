@@ -67,12 +67,12 @@ const Constants = {
   SQL_LIMIT: 50,
 
   TEST_DUMMY_USER: {
-    firstname: 'John',
-    lastname: 'Doe',
-    email: 'demo@ireporter.com',
-    phoneNumber: '08000000000',
-    othernames: 'Mark',
-    username: 'demo',
+    firstname: 'Test',
+    lastname: 'User',
+    email: 'tester@ireporter.com',
+    phoneNumber: '08123456789',
+    othernames: 'Mocha',
+    username: 'tester',
     password: '123',
     registered: new Date(),
     isAdmin: false,
