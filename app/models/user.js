@@ -65,6 +65,22 @@ class User {
       error(res, Constants.STATUS_SERVER_ERROR, [Constants.MESSAGE_SERVER_ERROR]);
     });
   }
+
+  /**
+   * Change the password of a user
+   * @param {object} res - The response object
+   */
+  changePassword(res) {
+    Database.changePassword(this, (result) => {
+      if (result) {
+        success(res, Constants.STATUS_OK, [{ message: Constants.MESSAGE_PASSWORD_CHANGED }]);
+      } else {
+        error(res, Constants.STATUS_SERVER_ERROR, [Constants.MESSAGE_SERVER_ERROR]);
+      }
+    }, () => {
+      error(res, Constants.STATUS_SERVER_ERROR, [Constants.MESSAGE_SERVER_ERROR]);
+    });
+  }
 }
 
 export default User;

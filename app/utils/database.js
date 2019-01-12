@@ -168,6 +168,20 @@ class Database {
     });
   }
 
+  /**
+   * Change a user password
+   * @param {object} user - The user object
+   * @param {function} echo - Callback function on success
+   */
+  static changePassword(user, echo) {
+    const sql = 'update users set password = $1 where id = $2';
+    bcrypt.hash(user.password, 10, (err, hash) => {
+      const params = [hash, user.id];
+      Database.execute(sql, params, (result) => {
+        echo(result.rowCount > 0);
+      });
+    });
+  }
 
   /**
    * Deletes a user from the database
