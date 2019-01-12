@@ -24,8 +24,8 @@ class Database {
         connection.release();
       }
     })().catch((ex) => {
-       console.log(ex);
-      if (failure) {
+      // console.log(ex);
+      if (typeof failure === 'function') {
         failure(ex);
       }
     });

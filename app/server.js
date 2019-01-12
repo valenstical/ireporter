@@ -43,7 +43,7 @@ app.use('/api/v1/incidents', IncidentType.setAll, routerIncidents);
 
 // catch 404
 app.all('*', (req, res) => {
-  res.status(Constants.STATUS_NOT_FOUND).json({ message: Constants.MESSAGE_NOT_FOUND });
+  res.status(Constants.STATUS_NOT_FOUND).json({ error: Constants.MESSAGE_NOT_FOUND });
 });
 
 app.listen(PORT);

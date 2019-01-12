@@ -61,12 +61,7 @@ html
     margin: 0px;
 }
 
-nav,
-section,
-footer,
-main,
-article,
-header
+nav,section,footer,main,article,header,a
 {
     display: block;
 }
@@ -383,7 +378,7 @@ h6
     overflow: auto;
     text-align: center;
     position: relative;
-    z-index: 1;
+    z-index: 100;
 }
 
 .footer p
@@ -950,10 +945,10 @@ section.tab-pane
     right: 0px;
     top: 0px;
     bottom: 0px;
-    background-color: rgba(255, 255, 255, 0.93);
+    background-color: rgba(255, 255, 255, 0.95);
     text-align: center;
     padding-top: 120px;
-    z-index: 0;
+    z-index: 100;
     display: none;
 }
 
@@ -1057,5 +1052,10 @@ section.tab-pane
     -o-transform: scaleY(1);
     -ms-transform: scaleY(1);
     transform: scaleY(1);
+}
+
+.btn-brand:focus
+{
+    outline: none;
 }
 
