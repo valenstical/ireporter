@@ -14,7 +14,7 @@ function populateUser() {
 function editProfile(form) {
   const param = Select(form).serialize();
   const url = `${CONSTANTS.URL.USERS}/${user.id}/profile`;
-  toggleLoader();
+  toggleLoader(form);
   Select('#resultPane').empty();
 
   queryAPI(url, 'PATCH', param, (json) => {
@@ -30,7 +30,29 @@ function editProfile(form) {
   }, () => {
     Dialog.showMessageDialog('Oops!!', CONSTANTS.MESSAGE.ERROR, 'error');
   }, () => {
-    toggleLoader();
+    toggleLoader(form);
+  });
+
+  return false;
+}
+
+function changePassword(form) {
+  const param = Select(form).serialize();
+  const url = `${CONSTANTS.URL.USERS}/${user.id}/password`;
+  toggleLoader(form);
+
+  queryAPI(url, 'PATCH', param, (json) => {
+    if (json.status === CONSTANTS.STATUS.OK) {
+      Dialog.showMessageDialog('Password updated!', json.data[0].message, 'success');
+      Select('[name = "password"]').clear().prop('placeholder', '********');
+    } else {
+      const { error } = json;
+      Dialog.showMessageDialog('', error[0], 'error');
+    }
+  }, () => {
+    Dialog.showMessageDialog('Oops!!', CONSTANTS.MESSAGE.ERROR, 'error');
+  }, () => {
+    toggleLoader(form);
   });
 
   return false;

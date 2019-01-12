@@ -174,9 +174,12 @@ function hideMenu() {
 function setMenuHidable(hidable) {
   menuHidable = hidable;
 }
-function toggleLoader() {
-  Select('.btn-submit img').toggleClass('hidden');
-  Select('.btn-submit').toggleProp('disabled', 'true');
+function toggleLoader(parent) {
+  if (parent) {
+    Select(parent).child('.btn-submit').toggleProp('disabled', 'true').child('img').toggleClass('hidden');
+  } else {
+    Select('.btn-submit').toggleProp('disabled', 'true').child('img').toggleClass('hidden');
+  }
 }
 
 function echo(title, response) {

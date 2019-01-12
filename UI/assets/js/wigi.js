@@ -292,7 +292,7 @@ function Wigi(selector) {
      * Returns the number of matched elements
      */
   this.count = () => this.elements.length;
-/**
+  /**
  * Creates a new Wigi element from the given string
  * @param {string} html - The html formated string
  */
@@ -301,6 +301,12 @@ function Wigi(selector) {
     node.innerHTML = html;
     return new Wigi(node.firstElementChild);
   };
+
+  /**
+   * Returns the first child of the first matched element
+   * @param {string} childSelector - The css selector
+   */
+  this.child = childSelector => new Wigi(this.elements[0].querySelector(childSelector));
 
   return this;
 }
