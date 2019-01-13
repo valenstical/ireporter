@@ -8,6 +8,7 @@ import Constants from './utils/constants';
 import IncidentType from './middleware/incidentType';
 import routerAuth from './routes/auth';
 import routerUser from './routes/users';
+import routerUpload from './routes/upload';
 
 dotenv.config();
 const app = express();
@@ -44,6 +45,9 @@ app.use('/api/v1/incidents', IncidentType.setAll, routerIncidents);
 
 // Handle routes to edit users. IncidentType router seperates creating and updating user profile
 app.use('/api/v1/users', IncidentType.setAll, routerUser);
+
+// Handle routes to upload files
+app.use('/api/v1/uploads', routerUpload);
 
 // catch 404
 app.all('*', (req, res) => {

@@ -86,13 +86,16 @@
         <div class="wrapper" data-pg-name="Wrapper">
           <div class="row">
             <div class="column column-md-4">
-              <div class="card profile-wrapper" data-pg-collapsed> 
+              <form class="card profile-wrapper" novalidate method="post" enctype="multipart/form-data" action="http://localhost:3000/api/v1/uploads/profile"> 
                 <div class="profile-img" data-pg-collapsed> 
                   <img width="150" height="150" /> 
                 </div>                 
-                <button class="btn-brand btn-secondary btn-250" onclick="uploadProfile()">Change Image</button>                 
+                <button class="btn-brand btn-250 btn-submit" type="submit" onclick="uploadImage()">
+                  <span>Update Profile</span>
+                  <img src="assets/images/resources/loader-light.gif" width="12" class="hidden">
+                </button>                 
                 <input type="file" class="delete-file-chooser"> 
-              </div>
+              </form>
             </div>
             <div class="column column-md-8">
               <form class="card" onsubmit="return editProfile(this)" novalidate>

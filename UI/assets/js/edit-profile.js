@@ -58,5 +58,10 @@ function changePassword(form) {
   return false;
 }
 
+function uploadImage() {
+ // toggleLoader('.profile-wrapper');
+  Select('[type ="file"]').click();
+}
+
 init();
 populateUser();
