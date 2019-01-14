@@ -32,7 +32,6 @@
 
 .delete-file-chooser
 {
-    display: none;
 }
 
 .btn-full
@@ -282,8 +281,8 @@
 
 .edit-profile-wrapper .card
 {
-    max-width: 600px;
     margin-left: auto;
+    max-width: 600px;
     margin-right: auto;
 }
 

@@ -58,7 +58,7 @@ class Authenticator {
               req.isAdmin = true;
               next();
             } else {
-              error(res, Constants.STATUS_FORBIDDEN, [Constants.MESSAGE_FORBIDDEN]);
+              error(res, Constants.STATUS_UNATHORIZED, [Constants.MESSAGE_FORBIDDEN]);
             }
           });
         }

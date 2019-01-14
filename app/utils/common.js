@@ -2,8 +2,8 @@ import jwt from 'jsonwebtoken';
 
 const Common = {
 
-  success: (res, code, datas) => {
-    res.status(code).json({ status: code, data: datas, timestamp: new Date().getTime() });
+  success: (res, code, data) => {
+    res.status(code).json({ status: code, data, timestamp: new Date().getTime() });
   },
 
   error: (res, code, message) => {

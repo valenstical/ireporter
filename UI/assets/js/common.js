@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
-const ROOT = 'https://ireporter-nigeria.herokuapp.com';
+// const ROOT = 'https://ireporter-nigeria.herokuapp.com';
 
-// const ROOT = 'http://localhost:3000';
+const ROOT = 'http://localhost:3000';
 let menuHidable = true;
 
 class User {
@@ -80,6 +80,7 @@ const CONSTANTS = {
     RED_FLAGS: `${ROOT}/api/v1/red-flags`,
     INTERVENTIONS: `${ROOT}/api/v1/interventions`,
     INCIDENTS: `${ROOT}/api/v1/incidents`,
+    USERS: `${ROOT}/api/v1/users`,
   },
   STATUS: {
     OK: 200,
@@ -109,7 +110,7 @@ const CONSTANTS = {
     LOGIN: './sign-in.html',
   },
   MESSAGE: {
-    ERROR: ['Please check your internet connection. If the problem continues, try again at a later time or contact us for further assistance.'],
+    ERROR: 'Please check your internet connection. If the problem continues, try again at a later time or contact us for further assistance.',
   },
 };
 
@@ -160,18 +161,6 @@ function scaleHeight(selector) {
   element.height(Math.round((9 / 16) * element.width()));
 }
 
-Select('[data-collapse]').click((event) => {
-  toggleCollapse(event);
-});
-
-Select('[data-toggle]').click((event) => {
-  showToggleMenu(event);
-});
-
-Select(window).click(() => {
-  Select('.toggle.shown').removeClass('shown');
-});
-
 function toggleMenu() {
   Select('#nav-section').toggleClass('nav-hidden');
 }
@@ -185,9 +174,10 @@ function hideMenu() {
 function setMenuHidable(hidable) {
   menuHidable = hidable;
 }
-function toggleLoader() {
-  Select('.btn-submit img').toggleClass('hidden');
-  Select('.btn-submit').toggleProp('disabled', 'true');
+function toggleLoader(parent) {
+  Select(parent).child('.btn-submit').toggleProp('disabled', 'true').child('img')
+    .toggleClass('hidden');
+  Select(parent).children('.form-element').toggleProp('disabled', 'true');
 }
 
 function echo(title, response) {
@@ -219,7 +209,6 @@ function queryAPI(url, method, param, success, error, lastly) {
     method,
     body: param,
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
       Authorization: `Bearer ${User.getToken()}`,
     },
   }).then(response => response.json()).then((json) => {
@@ -229,7 +218,7 @@ function queryAPI(url, method, param, success, error, lastly) {
       if (error) {
         error(err);
       } else {
-        alert(CONSTANTS.MESSAGE.ERROR.toString());
+        Dialog.showMessageDialog('Connection Problem!', CONSTANTS.MESSAGE.ERROR.toString());
       }
     })
     .finally(() => {
@@ -243,11 +232,20 @@ function queryAPI(url, method, param, success, error, lastly) {
  */
 function showIcon() {
   const user = User.getUser();
-  const profileImage = document.getElementsByClassName('user-image');
-  profileImage[0].src = `assets/images/profiles/${user.profile}`;
-  profileImage[1].src = `assets/images/profiles/${user.profile}`;
+  const profileImage = [...document.getElementsByClassName('user-image')];
+  profileImage.forEach((element) => {
+    element.style.backgroundImage = `url(${ROOT}/${user.profile})`;
+  });
   document.getElementById('userName').innerHTML = `${user.firstname} ${user.othernames} ${user.lastname}`;
   document.getElementById('userEmail').innerHTML = user.email;
+  document.getElementById('userFirstName').innerHTML = user.firstname;
+}
+
+function appendOverlay() {
+  Select('main').append(`
+  <div class="overlay-fetching"> 
+    <img src="assets/images/resources/loader2.svg" width="200" /> 
+  </div>`);
 }
 
 function ago(time, now) {
@@ -276,4 +274,17 @@ function ago(time, now) {
  */
 function init() {
   showIcon();
+  appendOverlay();
 }
+
+Select('[data-collapse]').click((event) => {
+  toggleCollapse(event);
+});
+
+Select('[data-toggle]').click((event) => {
+  showToggleMenu(event);
+});
+
+Select(window).click(() => {
+  Select('.toggle.shown').removeClass('shown');
+});

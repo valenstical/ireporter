@@ -31,9 +31,12 @@ class User {
    * Creates a new user
    * @param {object} res - The resource object
    */
-  createUser(res) {
-    Database.createUser(this, (authToken) => {
-      success(res, Constants.STATUS_CREATED, [{ token: authToken, user: this }]);
+  createUser(res, req) {
+    Database.createUser(this, (authToken, result) => {
+      const user = result.rows[0];
+      delete user.password;
+      success(res, req.incident ? Constants.STATUS_OK : Constants.STATUS_CREATED,
+        [{ token: authToken, user }]);
     }, (ex) => {
       let message = Constants.MESSAGE_DUPLICATE_PHONE_NUMBER;
       if (ex.constraint === 'users_username_key') {
@@ -52,9 +55,27 @@ class User {
   login(res) {
     Database.login(this, (result, authToken) => {
       if (result) {
-        success(res, Constants.STATUS_OK, [{ token: authToken, user: result }]);
+        const user = result;
+        delete user.password;
+        success(res, Constants.STATUS_OK, [{ token: authToken, user }]);
       } else {
         error(res, Constants.STATUS_FORBIDDEN, [Constants.MESSAGE_INVALID_LOGIN]);
+      }
+    }, () => {
+      error(res, Constants.STATUS_SERVER_ERROR, [Constants.MESSAGE_SERVER_ERROR]);
+    });
+  }
+
+  /**
+   * Change the password of a user
+   * @param {object} res - The response object
+   */
+  changePassword(res) {
+    Database.changePassword(this, (result) => {
+      if (result) {
+        success(res, Constants.STATUS_OK, [{ message: Constants.MESSAGE_PASSWORD_CHANGED }]);
+      } else {
+        error(res, Constants.STATUS_SERVER_ERROR, [Constants.MESSAGE_SERVER_ERROR]);
       }
     }, () => {
       error(res, Constants.STATUS_SERVER_ERROR, [Constants.MESSAGE_SERVER_ERROR]);

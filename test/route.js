@@ -39,7 +39,7 @@ describe('Server', () => {
         expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
         expect(res.body).to.not.be.empty;
         expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('message').to.equal(Constants.MESSAGE_NOT_FOUND);
+        expect(res.body).to.have.property('error').to.equal(Constants.MESSAGE_NOT_FOUND);
         done(err);
       });
   });
@@ -50,7 +50,7 @@ describe('Server', () => {
         expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
         expect(res.body).to.not.be.empty;
         expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('message').to.equal(Constants.MESSAGE_NOT_FOUND);
+        expect(res.body).to.have.property('error').to.equal(Constants.MESSAGE_NOT_FOUND);
         done(err);
       });
   });
@@ -61,7 +61,7 @@ describe('Server', () => {
         expect(res).to.have.status(Constants.STATUS_NOT_FOUND);
         expect(res.body).to.not.be.empty;
         expect(res.body).to.be.an('object');
-        expect(res.body).to.have.property('message').to.equal(Constants.MESSAGE_NOT_FOUND);
+        expect(res.body).to.have.property('error').to.equal(Constants.MESSAGE_NOT_FOUND);
         done(err);
       });
   });

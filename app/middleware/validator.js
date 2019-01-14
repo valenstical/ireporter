@@ -5,6 +5,7 @@ import Helper from '../utils/validatorHelper';
 import User from '../models/user';
 import Common from '../utils/common';
 import Database from '../utils/database';
+import File from '../models/file';
 
 const { checkEmpty, checkLocation } = Helper;
 const { error } = Common;
@@ -165,7 +166,6 @@ class Validator {
     checkEmpty(errors, req.body.firstname, Constants.MESSAGE_NO_FIRST_NAME);
     checkEmpty(errors, req.body.lastname, Constants.MESSAGE_NO_LAST_NAME);
     checkEmpty(errors, req.body.username, Constants.MESSAGE_NO_SIGNUP_USERNAME);
-    checkEmpty(errors, req.body.password, Constants.MESSAGE_NO_PASSWORD);
     checkEmpty(errors, req.body.phoneNumber, Constants.MESSAGE_NO_PHONE_NUMBER);
     checkEmpty(errors, req.body.email, Constants.MESSAGE_NO_EMAIL_ADDRESS);
     if (req.body.email && !validator.isEmail(req.body.email)) {
@@ -174,20 +174,25 @@ class Validator {
     if (req.body.phoneNumber && !validator.isMobilePhone(req.body.phoneNumber, ['en-NG'])) {
       errors.push(Constants.MESSAGE_NO_PHONE_NUMBER);
     }
+    const user = new User(req.body);
+    if (req.incident) {
+      user.id = req.incident.id;
+    } else {
+      checkEmpty(errors, req.body.password, Constants.MESSAGE_NO_PASSWORD);
+      user.id = Random(100000000, 999999999);
+      user.allowEmail = true;
+      user.allowSms = true;
+      user.isAdmin = false;
+      user.isBlocked = false;
+      user.isVerified = false;
+      user.profile = 'profile.jpg';
+      user.registered = new Date();
+    }
+    req.user = user;
     if (errors.length !== 0) {
       error(res, Constants.STATUS_BAD_REQUEST, errors);
       return;
     }
-    const user = new User(req.body);
-    user.id = Random(100000000, 999999999);
-    user.allowEmail = true;
-    user.allowSms = true;
-    user.isAdmin = false;
-    user.isBlocked = false;
-    user.isVerified = false;
-    user.profile = 'profile.jpg';
-    user.registered = new Date();
-    req.user = user;
     next();
   }
 
@@ -204,6 +209,25 @@ class Validator {
     checkEmpty(errors, user.password, Constants.MESSAGE_NO_PASSWORD);
     checkEmpty(errors, user.username, Constants.MESSAGE_NO_USERNAME);
 
+    if (errors.length !== 0) {
+      error(res, Constants.STATUS_BAD_REQUEST, errors);
+      return;
+    }
+    req.user = user;
+    next();
+  }
+
+  /**
+   * Verifies that the password field is provided
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @param {function} next - The next function used to pass control to another middleware
+   */
+  static validatePassword(req, res, next) {
+    const errors = [];
+    const user = new User(req.body);
+    user.id = req.incident.id;
+    checkEmpty(errors, user.password, Constants.MESSAGE_NO_PASSWORD);
     if (errors.length !== 0) {
       error(res, Constants.STATUS_BAD_REQUEST, errors);
       return;
@@ -246,6 +270,52 @@ class Validator {
       }
       next();
     });
+  }
+
+  /**
+   * Checks that the user with the specified id exists
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @param {function} next - The next function used to pass control to another middleware
+   */
+  static verifyUser(req, res, next) {
+    Database.getUser(req.user.id, (result) => {
+      if (!result) {
+        error(res, Constants.STATUS_UNPROCESSED, ['There is no user with the id you provided.']);
+        return;
+      }
+      next();
+    });
+  }
+
+  /**
+   * Checks that a file was uploaed
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @param {function} next - The next function used to pass control to another middleware
+   */
+  static verifyFile(req, res, next) {
+    if (!req.files.file) {
+      error(res, Constants.STATUS_BAD_REQUEST, [Constants.MESSAGE_NO_FILE]);
+      return;
+    }
+    const file = new File(req.files.file);
+    req.file = file;
+    next();
+  }
+
+  /**
+   * Checks that a file is an image
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @param {function} next - The next function used to pass control to another middleware
+   */
+  static validateImage(req, res, next) {
+    if (!req.file.isImage()) {
+      error(res, Constants.STATUS_BAD_REQUEST, [Constants.MESSAGE_NOT_IMAGE]);
+      return;
+    }
+    next();
   }
 }
 
