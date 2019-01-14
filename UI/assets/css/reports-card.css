@@ -15,9 +15,11 @@
     overflow: auto;
 }
 
-.profile-img img
+.profile-img-bg
 {
     background-color: #f7f7f7;
+    width: 170px;
+    height: 170px;
     border-radius: inherit;
 }
 
@@ -391,5 +393,29 @@ video
     width: 100%;
     margin-top: 20px;
     background-color: #0c0c0c;
+}
+
+[name ='file']
+{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: 3;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.profile-img-reports
+{
+    width: 50px;
+    height: 50px;
+    background-color: #efefef;
+    background-size: cover;
+    background-position: top;
+    border-radius: 50px;
 }
 

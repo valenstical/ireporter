@@ -3,7 +3,9 @@ import Controller from '../controllers/controller';
 import Validator from '../middleware/validator';
 import Authenticator from '../middleware/authenticator';
 
+
 const router = express.Router();
+
 
 // PATCH: User Details
 router.patch('/:id/profile',
@@ -22,4 +24,13 @@ router.patch('/:id/password',
   Validator.validatePassword,
   Validator.verifyUser,
   Controller.updatePassword);
+
+router.patch('/:id/image',
+  Authenticator.authenticateUser,
+  Validator.valideteID,
+  Validator.validateRange,
+  Validator.verifyFile,
+  Validator.validateImage,
+  Controller.uploadProfileImage);
+
 export default router;

@@ -8,11 +8,10 @@ function populateUser() {
   Select('[name = "username"]').val(user.username);
   Select('[name = "phoneNumber"]').val(user.phoneNumber);
   Select('[name = "othernames"]').val(user.othernames);
-  Select('.profile-img img').prop('src', `assets/images/profiles/${user.profile}`);
 }
 
 function editProfile(form) {
-  const param = Select(form).serialize();
+  const param = new FormData(form);
   const url = `${CONSTANTS.URL.USERS}/${user.id}/profile`;
   toggleLoader(form);
   Select('#resultPane').empty();
@@ -37,7 +36,7 @@ function editProfile(form) {
 }
 
 function changePassword(form) {
-  const param = Select(form).serialize();
+  const param = new FormData(form);
   const url = `${CONSTANTS.URL.USERS}/${user.id}/password`;
   toggleLoader(form);
 
@@ -58,10 +57,47 @@ function changePassword(form) {
   return false;
 }
 
-function uploadImage() {
- // toggleLoader('.profile-wrapper');
-  Select('[type ="file"]').click();
+function isImage(type) {
+  const formats = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
+  return formats.indexOf(type.toLowerCase()) >= 0;
 }
 
+function isWithinRange(type, size) {
+  if (isImage(type)) {
+    return size <= 2 * 1024 * 1024;
+  }
+  return size <= 50 * 1024 * 1024;
+}
+
+function uploadProfile() {
+  const element = document.querySelector('[name = "file"]');
+  const file = element.files[0];
+  const { size, type } = file;
+
+  if (!isImage(type)) {
+    Dialog.showMessageDialog('Invalid Image!', 'Please choose a valid image.', 'error');
+  } else if (!isWithinRange(type, size)) {
+    Dialog.showMessageDialog('Image is too large!', 'Image size must not exceed 2MB', 'error');
+  } else {
+    toggleLoader('.profile-wrapper');
+    const data = new FormData();
+    data.append('file', file);
+    const { id } = User.getUser();
+    queryAPI(`${CONSTANTS.URL.USERS}/${id}/image`, 'PATCH', data, (json) => {
+      if (json.status === CONSTANTS.STATUS.OK) {
+        Dialog.showNotification('Profile image has been updated.');
+        User.setUser(JSON.stringify(json.data[0]));
+        showIcon();
+      } else {
+        const { error } = json;
+        Dialog.showNotification(error[0]);
+      }
+    }, () => {
+      Dialog.showMessageDialog('Oops!!', CONSTANTS.MESSAGE.ERROR, 'error');
+    }, () => {
+      toggleLoader('.profile-wrapper');
+    });
+  }
+}
 init();
 populateUser();

@@ -175,11 +175,9 @@ function setMenuHidable(hidable) {
   menuHidable = hidable;
 }
 function toggleLoader(parent) {
-  if (parent) {
-    Select(parent).child('.btn-submit').toggleProp('disabled', 'true').child('img').toggleClass('hidden');
-  } else {
-    Select('.btn-submit').toggleProp('disabled', 'true').child('img').toggleClass('hidden');
-  }
+  Select(parent).child('.btn-submit').toggleProp('disabled', 'true').child('img')
+    .toggleClass('hidden');
+  Select(parent).children('.form-element').toggleProp('disabled', 'true');
 }
 
 function echo(title, response) {
@@ -211,7 +209,6 @@ function queryAPI(url, method, param, success, error, lastly) {
     method,
     body: param,
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
       Authorization: `Bearer ${User.getToken()}`,
     },
   }).then(response => response.json()).then((json) => {
@@ -235,11 +232,13 @@ function queryAPI(url, method, param, success, error, lastly) {
  */
 function showIcon() {
   const user = User.getUser();
-  const profileImage = document.getElementsByClassName('user-image');
-  profileImage[0].src = `assets/images/profiles/${user.profile}`;
-  profileImage[1].src = `assets/images/profiles/${user.profile}`;
+  const profileImage = [...document.getElementsByClassName('user-image')];
+  profileImage.forEach((element) => {
+    element.style.backgroundImage = `url(${ROOT}/${user.profile})`;
+  });
   document.getElementById('userName').innerHTML = `${user.firstname} ${user.othernames} ${user.lastname}`;
   document.getElementById('userEmail').innerHTML = user.email;
+  document.getElementById('userFirstName').innerHTML = user.firstname;
 }
 
 function appendOverlay() {

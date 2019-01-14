@@ -3,12 +3,12 @@ import dotenv from 'dotenv';
 import path from 'path';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import expressUploader from 'express-fileupload';
 import routerIncidents from './routes/incidents';
 import Constants from './utils/constants';
 import IncidentType from './middleware/incidentType';
 import routerAuth from './routes/auth';
 import routerUser from './routes/users';
-import routerUpload from './routes/upload';
 
 dotenv.config();
 const app = express();
@@ -17,8 +17,8 @@ const PORT = process.env.PORT || '3000';
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
 app.use(express.static(path.join(__dirname, 'uploads')));
+app.use(expressUploader({ createParentPath: false }));
 
 // Handle routes to home page
 app.get('/', (req, res) => {
@@ -45,9 +45,6 @@ app.use('/api/v1/incidents', IncidentType.setAll, routerIncidents);
 
 // Handle routes to edit users. IncidentType router seperates creating and updating user profile
 app.use('/api/v1/users', IncidentType.setAll, routerUser);
-
-// Handle routes to upload files
-app.use('/api/v1/uploads', routerUpload);
 
 // catch 404
 app.all('*', (req, res) => {

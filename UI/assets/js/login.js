@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars, no-undef */
 function login(form) {
-  const param = Select(form).serialize();
+  const param = new FormData(form);
 
-  toggleLoader();
+  toggleLoader(form);
   Select('#resultPane').empty();
 
 
@@ -19,7 +19,7 @@ function login(form) {
     // echo('Sign in Failed!!', CONSTANTS.MESSAGE.ERROR);
     Dialog.showMessageDialog('Sign in Failed!', CONSTANTS.MESSAGE.ERROR, 'error');
   }, () => {
-    toggleLoader();
+    toggleLoader(form);
     Select('#resultPane').scroll();
   });
 

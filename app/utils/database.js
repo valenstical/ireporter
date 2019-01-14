@@ -184,6 +184,18 @@ class Database {
   }
 
   /**
+   * Change user profile image
+   * @param {object} user - The user object
+   * @param {function} echo - Callback function on success
+   */
+  static updateProfileImage(user, echo) {
+    const sql = 'update users set profile = $1 where id = $2 RETURNING *';
+    Database.execute(sql, [user.profile, user.id], (result) => {
+      echo(result.rowCount > 0, result.rows[0]);
+    });
+  }
+
+  /**
    * Deletes a user from the database
    * @param {string} identifier - The user unique id or email address
    * @param {function} echo - callback function to execute

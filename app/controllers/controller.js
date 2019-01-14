@@ -1,3 +1,9 @@
+import fs from 'fs';
+import Constants from '../utils/constants';
+import Common from '../utils/common';
+import Database from '../utils/database';
+
+const { error, success } = Common;
 
 class Controller {
   /**
@@ -78,6 +84,24 @@ class Controller {
   static updatePassword(req, res) {
     const { user } = req;
     user.changePassword(res, req);
+  }
+
+  static uploadProfileImage(req, res) {
+    req.file.moveUploadedFile('profile', () => {
+      error(res, Constants.STATUS_SERVER_ERROR, [Constants.MESSAGE_SERVER_ERROR]);
+    }, (profile) => {
+      Database.updateProfileImage({ profile, id: req.incident.id }, (updated, result) => {
+        if (updated) {
+          const user = result;
+          delete user.password;
+          success(res, Constants.STATUS_OK, [user]);
+        } else {
+          fs.unlink(`./app/uploads/${profile}`, () => {
+            error(res, Constants.STATUS_SERVER_ERROR, [Constants.MESSAGE_SERVER_ERROR]);
+          });
+        }
+      });
+    });
   }
 }
 

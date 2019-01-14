@@ -123,7 +123,7 @@ function getIncident(element, type) {
       <div class="report-item card card-sm"> 
       ${getUpdate(incident)}
       <div class="profile-img"> 
-        <img src="assets/images/profiles/${incident.profile}" width="50" height="50" /> 
+        <div class="profile-img-reports" style="background-image:url(${ROOT}/${incident.profile})"></div>
       </div>   
       <div class="report-item-content"> 
         <h5>${incident.firstname}</h5> 

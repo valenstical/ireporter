@@ -43,6 +43,14 @@
     box-sizing: border-box;
 }
 
+.user-image
+{
+    background-size: cover;
+    background-position: top;
+    background-color: #efefef;
+    border-radius: 100%;
+}
+
 .card
 {
     border-radius: 5px;
@@ -522,9 +530,13 @@ button
     display: none;
 }
 
-.nav-profile img
+.nav-profile-img
 {
     border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    background-color: #efefef;
 }
 
 .nav-profile span
@@ -535,6 +547,7 @@ button
     margin-left: 10px;
     margin-right: 10px;
     font-weight: bold;
+    text-transform: capitalize;
 }
 
 .dropdown
@@ -971,7 +984,7 @@ section.tab-pane
     text-align: center;
 }
 
-.toggle-profile img
+.toggle-profile .nav-profile-img
 {
     width: 50px;
     height: 50px;

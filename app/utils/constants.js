@@ -52,6 +52,13 @@ const Constants = {
   MESSAGE_BAD_LONGITUDE: 'The longitude is required',
   MESSAGE_BAD_LATITUDE: 'The latitude is required',
   MESSAGE_PASSWORD_CHANGED: 'Your password has been updated.',
+  MESSAGE_IMAGE_UPLOADED: 'Image uploaded successfully',
+  MESSAGE_VIDEO_UPLOADED: 'Video uploaded successfully',
+  MESSAGE_NO_FILE: 'Please choose a file to upload',
+  MESSAGE_NOT_IMAGE: 'Please choose a valid image. Image can be jpeg, jpg, gif or png',
+  MESSAGE_NOT_VIDEO: 'Please choose a valid video. Video must be in mp4 format',
+  MESSAGE_IMAGE_TOO_LARGE: 'Image is too large. The image size should not exceed 2MB',
+  MESSAGE_VIDEO_TOO_LARGE: 'Video is too large. The video size should not exceed 100MB. You can split the video into smaller bits and send seperately.',
   MESSAGE_SERVER_ERROR: 'An internal error has occured. This is not your fault. We are working to fix this problem. Please try again later.',
   TEXT_LONG: 'This is a very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very very long sentence with plenty characters.',
 

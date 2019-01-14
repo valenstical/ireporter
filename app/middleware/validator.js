@@ -5,6 +5,7 @@ import Helper from '../utils/validatorHelper';
 import User from '../models/user';
 import Common from '../utils/common';
 import Database from '../utils/database';
+import File from '../models/file';
 
 const { checkEmpty, checkLocation } = Helper;
 const { error } = Common;
@@ -285,6 +286,36 @@ class Validator {
       }
       next();
     });
+  }
+
+  /**
+   * Checks that a file was uploaed
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @param {function} next - The next function used to pass control to another middleware
+   */
+  static verifyFile(req, res, next) {
+    if (!req.files.file) {
+      error(res, Constants.STATUS_BAD_REQUEST, [Constants.MESSAGE_NO_FILE]);
+      return;
+    }
+    const file = new File(req.files.file);
+    req.file = file;
+    next();
+  }
+
+  /**
+   * Checks that a file is an image
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @param {function} next - The next function used to pass control to another middleware
+   */
+  static validateImage(req, res, next) {
+    if (!req.file.isImage()) {
+      error(res, Constants.STATUS_BAD_REQUEST, [Constants.MESSAGE_NOT_IMAGE]);
+      return;
+    }
+    next();
   }
 }
 
