@@ -1,7 +1,11 @@
 /* eslint-disable no-param-reassign */
 
 function Wigi(selector) {
-  this.elements = typeof selector === 'string' ? document.querySelectorAll(selector) : [selector];
+  if (Array.isArray(selector)) {
+    this.elements = selector;
+  } else {
+    this.elements = typeof selector === 'string' ? document.querySelectorAll(selector) : [selector];
+  }
   this.instance = this;
 
   /**
@@ -292,7 +296,7 @@ function Wigi(selector) {
      * Returns the number of matched elements
      */
   this.count = () => this.elements.length;
-/**
+  /**
  * Creates a new Wigi element from the given string
  * @param {string} html - The html formated string
  */
@@ -302,6 +306,19 @@ function Wigi(selector) {
     return new Wigi(node.firstElementChild);
   };
 
+  /**
+   * Returns the first child of the first matched element
+   * @param {string} filter - The css selector
+   */
+  this.child = filter => new Wigi(this.elements[0].querySelector(filter));
+
+  /**
+   * Returns all children of the first matched element
+   * @param {string} filter - The css selector
+   */
+  this.children = (filter) => {
+    return new Wigi([...this.elements[0].querySelectorAll(filter || '*')]);
+  }
   return this;
 }
 
