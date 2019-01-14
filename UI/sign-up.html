@@ -7,11 +7,12 @@
     <meta name="description" content="Easily report cases of corruption to the appropriate authorities. Users can also report on things that needs government intervention."> 
     <meta name="author" content="Okosun Valentine Ejodamen <valenstical@gmail.com>"> 
     <title>Register on iReporter|Easily report cases of corruption and areas that needs government intervention|Andela Developer Challenge</title>     
-    <link href="assets/images/icons/icon.png" rel="icon" type="image/png"> 
+    <link href="assets/images/icons/icon.png" rel="icon" type="image/png">
+    <link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css"> 
     <link href="assets/css/central.css" rel="stylesheet" type="text/css"> 
+    <link href="assets/css/dialog.css" rel="stylesheet" type="text/css"> 
     <link href="assets/css/form.css" rel="stylesheet" type="text/css"> 
     <link href="assets/css/login.css" rel="stylesheet" type="text/css"> 
-    <link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css"> 
     <meta name="theme-color" content="#009f8b"> 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->     
     <!--[if lt IE 9]>
@@ -45,33 +46,33 @@
       </div>       
     </nav>     
     <section class="login-wrapper bg-grey top-space" data-pg-name="How it Works"> 
-      <form class="wrapper" data-pg-name="Wrapper"> 
-        <div class="card login-form login-form-lg" onsubmit="return register()"> 
+      <form class="wrapper" data-pg-name="Wrapper" onsubmit="return register()" novalidate> 
+        <div class="card login-form login-form-lg" data-pg-collapsed> 
           <h1 class="text-brand">WELCOME TO iREPORTER</h1> 
           <p data-pg-collapsed>Let's help you quickly report cases of corruption and issues that need government attention to the appropriate authorities.<span> Register by filling out the form below to get started.</span></p> 
           <small class="form-instructions">* All fields are required</small> 
           <div class="form-wrapper" data-pg-collapsed> 
             <label>First Name </label>             
-            <input class="form-element" type="text" name="fname" required> 
+            <input class="form-element" type="text" name="firstname" required> 
           </div>           
           <div class="form-wrapper" data-pg-collapsed> 
             <label>Last Name </label>             
-            <input class="form-element" type="text" name="lname" required> 
+            <input class="form-element" type="text" name="lastname" required> 
           </div>           
           <div class="form-wrapper" data-pg-collapsed> 
             <label>Other Names </label>             
-            <input class="form-element" type="text" required name="oname"> 
+            <input class="form-element" type="text" required name="othernames"> 
           </div>           
           <div class="form-wrapper" data-pg-collapsed> 
             <label>Phone Number </label>             
-            <input class="form-element" type="tel" name="phone" required> 
+            <input class="form-element" type="tel" name="phoneNumber" required> 
           </div>           
           <div class="form-wrapper" data-pg-collapsed> 
             <label>Email Address </label>             
             <input class="form-element" type="email" name="email" required> 
           </div>           
         </div>         
-        <div class="card login-form login-form-lg" onsubmit="return register()"> 
+        <div class="card login-form login-form-lg" data-pg-collapsed> 
           <div class="form-wrapper" data-pg-collapsed> 
             <label>Choose a Username </label>             
             <input class="form-element" type="text" name="username" required> 
@@ -87,7 +88,10 @@
               <a href="#" class="forgot-password">Terms and Conditions</a> 
             </label>             
           </div>           
-          <button class="btn-brand" type="submit">Register Now</button>           
+          <button class="btn-brand btn-submit" type="submit"> 
+            <span>Register Now</span> 
+            <img src="assets/images/resources/loader-light.gif" width="12" class="hidden"> 
+          </button>           
         </div>         
         <p class="login-register-link login-form-lg" data-pg-collapsed>Already registered? <a href="sign-in.html">Sign in</a></p> 
       </form>       
@@ -95,11 +99,13 @@
     <footer class="footer" data-pg-collapsed> 
       <div class="wrapper" data-pg-name="Wrapper"> 
         <p class="float-right" data-pg-collapsed><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a><a href="admin-login.html">Admin</a></p> 
-        <p class="float-left">&copy; 2018 iReporter.</p> 
+        <p class="float-left">&copy; 2019 iReporter.</p> 
       </div>       
     </footer>     
     <!-- Placed at the end of the document so the pages load faster -->     
-    <script src="assets/js/domer.js" type="text/javascript"></script>     
-    <script src="assets/js/central.js" type="text/javascript"></script>     
+    <script src="assets/js/wigi.js" type="text/javascript"></script>     
+    <script src="assets/js/dialog.js" type="text/javascript"></script>     
+    <script src="assets/js/common.js" type="text/javascript"></script>     
+    <script src="assets/js/signup.js" type="text/javascript"></script>     
   </body>   
 </html>
