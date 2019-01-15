@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
-// const ROOT = 'https://ireporter-nigeria.herokuapp.com';
+const ROOT = 'https://ireporter-nigeria.herokuapp.com';
 
-const ROOT = 'http://localhost:3000';
+//const ROOT = 'http://localhost:3000';
 let menuHidable = true;
 
 class User {
