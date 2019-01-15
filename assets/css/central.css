@@ -1,6 +1,6 @@
 
 
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,800');
+/*@import url('https://fonts.googleapis.com/css?family=Nunito:400,800');*/
 
 @-webkit-keyframes blink{
     from{
@@ -836,7 +836,7 @@ body .hidden
 .flag
 {
     right: 10px;
-    top: 5px;
+    top: 0px;
     color: #de4437;
     position: absolute;
     font-size: 11px;
