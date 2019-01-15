@@ -198,6 +198,7 @@
     margin-bottom: 5px;
     text-transform: capitalize;
     font-size: 16px;
+    position: relative;
 }
 
 .report-type .column
@@ -417,5 +418,10 @@ video
     background-size: cover;
     background-position: top;
     border-radius: 50px;
+}
+
+.profile-img img
+{
+    border-radius: inherit;
 }
 

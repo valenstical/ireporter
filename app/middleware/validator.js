@@ -185,7 +185,7 @@ class Validator {
       user.isAdmin = false;
       user.isBlocked = false;
       user.isVerified = false;
-      user.profile = 'profile.jpg';
+      user.profile = 'images/profile/default.jpg';
       user.registered = new Date();
     }
     req.user = user;
