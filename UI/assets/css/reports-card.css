@@ -425,3 +425,21 @@ video
     border-radius: inherit;
 }
 
+.create-report-details
+{
+    overflow: hidden;
+}
+
+.report-box .fa
+{
+    top: -1px;
+}
+
+.report-item h1 .fa
+{
+    position: relative;
+    left: 10px;
+    top: -1px;
+    font-size: 12px;
+}
+
