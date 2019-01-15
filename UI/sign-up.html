@@ -7,7 +7,7 @@
     <meta name="description" content="Easily report cases of corruption to the appropriate authorities. Users can also report on things that needs government intervention."> 
     <meta name="author" content="Okosun Valentine Ejodamen <valenstical@gmail.com>"> 
     <title>Register on iReporter|Easily report cases of corruption and areas that needs government intervention|Andela Developer Challenge</title>     
-    <link href="assets/images/icons/icon.png" rel="icon" type="image/png">
+    <link href="assets/images/icons/icon.png" rel="icon" type="image/png"> 
     <link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css"> 
     <link href="assets/css/central.css" rel="stylesheet" type="text/css"> 
     <link href="assets/css/dialog.css" rel="stylesheet" type="text/css"> 
@@ -46,7 +46,7 @@
       </div>       
     </nav>     
     <section class="login-wrapper bg-grey top-space" data-pg-name="How it Works"> 
-      <form class="wrapper" data-pg-name="Wrapper" onsubmit="return register()" novalidate> 
+      <form class="wrapper" data-pg-name="Wrapper" onsubmit="return register(this)" novalidate> 
         <div class="card login-form login-form-lg" data-pg-collapsed> 
           <h1 class="text-brand">WELCOME TO iREPORTER</h1> 
           <p data-pg-collapsed>Let's help you quickly report cases of corruption and issues that need government attention to the appropriate authorities.<span> Register by filling out the form below to get started.</span></p> 
@@ -60,7 +60,9 @@
             <input class="form-element" type="text" name="lastname" required> 
           </div>           
           <div class="form-wrapper" data-pg-collapsed> 
-            <label>Other Names </label>             
+            <label>Other Names 
+              <small>(optional)</small>
+            </label>             
             <input class="form-element" type="text" required name="othernames"> 
           </div>           
           <div class="form-wrapper" data-pg-collapsed> 
@@ -83,7 +85,7 @@
           </div>           
           <div class="checkbox"> 
             <label> 
-              <input type="checkbox" required> 
+              <input type="checkbox" required id="termsCheckedBox"> 
               I agree to the 
               <a href="#" class="forgot-password">Terms and Conditions</a> 
             </label>             

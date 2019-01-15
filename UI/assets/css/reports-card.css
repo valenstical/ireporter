@@ -420,3 +420,8 @@ video
     border-radius: 50px;
 }
 
+.profile-img img
+{
+    border-radius: inherit;
+}
+
