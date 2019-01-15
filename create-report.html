@@ -7,12 +7,7 @@
     <meta name="description" content="Easily report cases of corruption to the appropriate authorities. Users can also report on things that needs government intervention."> 
     <meta name="author" content="Okosun Valentine Ejodamen <valenstical@gmail.com>"> 
     <title>Create Report|iReporter-Easily report cases of corruption and areas that needs government intervention|Andela Developer Challenge</title>     
-    <link href="assets/images/icons/icon.png" rel="icon" type="image/png"> 
-    <link href="assets/css/central.css" rel="stylesheet" type="text/css"> 
-    <link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css"> 
-    <link href="assets/css/form.css" rel="stylesheet" type="text/css"> 
-    <link href="assets/css/user.css" rel="stylesheet" type="text/css"> 
-    <link href="assets/css/reports-card.css" rel="stylesheet" type="text/css"> 
+    <link href="assets/images/icons/icon.png" rel="icon" type="image/png">                               
     <meta name="theme-color" content="#009f8b"> 
     <script src="assets/js/authenticate.js" data-pg-hidden></script>     
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->     
@@ -20,9 +15,15 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->     
+    <link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/central.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/dialog.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/form.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/user.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/reports-card.css" rel="stylesheet" type="text/css">
   </head>   
   <body class="bg-grey"> 
-    <nav class="navigation" data-pg-name="Navigation Bar"> 
+    <nav class="navigation" data-pg-name="Navigation Bar" data-pg-collapsed> 
       <div class="wrapper" data-pg-name="Wrapper"> 
         <div class="clear-float"> 
           <a href="index.html" class="nav-brand text-brand float-left">iReporter</a> 
@@ -73,38 +74,41 @@
       </div>       
     </nav>     
     <section class="login-wrapper top-space account-wrapper" data-pg-name="Dashboard"> 
-      <section class="heading"> 
-        <div class="wrapper max-width-800" data-pg-name="Wrapper"> 
-          <div class="bread" data-pg-collapsed> 
-            <h1>Report an Incident</h1> 
+      <section class="heading" data-pg-collapsed> 
+        <div class="wrapper" data-pg-name="Wrapper">
+          <div class="max-width-800">
+            <div class="bread"> 
+              <h1>Report an Incident</h1> 
+            </div>
           </div>           
         </div>         
       </section>       
-      <form data-pg-collapsed onsubmit="return submitReport()"> 
+      <form onsubmit="return submitReport(this)" novalidate> 
         <div class="wrapper" data-pg-name="Wrapper"> 
-          <header class="page-title max-width-800 report-type"> 
+          <header class="page-title max-width-800 report-type" data-pg-collapsed> 
             <h2 class="report-box-title">Report Type</h2> 
             <p>Is this incident linked to <ins>corruption</ins> or just an issue that needs government <ins>intervention</ins> ?</p> 
             <div class="row" data-pg-name="Row"> 
               <div class="column column-md-6" data-pg-name="Column"> 
-                <div class="report-item card card-sm max-width-800 report-box" title="Red Flag Report">                    
+                <div class="report-item card card-sm max-width-800 report-box" title="Red Flag Report"> 
                   <h4>Corruption case <i class="fa fa-flag flag" title="Red Flag Report"></i></h4> 
                   <p>e.g. bribery, extortion, money laundering, e.t.c</p> 
-                  <input type="radio" name="type" value="0" data-pg-hidden class="radio-fine"> 
+                  <input type="radio" name="type" value="red-flag" data-pg-hidden class="radio-fine"> 
                   <div class="pg-empty-placeholder radio-mark"></div>                   
                 </div>                 
               </div>               
               <div class="column column-md-6" data-pg-name="Column"> 
-                <div class="report-item card card-sm max-width-800 report-box" title="Intervention Report">                    
+                <div class="report-item card card-sm max-width-800 report-box" title="Intervention Report"> 
                   <h4>Intervention Case <i class="fa flag fa-bullhorn flag-intervention" title="Intervention Report"></i></h4> 
                   <p>e.g. bad road, collapsed bridge, flooding, e.t.c</p> 
-                  <input type="radio" name="type" value="1" class="radio-fine" data-pg-hidden> 
+                  <input type="radio" name="type" value="intervention" class="radio-fine" data-pg-hidden> 
                   <div class="pg-empty-placeholder radio-mark"></div>                   
                 </div>                 
               </div>               
             </div>             
-          </header>           
-          <div class="report-item card card-sm max-width-800"> 
+          </header>
+          <div class="pg-empty-placeholder" id="resultPane"></div>           
+          <div class="report-item card card-sm max-width-800 create-report-details" data-pg-collapsed> 
             <div class="form-wrapper" data-pg-collapsed> 
               <label>Give it a title </label>               
               <input class="form-element" type="text" name="title" required placeholder="e.g Power outage for over 3 weeks around Aba market"> 
@@ -113,7 +117,7 @@
               <label>Tell us 
                 <ins>all</ins> about it 
               </label>               
-              <textarea class="form-element" name="details" required name="details"></textarea>               
+              <textarea class="form-element" name="comment" required></textarea>               
             </div>             
           </div>           
           <div class="report-item card card-sm max-width-800"> 
@@ -126,20 +130,20 @@
               <div class="column-md-6 column column-xs-6" data-pg-name="column-md-6" data-pg-collapsed> 
                 <div class="form-wrapper" data-pg-collapsed> 
                   <label>Latitude</label>                   
-                  <input class="form-element" type="tel" name="lat" required> 
+                  <input class="form-element" type="tel" name="latitude" required> 
                 </div>                 
               </div>               
               <div class="column-md-6 column column-xs-6" data-pg-name="column-md-6" data-pg-collapsed> 
                 <div class="form-wrapper" data-pg-collapsed> 
                   <label>Longitude</label>                   
-                  <input class="form-element" type="tel" name="long" required> 
+                  <input class="form-element" type="tel" name="longitude" required> 
                 </div>                 
               </div>               
             </div>             
           </div>           
           <div class="report-item card card-sm max-width-800"> 
             <h2 class="report-box-title">Media</h2> 
-            <p>If you can, add images and videos to support your claim. (Max. 15MB per file)</p> 
+            <p>If you can, add images and videos to support your claim. (Max. 2MB per image, 50MB per video)</p> 
             <div class="file-upload" data-pg-collapsed>Click here to add files
               <br> 
               <small>(Images and Videos ONLY)</small> 
@@ -147,8 +151,11 @@
             </div>             
             <small class="file-upload-text"> </small> 
           </div>           
-          <div class="btn-wrapper text-right max-width-800"> 
-            <button class="btn-brand btn-lg" type="submit">Submit report</button>             
+          <div class="btn-wrapper max-width-800"> 
+            <button class="btn-brand btn-250 btn-submit" type="submit"> 
+              <span>Submit Report</span> 
+              <img src="assets/images/resources/loader-light.gif" width="12" class="hidden"> 
+            </button>             
           </div>           
         </div>         
       </form>       
@@ -161,6 +168,8 @@
     </footer>     
     <!-- Placed at the end of the document so the pages load faster -->     
     <script src="assets/js/wigi.js" type="text/javascript"></script>     
+    <script src="assets/js/dialog.js" type="text/javascript"></script>     
     <script src="assets/js/common.js" type="text/javascript"></script>     
+    <script src="assets/js/create-report.js" type="text/javascript"></script>     
   </body>   
 </html>
