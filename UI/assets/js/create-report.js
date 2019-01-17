@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars, no-undef */
 const images = [];
 const videos = [];
+let reportID = null;
 
 function submitReport(form) {
   const param = new FormData(form);
@@ -19,7 +20,12 @@ function submitReport(form) {
 
     queryAPI(url, 'POST', param, (json) => {
       if (json.status === CONSTANTS.STATUS.CREATED) {
-        goto(CONSTANTS.PAGE.USER_DASHBOARD);
+        Select('form').addClass('hidden');
+        Select('.upload-wrapper').removeClass('hidden');
+        Select('.heading').scroll();
+        const { id, message } = json.data[0];
+        Dialog.showNotification(message);
+        reportID = id;
       } else {
         const { error } = json;
         Dialog.showMessageDialog('', error, 'error');

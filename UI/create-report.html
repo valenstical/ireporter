@@ -82,9 +82,9 @@
             </div>             
           </div>           
         </div>         
-      </section>       
-      <form onsubmit="return submitReport(this)" novalidate> 
-        <div class="wrapper" data-pg-name="Wrapper"> 
+      </section>
+      <div class="wrapper" data-pg-name="Wrapper"> 
+        <form onsubmit="return submitReport(this)" novalidate data-pg-collapsed data-pg-hidden class="hidden">
           <header class="page-title max-width-800 report-type" data-pg-collapsed> 
             <h2 class="report-box-title">Report Type</h2> 
             <p>Is this incident linked to <ins>corruption</ins> or just an issue that needs government <ins>intervention</ins> ?</p> 
@@ -106,8 +106,8 @@
                 </div>                 
               </div>               
             </div>             
-          </header>           
-          <div class="pg-empty-placeholder max-width-800" id="resultPane"></div>           
+          </header>
+          <div class="pg-empty-placeholder max-width-800" id="resultPane"></div>
           <div class="report-item card card-sm max-width-800 create-report-details" data-pg-collapsed> 
             <div class="form-wrapper" data-pg-collapsed> 
               <label>Give it a title </label>               
@@ -119,8 +119,8 @@
               </label>               
               <textarea class="form-element" name="comment" required></textarea>               
             </div>             
-          </div>           
-          <div class="report-item card card-sm max-width-800"> 
+          </div>
+          <div class="report-item card card-sm max-width-800" data-pg-collapsed> 
             <header class="header-create" data-pg-collapsed> 
               <h2 class="report-box-title">Location</h2> 
               <p>Where did this happen? Enter the latitude/longitude. You can use <a href="https://maps.google.com" target="_blank">Google Map</a> for help.</p> 
@@ -140,25 +140,40 @@
                 </div>                 
               </div>               
             </div>             
-          </div>           
-          <div class="report-item card card-sm max-width-800"> 
-            <h2 class="report-box-title">Media</h2> 
-            <p>If you can, add images and videos to support your claim. (Max. 2MB per image, 50MB per video)</p> 
-            <div class="file-upload" data-pg-collapsed>Click here to add files
-              <br> 
-              <small>(Images and Videos ONLY)</small> 
-              <input type="file" onchange="displayFileName(this.value)" accept="image/*, video/*" multiple> 
-            </div>             
-            <small class="file-upload-text"> </small> 
-          </div>           
-          <div class="btn-wrapper max-width-800"> 
+          </div>
+          <div class="btn-wrapper max-width-800" data-pg-collapsed> 
             <button class="btn-brand btn-250 btn-submit" type="submit"> 
               <span>Submit Report</span> 
               <img src="assets/images/resources/loader-light.gif" width="12" class="hidden"> 
             </button>             
           </div>           
+        </form>
+        <div class="upload-wrapper" data-pg-name="Upload Wrapper">
+          <header class="page-title max-width-800 report-type" data-pg-collapsed> 
+            <h2 class="report-box-title">Support your claim (optional)</h2>
+            <p>You may add images and videos to support your claim. (Max. 2MB per image, 50MB per video). You may <a href="user-dashboard.html">skip</a> and do this later.</p> 
+          </header>
+          <div class="max-width-800 incident-summary-box" data-pg-collapsed>              
+            <div class="report-item card card-sm"> 
+              <div class="profile-img"> 
+                <div class="profile-img-reports" style="background-image:url(http://localhost:3000/images/profile/639774467.jpg)"></div>
+              </div>               
+              <div class="report-item-content"> 
+                <h5>James</h5> 
+                <span class="report-item-date"><i class="fa fa-calendar"></i> Just now</span> 
+                <span class="badge-citizen badge-status status-badge-draft"><i class="fa fa-file-text-o"></i>Pending</span> 
+                <h6>Bags of Ghana must go with money in my neighbour's room<i class="fa fa-flag flag" title="Red flag report involving corruption"></i></h6> 
+                <p>Where did this happen? Enter the latitude/longitude. You can use </p> 
+                <div id="v505555213" class="collapse"></div>
+                <a onclick="getDetails(event,4)" class="report-item-link" href="#v505555213" data-text-less="Hide details" data-text-more="Show details">Show details <i class="fa fa-angle-double-right"></i></a>
+              </div>               
+            </div>
+          </div>
+          <div class="btn-wrapper max-width-800 text-right" data-pg-collapsed> 
+            <a class="btn-brand btn-submit btn-secondary" href="user-dashboard.html">Skip <i class="fa fa-angle-double-right"></i> </a> 
+          </div>
         </div>         
-      </form>       
+      </div>       
     </section>     
     <footer class="footer" data-pg-collapsed> 
       <div class="wrapper" data-pg-name="Wrapper"> 

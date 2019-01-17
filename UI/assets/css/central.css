@@ -304,7 +304,8 @@ small
 
 .btn-secondary:hover
 {
-    color: white;
+    color: #009f8b;
+    background-color: rgba(8, 131, 115, 0.07);
 }
 
 .btn-wrapper-bordered
@@ -778,13 +779,12 @@ button
     display: block;
     padding: 10px 15px;
     white-space: nowrap;
-  -webkit-transition: all 300ms;
--moz-transition: all 300ms;
--ms-transition: all 300ms;
--o-transition: all 300ms;
-transition: all 300ms;
+    -webkit-transition: all 300ms;
+    -moz-transition: all 300ms;
+    -ms-transition: all 300ms;
+    -o-transition: all 300ms;
+    transition: all 300ms;
 }
-
 
 .toggle-menu .toggle-line
 {
