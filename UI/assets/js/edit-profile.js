@@ -57,18 +57,6 @@ function changePassword(form) {
   return false;
 }
 
-function isImage(type) {
-  const formats = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
-  return formats.indexOf(type.toLowerCase()) >= 0;
-}
-
-function isWithinRange(type, size) {
-  if (isImage(type)) {
-    return size <= 2 * 1024 * 1024;
-  }
-  return size <= 50 * 1024 * 1024;
-}
-
 function uploadProfile() {
   const element = document.querySelector('[name = "file"]');
   const file = element.files[0];

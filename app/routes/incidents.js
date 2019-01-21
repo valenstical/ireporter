@@ -63,4 +63,26 @@ router.patch('/:id/status',
   Validator.validateIncident,
   Controller.updateIncidentStatus);
 
+// PATCH: add image  to red-flag or intervention record
+router.patch('/:id/addImage',
+  Authenticator.authenticateUser,
+  Validator.valideteID,
+  Validator.validateRange,
+  Validator.validateIncident,
+  Validator.verifyStatus,
+  Validator.verifyFile,
+  Validator.validateImage,
+  Controller.uploadIncidentFile);
+
+// PATCH: add video  to red-flag or intervention record
+router.patch('/:id/addVideo',
+  Authenticator.authenticateUser,
+  Validator.valideteID,
+  Validator.validateRange,
+  Validator.validateIncident,
+  Validator.verifyStatus,
+  Validator.verifyFile,
+  Validator.validateVideo,
+  Controller.uploadIncidentFile);
+
 export default router;

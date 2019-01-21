@@ -82,15 +82,33 @@
             </div>             
           </div>           
         </div>         
-      </section>
-      <div class="wrapper" data-pg-name="Wrapper"> 
-        <form onsubmit="return submitReport(this)" novalidate data-pg-collapsed data-pg-hidden class="hidden">
-          <header class="page-title max-width-800 report-type" data-pg-collapsed> 
-            <h2 class="report-box-title">Report Type</h2> 
-            <p>Is this incident linked to <ins>corruption</ins> or just an issue that needs government <ins>intervention</ins> ?</p> 
-            <div class="row" data-pg-name="Row"> 
+      </section>       
+      <div class="wrapper" data-pg-name="Wrapper">
+        <div class="max-width-800 indicator text-center" data-pg-collapsed>
+          <div>
+            <span class="active float-left">1</span>
+            <span class="float-right">2</span>
+          </div>
+        </div>         
+        <form onsubmit="return submitReport(this)" novalidate data-pg-collapsed class="hidden"> 
+          <div class="pg-empty-placeholder max-width-800" id="resultPane"></div>           
+          <div class="report-item card card-sm max-width-800 create-report-details" data-pg-collapsed> 
+            <div class="form-wrapper" data-pg-collapsed> 
+              <label>Title </label>               
+              <input class="form-element" type="text" name="title" required placeholder="e.g Power outage for over 3 weeks around Aba market"> 
+            </div>             
+            <div class="form-wrapper no-margin-btm" data-pg-collapsed> 
+              <label>Comment
+</label>               
+              <textarea class="form-element" name="comment" required placeholder="Write full details here"></textarea>               
+            </div>             
+          </div>
+          <div class="report-item card card-sm max-width-800 create-report-details padding-zero-btm" data-pg-collapsed> 
+            <h2 class="report-box-title">Report Type</h2>
+            <p>Is this incident linked to corruption or just an issue that needs government intervention ?</p>
+            <div class="row" data-pg-name="Row" data-pg-collapsed> 
               <div class="column column-md-6" data-pg-name="Column"> 
-                <div class="report-item card card-sm max-width-800 report-box" title="Red Flag Report"> 
+                <div class="report-item max-width-800 report-box card no-margin-btm" title="Red Flag Report" data-pg-collapsed> 
                   <h4>Corruption case <i class="fa fa-flag flag" title="Red Flag Report"></i></h4> 
                   <p>e.g. bribery, extortion, money laundering, e.t.c</p> 
                   <input type="radio" name="type" value="red-flag" data-pg-hidden class="radio-fine"> 
@@ -98,7 +116,7 @@
                 </div>                 
               </div>               
               <div class="column column-md-6" data-pg-name="Column"> 
-                <div class="report-item card card-sm max-width-800 report-box" title="Intervention Report"> 
+                <div class="report-item max-width-800 report-box card" title="Intervention Report" data-pg-collapsed> 
                   <h4>Intervention Case <i class="fa flag fa-bullhorn flag-intervention" title="Intervention Report"></i></h4> 
                   <p>e.g. bad road, collapsed bridge, flooding, e.t.c</p> 
                   <input type="radio" name="type" value="intervention" class="radio-fine" data-pg-hidden> 
@@ -106,24 +124,11 @@
                 </div>                 
               </div>               
             </div>             
-          </header>
-          <div class="pg-empty-placeholder max-width-800" id="resultPane"></div>
-          <div class="report-item card card-sm max-width-800 create-report-details" data-pg-collapsed> 
-            <div class="form-wrapper" data-pg-collapsed> 
-              <label>Give it a title </label>               
-              <input class="form-element" type="text" name="title" required placeholder="e.g Power outage for over 3 weeks around Aba market"> 
-            </div>             
-            <div class="form-wrapper" data-pg-collapsed> 
-              <label>Tell us 
-                <ins>all</ins> about it 
-              </label>               
-              <textarea class="form-element" name="comment" required></textarea>               
-            </div>             
           </div>
-          <div class="report-item card card-sm max-width-800" data-pg-collapsed> 
+          <div class="report-item card card-sm max-width-800 create-report-details padding-zero-btm" data-pg-collapsed> 
             <header class="header-create" data-pg-collapsed> 
               <h2 class="report-box-title">Location</h2> 
-              <p>Where did this happen? Enter the latitude/longitude. You can use <a href="https://maps.google.com" target="_blank">Google Map</a> for help.</p> 
+              <p>Where did this happen? Enter the latitude/longitude. You can use <a href="https://maps.google.com" target="_blank"><strong><ins>Google Map</ins></strong></a> for help.</p> 
               <p class="hidden">Where did this happen? Enter the latitude/longitude or simply use the marker to choose a location from the map</p> 
             </header>             
             <div class="row" data-pg-name="Row"> 
@@ -140,38 +145,33 @@
                 </div>                 
               </div>               
             </div>             
-          </div>
+          </div>           
           <div class="btn-wrapper max-width-800" data-pg-collapsed> 
             <button class="btn-brand btn-250 btn-submit" type="submit"> 
               <span>Submit Report</span> 
               <img src="assets/images/resources/loader-light.gif" width="12" class="hidden"> 
             </button>             
           </div>           
-        </form>
-        <div class="upload-wrapper" data-pg-name="Upload Wrapper">
+        </form>         
+        <div class="upload-wrapper" data-pg-name="Upload Wrapper"> 
           <header class="page-title max-width-800 report-type" data-pg-collapsed> 
-            <h2 class="report-box-title">Support your claim (optional)</h2>
-            <p>You may add images and videos to support your claim. (Max. 2MB per image, 50MB per video). You may <a href="user-dashboard.html">skip</a> and do this later.</p> 
-          </header>
-          <div class="max-width-800 incident-summary-box" data-pg-collapsed>              
-            <div class="report-item card card-sm"> 
-              <div class="profile-img"> 
-                <div class="profile-img-reports" style="background-image:url(http://localhost:3000/images/profile/639774467.jpg)"></div>
+</header>           
+          <div class="max-width-800 incident-summary-box"> 
+            <div class="report-item card card-sm max-width-800"> 
+              <h2 class="report-box-title">Support your claim (optional)</h2> 
+              <p data-pg-collapsed>You may add images and videos to support your claim. (Max. 2MB per image, 50MB per video). You will be able to edit this later.</p>
+              <div data-pg-name="Row" class="row upload-row">
+</div>
+              <div class="file-upload" data-pg-collapsed>Click here to add files
+                <br> 
+                <small>(Images and Videos ONLY)</small> 
+                <input type="file" onchange="uploadFile(this)" accept="image/*, video/*"> 
               </div>               
-              <div class="report-item-content"> 
-                <h5>James</h5> 
-                <span class="report-item-date"><i class="fa fa-calendar"></i> Just now</span> 
-                <span class="badge-citizen badge-status status-badge-draft"><i class="fa fa-file-text-o"></i>Pending</span> 
-                <h6>Bags of Ghana must go with money in my neighbour's room<i class="fa fa-flag flag" title="Red flag report involving corruption"></i></h6> 
-                <p>Where did this happen? Enter the latitude/longitude. You can use </p> 
-                <div id="v505555213" class="collapse"></div>
-                <a onclick="getDetails(event,4)" class="report-item-link" href="#v505555213" data-text-less="Hide details" data-text-more="Show details">Show details <i class="fa fa-angle-double-right"></i></a>
-              </div>               
-            </div>
-          </div>
+            </div>             
+          </div>           
           <div class="btn-wrapper max-width-800 text-right" data-pg-collapsed> 
-            <a class="btn-brand btn-submit btn-secondary" href="user-dashboard.html">Skip <i class="fa fa-angle-double-right"></i> </a> 
-          </div>
+            <a class="btn-brand btn-submit btn-250 btn-secondary btn-skip" href="user-dashboard.html">Skip <i class="fa fa-angle-double-right"></i> </a> 
+          </div>           
         </div>         
       </div>       
     </section>     
@@ -185,6 +185,7 @@
     <script src="assets/js/wigi.js" type="text/javascript"></script>     
     <script src="assets/js/dialog.js" type="text/javascript"></script>     
     <script src="assets/js/common.js" type="text/javascript"></script>     
+    <script src="assets/js/uploader.js" type="text/javascript"></script>     
     <script src="assets/js/create-report.js" type="text/javascript"></script>     
   </body>   
 </html>

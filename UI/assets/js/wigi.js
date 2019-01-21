@@ -279,6 +279,7 @@ function Wigi(selector) {
     this.loop((element) => {
       element.innerHTML = `${value}${element.innerHTML}`;
     });
+    return this.instance;
   };
   /**
      * Returns the last child of the first matched element
@@ -316,9 +317,17 @@ function Wigi(selector) {
    * Returns all children of the first matched element
    * @param {string} filter - The css selector
    */
-  this.children = (filter) => {
-    return new Wigi([...this.elements[0].querySelectorAll(filter || '*')]);
-  }
+  this.children = filter => new Wigi([...this.elements[0].querySelectorAll(filter || '*')]);
+
+  this.forEach = (callback) => {
+    this.loop((element) => {
+      if (typeof callback === 'function') {
+        callback(new Wigi(element));
+      }
+    });
+    return this.instance;
+  };
+
   return this;
 }
 

@@ -24,7 +24,7 @@ class Database {
         connection.release();
       }
     })().catch((ex) => {
-      // console.log(ex);
+       console.log(ex);
       if (typeof failure === 'function') {
         failure(ex);
       }
@@ -191,6 +191,18 @@ class Database {
   static updateProfileImage(user, echo) {
     const sql = 'update users set profile = $1 where id = $2 RETURNING *';
     Database.execute(sql, [user.profile, user.id], (result) => {
+      echo(result.rowCount > 0, result.rows[0]);
+    });
+  }
+
+  /**
+   * Adds a new image to the selected red-flag or intervention record
+   * @param {object} user - The user object
+   * @param {function} echo - Callback function on success
+   */
+  static addIncidentFile(path, id, type, echo) {
+    const sql = `update incidents set "${type}s" = array_cat("${type}s", $1) where id = $2`;
+    Database.execute(sql, [`{${path}}`, id], (result) => {
       echo(result.rowCount > 0, result.rows[0]);
     });
   }

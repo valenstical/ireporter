@@ -69,7 +69,7 @@ function getDetails(event, index) {
     const iframe = `<iframe class="map" allowfullscreen src="https://maps.google.com/maps?q=${location}&output=embed&hl=en;z=20"></iframe>`;
 
     Images.forEach((image) => {
-      const src = `${ROOT}/images/${image}`;
+      const src = `${ROOT}/${image}`;
       x += 1;
       mediaImages += `
       <div class="column column-md-4"> 
@@ -86,7 +86,7 @@ function getDetails(event, index) {
     Videos.forEach((video) => {
       // const src = `${ROOT}/videos/${video}`;
       mediaVideos += `
-      <video src = "${video}" controls preload="metadata"></video>
+      <video src = "${ROOT}/${video}" controls preload="metadata"></video>
        `;
     });
 

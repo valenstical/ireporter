@@ -317,6 +317,20 @@ class Validator {
     }
     next();
   }
+
+  /**
+   * Checks that a file is a video
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @param {function} next - The next function used to pass control to another middleware
+   */
+  static validateVideo(req, res, next) {
+    if (!req.file.isVideo()) {
+      error(res, Constants.STATUS_BAD_REQUEST, [Constants.MESSAGE_NOT_VIDEO]);
+      return;
+    }
+    next();
+  }
 }
 
 
