@@ -57,7 +57,7 @@ function updateReport() {
       videos.push(path);
     }
   });
-console.log(images, videos);
+ // TODO
 }
 
 function uploadFile(element) {

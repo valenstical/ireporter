@@ -197,12 +197,28 @@ class Database {
 
   /**
    * Adds a new image to the selected red-flag or intervention record
-   * @param {object} user - The user object
+   * @param {string} path - The relative file path generated
+   * @param {number} id - The red-flag or intervention unique ID
+   * @param {type}  type - The type of file (Image or Video)
    * @param {function} echo - Callback function on success
    */
   static addIncidentFile(path, id, type, echo) {
     const sql = `update incidents set "${type}s" = array_cat("${type}s", $1) where id = $2`;
     Database.execute(sql, [`{${path}}`, id], (result) => {
+      echo(result.rowCount > 0, result.rows[0]);
+    });
+  }
+
+  /**
+   * Updates the media of the selected red-flag or intervention record
+   * @param {string} images - A comma delimeted list of relative paths of images
+   * @param {string} videos - A comma delimeted list of relative paths of videos*
+   * @param {number} id - The red-flag or intervention unique ID
+   * @param {function} echo - Callback function on success
+   */
+  static updateIncidentFile(images, videos, id, echo) {
+    const sql = 'update incidents set "Images" =  $1, "Videos" = $2 where id = $3';
+    Database.execute(sql, [images, videos, id], (result) => {
       echo(result.rowCount > 0, result.rows[0]);
     });
   }
