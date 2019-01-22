@@ -69,7 +69,7 @@ function getDetails(event, index) {
     const iframe = `<iframe class="map" allowfullscreen src="https://maps.google.com/maps?q=${location}&output=embed&hl=en;z=20"></iframe>`;
 
     Images.forEach((image) => {
-      const src = `${ROOT}/images/${image}`;
+      const src = `${ROOT}/${image}`;
       x += 1;
       mediaImages += `
       <div class="column column-md-4"> 
@@ -84,9 +84,9 @@ function getDetails(event, index) {
     });
 
     Videos.forEach((video) => {
-     // const src = `${ROOT}/videos/${video}`;
+      // const src = `${ROOT}/videos/${video}`;
       mediaVideos += `
-      <video src = "${video}" controls preload="metadata"></video>
+      <video src = "${ROOT}/${video}" controls preload="metadata"></video>
        `;
     });
 
@@ -131,7 +131,7 @@ function getIncident(element, type) {
         ${getState(incident.state)}        
         ${getStatus(incident.status)} 
         <h6>${incident.title}${getFlag(incident.type)}</h6> 
-        <p>${incident.comment}</p> 
+        <p>${incident.comment.replace(/\n/gi, '<br>')}</p> 
         <div id="v${incident.id}" class="collapse"></div>
         <a onclick ="getDetails(event,${index})" class="report-item-link" href="#v${incident.id}" data-text-less='Hide details' data-text-more="Show details">Show details <i class="fa fa-angle-double-right"></i></a>
       </div>   

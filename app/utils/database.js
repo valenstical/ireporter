@@ -24,7 +24,7 @@ class Database {
         connection.release();
       }
     })().catch((ex) => {
-      // console.log(ex);
+       console.log(ex);
       if (typeof failure === 'function') {
         failure(ex);
       }
@@ -191,6 +191,33 @@ class Database {
   static updateProfileImage(user, echo) {
     const sql = 'update users set profile = $1 where id = $2 RETURNING *';
     Database.execute(sql, [user.profile, user.id], (result) => {
+      echo(result.rowCount > 0, result.rows[0]);
+    });
+  }
+
+  /**
+   * Adds a new image to the selected red-flag or intervention record
+   * @param {string} path - The relative file path generated
+   * @param {number} id - The red-flag or intervention unique ID
+   * @param {type}  type - The type of file (Image or Video)
+   * @param {function} echo - Callback function on success
+   */
+  static addIncidentFile(path, id, type, echo) {
+    const sql = `update incidents set "${type}s" = array_cat("${type}s", $1) where id = $2`;
+    Database.execute(sql, [`{${path}}`, id], (result) => {
+      echo(result.rowCount > 0, result.rows[0]);
+    });
+  }
+
+  /**
+   * Deletes the media of the selected red-flag or intervention record
+   * @param {string} path - The relative path of the image of video
+   * @param {number} id - The red-flag or intervention unique ID
+   * @param {function} echo - Callback function on success
+   */
+  static deleteMedia(path, id, echo) {
+    const sql = 'update incidents set "Images" = array_remove("Images", $1), "Videos" = array_remove("Videos", $2) where id = $3';
+    Database.execute(sql, [`${path}`, `${path}`, id], (result) => {
       echo(result.rowCount > 0, result.rows[0]);
     });
   }

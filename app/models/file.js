@@ -25,7 +25,7 @@ class File {
   }
 
   isVideo() {
-    return this.getExtension() === 'video/mp4';
+    return this.type.toLowerCase() === 'video/mp4';
   }
 
   getPath(directory) {

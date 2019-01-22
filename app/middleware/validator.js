@@ -156,6 +156,25 @@ class Validator {
   }
 
   /**
+   * Check that the media path is not empty or missing
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @param {function} next - The next function used to pass control to another middleware
+   */
+  static checkMedia(req, res, next) {
+    const { path } = req.body;
+    let type = path ? path.split('.') : [''];
+    type = type[type.length - 1];
+    type = type.toLowerCase();
+    if (!path || validator.isEmpty(path) || (type !== 'mp4' && ['jpg', 'jpeg', 'gif', 'png'].indexOf(type) === -1)) {
+      error(res, Constants.STATUS_BAD_REQUEST, [Constants.MESSAGE_NO_FILE]);
+      return;
+    }
+    req.body.type = type === 'mp4' ? 'Video' : 'Image';
+    next();
+  }
+
+  /**
    * Validates signup fields
    * @param {object} req - The request object
    * @param {object} res - The response object
@@ -313,6 +332,20 @@ class Validator {
   static validateImage(req, res, next) {
     if (!req.file.isImage()) {
       error(res, Constants.STATUS_BAD_REQUEST, [Constants.MESSAGE_NOT_IMAGE]);
+      return;
+    }
+    next();
+  }
+
+  /**
+   * Checks that a file is a video
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   * @param {function} next - The next function used to pass control to another middleware
+   */
+  static validateVideo(req, res, next) {
+    if (!req.file.isVideo()) {
+      error(res, Constants.STATUS_BAD_REQUEST, [Constants.MESSAGE_NOT_VIDEO]);
       return;
     }
     next();

@@ -54,7 +54,7 @@ const Constants = {
   MESSAGE_PASSWORD_CHANGED: 'Your password has been updated.',
   MESSAGE_IMAGE_UPLOADED: 'Image uploaded successfully',
   MESSAGE_VIDEO_UPLOADED: 'Video uploaded successfully',
-  MESSAGE_NO_FILE: 'Please choose a file to upload',
+  MESSAGE_NO_FILE: 'Please choose a file',
   MESSAGE_NOT_IMAGE: 'Please choose a valid image. Image can be jpeg, jpg, gif or png',
   MESSAGE_NOT_VIDEO: 'Please choose a valid video. Video must be in mp4 format',
   MESSAGE_IMAGE_TOO_LARGE: 'Image is too large. The image size should not exceed 2MB',
