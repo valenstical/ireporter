@@ -267,7 +267,11 @@ function Wigi(selector) {
    */
   this.append = (value) => {
     this.loop((element) => {
-      element.innerHTML = `${element.innerHTML}${value}`;
+      if (typeof value === 'string') {
+        element.innerHTML = `${element.innerHTML}${value}`;
+      } else {
+        element.appendChild(value);
+      }
     });
     return this.instance;
   };

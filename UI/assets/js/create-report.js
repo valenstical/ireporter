@@ -1,8 +1,5 @@
 /* eslint-disable no-unused-vars, no-undef */
-let images = [];
-let videos = [];
-let reportID = null;
-let panelID;
+let reportID;
 let url;
 let uploaded;
 
@@ -11,9 +8,6 @@ function submitReport(form) {
 
   if (param.get('type')) {
     param.append('location', `${param.get('latitude')},${param.get('longitude')}`);
-
-    param.append('Images', images.join(','));
-    param.append('Videos', videos.join(','));
 
     toggleLoader(form);
     Select('#resultPane').empty();
@@ -47,19 +41,6 @@ function submitReport(form) {
   return false;
 }
 
-function updateReport() {
-  images = []; videos = [];
-  Select('.upload-column .upload-item').forEach((element) => {
-    const path = element.prop('rel');
-    if (path.indexOf('images') === 0) {
-      images.push(path);
-    } else {
-      videos.push(path);
-    }
-  });
- // TODO
-}
-
 function uploadFile(element) {
   const file = new File(element.files[0]);
 
@@ -69,16 +50,10 @@ function uploadFile(element) {
     Dialog.showMessageDialog('File is too large!', 'File size must not exceed 2MB for images and 50MB for videos.', 'error');
   } else {
     file.init();
-    reportID = 998281344;
-    url = CONSTANTS.URL.RED_FLAGS;
-    const type = file.isVideo() ? 'addVideo' : 'addImage';
-    file.upload(`${url}/${reportID}/${type}`, (result) => {
+    file.upload(`${url}/${reportID}`, (result) => {
       Dialog.showNotification(result.message);
       if (!uploaded) {
-        Select('.btn-skip').removeClass('btn-secondary').html('Done <i class="fa fa-angle-double-right"></i>').click((e) => {
-          e.preventDefault();
-          updateReport();
-        });
+        Select('.btn-skip').removeClass('btn-secondary').html('Done <i class="fa fa-angle-double-right"></i>');
       }
       uploaded = true;
     });

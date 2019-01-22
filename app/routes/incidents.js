@@ -85,4 +85,14 @@ router.patch('/:id/addVideo',
   Validator.validateVideo,
   Controller.uploadIncidentFile);
 
+// DELETE: removes images and videos from a red-flag or intervention record
+router.delete('/:id/media',
+  Authenticator.authenticateUser,
+  Validator.valideteID,
+  Validator.validateRange,
+  Validator.validateIncident,
+  Validator.verifyStatus,
+  Validator.checkMedia,
+  Controller.deleteMedia);
+
 export default router;

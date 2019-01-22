@@ -130,6 +130,20 @@ class Controller {
       });
     });
   }
+
+  /**
+   * Deletes images and videos from a red-flag or intervention report
+   * @param {object} req - The request object
+   * @param {object} res - The response object
+   */
+  static deleteMedia(req, res) {
+    const { path, type } = req.body;
+    Database.deleteMedia(path, req.incident.id, () => {
+      fs.unlink(`./app/uploads/${path}`, () => {
+        success(res, Constants.STATUS_OK, [{ message: `Removed ${req.incident.type} ${type}` }]);
+      });
+    });
+  }
 }
 
 export default Controller;

@@ -1,6 +1,28 @@
+let closeButton;
 
-function removeFile(id) {
-  Select(`#${id}`).addClass('hide').removeClass('upload-column').empty();
+function removeFile(element) {
+  closeButton = element;
+  Dialog.showConfirmDialog('Confirmation Required', 'Are you sure you want to remove this media file from your report?', () => {
+    const btn = Select(closeButton);
+    let rel = btn.prop('rel');
+    rel = rel.split('*');
+    const path = rel[0];
+    const url = rel[1];
+    const data = new FormData();
+    data.append('path', path);
+
+    Select(closeButton).parent().parent().addClass('hide')
+      .removeClass('upload-column')
+      .empty();
+    queryAPI(`${url}/media`, 'DELETE', data, (json) => {
+      if (json.status === CONSTANTS.STATUS.OK) {
+        Dialog.showNotification(json.data[0].message);
+      } else {
+        const { error } = json;
+        Dialog.showNotification(error[0]);
+      }
+    });
+  });
 }
 
 class File {
@@ -34,28 +56,27 @@ class File {
     <div class="column column-xs-3 upload-column" id="${this.id}">
       <div class="upload-item">
         ${videoPanel}
-        <i class="fa fa-close hidden" onclick = 'removeFile("${this.id}")'></i>
+        <i class="fa fa-close hidden" onclick = removeFile(this)></i>
         <img src="assets/images/resources/loader-light.gif" />
       </div>
     </div>`);
   }
 
-  remove() {
-    Select(`#${this.id}`).addClass('hide');
-  }
-
   upload(url, success, failure) {
     const data = new FormData();
+    const type = this.isVideo() ? 'addVideo' : 'addImage';
     data.append('file', this.file);
-    queryAPI(url, 'PATCH', data, (json) => {
+    queryAPI(`${url}/${type}`, 'PATCH', data, (json) => {
       if (json.status === CONSTANTS.STATUS.OK) {
         if (success) { success(json.data[0]); }
+        const { path } = json.data[0];
         Select(`#${this.id}`).child('img').addClass('hidden');
-        Select(`#${this.id}`).child('.fa').removeClass('hidden');
+        Select(`#${this.id}`).child('.fa').removeClass('hidden')
+          .prop('rel', `${path}*${url}`);
         if (this.isVideo()) {
-          Select(`#${this.id} .upload-item`).prop('rel', json.data[0].path).child('video').prop('src', `${ROOT}/${json.data[0].path}`);
+          Select(`#${this.id} .upload-item`).prop('rel', path).child('video').prop('src', `${ROOT}/${path}`);
         } else {
-          Select(`#${this.id} .upload-item`).prop('style', `background-image:url(${ROOT}/${json.data[0].path})`).prop('rel', json.data[0].path);
+          Select(`#${this.id} .upload-item`).prop('style', `background-image:url(${ROOT}/${path})`).prop('rel', path);
         }
       } else {
         if (failure) { failure(); }

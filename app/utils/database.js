@@ -210,15 +210,14 @@ class Database {
   }
 
   /**
-   * Updates the media of the selected red-flag or intervention record
-   * @param {string} images - A comma delimeted list of relative paths of images
-   * @param {string} videos - A comma delimeted list of relative paths of videos*
+   * Deletes the media of the selected red-flag or intervention record
+   * @param {string} path - The relative path of the image of video
    * @param {number} id - The red-flag or intervention unique ID
    * @param {function} echo - Callback function on success
    */
-  static updateIncidentFile(images, videos, id, echo) {
-    const sql = 'update incidents set "Images" =  $1, "Videos" = $2 where id = $3';
-    Database.execute(sql, [images, videos, id], (result) => {
+  static deleteMedia(path, id, echo) {
+    const sql = 'update incidents set "Images" = array_remove("Images", $1), "Videos" = array_remove("Videos", $2) where id = $3';
+    Database.execute(sql, [`${path}`, `${path}`, id], (result) => {
       echo(result.rowCount > 0, result.rows[0]);
     });
   }
