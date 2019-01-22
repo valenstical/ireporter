@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-const ROOT = 'https://ireporter-nigeria.herokuapp.com';
+ const ROOT = 'https://ireporter-nigeria.herokuapp.com';
 
 // const ROOT = 'http://localhost:3000';
 let menuHidable = true;
@@ -194,6 +194,22 @@ function echo(title, response) {
 </div>`;
   Select('#resultPane').html(result);
   return result;
+}
+
+function isImage(type) {
+  const formats = ['image/jpg', 'image/jpeg', 'image/png', 'image/gif'];
+  return formats.indexOf(type.toLowerCase()) >= 0;
+}
+
+function isVideo(type) {
+  return type.toLowerCase() === 'video/mp4';
+}
+
+function isWithinRange(type, size) {
+  if (isImage(type)) {
+    return size <= 2 * 1024 * 1024;
+  }
+  return size <= 50 * 1024 * 1024;
 }
 
 /**

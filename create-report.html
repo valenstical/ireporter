@@ -7,7 +7,7 @@
     <meta name="description" content="Easily report cases of corruption to the appropriate authorities. Users can also report on things that needs government intervention."> 
     <meta name="author" content="Okosun Valentine Ejodamen <valenstical@gmail.com>"> 
     <title>Create Report|iReporter-Easily report cases of corruption and areas that needs government intervention|Andela Developer Challenge</title>     
-    <link href="assets/images/icons/icon.png" rel="icon" type="image/png">                               
+    <link href="assets/images/icons/icon.png" rel="icon" type="image/png"> 
     <meta name="theme-color" content="#009f8b"> 
     <script src="assets/js/authenticate.js" data-pg-hidden></script>     
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->     
@@ -15,12 +15,12 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->     
-    <link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/central.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/dialog.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/form.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/user.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/reports-card.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css"> 
+    <link href="assets/css/central.css" rel="stylesheet" type="text/css"> 
+    <link href="assets/css/dialog.css" rel="stylesheet" type="text/css"> 
+    <link href="assets/css/form.css" rel="stylesheet" type="text/css"> 
+    <link href="assets/css/user.css" rel="stylesheet" type="text/css"> 
+    <link href="assets/css/reports-card.css" rel="stylesheet" type="text/css"> 
   </head>   
   <body class="bg-grey"> 
     <nav class="navigation" data-pg-name="Navigation Bar" data-pg-collapsed> 
@@ -75,22 +75,40 @@
     </nav>     
     <section class="login-wrapper top-space account-wrapper" data-pg-name="Dashboard"> 
       <section class="heading" data-pg-collapsed> 
-        <div class="wrapper" data-pg-name="Wrapper">
-          <div class="max-width-800">
+        <div class="wrapper" data-pg-name="Wrapper"> 
+          <div class="max-width-800"> 
             <div class="bread"> 
               <h1>Report an Incident</h1> 
-            </div>
+            </div>             
           </div>           
         </div>         
       </section>       
-      <form onsubmit="return submitReport(this)" novalidate> 
-        <div class="wrapper" data-pg-name="Wrapper"> 
-          <header class="page-title max-width-800 report-type" data-pg-collapsed> 
-            <h2 class="report-box-title">Report Type</h2> 
-            <p>Is this incident linked to <ins>corruption</ins> or just an issue that needs government <ins>intervention</ins> ?</p> 
-            <div class="row" data-pg-name="Row"> 
+      <div class="wrapper" data-pg-name="Wrapper">
+        <div class="max-width-800 indicator text-center" data-pg-collapsed>
+          <div>
+            <span class="active float-left">1</span>
+            <span class="float-right">2</span>
+          </div>
+        </div>         
+        <form onsubmit="return submitReport(this)" novalidate data-pg-collapsed> 
+          <div class="pg-empty-placeholder max-width-800" id="resultPane"></div>           
+          <div class="report-item card card-sm max-width-800 create-report-details" data-pg-collapsed> 
+            <div class="form-wrapper" data-pg-collapsed> 
+              <label>Title </label>               
+              <input class="form-element" type="text" name="title" required placeholder="e.g Power outage for over 3 weeks around Aba market"> 
+            </div>             
+            <div class="form-wrapper no-margin-btm" data-pg-collapsed> 
+              <label>Comment
+</label>               
+              <textarea class="form-element" name="comment" required placeholder="Write full details here"></textarea>               
+            </div>             
+          </div>
+          <div class="report-item card card-sm max-width-800 create-report-details padding-zero-btm" data-pg-collapsed> 
+            <h2 class="report-box-title">Report Type</h2>
+            <p>Is this incident linked to corruption or just an issue that needs government intervention ?</p>
+            <div class="row" data-pg-name="Row" data-pg-collapsed> 
               <div class="column column-md-6" data-pg-name="Column"> 
-                <div class="report-item card card-sm max-width-800 report-box" title="Red Flag Report"> 
+                <div class="report-item max-width-800 report-box card no-margin-btm" title="Red Flag Report" data-pg-collapsed> 
                   <h4>Corruption case <i class="fa fa-flag flag" title="Red Flag Report"></i></h4> 
                   <p>e.g. bribery, extortion, money laundering, e.t.c</p> 
                   <input type="radio" name="type" value="red-flag" data-pg-hidden class="radio-fine"> 
@@ -98,7 +116,7 @@
                 </div>                 
               </div>               
               <div class="column column-md-6" data-pg-name="Column"> 
-                <div class="report-item card card-sm max-width-800 report-box" title="Intervention Report"> 
+                <div class="report-item max-width-800 report-box card" title="Intervention Report" data-pg-collapsed> 
                   <h4>Intervention Case <i class="fa flag fa-bullhorn flag-intervention" title="Intervention Report"></i></h4> 
                   <p>e.g. bad road, collapsed bridge, flooding, e.t.c</p> 
                   <input type="radio" name="type" value="intervention" class="radio-fine" data-pg-hidden> 
@@ -106,24 +124,11 @@
                 </div>                 
               </div>               
             </div>             
-          </header>
-          <div class="max-width-800" id="resultPane"></div>           
-          <div class="report-item card card-sm max-width-800 create-report-details" data-pg-collapsed> 
-            <div class="form-wrapper" data-pg-collapsed> 
-              <label>Give it a title </label>               
-              <input class="form-element" type="text" name="title" required placeholder="e.g Power outage for over 3 weeks around Aba market"> 
-            </div>             
-            <div class="form-wrapper" data-pg-collapsed> 
-              <label>Tell us 
-                <ins>all</ins> about it 
-              </label>               
-              <textarea class="form-element" name="comment" required></textarea>               
-            </div>             
-          </div>           
-          <div class="report-item card card-sm max-width-800"> 
+          </div>
+          <div class="report-item card card-sm max-width-800 create-report-details padding-zero-btm" data-pg-collapsed> 
             <header class="header-create" data-pg-collapsed> 
               <h2 class="report-box-title">Location</h2> 
-              <p>Where did this happen? Enter the latitude/longitude. You can use <a href="https://maps.google.com" target="_blank">Google Map</a> for help.</p> 
+              <p>Where did this happen? Enter the latitude/longitude. You can use <a href="https://maps.google.com" target="_blank"><strong><ins>Google Map</ins></strong></a> for help.</p> 
               <p class="hidden">Where did this happen? Enter the latitude/longitude or simply use the marker to choose a location from the map</p> 
             </header>             
             <div class="row" data-pg-name="Row"> 
@@ -141,24 +146,34 @@
               </div>               
             </div>             
           </div>           
-          <div class="report-item card card-sm max-width-800"> 
-            <h2 class="report-box-title">Media</h2> 
-            <p>If you can, add images and videos to support your claim. (Max. 2MB per image, 50MB per video)</p> 
-            <div class="file-upload" data-pg-collapsed>Click here to add files
-              <br> 
-              <small>(Images and Videos ONLY)</small> 
-              <input type="file" onchange="displayFileName(this.value)" accept="image/*, video/*" multiple> 
-            </div>             
-            <small class="file-upload-text"> </small> 
-          </div>           
-          <div class="btn-wrapper max-width-800"> 
+          <div class="btn-wrapper max-width-800" data-pg-collapsed> 
             <button class="btn-brand btn-250 btn-submit" type="submit"> 
               <span>Submit Report</span> 
               <img src="assets/images/resources/loader-light.gif" width="12" class="hidden"> 
             </button>             
           </div>           
+        </form>         
+        <div class="upload-wrapper hidden" data-pg-name="Upload Wrapper"> 
+          <header class="page-title max-width-800 report-type" data-pg-collapsed> 
+</header>           
+          <div class="max-width-800 incident-summary-box"> 
+            <div class="report-item card card-sm max-width-800"> 
+              <h2 class="report-box-title">Support your claim (optional)</h2> 
+              <p data-pg-collapsed>You may add images and videos to support your claim. (Max. 2MB per image, 50MB per video). You will be able to edit this later.</p>
+              <div data-pg-name="Row" class="row upload-row">
+</div>
+              <div class="file-upload" data-pg-collapsed>Click here to add files
+                <br> 
+                <small>(Images and Videos ONLY)</small> 
+                <input type="file" onchange="uploadFile(this)" accept="image/*, video/*"> 
+              </div>               
+            </div>             
+          </div>           
+          <div class="btn-wrapper max-width-800 text-right" data-pg-collapsed> 
+            <a class="btn-brand btn-submit btn-250 btn-secondary btn-skip" href="user-dashboard.html">Skip <i class="fa fa-angle-double-right"></i> </a> 
+          </div>           
         </div>         
-      </form>       
+      </div>       
     </section>     
     <footer class="footer" data-pg-collapsed> 
       <div class="wrapper" data-pg-name="Wrapper"> 
@@ -170,6 +185,7 @@
     <script src="assets/js/wigi.js" type="text/javascript"></script>     
     <script src="assets/js/dialog.js" type="text/javascript"></script>     
     <script src="assets/js/common.js" type="text/javascript"></script>     
+    <script src="assets/js/uploader.js" type="text/javascript"></script>     
     <script src="assets/js/create-report.js" type="text/javascript"></script>     
   </body>   
 </html>
