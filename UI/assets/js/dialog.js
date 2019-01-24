@@ -116,9 +116,9 @@ class Dialog {
     notification.show();
   }
 
-  static showMessageDialog(title, message, type = 'info', disposable = true) {
+  static showMessageDialog(title, message, type = 'info', disposable = true, postiveButtonText = 'Ok', onsuccess = null) {
     const pop = new Pop({
-      title, message, disposable, type,
+      title, message, disposable, type, postiveButtonText, onsuccess,
     });
     pop.show();
   }

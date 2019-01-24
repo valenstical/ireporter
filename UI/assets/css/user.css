@@ -568,3 +568,14 @@
     margin-top: 30px;
 }
 
+.link-back
+{
+    color: inherit;
+    display: inline-block;
+    text-align: center;
+    width: 40px;
+    font-size: 22px;
+  opacity:0.9;
+}
+
+

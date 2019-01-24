@@ -206,7 +206,6 @@ body
     transition: all 300ms;
 }
 
-
 .navigation li .btn-brand
 {
     color: white;
@@ -372,8 +371,9 @@ h6
 .disabled, [disabled]
 {
     cursor: not-allowed;
-    opacity: 0.5;
+    opacity: 0.8;
 }
+
 
 .disabled:hover, [disabled]:hover
 {

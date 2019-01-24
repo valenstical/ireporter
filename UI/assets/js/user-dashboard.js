@@ -45,7 +45,7 @@ function getUpdate(incident) {
   <a data-toggle onclick="showToggleMenu(event)"><i class="fa fa-ellipsis-h"></i></a> 
   <ul class="toggle-menu"> 
     <li data-pg-name="Menu Item"> 
-      <a onclick="editIncident(this, ${incident.id}, '${incident.type}')"><i class="fa fa-edit"></i>Edit</a> 
+      <a href="edit-report.html?q=${incident.id}&type=${incident.type}"><i class="fa fa-edit"></i>Edit</a> 
     </li>
     <li data-pg-name="Menu Item" class="toggle-line">        
 </li>

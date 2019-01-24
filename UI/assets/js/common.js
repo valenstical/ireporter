@@ -234,7 +234,9 @@ function queryAPI(url, method, param, success, error, lastly) {
       if (error) {
         error(err);
       } else {
-        Dialog.showMessageDialog('Connection Problem!', CONSTANTS.MESSAGE.ERROR.toString());
+        Dialog.showMessageDialog('Connection Problem!', CONSTANTS.MESSAGE.ERROR.toString(), 'info', true, 'Refresh page', () => {
+          window.location.reload();
+        });
       }
     })
     .finally(() => {

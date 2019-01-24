@@ -466,3 +466,9 @@ video
     padding-bottom: 0px;
 }
 
+.report-box-title + p
+{
+    margin-bottom: 30px;
+    margin-top: 3px;
+}
+
