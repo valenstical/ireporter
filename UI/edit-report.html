@@ -129,7 +129,7 @@
               </div>               
             </div>             
           </div>
-          <form class="report-item card card-sm max-width-800 create-report-details" data-pg-collapsed novalidate onsubmit="return updateComment(this)"> 
+          <form class="report-item card card-sm max-width-800 create-report-details" data-pg-collapsed novalidate onsubmit="return update(this, 'comment')"> 
             <div class="form-wrapper" data-pg-collapsed> 
               <label>Title </label>               
               <input class="form-element" type="text" name="title" required placeholder="e.g Power outage for over 3 weeks around Aba market"> 
@@ -146,7 +146,7 @@
               </button>               
             </div>             
           </form>           
-          <form class="report-item card card-sm max-width-800 create-report-details" novalidate onsubmit="return updateLocation(this)"> 
+          <form class="report-item card card-sm max-width-800 create-report-details" novalidate onsubmit="return update(this, 'location')"> 
             <header class="header-create" data-pg-collapsed> 
               <h2 class="report-box-title">Location</h2> 
               <p>Where did this happen? Enter the latitude/longitude. You can use <a href="https://maps.google.com" target="_blank"><strong><ins>Google Map</ins></strong></a> for help.</p> 

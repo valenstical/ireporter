@@ -2,10 +2,10 @@ let incident;
 const url = type === CONSTANTS.INCIDENT.RED_FLAG ? CONSTANTS.URL.RED_FLAGS
   : CONSTANTS.URL.INTERVENTIONS;
 
-function updateComment(form) {
+function update(form, suffix) {
   const data = new FormData(form);
   toggleLoader(form);
-  queryAPI(`${url}/${reportID}/comment`, 'PATCH', data, (json) => {
+  queryAPI(`${url}/${reportID}/${suffix}`, 'PATCH', data, (json) => {
     if (json.status === CONSTANTS.STATUS.OK) {
       Dialog.showNotification(json.data[0].message);
     } else {
