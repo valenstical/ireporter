@@ -374,7 +374,6 @@ h6
     opacity: 0.8;
 }
 
-
 .disabled:hover, [disabled]:hover
 {
     transform: none;

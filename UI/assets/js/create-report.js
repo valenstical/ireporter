@@ -43,21 +43,12 @@ function submitReport(form) {
 
 function uploadFile(element) {
   const file = new File(element.files[0]);
-
-  if (!(file.isImage() || file.isVideo())) {
-    Dialog.showMessageDialog('Invalid File!', 'Please choose a valid image or video.', 'error');
-  } else if (!file.isWithinRange()) {
-    Dialog.showMessageDialog('File is too large!', 'File size must not exceed 2MB for images and 50MB for videos.', 'error');
-  } else {
-    file.init();
-    file.upload(`${url}/${reportID}`, (result) => {
-      Dialog.showNotification(result.message);
-      if (!uploaded) {
-        Select('.btn-skip').removeClass('btn-secondary').html('Done <i class="fa fa-angle-double-right"></i>');
-      }
-      uploaded = true;
-    });
-  }
+  file.process(url, reportID, () => {
+    if (!uploaded) {
+      Select('.btn-skip').removeClass('btn-secondary').html('Done <i class="fa fa-angle-double-right"></i>');
+    }
+    uploaded = true;
+  });
 }
 
 init();

@@ -24,19 +24,35 @@ function updateLocation(form) {
   return false;
 }
 
+function uploadFile(element) {
+  const file = new File(element.files[0]);
+  file.process(url, reportID);
+}
 
-queryAPI(`${url}/${reportID}`, 'GET', null, (json) => {
-  const data = json.data[0];
-  incident = data;
-  const location = incident.location.split(',');
+function populate() {
+  queryAPI(`${url}/${reportID}`, 'GET', null, (json) => {
+    const data = json.data[0];
+    incident = data;
+    const location = incident.location.split(',');
+    let file;
 
-  Select(`[value = "${incident.type}"]`).prop('checked', true);
-  Select('[name = "title"]').val(incident.title);
-  Select('[name = "comment"]').val(incident.comment);
-  Select('[name = "latitude"]').val(location[0]);
-  Select('[name = "longitude"]').val(location[1]);
-  Select('body').removeClass('busy');
-});
+    Select(`[value = "${incident.type}"]`).prop('checked', true);
+    Select('[name = "title"]').val(incident.title);
+    Select('[name = "comment"]').val(incident.comment);
+    Select('[name = "latitude"]').val(location[0]);
+    Select('[name = "longitude"]').val(location[1]);
 
+    incident.Videos.concat(incident.Images).forEach((path) => {
+      const type = File.toMimeType(path);
+      file = new File({
+        type,
+      });
+      file.init();
+      file.load(path, `${url}/${reportID}`);
+    });
+    Select('body').removeClass('busy');
+  });
+}
 
 init();
+populate();

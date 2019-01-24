@@ -21,7 +21,7 @@ const Common = {
   },
 
   sleep: () => {
-    const time = new Date(new Date().getTime() + (2000));
+    const time = new Date(new Date().getTime() + (0));
     while (time > new Date()) { /* TODO */ }
   },
 };

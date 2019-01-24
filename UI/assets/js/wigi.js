@@ -167,7 +167,7 @@ function Wigi(selector) {
     return result.join('&');
   };
   /**
-   * Scroll the page smoothly into the view of the first matched elements
+   * Scroll the page smoothly to the top of the page
    */
   this.scroll = () => {
     this.elements[0].scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' });
@@ -175,7 +175,7 @@ function Wigi(selector) {
   };
 
   /**
-   * Scroll the page into the view of the first matched elements
+   * Scroll the page into the view of the first matched element
    */
   this.scrollToElement = (smooth = true) => {
     const rTop = this.elements[0].getBoundingClientRect().top;

@@ -150,7 +150,7 @@ function getIncident(element, type) {
       Select('#investigating').html(investigating);
       Select('#resolved').html(resolved);
       Select('#rejected').html(rejected);
-      Select('.round-info').html(`Showing all ${total} ${report} reports.`);
+      Select('.round-info').html(`Found ${total} ${report} report${total === 1 ? '' : 's'}.`);
 
       Select('.empty-result').prop('style', 'display:none');
       Select('.full-result').prop('style', 'display:block');
