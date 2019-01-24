@@ -21,6 +21,11 @@ class User {
     return data ? JSON.parse(data) : null;
   }
 
+  static isAdmin() {
+    const user = User.getUser();
+    return user.isAdmin;
+  }
+
   /**
    * Save the JWT authorization token in local storage
    * @param {string} token - The JWT authorization token
@@ -126,7 +131,6 @@ function goto(page) {
  */
 function logout() {
   User.logout();
-  goto(CONSTANTS.PAGE.LOGIN);
 }
 
 /**

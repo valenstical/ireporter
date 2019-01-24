@@ -81,8 +81,8 @@
                 </li>                 
                 <li data-pg-name="Menu Item" class="toggle-line"> 
 </li>                 
-                <li data-pg-collapsed data-pg-name="Menu Item"> 
-                  <a onclick="logout()" class="transition"><i class="fa fa-power-off"></i>Logout</a> 
+                <li data-pg-name="Menu Item"> 
+                  <a onclick="logout()" class="transition" href="sign-in.html"><i class="fa fa-power-off"></i>Logout</a> 
                 </li>                 
               </ul>               
             </li>             
@@ -119,7 +119,7 @@
                   <div class="pg-empty-placeholder radio-mark"></div>                   
                 </div>                 
               </div>               
-              <div class="column column-md-6" data-pg-name="Column">
+              <div class="column column-md-6" data-pg-name="Column"> 
                 <div class="report-item max-width-800 report-box card disabled" title="Intervention Report"> 
                   <h4>Intervention Case <i class="fa flag fa-bullhorn flag-intervention" title="Intervention Report"></i></h4> 
                   <p>e.g. bad road, collapsed bridge, flooding, e.t.c</p> 
@@ -128,7 +128,7 @@
                 </div>                 
               </div>               
             </div>             
-          </div>
+          </div>           
           <form class="report-item card card-sm max-width-800 create-report-details" data-pg-collapsed novalidate onsubmit="return update(this, 'comment')" id="commentBox"> 
             <div class="form-wrapper" data-pg-collapsed> 
               <label>Title </label>               
@@ -138,7 +138,7 @@
               <label>Comment
 </label>               
               <textarea class="form-element" name="comment" required placeholder="Write full details here"></textarea>               
-            </div>
+            </div>             
             <div class="btn-wrapper max-width-800" data-pg-collapsed> 
               <button class="btn-brand btn-submit" type="submit"> 
                 <span>Save changes</span> 
@@ -165,7 +165,7 @@
                   <input class="form-element" type="tel" name="longitude" required> 
                 </div>                 
               </div>               
-            </div>
+            </div>             
             <div class="btn-wrapper max-width-800" data-pg-collapsed> 
               <button class="btn-brand btn-submit" type="submit"> 
                 <span>Save changes</span> 
@@ -190,7 +190,7 @@
               </div>               
             </div>             
           </div>           
-        </div>
+        </div>         
         <div class="btn-wrapper max-width-800"> 
           <a class="btn-brand btn-submit btn-secondary btn-250" href="user-dashboard.html">Done  </a> 
         </div>         
@@ -198,7 +198,7 @@
     </main>     
     <footer class="footer" data-pg-collapsed> 
       <div class="wrapper" data-pg-name="Wrapper"> 
-        <p class="float-right" data-pg-collapsed><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a><a href="admin-login.html">Admin</a></p> 
+        <p class="float-right" data-pg-collapsed><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a><a href="admin-dashboard.html">Admin</a></p> 
         <p class="float-left">&copy; 2019 iReporter.</p> 
       </div>       
     </footer>     
