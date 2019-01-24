@@ -23,35 +23,7 @@
     <![endif]-->     
   </head>   
   <body class="bg-grey"> 
-    <aside class="dialog dialog-xs" data-pg-name="Dialog" id="dialogStatus" data-pg-collapsed> 
-      <div class="pg-empty-placeholder dialog-overlay" data-pg-name="Dialog Overlay"></div>       
-      <form class="dialog-content transition-fast" data-pg-name="Dialog Content" onsubmit="return changeStatus()"> 
-        <div class="dialog-header" data-pg-name="Dialog Header" data-pg-collapsed> 
-          <h4 class="dialong-title" data-pg-name="Dialong Title"><a class="dispose close" data-pg-collapsed><i class="fa fa-remove"></i></a>Change Status</h4> 
-        </div>         
-        <div class="dialog-body" data-pg-name="Dialog Body"> 
-          <div data-pg-collapsed> 
-            <label> 
-              <input type="radio" name="status" value="0" checked="checked"> Under Investigation
-            </label>             
-          </div>           
-          <div data-pg-collapsed> 
-            <label> 
-              <input type="radio" name="status" value="1"> Rejected
-            </label>             
-          </div>           
-          <div data-pg-collapsed> 
-            <label> 
-              <input type="radio" name="status" value="2"> Resolved
-            </label>             
-          </div>           
-        </div>         
-        <div class="dialog-footer" data-pg-name="Dialog Footer"> 
-          <button class="btn-brand" type="submit">Submit</button>           
-        </div>         
-      </form>       
-    </aside>     
-    <aside class="dialog" data-pg-name="Dialog" id="dialogDetails" data-pg-collapsed> 
+    <aside class="dialog hidden" data-pg-name="Dialog" id="dialogDetails" data-pg-collapsed data-pg-hidden> 
       <div class="pg-empty-placeholder dialog-overlay" data-pg-name="Dialog Overlay"></div>       
       <div class="dialog-content transition-fast" data-pg-name="Dialog Content"> 
         <div class="dialog-header" data-pg-name="Dialog Header"> 
@@ -100,20 +72,20 @@
           <i class="fa fa-flag flag" title="Red flag report involving corruption"></i> 
         </div>         
       </div>       
-    </aside>     
+    </aside>          
     <nav class="navigation" data-pg-name="Navigation Bar" data-pg-collapsed> 
       <div class="wrapper" data-pg-name="Wrapper"> 
         <div class="clear-float"> 
           <a class="nav-brand text-brand float-left" href="index.html" target="_blank">iReporter</a> 
           <ul class="nav-section float-right nav-shown nav-hidden transition" data-pg-name="Nav Section" data-pg-collapsed id="nav-section" onmouseenter="setMenuHidable(false)" onmouseleave="setMenuHidable(true)"> 
             <li data-pg-name="Nav Item"> 
-              <a href="admin-reports.html">Reports</a> 
-            </li>
+              <a href="admin-dashboard.html">Reports</a> 
+            </li>             
             <li data-pg-name="Nav Item"> 
-              <a href="reports.html">Users</a> 
-            </li>
+              <a href="users.html">Users</a> 
+            </li>             
             <li data-pg-name="Nav Item"> 
-              <a href="admin-login.html">Logout</a> 
+              <a href="admin-login.html" onclick="logout(true)">Logout</a> 
             </li>             
           </ul>           
           <button class="menu-bar" onclick="toggleMenu()" onblur="hideMenu()" data-pg-collapsed> 
@@ -137,25 +109,25 @@
               <div class="column column-xs-3" data-pg-name="Column" data-pg-collapsed> 
                 <div class="card card-sm summary"> 
                   <i class="fa fa-file-text-o bg-status-draft"></i> 
-                  <p><span>Pending</span>164</p> 
+                  <p>164<span>Pending</span></p> 
                 </div>                 
               </div>               
               <div class="column column-xs-3" data-pg-name="Column" data-pg-collapsed> 
                 <div class="card card-sm summary"> 
                   <i class="fa bg-status-pending fa-info"></i> 
-                  <p><span title="Investigating">Investigating</span>47</p> 
+                  <p>47<span title="Investigating">Investigating</span></p> 
                 </div>                 
               </div>               
               <div class="column column-xs-3" data-pg-name="Column" data-pg-collapsed> 
                 <div class="card card-sm summary"> 
                   <i class="fa bg-status-resolved fa-check"></i> 
-                  <p><span>Resolved</span> 40</p> 
+                  <p>40<span>Resolved</span></p> 
                 </div>                 
               </div>               
               <div class="column column-xs-3" data-pg-name="Column" data-pg-collapsed> 
                 <div class="card card-sm summary"> 
                   <i class="fa bg-status-rejected fa-remove"></i> 
-                  <p><span>Rejected</span>29</p> 
+                  <p>29<span>Rejected</span></p> 
                 </div>                 
               </div>               
             </div>             
@@ -313,7 +285,7 @@
     </section>     
     <footer class="footer" data-pg-collapsed> 
       <div class="wrapper" data-pg-name="Wrapper"> 
-        <p class="float-right" data-pg-collapsed><a href="terms.html">Terms &amp; Conditions</a><a href="privacy-policy.html">Privacy Policy</a><a href="admin-login.html">Admin</a></p> 
+        <p class="float-right" data-pg-collapsed><a href="terms.html">Terms &amp; Conditions</a><a href="privacy-policy.html">Privacy Policy</a><a href="user-dashboard.html">Reporters</a></p> 
         <p class="float-left">&copy; 2019 iReporter.</p> 
       </div>       
     </footer>     
