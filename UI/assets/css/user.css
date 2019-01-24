@@ -575,7 +575,31 @@
     text-align: center;
     width: 40px;
     font-size: 22px;
-  opacity:0.9;
+    opacity: 0.9;
+}
+
+.btn-floating
+{
+    position: fixed;
+    right: 20px;
+    bottom: 30px;
+    padding: 10px 0px 0px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    font-size: 23px;
+    z-index: 110;
+    box-shadow: 5px 10px 25px rgba(0,0,0,0.5);
+}
+
+.busy .btn-floating
+{
+    transform: scale(0,0);
+}
+
+.btn-floating:hover .fa
+{
+  transform:rotate(360deg);
 }
 
 

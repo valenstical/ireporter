@@ -23,14 +23,14 @@
     <![endif]-->     
   </head>   
   <body class="bg-grey"> 
-    <nav class="navigation" data-pg-name="Navigation Bar"> 
+    <nav class="navigation" data-pg-name="Navigation Bar" data-pg-collapsed> 
       <div class="wrapper" data-pg-name="Wrapper"> 
         <div class="clear-float"> 
           <a href="index.html" class="nav-brand text-brand float-left">iReporter</a> 
           <ul class="nav-section float-right nav-shown nav-hidden transition" data-pg-name="Nav Section" id="nav-section" onmouseenter="setMenuHidable(false)" onmouseleave="setMenuHidable(true)" data-pg-collapsed> 
             <li data-pg-name="Nav Item" class="toggle toggle-pointer" data-pg-collapsed> 
               <a class="nav-profile" data-toggle> 
-                <div class="nav-profile-img user-image"></div>
+                <div class="nav-profile-img user-image"></div>                 
                 <span id="userFirstName"></span> 
                 <span data-pg-collapsed><i class="fa fa-chevron-down"></i></span> 
               </a>               
@@ -73,7 +73,7 @@
         </div>         
       </div>       
     </nav>     
-    <main class="login-wrapper top-space account-wrapper relative" data-pg-name="Dashboard"> 
+    <main class="login-wrapper top-space account-wrapper relative" data-pg-name="Dashboard" data-pg-collapsed> 
       <section class="tab-pane heading" data-pg-collapsed> 
         <div class="wrapper" data-pg-name="Wrapper"> 
           <div class="tab"> 
@@ -131,7 +131,8 @@
           </div>           
         </div>         
       </section>       
-    </main>     
+    </main>
+    <a href="create-report.html" class="btn-brand btn-floating" title="Create a new report"><i class="fa fa-plus transition"></i></a> 
     <footer class="footer" data-pg-collapsed> 
       <div class="wrapper" data-pg-name="Wrapper"> 
         <p class="float-right" data-pg-collapsed><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a><a href="admin-login.html">Admin</a></p> 
