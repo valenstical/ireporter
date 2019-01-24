@@ -12,8 +12,7 @@ function removeFile(element) {
     data.append('path', path);
 
     Select(closeButton).parent().parent().addClass('hide')
-      .removeClass('upload-column')
-      .empty();
+      .removeClass('upload-column');
     queryAPI(`${url}/media`, 'DELETE', data, (json) => {
       if (json.status === CONSTANTS.STATUS.OK) {
         Dialog.showNotification(json.data[0].message);
@@ -32,6 +31,16 @@ class File {
     this.type = file.type;
     this.name = file.name;
     this.id = `d${new Date().getTime()}`;
+  }
+
+  static toMimeType(path) {
+    let type = path ? path.split('.') : [''];
+    type = type[type.length - 1];
+    type = type.toLowerCase();
+    const mimes = {
+      jpg: 'image/jpg', jpeg: 'image/jpeg', png: 'image/png', gif: 'image/gif', mp4: 'video/mp4',
+    };
+    return mimes[type];
   }
 
   isImage() {
@@ -70,14 +79,7 @@ class File {
       if (json.status === CONSTANTS.STATUS.OK) {
         if (success) { success(json.data[0]); }
         const { path } = json.data[0];
-        Select(`#${this.id}`).child('img').addClass('hidden');
-        Select(`#${this.id}`).child('.fa').removeClass('hidden')
-          .prop('rel', `${path}*${url}`);
-        if (this.isVideo()) {
-          Select(`#${this.id} .upload-item`).prop('rel', path).child('video').prop('src', `${ROOT}/${path}`);
-        } else {
-          Select(`#${this.id} .upload-item`).prop('style', `background-image:url(${ROOT}/${path})`).prop('rel', path);
-        }
+        this.load(path, url);
       } else {
         if (failure) { failure(); }
         const { error } = json;
@@ -88,5 +90,30 @@ class File {
       Dialog.showNotification('File upload failed. Can not connect to server.');
       Select(`#${this.id}`).addClass('hide');
     }, () => {});
+  }
+
+  load(path, url) {
+    Select(`#${this.id}`).child('img').addClass('hidden');
+    Select(`#${this.id}`).child('.fa').removeClass('hidden')
+      .prop('rel', `${path}*${url}`);
+    if (this.isVideo()) {
+      Select(`#${this.id} .upload-item`).prop('rel', path).child('video').prop('src', `${ROOT}/${path}`);
+    } else {
+      Select(`#${this.id} .upload-item`).prop('style', `background-image:url(${ROOT}/${path})`).prop('rel', path);
+    }
+  }
+
+  process(url, reportID, callback) {
+    if (!(this.isImage() || this.isVideo())) {
+      Dialog.showMessageDialog('Invalid File!', 'Please choose a valid image or video.', 'error');
+    } else if (!this.isWithinRange()) {
+      Dialog.showMessageDialog('File is too large!', 'File size must not exceed 2MB for images and 50MB for videos.', 'error');
+    } else {
+      this.init();
+      this.upload(`${url}/${reportID}`, (result) => {
+        Dialog.showNotification(result.message);
+        if (callback) { callback(); }
+      });
+    }
   }
 }

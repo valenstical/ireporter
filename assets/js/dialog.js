@@ -111,14 +111,14 @@ class Dialog {
     `);
   }
 
-  static showNotification(text, danger = true, callback) {
-    const notification = new Notification(text, danger, callback);
+  static showNotification(text, success = true, callback) {
+    const notification = new Notification(text, success, callback);
     notification.show();
   }
 
-  static showMessageDialog(title, message, type = 'info', disposable = true) {
+  static showMessageDialog(title, message, type = 'info', disposable = true, postiveButtonText = 'Ok', onsuccess = null) {
     const pop = new Pop({
-      title, message, disposable, type,
+      title, message, disposable, type, postiveButtonText, onsuccess,
     });
     pop.show();
   }
