@@ -111,8 +111,8 @@ class Dialog {
     `);
   }
 
-  static showNotification(text, danger = true, callback) {
-    const notification = new Notification(text, danger, callback);
+  static showNotification(text, success = true, callback) {
+    const notification = new Notification(text, success, callback);
     notification.show();
   }
 
