@@ -55,6 +55,7 @@
     right: 0px;
     top: 0px;
     bottom: 0px;
+  padding: 20px;
     z-index: 3000;
     width: 100%;
     height: 100%;
@@ -80,7 +81,7 @@
     max-width: 480px;
     border-radius: 5px;
     text-align: center;
-    padding: 20px;
+    padding: 35px 20px 25px 20px;
     position: relative;
     overflow: hidden;
     margin-left: auto;
@@ -253,5 +254,23 @@
 {
     margin-bottom: 0px;
     font-size: inherit;
+}
+.pop-inner.success .fa, .pop-inner.success .pop-inner-circle, .pop-inner.success .pop-inner {
+	color: #00b19e;
+	border: 2px solid;
+	padding: 10px;
+	border-radius: 100%;
+	font-size: 50px;
+	position: relative;
+}
+.pop-inner.success .fa::after {
+	content: "";
+	position: absolute;
+	border: 2px dashed;
+	top: -10px;
+	right: -10px;
+	bottom: -10px;
+	left: -10px;
+	border-radius: 100%;
 }
 

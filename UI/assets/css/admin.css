@@ -19,6 +19,7 @@
 .table td
 {
     padding: 10px;
+    font-size: 13px;
     font-weight: bold;
     color: #82828d;
 }
@@ -64,7 +65,7 @@
     overflow-x: auto;
     padding-bottom: 10px;
     margin-top: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .table-wrapper td,
@@ -106,6 +107,7 @@
     position: relative;
     font-size: 13px;
     margin-left: 5px;
+    font-weight: bold;
 }
 
 .tab a.active
@@ -155,8 +157,8 @@
     .tab a,
     .tab button
     {
-        font-size: inherit;
         margin-left: 10px;
+        font-size: 14px;
     }
 }
 
@@ -164,6 +166,7 @@
 {
     position: static;
     margin-right: 5px;
+    display: none;
 }
 
 .heading a
@@ -175,5 +178,94 @@
 .heading
 {
     margin-bottom: 40px;
+}
+
+.badge
+{
+}
+
+.status
+{
+    position: relative;
+    color: rgba(255, 255, 255, 0.87);
+    padding: 1px 10px 8px;
+    border-radius: 2px;
+    font-size: 12px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.status img
+{
+    position: relative;
+    top: 5px;
+    margin-left: 7px;
+    opacity: 0.8;
+    transition: inherit;
+}
+
+@media (min-width:600px)
+{
+    .table td
+    {
+        font-size: 13px;
+    }
+}
+
+.status:hover, .status:hover img
+{
+    opacity: 1;
+    color: white;
+}
+
+.table .toggle-menu
+{
+    top: 20px;
+    min-width: 130px;
+    right: -2px;
+}
+
+.table .toggle-menu .fa
+{
+    position: absolute;
+    left: 10px;
+    top: 13px;
+}
+
+.table .toggle-menu li
+{
+    padding: 10px 20px 10px 30px;
+    text-align: left;
+}
+
+.table .toggle-menu .toggle-line
+{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.table  .toggle-menu li:hover
+{
+    color: #009f8b;
+}
+
+.table .table-pending
+{
+    opacity: 0.7;
+}
+
+.table .toggle
+{
+    top: 0px;
+}
+
+.z-index-hg
+{
+    z-index: 101;
+}
+
+.table .toggle-menu li:hover
+{
+    background-color: #F7F8FB;
 }
 
