@@ -10,6 +10,11 @@ router.get('/',
   Authenticator.authenticateUser,
   Controller.getAllIncidents);
 
+// GET: Get all intervention and red-flag record as admin
+router.get('/admin',
+  Authenticator.authenticateAdmin,
+  Controller.getAllIncidents);
+
 // GET: Get specific intervention or red-flag record
 router.get('/:id',
   Authenticator.authenticateUser,

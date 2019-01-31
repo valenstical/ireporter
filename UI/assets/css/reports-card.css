@@ -305,10 +305,11 @@ form .report-box p
     color: #141313;
 }
 
-.status-badge-draft, .status-badge-draft::before
+.status-badge-draft, .status-badge-draft::before, .status-badge-pending, .status-badge-pending::before
 {
     background-color: #302c2c;
 }
+
 
 .bg-status-resolved
 {

@@ -13,7 +13,7 @@ class Controller {
    */
   static getAllIncidents(req, res) {
     const { incident } = req;
-    incident.getAllIncidents(res);
+    incident.getAllIncidents(req, res);
   }
 
   /**

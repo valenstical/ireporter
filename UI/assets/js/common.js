@@ -270,6 +270,13 @@ function appendOverlay() {
   </div>`);
 }
 
+function hideAdmin() {
+  const user = User.getUser();
+  if (!user.isAdmin) {
+    Select('a[href="admin-dashboard.html"]').remove();
+  }
+}
+
 function ago(time, now) {
   const periods = ['second', 'minute', 'hour', 'day', 'week', 'month', 'year', 'decade'];
   const lengths = [60, 60, 24, 7, 4.35, 12, 10];
@@ -295,8 +302,9 @@ function ago(time, now) {
  * Setup the page
  */
 function init() {
-  showIcon();
   appendOverlay();
+  hideAdmin();
+  showIcon();
 }
 
 Select('[data-collapse]').click((event) => {

@@ -36,12 +36,11 @@ app.use('/api/v1/interventions', IncidentType.setIntervention, routerIncidents);
 // Handle routes to red-flag reports
 app.use('/api/v1/red-flags', IncidentType.setRedFlag, routerIncidents);
 
-// Handle routes to login
-app.use('/api/v1/auth/', routerAuth);
-
-
 // Handle routes to all reports
 app.use('/api/v1/incidents', IncidentType.setAll, routerIncidents);
+
+// Handle routes to login
+app.use('/api/v1/auth/', routerAuth);
 
 // Handle routes to edit users. IncidentType router seperates creating and updating user profile
 app.use('/api/v1/users', IncidentType.setAll, routerUser);

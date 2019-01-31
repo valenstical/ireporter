@@ -6,6 +6,9 @@
     text-align: left;
     font-size: 14px;
     border-collapse: collapse;
+    overflow-y: visible;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .table th
@@ -62,10 +65,12 @@
 
 .table-wrapper
 {
-    overflow-x: auto;
     padding-bottom: 10px;
     margin-top: 20px;
     margin-bottom: 30px;
+    overflow-x: auto;
+    overflow-y: visible;
+    position: static;
 }
 
 .table-wrapper td,
@@ -166,7 +171,7 @@
 {
     position: static;
     margin-right: 5px;
-    display: none;
+    opacity: 0.7;
 }
 
 .heading a
@@ -186,7 +191,6 @@
 
 .status
 {
-    position: relative;
     color: rgba(255, 255, 255, 0.87);
     padding: 1px 10px 8px;
     border-radius: 2px;
@@ -220,9 +224,13 @@
 
 .table .toggle-menu
 {
-    top: 20px;
     min-width: 130px;
-    right: -2px;
+    right: auto;
+    position: absolute;
+    left: auto;
+    top: auto;
+    bottom: auto;
+    z-index: 5;
 }
 
 .table .toggle-menu .fa
@@ -256,7 +264,7 @@
 
 .table .toggle
 {
-    top: 0px;
+    position: static;
 }
 
 .z-index-hg
@@ -267,5 +275,29 @@
 .table .toggle-menu li:hover
 {
     background-color: #F7F8FB;
+}
+
+.toggle select
+{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.table-overflow
+{
+    position: relative;
+    overflow: visible;
+    margin-bottom: 100px;
+}
+
+.profile-img-reports
+{
+    width: 35px;
+    height: 35px;
 }
 

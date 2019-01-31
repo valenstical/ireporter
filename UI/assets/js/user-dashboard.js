@@ -71,23 +71,23 @@ function getDetails(event, index) {
     Images.forEach((image) => {
       const src = `${ROOT}/${image}`;
       x += 1;
-      mediaImages += `
+      mediaImages = mediaImages.concat(`
       <div class="column column-md-4"> 
       <a href="${src}" class="media-item" target="_blank"> 
       <img src="${src}" alt ="${title}"/>
         <i class="fa fa-search-plus"></i> 
       </a>   
-     </div>`;
+     </div>`);
       if (x % 3 === 0) {
-        mediaImages += '<div class ="clear-float"></div>';
+        mediaImages = mediaImages.concat('<div class ="clear-float"></div>');
       }
     });
 
     Videos.forEach((video) => {
       // const src = `${ROOT}/videos/${video}`;
-      mediaVideos += `
+      mediaVideos = mediaVideos.concat(`
       <video src = "${ROOT}/${video}" controls preload="metadata"></video>
-       `;
+       `);
     });
 
     detailsPanel.html(`${iframe}${mediaVideos}<div class="row text-center">${mediaImages}</div>`).addClass('opened');
@@ -118,7 +118,7 @@ function getIncident(element, type) {
 
     json.data.forEach((incident) => {
       index += 1;
-      results += `
+      results = results.concat(`
      <div class = "reports-column">  
       <div class="report-item card card-sm"> 
       ${getUpdate(incident)}
@@ -137,7 +137,7 @@ function getIncident(element, type) {
       </div>   
     </div>
     </div>
-    `;
+    `);
     });
 
     if (json.data.length === 0) {
@@ -165,7 +165,7 @@ function deleteIncident(element, id, type) {
     Select('body').addClass('busy');
     let url = deleteType === CONSTANTS.INCIDENT.RED_FLAG ? CONSTANTS.URL.RED_FLAGS
       : CONSTANTS.URL.INTERVENTIONS;
-    url += `/${deleteID}`;
+    url = url.concat(`/${deleteID}`);
     queryAPI(url, 'DELETE', null, (json) => {
       if (json.status === CONSTANTS.STATUS.OK) {
         Select('.tab a.active').click();

@@ -332,6 +332,13 @@ function Wigi(selector) {
     return this.instance;
   };
 
+  this.remove = () => {
+    this.loop((element) => {
+      element.parentNode.removeChild(element);
+    });
+    return this.instance;
+  };
+
   return this;
 }
 
