@@ -235,6 +235,7 @@ function queryAPI(url, method, param, success, error, lastly) {
     success(json);
   })
     .catch((err) => {
+      // console.log(err);
       if (error) {
         error(err);
       } else {

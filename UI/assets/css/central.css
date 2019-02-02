@@ -1098,3 +1098,12 @@ section.tab-pane
     text-transform: capitalize;
 }
 
+.toggle li.disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
+.toggle .toggle-menu li.disabled:hover{
+    color:#77838f;
+    background-color: transparent;
+}

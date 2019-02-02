@@ -7,7 +7,7 @@
     <meta name="description" content="Easily report cases of corruption to the appropriate authorities. Users can also report on things that needs government intervention."> 
     <meta name="author" content="Okosun Valentine Ejodamen (valenstical@gmail.com)"> 
     <title>Reports|iReporter - Easily report cases of corruption and areas that needs government intervention|Andela Developer Challenge</title>     
-    <link href="assets/images/icons/icon.png" rel="icon" type="image/png">                               
+    <link href="assets/images/icons/icon.png" rel="icon" type="image/png"> 
     <meta name="theme-color" content="#009f8b"> 
     <script src="assets/js/authenticate-admin.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->     
@@ -134,10 +134,10 @@
           </header>
           <div class="card card-sm table-overflow"> 
             <header class="tab" data-pg-collapsed> 
-              <a onclick="getReports(this,0)" class="tab-pending transition active">Pending</a> 
-              <a onclick="getReports(this,1)" class="tab-investigating transition">Investigating</a> 
-              <a onclick="getReports(this,2)" lass="tab-resolved" class="transition tab-resolved">Resolved</a> 
-              <a onclick="getReports(this,3)" class="tab-rejected transition">Rejected</a> 
+              <a onclick="filterReport(this,'draft')" class="tab-pending transition active">Pending</a> 
+              <a onclick="filterReport(this,'under investigation')" class="tab-investigating transition">Investigating</a> 
+              <a onclick="filterReport(this,'resolved')" lass="tab-resolved" class="transition tab-resolved">Resolved</a> 
+              <a onclick="filterReport(this,'rejected')" class="tab-rejected transition">Rejected</a> 
             </header>             
             <div class="table-wrapper"> 
               <table class="table table-striped"> 
@@ -149,7 +149,7 @@
                     <th class="text-center">Status</th> 
                   </tr>                   
                 </thead>                 
-                <tbody id="reportsBody">                    
+                <tbody id="reportsBody"> 
 </tbody>                 
               </table>               
             </div>             
