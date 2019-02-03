@@ -17,7 +17,7 @@ function getDate(incidentDate) {
   return `${month} ${day < 10 ? '0'.concat(day) : day}, ${date.getFullYear()}`;
 }
 
-function getStatus(status) {
+function getStatus(status, index) {
   let text = status;
   let checkPending = ''; let checkInvestigating = '';
   let checkRejected = ''; let checkResolved = '';
@@ -43,15 +43,15 @@ function getStatus(status) {
       <i class="fa fa-${checkPending}square-o"></i>Pending  
     </li>
     <li class="toggle-line"></li>  
-    <li onclick="changeStatus(this,'under investigation')" class="transition"> 
+    <li onclick="changeStatus(this,'under investigation', ${index})" class="transition"> 
       <i class="fa fa-${checkInvestigating}square-o"></i>Investigating   
     </li>
     <li class="toggle-line"></li>
-    <li onclick="changeStatus(this,'resolved')" class="transition"> 
+    <li onclick="changeStatus(this,'resolved', ${index})" class="transition"> 
       <i class="fa fa-${checkResolved}square-o"></i>Resolved                             
     </li>
     <li class="toggle-line"></li>
-    <li onclick="changeStatus(this,'rejected')" class="transition"> 
+    <li onclick="changeStatus(this,'rejected', ${index})" class="transition"> 
       <i class="fa fa-${checkRejected}square-o"></i>Rejected                             
     </li>         
   </ul>
@@ -99,7 +99,7 @@ function populate(incident, index) {
     </div>     
   </td>   
   <td class="text-center">
-    ${getStatus(incident.status)}  
+    ${getStatus(incident.status, index)}  
   </td>   
 </tr>`);
 }
@@ -200,6 +200,10 @@ function getReportCard(incident) {
     </div>   
   </div>`;
   return details;
+}
+
+function changeStatus(element, status){
+  queryAPI()
 }
 
 function showReportDetails(index) {
