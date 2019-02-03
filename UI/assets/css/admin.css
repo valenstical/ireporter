@@ -302,3 +302,26 @@
     height: 35px;
 }
 
+.pop .report-item
+{
+    padding: 0px;
+    border: none;
+    box-shadow: none;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+@media (min-width:600px)
+{
+    .pop .report-item
+    {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+
+.pop-modal .pop-footer
+{
+    text-align: right;
+}
+

@@ -34,6 +34,7 @@
     font-weight: bold;
     font-size: 14px;
     margin-left: 70px;
+    text-transform: capitalize;
 }
 
 .report-item h6,
@@ -309,7 +310,6 @@ form .report-box p
 {
     background-color: #302c2c;
 }
-
 
 .bg-status-resolved
 {

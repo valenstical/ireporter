@@ -97,7 +97,7 @@ function getDetails(event, index) {
 }
 
 function getIncident(element, type) {
-  Select('.tab a').removeClass('active');
+  Select('.tab a.active').removeClass('active');
   Select(element).addClass('active');
 
   Select('body').addClass('busy');
