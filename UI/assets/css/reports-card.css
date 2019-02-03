@@ -34,6 +34,7 @@
     font-weight: bold;
     font-size: 14px;
     margin-left: 70px;
+    text-transform: capitalize;
 }
 
 .report-item h6,
@@ -278,15 +279,17 @@ form .report-box p
     color: inherit;
 }
 
-.status-badge-rejected
+.status-badge-rejected, .status-badge-rejected::before
 {
     background-color: #e14837;
+    color: #e14837;
 }
 
-.status-badge-investigating
+.status-badge-investigating, .status-badge-investigating::before
 {
     border-color: #ffc107;
     background-color: #f0ad4e;
+    color: #f0ad4e;
 }
 
 .status-badge-investigating .fa
@@ -303,7 +306,7 @@ form .report-box p
     color: #141313;
 }
 
-.status-badge-draft
+.status-badge-draft, .status-badge-draft::before, .status-badge-pending, .status-badge-pending::before
 {
     background-color: #302c2c;
 }
@@ -475,5 +478,11 @@ video
 .disabled .radio-fine:checked + div::before
 {
     opacity: 0.6;
+}
+
+.status-badge-resolved::before, .status-badge-resolved
+{
+    background-color: #00c9a7;
+    color: #00c9a7;
 }
 

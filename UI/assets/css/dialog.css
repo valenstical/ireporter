@@ -61,26 +61,25 @@
     background-color: rgba(0, 0, 0, 0.5);
     display: none;
     overflow-y: auto;
-    padding: 30px 15px;
 }
 
-.pop-shown
+.pop-dialog-shown, .pop-modal-shown
 {
     overflow: hidden;
 }
 
-.pop-shown .pop
+.pop-dialog-shown .pop-dialog, .pop-modal-shown .pop-modal
 {
     display: block;
 }
+
 
 .pop-inner
 {
     background-color: white;
     max-width: 480px;
     border-radius: 5px;
-    text-align: center;
-    padding: 20px;
+    padding: 35px 20px 25px 20px;
     position: relative;
     overflow: hidden;
     margin-left: auto;
@@ -88,16 +87,16 @@
     transition: all 200ms linear;
     transform: translateY(-300px);
     opacity: 0;
-    margin-bottom: 30px;
 }
 
 .pop-title
 {
     font-size: 26px;
     color: #201f1f;
+    text-align: center;
 }
 
-.pop .fa, .pop .pop-circle, .pop-inner
+.pop .pop-icon .fa, .pop .pop-circle, .pop-inner
 {
     color: #3085d6;
 }
@@ -116,9 +115,10 @@
     margin-top: 10px;
     line-height: 1.3em;
     font-size: 16px;
+    text-align: center;
 }
 
-.pop .pop-inner .fa
+.pop .pop-inner .pop-icon .fa
 {
     font-size: 80px;
     margin-bottom: 30px;
@@ -138,7 +138,7 @@
     display: none;
 }
 
-.pop-inner.success .fa, .pop-inner.success .pop-inner-circle, .pop-inner.success .pop-inner
+.pop-inner.success .pop-icon .fa, .pop-inner.success .pop-inner-circle, .pop-inner.success .pop-inner
 {
     color: #00b19e;
 }
@@ -148,6 +148,7 @@
     margin-top: 30px;
     padding-top: 20px;
     margin-bottom: -10px;
+    text-align: center;
 }
 
 .pop-footer .btn-brand
@@ -161,12 +162,12 @@
 
 .pop-backdrop
 {
-    position: fixed;
+    position: absolute;
     left: 0px;
-    right: 0px;
     top: 0px;
     bottom: 0px;
     cursor: default;
+    right: 0px;
 }
 
 .pop-showing
@@ -253,5 +254,82 @@
 {
     margin-bottom: 0px;
     font-size: inherit;
+}
+
+.pop-inner.success .pop-icon .fa, .pop-inner.success .pop-inner-circle, .pop-inner.success .pop-inner
+{
+    color: #00b19e;
+    border: 2px solid;
+    padding: 10px;
+    border-radius: 100%;
+    font-size: 50px;
+    position: relative;
+}
+
+.pop-inner.success .pop-icon .fa::after
+{
+    content: "";
+    position: absolute;
+    border: 2px dashed;
+    top: -10px;
+    right: -10px;
+    bottom: -10px;
+    left: -10px;
+    border-radius: 100%;
+}
+
+.pop-lg .pop-inner
+{
+    max-width: 760px;
+}
+
+.pop-icon
+{
+    text-align: center;
+}
+
+.pop-wrapper
+{
+    position: relative;
+    padding: 30px 7px;
+    min-height: 100vh;
+}
+
+.pop-modal
+{
+    z-index: 4000;
+    padding: 0px;
+    display: none;
+}
+
+@media (min-width:600px)
+{
+    .pop-wrapper
+    {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+}
+
+.close
+{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    padding: 5px;
+    color: rgba(222, 68, 55, 0.64);
+    z-index: 3;
+}
+
+.pop-footer-dashed
+{
+    border-top: 1px dashed rgba(0,0,0,0.2);
+}
+
+.pop-dialog .pop-wrapper
+{
+    padding-left: 15px;
+    padding-right: 15px;
 }
 

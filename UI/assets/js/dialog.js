@@ -11,9 +11,14 @@ function closeNotification(element, callback) {
   }, 300);
 }
 function closePop(callback) {
+  const isDialog = Select('.pop-inner.pop-showing').parent().parent().hasClass('pop-dialog');
   Select('.pop .pop-inner').removeClass('pop-showing');
   setTimeout(() => {
-    Select('body').removeClass('pop-shown');
+    if (isDialog) {
+      Select('body').removeClass('pop-dialog-shown');
+    } else {
+      Select('body').removeClass('pop-modal-shown');
+    }
     if (typeof callback === 'function') {
       callback();
     }
@@ -77,28 +82,32 @@ class Pop {
         <span>${item}</span>
       </li>`;
       });
-      this.message = `<ul class="fa-ul">${this.message}</ul>`;
+      this.message = `<div class="text-center"><ul class="fa-ul">${this.message}</ul></div>`;
     }
     this.disposeAction = this.disposable ? `onclick="closePop(${this.ondisposed})"` : '';
     this.template = `
-    <div class="pop-backdrop" ${this.disposeAction}></div>
-    <div class="pop-inner ${this.type}">
-      <div class="pop-circle"></div>
-      <i class="fa ${this.icon}"></i>
-      <h2 class="pop-title">${this.title}</h2>
-      <p class="pop-text">${this.message}</p>
-      <div class="pop-footer">
-        <button onclick ="closePop(${this.oncancel})" class="btn-brand btn-secondary${this.negetiveButton ? '' : ' hidden'}">${this.negetiveButtonText}</button>
-        <button class="btn-brand" onclick ="closePop(${this.onsuccess})">${this.postiveButtonText}</button>
+    <div class="pop-wrapper">
+      <div class="pop-backdrop" ${this.disposeAction}></div>
+      <div class="pop-inner ${this.type}">
+        <div class="pop-icon">
+        <i class="fa ${this.icon}"></i>
+        </div>
+        <h2 class="pop-title">${this.title}</h2>
+        <p class="pop-text">${this.message}</p>
+        <div class="pop-footer">
+          <button onclick ="closePop(${this.oncancel})" class="btn-brand btn-secondary${this.negetiveButton ? '' : ' hidden'}">${this.negetiveButtonText}</button>
+          <button class="btn-brand" onclick ="closePop(${this.onsuccess})">${this.postiveButtonText}</button>
+        </div>
       </div>
-  </div>`;
+    </div>
+  `;
   }
 
   show() {
-    Select('.pop').html(this.template);
-    Select('body').addClass('pop-shown');
+    Select('.pop-dialog').html(this.template);
+    Select('body').addClass('pop-dialog-shown');
     setTimeout(() => {
-      Select('.pop .pop-inner').addClass('pop-showing');
+      Select('.pop-dialog .pop-inner').addClass('pop-showing');
     }, 100);
   }
 }
@@ -107,7 +116,7 @@ class Dialog {
   static init() {
     Select('body').append(`
     <aside class="dialog-parent"></aside>
-    <aside class="pop"></aside>
+    <aside class="pop pop-dialog"></aside>
     `);
   }
 

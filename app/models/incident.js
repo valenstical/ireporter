@@ -39,17 +39,18 @@ class Incident {
   }
 
   /**
- * This is an helper function to get all incidents
+ * This is an helper function to get all incidents or a specific incident
  * @param {string} type - The type of incident (red-flag or intervention)
  * @param {object} req - The request object
  * @param {object} res - The repsonse object
  * @param {integer} id - The id of the selected incident
  */
-  getAllIncidents(res) {
-    const qry = !this.id ? '' : ' and incidents.id=$3';
+  getAllIncidents(req, res) {
+    let qry = !this.id ? '' : ' and incidents.id=$3';
+    qry = !req.isAdmin ? qry : ' or "createdBy" is not null';
     const extra = this.type === Constants.INCIDENT_TYPE_ALL ? ' or type is not null' : '';
     const params = !this.id ? [this.type, this.createdBy] : [this.type, this.createdBy, this.id];
-    Database.getIncidents(`type = $1${extra} and "createdBy" = $2${qry}`, params, (result) => {
+    Database.getIncidents(`type = $1${extra} and ("createdBy" = $2${qry})`, params, (result) => {
       success(res, Constants.STATUS_OK, result);
     });
   }
