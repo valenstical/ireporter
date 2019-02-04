@@ -18,7 +18,7 @@ function removeFile(element) {
         Dialog.showNotification(json.data[0].message);
       } else {
         const { error } = json;
-        Dialog.showNotification(error[0]);
+        Dialog.showNotification(error[0], true);
       }
     });
   });
@@ -83,11 +83,11 @@ class File {
       } else {
         if (failure) { failure(); }
         const { error } = json;
-        Dialog.showNotification(error[0]);
+        Dialog.showNotification(error[0], true);
         Select(`#${this.id}`).addClass('hide');
       }
     }, () => {
-      Dialog.showNotification('File upload failed. Can not connect to server.');
+      Dialog.showNotification('File upload failed. Can not connect to server.', true);
       Select(`#${this.id}`).addClass('hide');
     }, () => {});
   }

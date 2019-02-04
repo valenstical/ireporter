@@ -78,7 +78,7 @@ function uploadProfile() {
         showIcon();
       } else {
         const { error } = json;
-        Dialog.showNotification(error[0]);
+        Dialog.showNotification(error[0], 'error');
       }
     }, () => {
       Dialog.showMessageDialog('Oops!!', CONSTANTS.MESSAGE.ERROR, 'error');

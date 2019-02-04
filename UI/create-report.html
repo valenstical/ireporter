@@ -61,8 +61,8 @@
                 </li>                 
                 <li data-pg-name="Menu Item" class="toggle-line"> 
 </li>                 
-                <li data-pg-name="Menu Item">
-                  <a onclick="logout()" class="transition" href="sign-in.html"><i class="fa fa-power-off"></i>Logout</a>                    
+                <li data-pg-name="Menu Item"> 
+                  <a onclick="logout()" class="transition" href="sign-in.html"><i class="fa fa-power-off"></i>Logout</a> 
                 </li>                 
               </ul>               
             </li>             
@@ -92,15 +92,17 @@
         </div>         
         <form onsubmit="return submitReport(this)" novalidate data-pg-collapsed> 
           <div class="pg-empty-placeholder max-width-800" id="resultPane"></div>           
-          <div class="report-item card card-sm max-width-800 create-report-details" data-pg-collapsed> 
-            <div class="form-wrapper" data-pg-collapsed> 
-              <label>Title </label>               
-              <input class="form-element" type="text" name="title" required placeholder="e.g Power outage for over 3 weeks around Aba market"> 
+          <div class="report-item card card-sm max-width-800 create-report-details"> 
+            <div class="form-wrapper"> 
+              <label>Title </label>
+              <small class="text-helper">(e.g Power outage for over 3 weeks around Aba market)</small> 
+              <input class="form-element" type="text" name="title" required> 
             </div>             
-            <div class="form-wrapper no-margin-btm" data-pg-collapsed> 
+            <div class="form-wrapper no-margin-btm"> 
               <label>Comment
-</label>               
-              <textarea class="form-element" name="comment" required placeholder="Write full details here"></textarea>               
+</label>
+              <small class="text-helper">(Write full details here)</small> 
+              <textarea class="form-element" name="comment" required></textarea>               
             </div>             
           </div>           
           <div class="report-item card card-sm max-width-800 create-report-details padding-zero-btm" data-pg-collapsed> 
