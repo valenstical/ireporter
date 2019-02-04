@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
-const ROOT = 'https://ireporter-nigeria.herokuapp.com';
+// const ROOT = 'https://ireporter-nigeria.herokuapp.com';
 
-
+const ROOT = 'http://localhost:3000';
 let menuHidable = true;
 
 class User {
@@ -19,6 +19,11 @@ class User {
   static getUser() {
     const data = localStorage.getItem('user');
     return data ? JSON.parse(data) : null;
+  }
+
+  static isAdmin() {
+    const user = User.getUser();
+    return user.isAdmin;
   }
 
   /**
@@ -126,7 +131,6 @@ function goto(page) {
  */
 function logout() {
   User.logout();
-  goto(CONSTANTS.PAGE.LOGIN);
 }
 
 /**
@@ -231,6 +235,7 @@ function queryAPI(url, method, param, success, error, lastly) {
     success(json);
   })
     .catch((err) => {
+      // console.log(err);
       if (error) {
         error(err);
       } else {
@@ -266,6 +271,13 @@ function appendOverlay() {
   </div>`);
 }
 
+function hideAdmin() {
+  const user = User.getUser();
+  if (!user.isAdmin) {
+    Select('a[href="admin-dashboard.html"]').remove();
+  }
+}
+
 function ago(time, now) {
   const periods = ['second', 'minute', 'hour', 'day', 'week', 'month', 'year', 'decade'];
   const lengths = [60, 60, 24, 7, 4.35, 12, 10];
@@ -291,8 +303,9 @@ function ago(time, now) {
  * Setup the page
  */
 function init() {
-  showIcon();
   appendOverlay();
+  hideAdmin();
+  showIcon();
 }
 
 Select('[data-collapse]').click((event) => {

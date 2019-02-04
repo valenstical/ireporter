@@ -6,6 +6,9 @@
     text-align: left;
     font-size: 14px;
     border-collapse: collapse;
+    overflow-y: visible;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .table th
@@ -19,6 +22,7 @@
 .table td
 {
     padding: 10px;
+    font-size: 13px;
     font-weight: bold;
     color: #82828d;
 }
@@ -61,10 +65,12 @@
 
 .table-wrapper
 {
-    overflow-x: auto;
     padding-bottom: 10px;
     margin-top: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+    overflow-x: auto;
+    overflow-y: visible;
+    position: static;
 }
 
 .table-wrapper td,
@@ -106,6 +112,7 @@
     position: relative;
     font-size: 13px;
     margin-left: 5px;
+    font-weight: bold;
 }
 
 .tab a.active
@@ -155,8 +162,8 @@
     .tab a,
     .tab button
     {
-        font-size: inherit;
         margin-left: 10px;
+        font-size: 14px;
     }
 }
 
@@ -164,15 +171,157 @@
 {
     position: static;
     margin-right: 5px;
+    opacity: 0.7;
+    background-color: transparent;
 }
 
 .heading a
 {
     color: white;
+    margin-top: 10px;
 }
 
 .heading
 {
     margin-bottom: 40px;
+}
+
+.badge
+{
+}
+
+.status
+{
+    color: rgba(255, 255, 255, 0.87);
+    padding: 1px 10px 8px;
+    border-radius: 2px;
+    font-size: 12px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.status img
+{
+    position: relative;
+    top: 5px;
+    margin-left: 7px;
+    opacity: 0.8;
+    transition: inherit;
+}
+
+@media (min-width:600px)
+{
+    .table td
+    {
+        font-size: 13px;
+    }
+}
+
+.status:hover, .status:hover img
+{
+    opacity: 1;
+    color: white;
+}
+
+.table .toggle-menu
+{
+    min-width: 130px;
+    right: auto;
+    position: absolute;
+    left: auto;
+    top: auto;
+    bottom: auto;
+    z-index: 5;
+}
+
+.table .toggle-menu .fa
+{
+    position: absolute;
+    left: 10px;
+    top: 13px;
+}
+
+.table .toggle-menu li
+{
+    padding: 10px 20px 10px 30px;
+    text-align: left;
+}
+
+.table .toggle-menu .toggle-line
+{
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.table  .toggle-menu li:hover
+{
+    color: #009f8b;
+}
+
+.table .table-pending
+{
+    opacity: 0.7;
+}
+
+.table .toggle
+{
+    position: static;
+}
+
+.z-index-hg
+{
+    z-index: 101;
+}
+
+.table .toggle-menu li:hover
+{
+    background-color: #F7F8FB;
+}
+
+.toggle select
+{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.table-overflow
+{
+    position: relative;
+    overflow: visible;
+    margin-bottom: 100px;
+}
+
+.profile-img-reports
+{
+    width: 35px;
+    height: 35px;
+}
+
+.pop .report-item
+{
+    padding: 0px;
+    border: none;
+    box-shadow: none;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+@media (min-width:600px)
+{
+    .pop .report-item
+    {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+
+.pop-modal .pop-footer
+{
+    text-align: right;
 }
 

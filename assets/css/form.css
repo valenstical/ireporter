@@ -107,3 +107,10 @@ textarea.form-element
 {
 }
 
+.text-helper
+{
+    display: block;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+

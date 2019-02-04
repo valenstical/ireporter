@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <meta name="description" content="Easily report cases of corruption to the appropriate authorities. Users can also report on things that needs government intervention."> 
-    <meta name="author" content="Okosun Valentine Ejodamen <valenstical@gmail.com>"> 
-    <title>Sign in as Admin|iReporter - Easily report cases of corruption and areas that needs government intervention|Andela Developer Challenge</title>     
+    <meta name="author" content="Okosun Valentine Ejodamen (valenstical@gmail.com)"> 
+    <title>Sign in into your account|iReporter - Easily report cases of corruption and areas that needs government intervention|Andela Developer Challenge</title>     
+    <link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css"> 
     <link href="assets/images/icons/icon.png" rel="icon" type="image/png"> 
     <link href="assets/css/central.css" rel="stylesheet" type="text/css"> 
+    <link href="assets/css/dialog.css" rel="stylesheet" type="text/css"> 
     <link href="assets/css/form.css" rel="stylesheet" type="text/css"> 
     <link href="assets/css/login.css" rel="stylesheet" type="text/css"> 
-    <link href="assets/css/font-awesome.css" rel="stylesheet" type="text/css"> 
     <meta name="theme-color" content="#009f8b"> 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->     
     <!--[if lt IE 9]>
@@ -43,26 +44,40 @@
           </button>           
         </div>         
       </div>       
-    </nav>
-    <section class="how login-wrapper bg-grey top-space" data-pg-name="How it Works" data-pg-collapsed> 
+    </nav>     
+    <section class="how login-wrapper bg-grey top-space" data-pg-name="How it Works"> 
       <div class="wrapper" data-pg-name="Wrapper"> 
-        <form class="card login-form no-margin" onsubmit="return adminLogin()"> 
-          <h1 class="text-brand">Welcome Admin</h1> 
-          <p>Login to manage reports and user activities</p> 
+        <form class="card login-form" onsubmit="return login(this, true)" novalidate> 
+          <header class="form-header" data-pg-collapsed> 
+            <h1 class="text-brand">Welcome Admin</h1> 
+            <p>Login to manage reports and user activities</p> 
+          </header>           
+          <div id="resultPane"></div>           
           <div class="form-wrapper" data-pg-collapsed> 
-            <label>Username</label>             
-            <input class="form-element" type="email" name="email"> 
+            <label>Username, Email or Phone number</label>             
+            <input class="form-element" type="text" name="username" required> 
           </div>           
           <div class="form-wrapper" data-pg-collapsed> 
             <label>Password</label>             
-            <input class="form-element" type="password" name="password"> 
+            <input class="form-element" type="password" name="password" required> 
           </div>           
-          <button class="btn-brand" type="submit">Log In</button>           
+          <button class="btn-brand btn-submit" type="submit"> 
+            <span>Sign In</span> 
+            <img src="assets/images/resources/loader-light.gif" width="12" class="hidden"> 
+          </button>           
         </form>         
       </div>       
     </section>     
-    <!-- Placed at the end of the document so the pages load faster -->     
-    <script src="assets/js/domer.js" type="text/javascript"></script>     
-    <script src="assets/js/central.js" type="text/javascript"></script>     
+    <footer class="footer" data-pg-collapsed> 
+      <div class="wrapper" data-pg-name="Wrapper"> 
+        <p class="float-right" data-pg-collapsed><a href="#">Terms &amp; Conditions</a><a href="#">Privacy Policy</a><a href="admin-login.html">Admin</a></p> 
+        <p class="float-left">&copy; 2019 iReporter.</p> 
+      </div>       
+    </footer>     
+    <!-- Placed at the end of the document so the pages load faster -->    
+    <script src="assets/js/wigi.js" type="text/javascript"></script>     
+    <script src="assets/js/dialog.js" type="text/javascript"></script>     
+    <script src="assets/js/common.js" type="text/javascript"></script>     
+    <script src="assets/js/login.js" type="text/javascript"></script>     
   </body>   
 </html>
