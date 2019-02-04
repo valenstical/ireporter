@@ -10,6 +10,8 @@ import IncidentType from './middleware/incidentType';
 import routerAuth from './routes/auth';
 import routerUser from './routes/users';
 
+require('newrelic');
+
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || '3000';
