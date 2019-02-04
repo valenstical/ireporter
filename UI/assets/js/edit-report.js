@@ -10,10 +10,10 @@ function update(form, suffix) {
       Dialog.showNotification(json.data[0].message);
     } else {
       const { error } = json;
-      Dialog.showNotification(error.join('<br>'), false);
+      Dialog.showNotification(error.join('<br>'), true);
     }
   }, () => {
-    Dialog.showNotification(CONSTANTS.MESSAGE.ERROR);
+    Dialog.showNotification(CONSTANTS.MESSAGE.ERROR, true);
   }, () => {
     toggleLoader(form);
   });

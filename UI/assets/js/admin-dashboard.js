@@ -43,15 +43,15 @@ function getStatus(status, index) {
       <i class="fa fa-${checkPending}square-o"></i>Pending  
     </li>
     <li class="toggle-line"></li>  
-    <li onclick="changeStatus(this,'under investigation', ${index})" class="transition"> 
+    <li onclick="changeStatus(this,'${CONSTANTS.INCIDENT.INVESTIGATING}', ${index}, ${checkInvestigating === ''})" class="transition"> 
       <i class="fa fa-${checkInvestigating}square-o"></i>Investigating   
     </li>
     <li class="toggle-line"></li>
-    <li onclick="changeStatus(this,'resolved', ${index})" class="transition"> 
+    <li onclick="changeStatus(this,'${CONSTANTS.INCIDENT.RESOLVED}', ${index}, ${checkResolved === ''})" class="transition"> 
       <i class="fa fa-${checkResolved}square-o"></i>Resolved                             
     </li>
     <li class="toggle-line"></li>
-    <li onclick="changeStatus(this,'rejected', ${index})" class="transition"> 
+    <li onclick="changeStatus(this,'${CONSTANTS.INCIDENT.REJECTED}', ${index}, ${checkRejected === ''})" class="transition"> 
       <i class="fa fa-${checkRejected}square-o"></i>Rejected                             
     </li>         
   </ul>
@@ -99,7 +99,8 @@ function populate(incident, index) {
     </div>     
   </td>   
   <td class="text-center">
-    ${getStatus(incident.status, index)}  
+    ${getStatus(incident.status, index)} 
+    <img src="assets/images/resources/loader-double.gif" alt ="busy icon" height="25" class="hidden">
   </td>   
 </tr>`);
 }
@@ -131,18 +132,16 @@ function fetchData() {
 }
 
 function filterReport(element, status) {
-  if (!Select(element).hasClass('active')) {
-    Select('.tab a.active').removeClass('active');
-    Select(element).addClass('active');
-    prePopulate();
-    incidents.forEach((incident, index) => {
-      calculateSummary(incident.status);
-      if (incident.status === status || status === 'all') {
-        populate(incident, index);
-      }
-    });
-    postPopulate();
-  }
+  Select('.tab a.active').removeClass('active');
+  Select(element).addClass('active');
+  prePopulate();
+  incidents.forEach((incident, index) => {
+    calculateSummary(incident.status);
+    if (incident.status === status || status === 'all') {
+      populate(incident, index);
+    }
+  });
+  postPopulate();
 }
 
 function getMedia(incident) {
@@ -202,8 +201,25 @@ function getReportCard(incident) {
   return details;
 }
 
-function changeStatus(element, status){
-  queryAPI()
+function changeStatus(element, status, index, update) {
+  if (update) {
+    const parent = Select(element).parent().parent();
+    parent.addClass('hidden').next().removeClass('hidden');
+    const { type, id } = incidents[index];
+    const url = type === CONSTANTS.INCIDENT.RED_FLAG ? CONSTANTS.URL.RED_FLAGS
+      : CONSTANTS.URL.INTERVENTIONS;
+    const param = new FormData();
+    param.append('status', status);
+    queryAPI(`${url}/${id}/status`, 'PATCH', param, (json) => {
+      if (json.status === CONSTANTS.STATUS.OK) {
+        incidents[index].status = status;
+        Select('.tab a.active').click();
+        Dialog.showNotification(json.data[0].message);
+      } else {
+        Dialog.showNotification(json.error, true);
+      }
+    });
+  }
 }
 
 function showReportDetails(index) {

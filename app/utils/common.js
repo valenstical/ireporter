@@ -19,11 +19,6 @@ const Common = {
   verifyToken: (token, done) => {
     jwt.verify(token, process.env.SECRET, done);
   },
-
-  sleep: () => {
-    const time = new Date(new Date().getTime() + (1000));
-    while (time > new Date()) { /* TODO */ }
-  },
 };
 
 export default Common;

@@ -131,7 +131,7 @@ class Validator {
     if (!(status === Constants.INCIDENT_STATUS_DRAFT
       || status === Constants.INCIDENT_STATUS_REJECTED
       || status === Constants.INCIDENT_STATUS_RESOLVED
-      || status === Constants.INCIDENT_STATUS_REJECTED)) {
+      || status === Constants.INCIDENT_STATUS_UNDER_INVESTIGATION)) {
       error(res, Constants.STATUS_BAD_REQUEST, [Constants.MESSAGE_BAD_DATA_STATUS]);
       return;
     }
@@ -222,7 +222,6 @@ class Validator {
    * @param {function} next - The next function used to pass control to another middleware
    */
   static validateLogin(req, res, next) {
-    Common.sleep();
     const errors = [];
     const user = new User(req.body);
     checkEmpty(errors, user.password, Constants.MESSAGE_NO_PASSWORD);

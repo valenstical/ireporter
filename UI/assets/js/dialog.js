@@ -25,17 +25,17 @@ function closePop(callback) {
   }, 250);
 }
 
-function Notification(text, danger, callback) {
+function Notification(text, error, callback) {
   this.element = null;
   this.parent = Select('.dialog-parent');
   this.callback = callback;
   this.text = text;
-  this.danger = danger;
+  this.error = error;
   this.id = `d${new Date().getTime()}`;
   Select('.dialog-parent .dialog-hidden').addClass('hidden');
   this.show = () => {
     this.parent.append(`
-    <div id = "${this.id}" class="dialog dialog-hidden${this.danger ? '' : ' dialog success'}">
+    <div id = "${this.id}" class="dialog dialog-hidden${this.error ? ' error' : ''}">
       <a onclick ="closeNotification(this)" class="close">&times;</a>
       <p>${this.text}</p>
     </div>`);
@@ -120,8 +120,8 @@ class Dialog {
     `);
   }
 
-  static showNotification(text, success = true, callback) {
-    const notification = new Notification(text, success, callback);
+  static showNotification(text, error = false, callback) {
+    const notification = new Notification(text, error, callback);
     notification.show();
   }
 
