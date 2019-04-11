@@ -28,7 +28,7 @@
     "nodemailer": "^5.0.0",
     "nodemailer-smtp-transport": "^2.7.4",
     "pg": "^7.8.0",
-    "random-int": "^1.0.0",
+    "random-int": "^2.0.0",
     "request": "^2.88.0",
     "request-promise": "^4.2.2",
     "unique-random-range": "^1.0.6",
